@@ -1,0 +1,4 @@
+MusicStringLib
+==============
+
+Bachelor project
