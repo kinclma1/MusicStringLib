@@ -1,6 +1,7 @@
 
 package cz.cvut.fel.kinclma1;
 
+import cz.cvut.fel.kinclma1.io.FileExporter;
 import org.herac.tuxguitar.song.models.TGSong;
 import org.jfugue.Player;
 
@@ -21,6 +22,7 @@ public class Main {
         MusicStringSong ms1 = new MusicStringSong(ms.toString());
         System.out.println(ms1);
         TGSong tgs = ms1.toTGSong();
+        new FileExporter().exportSong(tgs, "/home/void/project/newhouse.tg");
         MusicStringSong ms2 = new MusicStringSong(tgs);
         System.out.println(ms2);
 //        System.out.println(ms.getAllTracks());
