@@ -94,26 +94,25 @@ public class MusicStringBeat {
         }
     }
 
-    public TGBeat toTGBeat(TGFactory factory) {
+    public TGBeat toTGBeat(TGFactory factory, TGMeasure measure) {
         TGBeat beat = factory.newBeat();
         if (rest != null) {
             beat.setVoice(0, rest.toTGVoice(beat.getVoice(0)));
         } else {
             TGVoice voice = beat.getVoice(0);
             notes.get(0).configureTGVoice(voice);
-            ArrayList<TGString> strings = new ArrayList<TGString>(notes.size());
-            int i = 0;
+            int i = 1;
             for (MusicStringNote note : notes) {
                 TGNote tgNote = note.toTGNote(factory);
-                TGString tgString = factory.newString();
-                tgString.setNumber(i);
-                strings.add(tgString);
                 tgNote.setString(i++);
                 voice.addNote(tgNote);
             }
-            beat.getMeasure().getTrack(); //TODO has no track
-            beat.getMeasure().getTrack().setStrings(strings);
+            beat.setMeasure(measure);
         }
         return beat;
+    }
+
+    protected int countStrings() {
+        return notes != null ? notes.size() : 0;
     }
 }

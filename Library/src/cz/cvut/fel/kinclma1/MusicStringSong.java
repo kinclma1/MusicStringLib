@@ -57,6 +57,7 @@ public class MusicStringSong {
         }
     }
 
+    private int cpus;
     private ExecutorService exec;
     private Map<String, MusicStringTrack> tracks;
 
@@ -106,7 +107,11 @@ public class MusicStringSong {
 
     private MusicStringSong() {
         tracks = new HashMap<String, MusicStringTrack>();
-        int cpus = Runtime.getRuntime().availableProcessors();
+        cpus = Runtime.getRuntime().availableProcessors();
+        initExec();
+    }
+
+    private void initExec() {
         exec = Executors.newFixedThreadPool(cpus > 0 ? cpus : 1);
     }
 
@@ -134,6 +139,7 @@ public class MusicStringSong {
 
         Collection<Future<TGTrack>> results = null;
         try {
+            initExec();
             results = exec.invokeAll(tcs);
             for (Future<TGTrack> result : results) {
                 TGTrack res = result.get();
@@ -175,6 +181,7 @@ public class MusicStringSong {
                 MusicStringTrack res = result.get();
                 tracks.put(res.getId(), res);
             }
+            exec.shutdown();
         } catch (Exception ex) {
             ex.printStackTrace();
         }

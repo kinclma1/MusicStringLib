@@ -3,6 +3,7 @@ package cz.cvut.fel.kinclma1;
 import org.herac.tuxguitar.song.factory.TGFactory;
 import org.herac.tuxguitar.song.models.TGChannel;
 import org.herac.tuxguitar.song.models.TGMeasure;
+import org.herac.tuxguitar.song.models.TGString;
 import org.herac.tuxguitar.song.models.TGTrack;
 
 import java.util.ArrayList;
@@ -78,6 +79,9 @@ public class MusicStringTrack {
                 measure = new ArrayList<String>();
             }
         }
+        if (!measure.isEmpty()) {
+            measures.add(new MusicStringMeasure(measure, tempoTracker, drumTrack));
+        }
         metaInfo = buildMeta();
         id = buildId();
     }
@@ -111,12 +115,38 @@ public class MusicStringTrack {
         tgChannel.setChannel((short) channel);
         if (channel != 9) {
             tgChannel.setInstrument((short) instrument.toInteger());
+            int strings = countStrings();
+            ArrayList<TGString> stringList = new ArrayList<TGString>(strings);
+            for (int i = 0; i < strings; i ++) {
+                TGString string = factory.newString();
+                string.setNumber(i);
+                stringList.add(string);
+            }
+            track.setStrings(stringList);
+        } else {
+            ArrayList<TGString> stringList = new ArrayList<TGString>(6);
+            for (int i = 0; i < 6; i ++) {
+                TGString string = factory.newString();
+                string.setNumber(i);
+                stringList.add(string);
+            }
+            track.setStrings(stringList);
         }
         for (MusicStringMeasure measure : measures) {
-            track.addMeasure(measure.toTGMeasure(factory));
+            track.addMeasure(measure.toTGMeasure(factory, track));
         }
 
         return track;
+    }
+
+    private int countStrings() {
+        int max = 0;
+        int strings = 0;
+        for (MusicStringMeasure measure : measures) {
+            strings = measure.countStrings();
+            max = (strings > max ? strings : max);
+        }
+        return max;
     }
 
     private String buildId() {

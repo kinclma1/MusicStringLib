@@ -17,7 +17,9 @@ public class Main {
      */
     public static void main(String[] args) {
         MusicStringSong ms = new MusicStringSong(new File("/home/void/project/house.gp5"));
+        System.out.println(ms);
         MusicStringSong ms1 = new MusicStringSong(ms.toString());
+        System.out.println(ms1);
         TGSong tgs = ms1.toTGSong();
         MusicStringSong ms2 = new MusicStringSong(tgs);
         System.out.println(ms2);
