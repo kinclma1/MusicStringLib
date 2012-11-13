@@ -2,10 +2,16 @@
 package cz.cvut.fel.kinclma1;
 
 import cz.cvut.fel.kinclma1.io.FileExporter;
-import org.herac.tuxguitar.song.models.TGSong;
+import org.herac.tuxguitar.io.base.TGFileFormatException;
+import org.herac.tuxguitar.io.tg.TGInputStream;
+import org.herac.tuxguitar.song.factory.TGFactory;
+import org.herac.tuxguitar.song.models.*;
 import org.jfugue.Player;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,14 +23,9 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        MusicStringSong ms = new MusicStringSong(new File("/home/void/project/house.gp5"));
-        System.out.println(ms);
-        MusicStringSong ms1 = new MusicStringSong(ms.toString());
-        System.out.println(ms1);
-        TGSong tgs = ms1.toTGSong();
-        new FileExporter().exportSong(tgs, "/home/void/project/newhouse.tg");
-        MusicStringSong ms2 = new MusicStringSong(tgs);
-        System.out.println(ms2);
+        MusicStringSong ms = new MusicStringSong(new File("/home/void/project/test.tg"));
+        TGSong tgs = ms.toTGSong();
+        new FileExporter().exportSong(tgs, "/home/void/project/newtest.tg");
 //        System.out.println(ms.getAllTracks());
 //        System.out.println(ms.getTrackIds());
 //        String track1 = ms.getTrack("V15 GUITAR").toString();

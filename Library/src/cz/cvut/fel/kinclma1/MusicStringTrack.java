@@ -6,10 +6,7 @@ import org.herac.tuxguitar.song.models.TGMeasure;
 import org.herac.tuxguitar.song.models.TGString;
 import org.herac.tuxguitar.song.models.TGTrack;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -115,19 +112,21 @@ public class MusicStringTrack {
         tgChannel.setChannel((short) channel);
         if (channel != 9) {
             tgChannel.setInstrument((short) instrument.toInteger());
-            int strings = countStrings();
+            int strings = 6;
             ArrayList<TGString> stringList = new ArrayList<TGString>(strings);
             for (int i = 0; i < strings; i ++) {
                 TGString string = factory.newString();
-                string.setNumber(i);
+                string.setNumber(i + 1);
+                string.setValue(0);
                 stringList.add(string);
             }
             track.setStrings(stringList);
+            //TODO no strings in longer tracks
         } else {
             ArrayList<TGString> stringList = new ArrayList<TGString>(6);
             for (int i = 0; i < 6; i ++) {
                 TGString string = factory.newString();
-                string.setNumber(i);
+                string.setNumber(i + 1);
                 stringList.add(string);
             }
             track.setStrings(stringList);
@@ -136,17 +135,16 @@ public class MusicStringTrack {
             track.addMeasure(measure.toTGMeasure(factory, track));
         }
 
-        return track;
-    }
+        track.setLyrics(factory.newLyric());
+        track.setMute(false);
+        track.setNumber(new Random().nextInt());
+        track.setColor(factory.newColor());
+        track.getColor().setR(0);
+        track.getColor().setB(0);
+        track.getColor().setG(0);
 
-    private int countStrings() {
-        int max = 0;
-        int strings = 0;
-        for (MusicStringMeasure measure : measures) {
-            strings = measure.countStrings();
-            max = (strings > max ? strings : max);
-        }
-        return max;
+        track.setName("Track");
+        return track;
     }
 
     private String buildId() {

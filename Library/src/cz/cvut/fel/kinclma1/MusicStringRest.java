@@ -27,6 +27,7 @@ public class MusicStringRest {
     public TGVoice toTGVoice(TGVoice voice) {
         voice.getDuration().setValue(duration.toInteger());
         voice.getDuration().setDotted(dotted);
+        voice.setEmpty(false);
         return voice;
     }
 

@@ -1,9 +1,7 @@
 package cz.cvut.fel.kinclma1;
 
 import org.herac.tuxguitar.song.factory.TGFactory;
-import org.herac.tuxguitar.song.models.TGBeat;
-import org.herac.tuxguitar.song.models.TGMeasure;
-import org.herac.tuxguitar.song.models.TGTrack;
+import org.herac.tuxguitar.song.models.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +26,7 @@ public class MusicStringMeasure {
         for (TGBeat tgBeat : (List<TGBeat>)tgMeasure.getBeats()) {
             beats.add(new MusicStringBeat(tgBeat, drumTrack));
         }
+
     }
 
     public MusicStringMeasure(List<String> measure, MusicStringTrack.TempoTracker tempoTracker, boolean drumTrack) {
@@ -63,18 +62,11 @@ public class MusicStringMeasure {
         for (MusicStringBeat beat : beats) {
             measure.addBeat(beat.toTGBeat(factory, measure));
         }
-
+        TGTimeSignature ts = factory.newTimeSignature();
+        ts.setNumerator(4);
+        ts.getDenominator().setValue(4);
+        measure.getHeader().setTimeSignature(ts);
         return measure;
-    }
-
-    protected int countStrings() {
-        int max = 0;
-        int strings = 0;
-        for (MusicStringBeat beat : beats) {
-            strings = beat.countStrings();
-            max = (strings > max ? strings : max);
-        }
-        return max;
     }
 
     private String tempoIndicator() {

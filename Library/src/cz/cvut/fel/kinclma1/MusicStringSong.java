@@ -149,6 +149,7 @@ public class MusicStringSong {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        song.addMeasureHeader(song.getTrack(0).getMeasure(0).getHeader());
 
         return song;
     }

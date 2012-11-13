@@ -111,8 +111,4 @@ public class MusicStringBeat {
         }
         return beat;
     }
-
-    protected int countStrings() {
-        return notes != null ? notes.size() : 0;
-    }
 }
