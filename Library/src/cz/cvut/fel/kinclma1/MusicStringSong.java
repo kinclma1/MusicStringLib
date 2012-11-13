@@ -3,6 +3,7 @@ package cz.cvut.fel.kinclma1;
 
 import cz.cvut.fel.kinclma1.io.FileImporter;
 import org.herac.tuxguitar.song.factory.TGFactory;
+import org.herac.tuxguitar.song.models.TGMeasure;
 import org.herac.tuxguitar.song.models.TGSong;
 import org.herac.tuxguitar.song.models.TGTrack;
 
@@ -149,7 +150,10 @@ public class MusicStringSong {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        song.addMeasureHeader(song.getTrack(0).getMeasure(0).getHeader());
+        Iterator<TGMeasure> it = song.getTrack(0).getMeasures();
+        while (it.hasNext()) {
+            song.addMeasureHeader(it.next().getHeader());
+        }
 
         return song;
     }

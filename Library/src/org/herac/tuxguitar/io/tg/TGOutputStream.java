@@ -155,7 +155,7 @@ public class TGOutputStream extends TGStream implements TGOutputStreamBase{
 		
 		//escribo la cantidad de cuerdas 
 		writeByte(track.getStrings().size());
-		
+
 		//escribo las cuerdas
 		Iterator stringIt  = track.getStrings().iterator();
 		while(stringIt.hasNext()){

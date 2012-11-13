@@ -20,9 +20,10 @@ import java.io.*;
 public class FileExporter {
 
     public void exportSong(TGSong song, String filename) {
-        DataOutputStream out = null;
+        BufferedOutputStream out = null;
+
         try {
-            out = new DataOutputStream(new FileOutputStream(filename));
+            out = new BufferedOutputStream(new FileOutputStream(filename));
         } catch (FileNotFoundException e) {
             System.err.println("File export failed");
             return;
