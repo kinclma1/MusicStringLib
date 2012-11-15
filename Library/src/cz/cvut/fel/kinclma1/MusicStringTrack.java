@@ -112,16 +112,7 @@ public class MusicStringTrack {
         tgChannel.setChannel((short) channel);
         if (channel != 9) {
             tgChannel.setInstrument((short) instrument.toInteger());
-            int strings = 6;
-            ArrayList<TGString> stringList = new ArrayList<TGString>(strings);
-            for (int i = 0; i < strings; i ++) {
-                TGString string = factory.newString();
-                string.setNumber(i + 1);
-                string.setValue(0);
-                stringList.add(string);
-            }
-            track.setStrings(stringList);
-            //TODO no strings in longer tracks
+            track.setStrings(initStrings(factory));
         } else {
             ArrayList<TGString> stringList = new ArrayList<TGString>(6);
             for (int i = 0; i < 6; i ++) {
@@ -132,19 +123,51 @@ public class MusicStringTrack {
             track.setStrings(stringList);
         }
         for (MusicStringMeasure measure : measures) {
-            track.addMeasure(measure.toTGMeasure(factory, track));
+            TGMeasure tgMeasure = measure.toTGMeasure(factory, track);
+            if (track.stringCount() < 6) {
+                tgMeasure.setClef(2);
+            }
+            track.addMeasure(tgMeasure);
         }
-
-        track.setLyrics(factory.newLyric());
-        track.setMute(false);
-        track.setNumber(new Random().nextInt());
-        track.setColor(factory.newColor());
-        track.getColor().setR(0);
-        track.getColor().setB(0);
-        track.getColor().setG(0);
-
+        track.getColor().setR(255);
         track.setName("Track");
         return track;
+    }
+
+    private int[] getLowestToneAndMaxTones() {
+        int[] ltms = new int[2];
+        ltms[0] = Integer.MAX_VALUE;
+        for (MusicStringMeasure measure : measures) {
+            ltms = measure.getLowestToneAndMaxTones(ltms);
+        }
+        return ltms;
+    }
+
+    private ArrayList<TGString> initStrings(TGFactory factory) {
+        int[] ltms = getLowestToneAndMaxTones();
+        if (ltms[0] >= new Tone("E3").toInteger() && ltms[1] <= 6) {
+            return createStrings(factory, new String[]{"E5", "B4", "G4", "D4", "A3", "E3"});
+        } else if (ltms[0] >= new Tone("E2").toInteger() && ltms[1] < 4) {
+            return createStrings(factory, new String[]{"G3", "D3", "A2", "E2"});
+        } else if (ltms[0] >= new Tone("B2").toInteger() && ltms[1] <= 7) {
+            return createStrings(factory, new String[]{"E5", "B4", "G4", "D4", "A3", "E3", "B2"});
+        } else if (ltms[0] >= new Tone("B1").toInteger() && ltms[1] < 4) {
+            return createStrings(factory, new String[]{"G3", "D3", "A2", "E2", "B1"});
+        } else {
+            return createStrings(factory, new String[]{"C0", "C0", "C0", "C0", "C0", "C0", "C0"});
+        }
+    }
+
+    private ArrayList<TGString> createStrings(TGFactory factory, String[] tones) {
+        ArrayList<TGString> stringList = new ArrayList<TGString>(tones.length);
+        TGString string;
+        for (int i = 0; i < tones.length; i ++) {
+            string = factory.newString();
+            string.setNumber(i + 1);
+            string.setValue(new Tone(tones[i]).toInteger());
+            stringList.add(string);
+        }
+        return stringList;
     }
 
     private String buildId() {

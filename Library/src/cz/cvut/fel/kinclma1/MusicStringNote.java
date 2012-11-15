@@ -11,13 +11,14 @@ import org.herac.tuxguitar.song.models.TGVoice;
  * Time: 23:26
  * To change this template use File | Settings | File Templates.
  */
-public class MusicStringNote {
+public class MusicStringNote implements Comparable<MusicStringNote> {
     private Tone tone = null;
     private Drum drum = null;
     private Duration duration;
     private boolean dotted;
 
     public MusicStringNote(TGNote note, boolean drumTrack) {
+        //todo tied notes
         int value = note.getVoice().getBeat().getMeasure().getTrack().getString(note.getString()).getValue()
                 + note.getValue();
         if(!drumTrack) {
@@ -55,8 +56,22 @@ public class MusicStringNote {
     }
 
     public TGNote toTGNote(TGFactory factory) {
+        //todo tied notes
         TGNote note = factory.newNote();
         note.setValue(tone != null ? tone.toInteger() : drum.toInteger());
         return note;
+    }
+
+    public int getDurationDiv128() {
+        return !dotted ? (128 / duration.toInteger()) : (128 / duration.toInteger() + 128 / (duration.toInteger() * 2));
+    }
+
+    protected int value() {
+        return tone != null ? tone.toInteger() : drum.toInteger();
+    }
+
+    @Override
+    public int compareTo(MusicStringNote note) {
+        return this.value() - note.value();
     }
 }

@@ -4,6 +4,7 @@ import org.herac.tuxguitar.song.factory.TGFactory;
 import org.herac.tuxguitar.song.models.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -102,13 +103,43 @@ public class MusicStringBeat {
             TGVoice voice = beat.getVoice(0);
             notes.get(0).configureTGVoice(voice);
             int i = 1;
-            for (MusicStringNote note : notes) {
+            List<TGString> strings = measure.getTrack().getStrings();
+            List<MusicStringNote> newNotes = new ArrayList<MusicStringNote>(notes);
+            Collections.sort(newNotes, Collections.reverseOrder());
+            for (MusicStringNote note : newNotes) {
+                while (i < strings.size() && note.value() < strings.get(i - 1).getValue()) {
+                    i ++;
+                }
                 TGNote tgNote = note.toTGNote(factory);
+                tgNote.setValue(tgNote.getValue() - strings.get(i - 1).getValue());
                 tgNote.setString(i++);
                 voice.addNote(tgNote);
             }
             beat.setMeasure(measure);
         }
         return beat;
+    }
+
+    protected int getDurationDiv128() {
+        return rest != null ? rest.getDurationDiv128() : notes.get(0).getDurationDiv128();
+    }
+
+    protected int getLowestTone() {
+        int lowest = Integer.MAX_VALUE;
+        if (notes == null) {
+            return lowest;
+        }
+        int current;
+        for (MusicStringNote note : notes) {
+            current = note.value();
+            if (current < lowest) {
+                lowest = current;
+            }
+        }
+        return lowest;
+    }
+
+    protected int countTones() {
+        return notes == null ? 0 : notes.size();
     }
 }

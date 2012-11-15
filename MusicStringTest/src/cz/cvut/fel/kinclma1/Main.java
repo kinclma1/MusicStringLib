@@ -8,10 +8,12 @@ import org.herac.tuxguitar.song.factory.TGFactory;
 import org.herac.tuxguitar.song.models.*;
 import org.jfugue.Player;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -23,20 +25,10 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        MusicStringSong ms = new MusicStringSong(new File("/home/void/project/napad.tg"));
+        MusicStringSong ms = new MusicStringSong(new File("/home/void/project/house.gp5"));
         TGSong tgs = ms.toTGSong();
-        new FileExporter().exportSong(tgs, "/home/void/project/newtest.tg");
-        TGInputStream is = new TGInputStream();
+        new FileExporter().exportSong(tgs, "/home/void/project/newhouse.tg");
 
-        try {
-            is.init(new TGFactory(), new FileInputStream("/home/void/project/newtest.tg"));
-            TGSong song = is.readSong();
-            new MusicStringSong(song).toString();
-        } catch (TGFileFormatException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
 //        System.out.println(ms.getAllTracks());
 //        System.out.println(ms.getTrackIds());
 //        String track1 = ms.getTrack("V15 GUITAR").toString();

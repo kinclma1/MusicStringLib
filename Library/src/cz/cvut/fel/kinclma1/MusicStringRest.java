@@ -35,4 +35,8 @@ public class MusicStringRest {
     public String toString() {
         return "R" + duration.toString() + (dotted ? "." : "");
     }
+
+    public int getDurationDiv128() {
+        return !dotted ? (128 / duration.toInteger()) : (128 / duration.toInteger() + 128 / (duration.toInteger() * 2));
+    }
 }

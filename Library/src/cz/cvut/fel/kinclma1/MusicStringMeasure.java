@@ -19,6 +19,7 @@ public class MusicStringMeasure {
     private List<MusicStringBeat> beats;
 
     public MusicStringMeasure(TGMeasure tgMeasure, MusicStringTrack.TempoTracker tempoTracker, boolean drumTrack) {
+        //todo repetitions
         tempo = tgMeasure.getTempo().getValue();
         this.tempoTracker = tempoTracker;
         int numBeats = tgMeasure.countBeats();
@@ -59,14 +60,43 @@ public class MusicStringMeasure {
         TGMeasure measure = factory.newMeasure(factory.newHeader());
         measure.getHeader().getTempo().setValue(tempo);
         measure.setTrack(track);
+        int measureLength = 0;
         for (MusicStringBeat beat : beats) {
             measure.addBeat(beat.toTGBeat(factory, measure));
+            measureLength += beat.getDurationDiv128();
         }
-        TGTimeSignature ts = factory.newTimeSignature();
-        ts.setNumerator(4);
-        ts.getDenominator().setValue(4);
-        measure.getHeader().setTimeSignature(ts);
+
+        measure.getHeader().setTimeSignature(getTimeSignature(factory, measureLength));
         return measure;
+    }
+
+    private TGTimeSignature getTimeSignature(TGFactory factory, int measureLength) {
+        TGTimeSignature ts = factory.newTimeSignature();
+        for (int i = 32; i >= 1; i /= 2) {
+            if(measureLength % i == 0) {
+                ts.setNumerator(measureLength / i);
+                ts.getDenominator().setValue(128 / i);
+                break;
+            }
+        }
+
+        return ts;
+    }
+
+    protected int[] getLowestToneAndMaxTones(int[] ltms) {
+        int tone;
+        int max;
+        for (MusicStringBeat beat : beats) {
+            tone = beat.getLowestTone();
+            max = beat.countTones();
+            if (tone < ltms[0]) {
+                ltms[0] = tone;
+            }
+            if (max > ltms[1]) {
+                ltms[1] = max;
+            }
+        }
+        return ltms;
     }
 
     private String tempoIndicator() {

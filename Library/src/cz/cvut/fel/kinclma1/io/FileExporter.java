@@ -18,7 +18,7 @@ import java.io.*;
  * To change this template use File | Settings | File Templates.
  */
 public class FileExporter {
-
+    //todo different formats
     public void exportSong(TGSong song, String filename) {
         BufferedOutputStream out = null;
 
