@@ -33,6 +33,45 @@ public class MusicStringTrack {
         }
     }
 
+    private class RepetitionTracker {
+        private LinkedList<TGMeasure> measures;
+        private boolean repeatOpen;
+        private boolean alternateEnding;
+
+        RepetitionTracker() {
+            measures = new LinkedList<TGMeasure>();
+            repeatOpen = true;
+            alternateEnding = false;
+        }
+
+        void processMeasure(TGMeasure measure) {
+            if (!repeatOpen && measure.getHeader().getRepeatAlternative() > 1) {
+                addMeasures(measures);
+                alternateEnding = true;
+            }
+            addMeasure(measure);
+            if(measure.isRepeatOpen()) {
+                repeatOpen = true;
+                measures.clear();
+                measures.add(measure);
+            } else if (repeatOpen && measure.getHeader().getRepeatAlternative() > 0) {
+                alternateEnding = true;
+                repeatOpen = false;
+            } else if (!alternateEnding && measure.getRepeatClose() > 0) {
+                measures.add(measure);
+                repeatOpen = false;
+                addMeasure(measure);
+                for (int i = 0; i < measure.getRepeatClose(); i ++) {
+                    addMeasures(measures);
+                }
+            } else if (alternateEnding && measure.getRepeatClose() > 0) {
+                alternateEnding = false;
+            } else if (repeatOpen) {
+                measures.add(measure);
+            }
+        }
+    }
+
     private String id;
     private String metaInfo;
 
@@ -40,10 +79,12 @@ public class MusicStringTrack {
     private Instrument instrument;
     private boolean drumTrack;
     private TempoTracker tempoTracker;
+    private RepetitionTracker repetitionTracker;
     private List<MusicStringMeasure> measures;
 
     public MusicStringTrack(TGTrack tgTrack) {
         tempoTracker = new TempoTracker();
+        repetitionTracker = new RepetitionTracker();
         channel = tgTrack.getChannel().getChannel();
         drumTrack = channel == 9;
         instrument = Instrument.fromInt(tgTrack.getChannel().getInstrument());
@@ -51,8 +92,20 @@ public class MusicStringTrack {
         metaInfo = buildMeta();
         this.measures = new ArrayList<MusicStringMeasure>(tgTrack.countMeasures());
         Iterator<TGMeasure> tgMeasureIterator = tgTrack.getMeasures();
+        TGMeasure tgMeasure;
         while (tgMeasureIterator.hasNext()) {
-            measures.add(new MusicStringMeasure(tgMeasureIterator.next(),tempoTracker,drumTrack));
+            tgMeasure = tgMeasureIterator.next();
+            repetitionTracker.processMeasure(tgMeasure);
+        }
+    }
+
+    private void addMeasure(TGMeasure measure) {
+        measures.add(new MusicStringMeasure(measure,tempoTracker,drumTrack));
+    }
+
+    private void addMeasures(List<TGMeasure> measureList) {
+        for (TGMeasure measure : measureList) {
+            addMeasure(measure);
         }
     }
 

@@ -19,7 +19,6 @@ public class MusicStringMeasure {
     private List<MusicStringBeat> beats;
 
     public MusicStringMeasure(TGMeasure tgMeasure, MusicStringTrack.TempoTracker tempoTracker, boolean drumTrack) {
-        //todo repetitions
         tempo = tgMeasure.getTempo().getValue();
         this.tempoTracker = tempoTracker;
         int numBeats = tgMeasure.countBeats();
