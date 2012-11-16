@@ -11,7 +11,7 @@ import org.herac.tuxguitar.song.models.TGVoice;
  * Time: 23:26
  * To change this template use File | Settings | File Templates.
  */
-public class MusicStringNote implements Comparable<MusicStringNote> {
+class MusicStringNote implements Comparable<MusicStringNote> {
     private Tone tone = null;
     private Drum drum = null;
     private Duration duration;
@@ -66,7 +66,7 @@ public class MusicStringNote implements Comparable<MusicStringNote> {
         return !dotted ? (128 / duration.toInteger()) : (128 / duration.toInteger() + 128 / (duration.toInteger() * 2));
     }
 
-    protected int value() {
+    int value() {
         return tone != null ? tone.toInteger() : drum.toInteger();
     }
 

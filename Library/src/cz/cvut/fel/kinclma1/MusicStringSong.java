@@ -138,7 +138,7 @@ public class MusicStringSong {
             tcs.add(new TrackExporter(getTrack(trackId), factory));
         }
 
-        Collection<Future<TGTrack>> results = null;
+        Collection<Future<TGTrack>> results;
         try {
             initExec();
             results = exec.invokeAll(tcs);
@@ -179,7 +179,7 @@ public class MusicStringSong {
     }
 
     private void create(List<TrackCreator> tcs) {
-        Collection<Future<MusicStringTrack>> results = null;
+        Collection<Future<MusicStringTrack>> results;
         try {
             results = exec.invokeAll(tcs);
             for (Future<MusicStringTrack> result : results) {

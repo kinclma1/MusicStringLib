@@ -15,7 +15,7 @@ import java.util.List;
  * Time: 23:20
  * To change this template use File | Settings | File Templates.
  */
-public class MusicStringBeat {
+class MusicStringBeat {
     private List<MusicStringNote> notes = null;
     private MusicStringRest rest = null;
 
@@ -120,11 +120,11 @@ public class MusicStringBeat {
         return beat;
     }
 
-    protected int getDurationDiv128() {
+    int getDurationDiv128() {
         return rest != null ? rest.getDurationDiv128() : notes.get(0).getDurationDiv128();
     }
 
-    protected int getLowestTone() {
+    int getLowestTone() {
         int lowest = Integer.MAX_VALUE;
         if (notes == null) {
             return lowest;
@@ -139,7 +139,7 @@ public class MusicStringBeat {
         return lowest;
     }
 
-    protected int countTones() {
+    int countTones() {
         return notes == null ? 0 : notes.size();
     }
 }

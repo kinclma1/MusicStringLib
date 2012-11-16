@@ -13,7 +13,7 @@ import java.util.List;
  * Time: 23:20
  * To change this template use File | Settings | File Templates.
  */
-public class MusicStringMeasure {
+class MusicStringMeasure {
     private int tempo;
     private MusicStringTrack.TempoTracker tempoTracker;
     private List<MusicStringBeat> beats;
@@ -82,7 +82,7 @@ public class MusicStringMeasure {
         return ts;
     }
 
-    protected int[] getLowestToneAndMaxTones(int[] ltms) {
+    int[] getLowestToneAndMaxTones(int[] ltms) {
         int tone;
         int max;
         for (MusicStringBeat beat : beats) {

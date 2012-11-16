@@ -9,7 +9,7 @@ import org.herac.tuxguitar.song.models.TGVoice;
  * Time: 3:07
  * To change this template use File | Settings | File Templates.
  */
-public class MusicStringRest {
+class MusicStringRest {
 
     private Duration duration;
     private boolean dotted;

@@ -79,12 +79,11 @@ public class MusicStringTrack {
     private Instrument instrument;
     private boolean drumTrack;
     private TempoTracker tempoTracker;
-    private RepetitionTracker repetitionTracker;
     private List<MusicStringMeasure> measures;
 
     public MusicStringTrack(TGTrack tgTrack) {
         tempoTracker = new TempoTracker();
-        repetitionTracker = new RepetitionTracker();
+        RepetitionTracker repetitionTracker = new RepetitionTracker();
         channel = tgTrack.getChannel().getChannel();
         drumTrack = channel == 9;
         instrument = Instrument.fromInt(tgTrack.getChannel().getInstrument());
