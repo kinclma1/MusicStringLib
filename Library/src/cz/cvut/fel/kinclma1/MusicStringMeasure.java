@@ -15,10 +15,10 @@ import java.util.List;
  */
 class MusicStringMeasure {
     private int tempo;
-    private MusicStringTrack.TempoTracker tempoTracker;
+    private TempoTracker tempoTracker;
     private List<MusicStringBeat> beats;
 
-    public MusicStringMeasure(TGMeasure tgMeasure, MusicStringTrack.TempoTracker tempoTracker, boolean drumTrack) {
+    public MusicStringMeasure(TGMeasure tgMeasure, TempoTracker tempoTracker, boolean drumTrack) {
         tempo = tgMeasure.getTempo().getValue();
         this.tempoTracker = tempoTracker;
         int numBeats = tgMeasure.countBeats();
@@ -29,7 +29,7 @@ class MusicStringMeasure {
 
     }
 
-    public MusicStringMeasure(List<String> measure, MusicStringTrack.TempoTracker tempoTracker, boolean drumTrack) {
+    public MusicStringMeasure(List<String> measure, TempoTracker tempoTracker, boolean drumTrack) {
         this.tempoTracker = tempoTracker;
         int i = 0;
         if (measure.get(0).charAt(0) == 'T') {
