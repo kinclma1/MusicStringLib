@@ -12,33 +12,30 @@ import org.herac.tuxguitar.song.models.TGVoice;
  * To change this template use File | Settings | File Templates.
  */
 class MusicStringNote implements Comparable<MusicStringNote> {
-    private Tone tone = null;
+    private MusicStringTone tone = null;
     private Drum drum = null;
-    private Duration duration;
-    private boolean dotted;
+    private MusicStringDuration duration;
 
     public MusicStringNote(TGNote note, boolean drumTrack) {
         //todo tied notes
         int value = note.getVoice().getBeat().getMeasure().getTrack().getString(note.getString()).getValue()
                 + note.getValue();
         if(!drumTrack) {
-            tone = new Tone(value);
+            tone = new MusicStringTone(value);
         } else {
             drum = Drum.fromInt(value);
         }
-        duration = Duration.fromInt(note.getVoice().getDuration().getValue());
-        dotted = note.getVoice().getDuration().isDotted();
+        duration = new MusicStringDuration(note.getVoice().getDuration());
     }
 
     public MusicStringNote(String note, boolean drumTrack) {
         String[] toneAndDuration = note.split("(?=[a-z])");
         if (!drumTrack) {
-            tone = new Tone(toneAndDuration[0]);
+            tone = new MusicStringTone(toneAndDuration[0]);
         } else {
             drum = Drum.fromString(toneAndDuration[0].substring(1, toneAndDuration[0].length() - 1));
         }
-        duration = Duration.fromChar(toneAndDuration[1].charAt(0));
-        dotted = toneAndDuration[1].charAt(toneAndDuration[1].length() - 1) == '.';
+        duration = new MusicStringDuration(toneAndDuration[1]);
     }
 
     @Override
@@ -46,13 +43,12 @@ class MusicStringNote implements Comparable<MusicStringNote> {
         StringBuilder sb = new StringBuilder();
         sb.append(tone == null ? drum.toMusicString() : tone.toString());
         sb.append(duration.toString());
-        if(dotted) sb.append(".");
         return sb.toString();
     }
 
     public void configureTGVoice(TGVoice voice) {
         voice.getDuration().setValue(duration.toInteger());
-        voice.getDuration().setDotted(dotted);
+        voice.getDuration().setDotted(duration.isDotted());
     }
 
     public TGNote toTGNote(TGFactory factory) {
@@ -63,7 +59,7 @@ class MusicStringNote implements Comparable<MusicStringNote> {
     }
 
     public int getDurationDiv128() {
-        return !dotted ? (128 / duration.toInteger()) : (128 / duration.toInteger() + 128 / (duration.toInteger() * 2));
+        return duration.toIntegerDiv128();
     }
 
     int value() {

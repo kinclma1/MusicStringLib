@@ -11,32 +11,30 @@ import org.herac.tuxguitar.song.models.TGVoice;
  */
 class MusicStringRest {
 
-    private Duration duration;
-    private boolean dotted;
+    private MusicStringDuration duration;
 
     public MusicStringRest(TGVoice tgVoice) {
-        duration = Duration.fromInt(tgVoice.getDuration().getValue());
-        dotted = tgVoice.getDuration().isDotted();
+        duration = new MusicStringDuration(tgVoice.getDuration());
+//        System.out.println(toString());
     }
 
     public MusicStringRest(String strRest) {
-        duration = Duration.fromChar(strRest.charAt(1));
-        dotted = strRest.charAt(strRest.length() - 1) == '.';
+        duration = new MusicStringDuration(strRest.substring(1));
     }
 
     public TGVoice toTGVoice(TGVoice voice) {
         voice.getDuration().setValue(duration.toInteger());
-        voice.getDuration().setDotted(dotted);
+        voice.getDuration().setDotted(duration.isDotted());
         voice.setEmpty(false);
         return voice;
     }
 
     @Override
     public String toString() {
-        return "R" + duration.toString() + (dotted ? "." : "");
+        return "R" + duration.toString();
     }
 
     public int getDurationDiv128() {
-        return !dotted ? (128 / duration.toInteger()) : (128 / duration.toInteger() + 128 / (duration.toInteger() * 2));
+        return duration.toIntegerDiv128();
     }
 }

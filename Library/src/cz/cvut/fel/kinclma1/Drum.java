@@ -29,7 +29,7 @@ public enum Drum {
     }
 
     public String toMusicString() {
-        return new StringBuilder("[").append(this.toString()).append("]").toString();
+        return String.format("[%1$s]", this.toString());
     }
 
     public static Drum fromInt(int value) {

@@ -7,7 +7,7 @@ package cz.cvut.fel.kinclma1;
  * Time: 19:50
  * To change this template use File | Settings | File Templates.
  */
-public class Tone {
+public class MusicStringTone {
 
     enum RelativeTone {
         C,
@@ -67,12 +67,12 @@ public class Tone {
     private RelativeTone tone = null;
     private int octave;
 
-    public Tone(int value) {
+    public MusicStringTone(int value) {
         this.tone = RelativeTone.fromInt(value % 12);
         this.octave = value / 12;
     }
 
-    public Tone(String mStrTone) {
+    public MusicStringTone(String mStrTone) {
         int len;
         if (mStrTone.charAt(1) == '#') {
             len = 2;

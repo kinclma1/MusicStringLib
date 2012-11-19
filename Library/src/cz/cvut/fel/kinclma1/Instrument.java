@@ -45,7 +45,7 @@ public enum Instrument {
     }
 
     public String toMusicString() {
-        return new StringBuilder("I[").append(this.toString()).append("] ").toString();
+        return String.format("I[%1$s]", this.toString());
     }
 
     public static Instrument fromInt(int instrument) {

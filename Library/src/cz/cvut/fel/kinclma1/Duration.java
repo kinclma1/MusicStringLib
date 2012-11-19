@@ -1,5 +1,7 @@
 package cz.cvut.fel.kinclma1;
 
+import org.herac.tuxguitar.song.models.TGDuration;
+
 /**
  * Created with IntelliJ IDEA.
  * User: void
@@ -16,29 +18,6 @@ public enum Duration {
     THIRTY_SECOND,
     SIXTY_FOURTH,
     ONE_TWENTY_EIGHTH;
-
-    public static Duration fromChar(char dur) {
-        switch (dur) {
-            case 'w':
-                return WHOLE;
-            case 'h':
-                return HALF;
-            case 'q':
-                return QUARTER;
-            case 'i':
-                return EIGHTH;
-            case 's':
-                return SIXTEENTH;
-            case 't':
-                return THIRTY_SECOND;
-            case 'x':
-                return SIXTY_FOURTH;
-            case 'o':
-                return ONE_TWENTY_EIGHTH;
-            default:
-                return null;
-        }
-    }
 
     @Override
     public String toString() {
@@ -59,29 +38,6 @@ public enum Duration {
                 return "x";
             case ONE_TWENTY_EIGHTH:
                 return "o";
-            default:
-                return null;
-        }
-    }
-
-    public static Duration fromInt(int duration) {
-        switch (duration) {
-            case 1:
-                return WHOLE;
-            case 2:
-                return HALF;
-            case 4:
-                return QUARTER;
-            case 8:
-                return EIGHTH;
-            case 16:
-                return SIXTEENTH;
-            case 32:
-                return THIRTY_SECOND;
-            case 64:
-                return SIXTY_FOURTH;
-            case 128:
-                return ONE_TWENTY_EIGHTH;
             default:
                 return null;
         }
@@ -109,5 +65,4 @@ public enum Duration {
                 return 0;
         }
     }
-
 }

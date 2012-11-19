@@ -58,7 +58,6 @@ public class MusicStringSong {
         }
     }
 
-    private int cpus;
     private ExecutorService exec;
     private Map<String, MusicStringTrack> tracks;
 
@@ -108,12 +107,12 @@ public class MusicStringSong {
 
     private MusicStringSong() {
         tracks = new HashMap<String, MusicStringTrack>();
-        cpus = Runtime.getRuntime().availableProcessors();
         initExec();
     }
 
     private void initExec() {
-        exec = Executors.newFixedThreadPool(cpus > 0 ? cpus : 1);
+        int cpus = Runtime.getRuntime().availableProcessors();
+        exec = Executors.newFixedThreadPool(cpus > 0 ? cpus < 5 ? cpus : 4 : 1);
     }
 
     /**
