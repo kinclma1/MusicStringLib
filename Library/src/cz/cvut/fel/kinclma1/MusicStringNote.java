@@ -17,7 +17,6 @@ class MusicStringNote implements Comparable<MusicStringNote> {
     private MusicStringDuration duration;
 
     public MusicStringNote(TGNote note, boolean drumTrack) {
-        //todo tied notes
         int value = note.getVoice().getBeat().getMeasure().getTrack().getString(note.getString()).getValue()
                 + note.getValue();
         if(!drumTrack) {
@@ -52,7 +51,6 @@ class MusicStringNote implements Comparable<MusicStringNote> {
     }
 
     public TGNote toTGNote(TGFactory factory) {
-        //todo tied notes
         TGNote note = factory.newNote();
         note.setValue(tone != null ? tone.toInteger() : drum.toInteger());
         return note;
