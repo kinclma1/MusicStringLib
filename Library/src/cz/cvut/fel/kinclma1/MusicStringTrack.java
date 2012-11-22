@@ -166,7 +166,7 @@ public class MusicStringTrack {
             track.addMeasure(tgMeasure);
         }
         track.getColor().setR(255);
-        track.setName("Track");
+        track.setName(instrument.toString());
         return track;
     }
 

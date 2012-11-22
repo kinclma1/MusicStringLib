@@ -22,11 +22,18 @@ public class LilypondSongExporter implements TGLocalFileExporter {
 	
 	public boolean configure(boolean setDefaults) {
 		this.settings = LilypondSettings.getDefaults();
+        settings.setTablatureEnabled(false);
+        settings.setTextEnabled(true);
+        settings.setLyricsEnabled(false);
+        settings.setChordDiagramEnabled(false);
+        settings.setTrackNameEnabled(true);
+        settings.setTrackGroupEnabled(false);
 		return (this.settings != null);
 	}
 	
 	public void init(TGFactory factory,OutputStream stream){
 		this.stream = stream;
+        configure(true);
 	}
 	
 	public void exportSong(TGSong song) {

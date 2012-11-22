@@ -102,6 +102,9 @@ class MusicStringBeat {
         } else {
             TGVoice voice = beat.getVoice(0);
             notes.get(0).configureTGVoice(voice);
+//            for (int a = 1; a < beat.countVoices(); a ++) {
+//                beat.getVoice(a).setEmpty(true);
+//            }
             int i = 1;
             List<TGString> strings = measure.getTrack().getStrings();
             List<MusicStringNote> newNotes = new ArrayList<MusicStringNote>(notes);

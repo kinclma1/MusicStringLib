@@ -25,7 +25,7 @@ import org.herac.tuxguitar.song.models.TGVoice;
 import org.herac.tuxguitar.song.models.effects.TGEffectGrace;
 
 public class LilypondOutputStream {
-	
+	//todo drum notes, bass clef
 	// private static final String LILYPOND_VERSION = "2.10.5";
 	private String LILYPOND_VERSION;
 
@@ -57,7 +57,7 @@ public class LilypondOutputStream {
 	public void writeSong(TGSong song){
 		this.manager = new TGSongManager();
 		this.manager.setSong(song);
-		
+
 		this.addFunctions();
 		this.addVersion();
 		this.addPaper(song);
@@ -209,11 +209,11 @@ public class LilypondOutputStream {
 				int count = track.countMeasures();
 				for(int i = 0; i < count; i ++){
 					TGMeasure measure = track.getMeasure(i);
-					
+
 					int measureFrom = this.settings.getMeasureFrom();
 					int measureTo = this.settings.getMeasureTo();
 					if((measureFrom <= measure.getNumber() || measureFrom == LilypondSettings.FIRST_MEASURE) && (measureTo >= measure.getNumber() || measureTo == LilypondSettings.LAST_MEASURE )){
-						this.addMeasure(measure,previous,voice,1,(i == (count - 1)));
+						this.addMeasure(measure, previous, voice, 1, (i == (count - 1)));
 						previous = measure;
 					}
 				}
@@ -322,7 +322,7 @@ public class LilypondOutputStream {
 		if(previous == null || !measure.getTimeSignature().isEqual(previous.getTimeSignature())){
 			this.addTimeSignature(measure.getTimeSignature(),indent);
 		}
-		
+
 		// Set the specific voice
 		this.addMeasureVoice(measure,voice, (previous == null), indent);
 		
@@ -342,9 +342,9 @@ public class LilypondOutputStream {
 		if(!measure.isRepeatOpen() && measure.getHeader().getRepeatAlternative() > 0){
 			this.addRepeatAlternativeOpen(indent);
 		}
-		
-		this.addMeasureComponents(measure,voice,(this.temp.isRepeatOpen() || this.temp.isRepeatAlternativeOpen() ? (indent + 1): indent));
-		
+
+		this.addMeasureComponents(measure, voice, (this.temp.isRepeatOpen() || this.temp.isRepeatAlternativeOpen() ? (indent + 1) : indent));
+
 		// If is last alternative, we can close it now
 		if(this.temp.isRepeatAlternativeOpen() && this.temp.getRepeatAlternativeNumber() >= this.temp.getRepeatCount()){
 			this.addRepeatClose(indent);
@@ -471,14 +471,14 @@ public class LilypondOutputStream {
 					this.writer.print("} ");
 					this.temp.setDivisionTypeOpen(false);
 				}
-				
+
 				if(!this.temp.isDivisionTypeOpen() && !divisionType.isEqual(TGDivisionType.NORMAL)){
 					this.writer.print("\\times " + divisionType.getTimes() + "/" + divisionType.getEnters() + " {");
 					this.temp.setDivisionTypeOpen(true);
 				}
-				
+
 				this.addBeat(key, beat, voice);
-				
+
 				previous = beat;
 			}
 		}
@@ -495,7 +495,7 @@ public class LilypondOutputStream {
 		}
 	}
 	
-	private void addBeat(int key,TGBeat beat, TGVoice voice){		
+	private void addBeat(int key,TGBeat beat, TGVoice voice){
 		if(voice.isRestVoice()){
 			boolean skip = false;
 			for( int v = 0 ; v < beat.countVoices() ; v ++ ){
@@ -530,14 +530,14 @@ public class LilypondOutputStream {
 
 			for(int i = 0 ; i < size ; i ++){
 				TGNote note = voice.getNote(i);
-				
+
 				this.addEffectsBeforeNote(note);
-				
+
 				this.addKey(key, (beat.getMeasure().getTrack().getString(note.getString()).getValue() + note.getValue()) );
 				if(this.isAnyTiedTo(note)){
 					this.writer.print("~");
 				}
-				
+
 				this.addString(note.getString());
 				this.addEffectsOnNote(note.getEffect());
 				
@@ -545,7 +545,7 @@ public class LilypondOutputStream {
 					this.writer.print(" ");
 				}
 			}
-			
+
 			this.writer.print(">");
 			
 			this.addDuration( voice.getDuration() );
@@ -780,31 +780,31 @@ public class LilypondOutputStream {
 	}
 	
 	private boolean isAnyTiedTo(TGNote note){
-		TGMeasure measure = note.getVoice().getBeat().getMeasure();
-		TGBeat beat = this.manager.getMeasureManager().getNextBeat( measure.getBeats(), note.getVoice().getBeat());
-		while( measure != null){
-			while( beat != null ){
-				TGVoice voice = beat.getVoice(0);
-				
-				// If is a rest beat, all voice sounds must be stopped.
-				if(voice.isRestVoice()){
-					return false;
-				}
-				// Check if is there any note at same string.
-				Iterator it = voice.getNotes().iterator();
-				while( it.hasNext() ){
-					TGNote current = (TGNote) it.next();
-					if(current.getString() == note.getString()){
-						return current.isTiedNote();
-					}
-				}
-				beat = this.manager.getMeasureManager().getNextBeat( measure.getBeats(), beat);
-			}
-			measure = this.manager.getTrackManager().getNextMeasure(measure);
-			if( measure != null ){
-				beat = this.manager.getMeasureManager().getFirstBeat( measure.getBeats() );
-			}
-		}
+//		TGMeasure measure = note.getVoice().getBeat().getMeasure();
+//		TGBeat beat = this.manager.getMeasureManager().getNextBeat( measure.getBeats(), note.getVoice().getBeat());
+//		while( measure != null){
+//			while( beat != null ){
+//				TGVoice voice = beat.getVoice(0);
+//				// If is a rest beat, all voice sounds must be stopped.
+//				if(voice.isRestVoice()){
+//					return false;
+//				}
+//				// Check if is there any note at same string.
+//				Iterator it = voice.getNotes().iterator();
+//				while( it.hasNext() ){
+//					TGNote current = (TGNote) it.next();
+//					if(current.getString() == note.getString()){
+//						return current.isTiedNote();
+//					}
+//				}
+//				beat = this.manager.getMeasureManager().getNextBeat( measure.getBeats(), beat);
+//			}
+//			measure = this.manager.getTrackManager().getNextMeasure(measure);
+//			if( measure != null ){
+//				beat = this.manager.getMeasureManager().getFirstBeat( measure.getBeats() );
+//			}
+//		}
+        //todo lock
 		return false;
 	}
 	

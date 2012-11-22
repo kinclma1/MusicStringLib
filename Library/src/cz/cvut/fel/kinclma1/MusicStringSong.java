@@ -141,8 +141,10 @@ public class MusicStringSong {
         try {
             initExec();
             results = exec.invokeAll(tcs);
+            int i = 0;
             for (Future<TGTrack> result : results) {
                 TGTrack res = result.get();
+                res.setNumber(i++);
                 song.addTrack(res);
             }
             exec.shutdown();

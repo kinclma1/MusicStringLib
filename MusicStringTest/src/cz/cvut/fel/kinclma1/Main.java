@@ -6,12 +6,12 @@ import org.herac.tuxguitar.io.base.TGFileFormatException;
 import org.herac.tuxguitar.io.tg.TGInputStream;
 import org.herac.tuxguitar.song.factory.TGFactory;
 import org.herac.tuxguitar.song.models.*;
+import org.jfugue.MusicStringParser;
+import org.jfugue.MusicXmlRenderer;
+import org.jfugue.Pattern;
 import org.jfugue.Player;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -27,7 +27,18 @@ public class Main {
     public static void main(String[] args) {
         MusicStringSong ms = new MusicStringSong(new File("/home/void/project/house.gp5"));
         TGSong tgs = ms.toTGSong();
-        new FileExporter().exportSong(tgs, "/home/void/project/newhouse.tg");
+        new FileExporter().exportSong(tgs, "/home/void/project/newhouse.ly");
+//        MusicStringParser parser = new MusicStringParser();
+//        MusicXmlRenderer renderer = new MusicXmlRenderer();
+//        parser.addParserListener(renderer);
+//        parser.parse(new Pattern(ms.toString()));
+//        try {
+//            BufferedWriter writer = new BufferedWriter(new FileWriter("/home/void/project/newhouse-jfugue.xml"));
+//            writer.write(renderer.getMusicXMLString());
+//            writer.flush();
+//        } catch (IOException e) {
+//
+//        }
 
 //        System.out.println(ms.getAllTracks());
 //        System.out.println(ms.getTrackIds());

@@ -170,22 +170,18 @@ public class TGFileFormatManager {
         this.addInputStream(new GP1InputStream(new GTPSettings()));
         this.addInputStream(new GP2InputStream(new GTPSettings()));
         this.addInputStream(new GP3InputStream(new GTPSettings()));
-        this.addOutputStream(new GP3OutputStream(new GTPSettings()));
         this.addInputStream(new GP4InputStream(new GTPSettings()));
-        this.addOutputStream(new GP4OutputStream(new GTPSettings()));
         this.addInputStream(new GP5InputStream(new GTPSettings()));
         this.addOutputStream(new GP5OutputStream(new GTPSettings()));
         this.addInputStream(new GPXInputStream());
     }
 
-    //TODO may not work
     private void addDefaultExporters() {
         this.addExporter(new MidiSongExporter());
         this.addExporter(new MusicXMLSongExporter());
         this.addExporter(new LilypondSongExporter());
     }
 
-    //TODO may not work
     private void addDefaultImporters() {
         this.addImporter(new MidiSongImporter());
     }
