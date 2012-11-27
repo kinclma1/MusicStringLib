@@ -16,33 +16,37 @@ public class GPXInputStream implements TGInputStreamBase {
 	private GPXFileSystem gpxFileSystem;
 	private TGFactory factory;
 	
-	public TGFileFormat getFileFormat() {
+	@Override
+    public TGFileFormat getFileFormat() {
 		return new TGFileFormat("Guitar Pro 6","*.gpx");
 	}
 	
-	public void init(TGFactory factory, InputStream stream) {
+	@Override
+    public void init(TGFactory factory, InputStream stream) {
 		this.factory = factory;
-		this.gpxStream = stream;
-		this.gpxHeader = 0;
-		this.gpxFileSystem = new GPXFileSystem();
+        gpxStream = stream;
+        gpxHeader = 0;
+        gpxFileSystem = new GPXFileSystem();
 	}
 	
-	public boolean isSupportedVersion() {
+	@Override
+    public boolean isSupportedVersion() {
 		try {
-			this.gpxHeader = this.gpxFileSystem.getHeader( this.gpxStream );
+            gpxHeader = gpxFileSystem.getHeader(gpxStream);
 			
-			return this.gpxFileSystem.isSupportedHeader(this.gpxHeader);
+			return gpxFileSystem.isSupportedHeader(gpxHeader);
 		} catch (Throwable throwable) {
 			return false;
 		}
 	}
 	
-	public TGSong readSong() throws TGFileFormatException, IOException {
+	@Override
+    public TGSong readSong() throws TGFileFormatException, IOException {
 		try {
-			this.gpxFileSystem.load(this.gpxHeader, this.gpxStream);
+            gpxFileSystem.load(gpxHeader, gpxStream);
 			
-			GPXDocumentReader gpxReader = new GPXDocumentReader( this.gpxFileSystem.getFileContentsAsStream("score.gpif"));
-			GPXDocumentParser gpxParser = new GPXDocumentParser( this.factory , gpxReader.read() );
+			GPXDocumentReader gpxReader = new GPXDocumentReader(gpxFileSystem.getFileContentsAsStream("score.gpif"));
+			GPXDocumentParser gpxParser = new GPXDocumentParser(factory, gpxReader.read() );
 			
 			return gpxParser.parse();
 		} catch (Throwable throwable) {

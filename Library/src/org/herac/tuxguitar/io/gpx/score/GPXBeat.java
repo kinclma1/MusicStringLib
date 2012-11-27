@@ -8,11 +8,10 @@ public class GPXBeat {
 	private String dynamic;
 	
 	public GPXBeat(){
-		super();
-	}
+    }
 	
 	public int getId() {
-		return this.id;
+		return id;
 	}
 	
 	public void setId(int id) {
@@ -20,7 +19,7 @@ public class GPXBeat {
 	}
 	
 	public int getRhythmId() {
-		return this.rhythmId;
+		return rhythmId;
 	}
 	
 	public void setRhythmId(int rhythmId) {
@@ -28,7 +27,7 @@ public class GPXBeat {
 	}
 	
 	public int[] getNoteIds() {
-		return this.noteIds;
+		return noteIds;
 	}
 	
 	public void setNoteIds(int[] noteIds) {
@@ -36,7 +35,7 @@ public class GPXBeat {
 	}
 	
 	public String getDynamic() {
-		return this.dynamic;
+		return dynamic;
 	}
 	
 	public void setDynamic(String dynamic) {

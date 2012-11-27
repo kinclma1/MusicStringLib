@@ -37,8 +37,8 @@ import org.herac.tuxguitar.song.models.effects.TGEffectTremoloBar;
  */
 public class GP3InputStream extends GTPInputStream {
 	private static final String SUPPORTED_VERSIONS[] = new String[]{ "FICHIER GUITAR PRO v3.00" };
-	private static final float GP_BEND_SEMITONE = 25f;
-	private static final float GP_BEND_POSITION = 60f;
+	private static final float GP_BEND_SEMITONE = 25.0f;
+	private static final float GP_BEND_POSITION = 60.0f;
 	
 	private int tripletFeel;
 	
@@ -46,21 +46,23 @@ public class GP3InputStream extends GTPInputStream {
 		super(settings, SUPPORTED_VERSIONS);
 	}
 	
-	public TGFileFormat getFileFormat(){
+	@Override
+    public TGFileFormat getFileFormat(){
 		return new TGFileFormat("Guitar Pro 3","*.gp3");
 	}
 	
-	public TGSong readSong() throws GTPFormatException, IOException {
+	@Override
+    public TGSong readSong() throws GTPFormatException, IOException {
 		readVersion();
 		if (!isSupportedVersion(getVersion())) {
-			this.close();
+            close();
 			throw new GTPFormatException("Unsupported Version");
 		}
 		TGSong song = getFactory().newSong();
 		
 		readInfo(song);
-		
-		this.tripletFeel = ((readBoolean())? TGMeasureHeader.TRIPLET_FEEL_EIGHTH:TGMeasureHeader.TRIPLET_FEEL_NONE);
+
+        tripletFeel = ((readBoolean())? TGMeasureHeader.TRIPLET_FEEL_EIGHTH:TGMeasureHeader.TRIPLET_FEEL_NONE);
 		
 		int tempoValue = readInt();
 		
@@ -74,8 +76,8 @@ public class GP3InputStream extends GTPInputStream {
 		readMeasureHeaders(song, measures);
 		readTracks(song, tracks, channels);
 		readMeasures(song, measures, tracks, tempoValue);
-		
-		this.close();
+
+        close();
 		
 		return song;
 	}
@@ -230,7 +232,7 @@ public class GP3InputStream extends GTPInputStream {
 		header.setNumber(number);
 		header.setStart(0);
 		header.getTempo().setValue(120);
-		header.setTripletFeel(this.tripletFeel);
+		header.setTripletFeel(tripletFeel);
 		header.setRepeatOpen( ((flags & 0x04) != 0) );
 		
 		if ((flags & 0x01) != 0) {
@@ -437,7 +439,7 @@ public class GP3InputStream extends GTPInputStream {
 		TGEffectGrace grace = getFactory().newEffectGrace();
 		grace.setOnBeat(false);
 		grace.setDead( (fret == 255) );
-		grace.setFret( ((!grace.isDead())?fret:0) );
+		grace.setFret( ((grace.isDead()) ? 0 : fret) );
 		grace.setDynamic( (TGVelocities.MIN_VELOCITY + (TGVelocities.VELOCITY_INCREMENT * readUnsignedByte())) - TGVelocities.VELOCITY_INCREMENT );
 		int transition = readUnsignedByte();
 		if(transition == 0){
@@ -478,7 +480,7 @@ public class GP3InputStream extends GTPInputStream {
 		int value = readInt();
 		TGEffectTremoloBar effect = getFactory().newEffectTremoloBar();
 		effect.addPoint(0,0);
-		effect.addPoint( Math.round(TGEffectTremoloBar.MAX_POSITION_LENGTH / 2f) ,Math.round( -(value / (GP_BEND_SEMITONE * 2f) ) ) );
+		effect.addPoint(6,Math.round( -(value / (GP_BEND_SEMITONE * 2.0f) ) ) );
 		effect.addPoint(TGEffectTremoloBar.MAX_POSITION_LENGTH,0);
 		noteEffect.setTremoloBar(effect);
 	}

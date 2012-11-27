@@ -22,16 +22,16 @@ public abstract class TGEffectGrace {
 	private boolean dead;
 	
 	public TGEffectGrace() {
-		this.fret = 0;
-		this.duration = 1;
-		this.dynamic = TGVelocities.DEFAULT;
-		this.transition = TRANSITION_NONE;
-		this.onBeat = false;
-		this.dead = false;
+        fret = 0;
+        duration = 1;
+        dynamic = TGVelocities.DEFAULT;
+        transition = TRANSITION_NONE;
+        onBeat = false;
+        dead = false;
 	}
 	
 	public boolean isDead() {
-		return this.dead;
+		return dead;
 	}
 	
 	public void setDead(boolean dead) {
@@ -39,7 +39,7 @@ public abstract class TGEffectGrace {
 	}
 	
 	public int getDuration() {
-		return this.duration;
+		return duration;
 	}
 	
 	public void setDuration(int duration) {
@@ -47,7 +47,7 @@ public abstract class TGEffectGrace {
 	}
 	
 	public int getDynamic() {
-		return this.dynamic;
+		return dynamic;
 	}
 	
 	public void setDynamic(int dynamic) {
@@ -55,7 +55,7 @@ public abstract class TGEffectGrace {
 	}
 	
 	public int getFret() {
-		return this.fret;
+		return fret;
 	}
 	
 	public void setFret(int fret) {
@@ -63,7 +63,7 @@ public abstract class TGEffectGrace {
 	}
 	
 	public boolean isOnBeat() {
-		return this.onBeat;
+		return onBeat;
 	}
 	
 	public void setOnBeat(boolean onBeat) {
@@ -71,7 +71,7 @@ public abstract class TGEffectGrace {
 	}
 	
 	public int getTransition() {
-		return this.transition;
+		return transition;
 	}
 	
 	public void setTransition(int transition) {
@@ -80,17 +80,17 @@ public abstract class TGEffectGrace {
 	
 	public int getDurationTime(){
 		//return (int)(((float)TGDuration.QUARTER_TIME / 16.00 ) * (float)getDuration());
-		return (int)((TGDuration.QUARTER_TIME / 16.00 ) * getDuration());
+		return (int)((TGDuration.QUARTER_TIME / 16.00 ) * duration);
 	}
 	
 	public TGEffectGrace clone(TGFactory factory){
 		TGEffectGrace effect = factory.newEffectGrace();
-		effect.setFret(getFret());
-		effect.setDuration(getDuration());
-		effect.setDynamic(getDynamic());
-		effect.setTransition(getTransition());
-		effect.setOnBeat(isOnBeat());
-		effect.setDead(isDead());
+		effect.setFret(fret);
+		effect.setDuration(duration);
+		effect.setDynamic(dynamic);
+		effect.setTransition(transition);
+		effect.setOnBeat(onBeat);
+		effect.setDead(dead);
 		return effect;
 	}
 	

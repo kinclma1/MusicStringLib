@@ -12,11 +12,10 @@ public class GPXTrack {
 	private int gmChannel2;
 	
 	public GPXTrack(){
-		super();
-	}
+    }
 	
 	public int getId() {
-		return this.id;
+		return id;
 	}
 	
 	public void setId(int id) {
@@ -24,7 +23,7 @@ public class GPXTrack {
 	}
 	
 	public int[] getTunningPitches() {
-		return this.tunningPitches;
+		return tunningPitches;
 	}
 	
 	public void setTunningPitches(int[] tunningPitches) {

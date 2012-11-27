@@ -30,28 +30,27 @@ public class GPXNote {
 	private String HarmonicType;
 	
 	public GPXNote(){
-		super();
-		this.id = -1;
-		this.fret = -1;
-		this.string = -1;
-		this.tone = -1;
-		this.octave = -1;
-		this.element = -1;
-		this.variation = -1;
-		this.midiNumber = -1;
-		this.hammer = false;
-		this.BendEnabled = false;
-		this.BendOriginValue = 0;
-		this.BendMiddleValue = 0;
-		this.BendDestinationValue = 0;
-		this.SlideFlags = 0;
-		this.Harmonic = false;
-		this.HarmonicType = "";
-		this.HarmonicFret = -1;
+        id = -1;
+        fret = -1;
+        string = -1;
+        tone = -1;
+        octave = -1;
+        element = -1;
+        variation = -1;
+        midiNumber = -1;
+        hammer = false;
+        BendEnabled = false;
+        BendOriginValue = 0;
+        BendMiddleValue = 0;
+        BendDestinationValue = 0;
+        SlideFlags = 0;
+        Harmonic = false;
+        HarmonicType = "";
+        HarmonicFret = -1;
 	}
 	
 	public int getId() {
-		return this.id;
+		return id;
 	}
 	
 	public void setId(int id) {
@@ -59,7 +58,7 @@ public class GPXNote {
 	}
 	
 	public int getFret() {
-		return this.fret;
+		return fret;
 	}
 	
 	public void setFret(int fret) {
@@ -67,7 +66,7 @@ public class GPXNote {
 	}
 	
 	public int getString() {
-		return this.string;
+		return string;
 	}
 	
 	public void setString(int string) {
@@ -126,8 +125,8 @@ public class GPXNote {
 		return SlideFlags;
 	}
 
-	public void setSlideFlags(int SlideFlags) {
-		this.SlideFlags = SlideFlags;
+	public void setSlideFlags(int slideFlags) {
+        SlideFlags = slideFlags;
 	}
 
 	public boolean isVibrato() {
@@ -203,7 +202,7 @@ public class GPXNote {
 	}
 
 	public boolean isHarmonic() {
-		return this.Harmonic;
+		return Harmonic;
 	}
 	
 	public int getHarmonicFret() {
@@ -211,7 +210,7 @@ public class GPXNote {
 	}
 
 	public void setHarmonicFret(int HarmonicFret) {
-		this.Harmonic = true;
+        Harmonic = true;
 		this.HarmonicFret = HarmonicFret;
 	}
 
@@ -220,15 +219,15 @@ public class GPXNote {
 	}
 
 	public void setHarmonicType(String HarmonicType) {
-		this.Harmonic = true;
+        Harmonic = true;
 		this.HarmonicType = HarmonicType;
 	}
 
 	public void setHammer(boolean Hammer) {
-		this.hammer = Hammer;
+        hammer = Hammer;
 	}
 
 	public boolean isHammer() {
-		return this.hammer;
+		return hammer;
 	}
 }

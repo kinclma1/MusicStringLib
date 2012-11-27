@@ -15,13 +15,13 @@ public class GPXFileSystem {
 	private List fileSystem;
 	
 	public GPXFileSystem(){
-		this.fileSystem = new ArrayList();
+        fileSystem = new ArrayList();
 	}
 	
 	public List getFileNames(){
 		List gpxFileNames = new ArrayList();
 		
-		Iterator it = this.fileSystem.iterator();
+		Iterator it = fileSystem.iterator();
 		while( it.hasNext() ){
 			GPXFile file = (GPXFile)it.next();
 			gpxFileNames.add( file.getFileName() );
@@ -31,7 +31,7 @@ public class GPXFileSystem {
 	}
 	
 	public byte[] getFileContents( String fileName ){
-		Iterator it = this.fileSystem.iterator();
+		Iterator it = fileSystem.iterator();
 		while( it.hasNext() ){
 			GPXFile file = (GPXFile)it.next();
 			if( file.getFileName().equals( fileName ) ){
@@ -42,7 +42,7 @@ public class GPXFileSystem {
 	}
 	
 	public String getFileContentsAsString( String fileName ){
-		byte[] fileContents = this.getFileContents(fileName);
+		byte[] fileContents = getFileContents(fileName);
 		if( fileContents != null ){
 			return getString(fileContents, 0, fileContents.length);
 		}
@@ -50,7 +50,7 @@ public class GPXFileSystem {
 	}
 	
 	public InputStream getFileContentsAsStream( String fileName ){
-		byte[] fileContents = this.getFileContents(fileName);
+		byte[] fileContents = getFileContents(fileName);
 		if( fileContents != null ){
 			return new ByteArrayInputStream( fileContents );
 		}
@@ -66,11 +66,11 @@ public class GPXFileSystem {
 	}
 	
 	public void load(InputStream in) throws Throwable {
-		this.load(getHeader(in), in);
+        load(getHeader(in), in);
 	}
 	
 	public void load(int header, InputStream in) throws Throwable {
-		this.load(header, new GPXByteBuffer( getBytes(in) ) );
+        load(header, new GPXByteBuffer( getBytes(in) ) );
 	}
 	
 	public void load(int header, GPXByteBuffer srcBuffer) throws Throwable {
@@ -95,7 +95,7 @@ public class GPXFileSystem {
 					int fileSize = getInteger(bcfsBytes , indexFileSize);
 					byte[] fileBytes = fileBytesStream.toByteArray();
 					if ( fileBytes.length >= fileSize ){
-						this.fileSystem.add(new GPXFile(getString(bcfsBytes, indexFileName, 127), getBytes(fileBytes, 0, fileSize)));
+                        fileSystem.add(new GPXFile(getString(bcfsBytes, indexFileName, 127), getBytes(fileBytes, 0, fileSize)));
 					}
 				}
 			}
@@ -122,7 +122,7 @@ public class GPXFileSystem {
 					}
 				}
 			}
-			this.load( new ByteArrayInputStream( bcfsBuffer.toByteArray() ) );
+            load( new ByteArrayInputStream( bcfsBuffer.toByteArray() ) );
 		} else {
 			throw new Exception("This is not a GPX file");
 		}
@@ -195,11 +195,11 @@ public class GPXFileSystem {
 		}
 		
 		public String getFileName() {
-			return this.fileName;
+			return fileName;
 		}
 		
 		public byte[] getFileContents() {
-			return this.fileContents;
+			return fileContents;
 		}
 	}
 }

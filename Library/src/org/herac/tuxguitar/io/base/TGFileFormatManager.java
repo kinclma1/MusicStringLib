@@ -31,21 +31,21 @@ public class TGFileFormatManager {
 
     private TGSongLoader loader;
     private TGSongWriter writer;
-    private List inputStreams;
-    private List outputStreams;
-    private List exporters;
-    private List importers;
+    private List<TGInputStreamBase> inputStreams;
+    private List<TGOutputStreamBase> outputStreams;
+    private List<TGLocalFileExporter> exporters;
+    private List<TGLocalFileImporter> importers;
 
     private TGFileFormatManager() {
-        this.loader = new TGSongLoader();
-        this.writer = new TGSongWriter();
-        this.inputStreams = new ArrayList();
-        this.outputStreams = new ArrayList();
-        this.exporters = new ArrayList();
-        this.importers = new ArrayList();
-        this.addDefaultStreams();
-        this.addDefaultImporters();
-        this.addDefaultExporters();
+        loader = new TGSongLoader();
+        writer = new TGSongWriter();
+        inputStreams = new ArrayList<TGInputStreamBase>(7);
+        outputStreams = new ArrayList<TGOutputStreamBase>(2);
+        exporters = new ArrayList<TGLocalFileExporter>(3);
+        importers = new ArrayList<TGLocalFileImporter>(1);
+        addDefaultStreams();
+        addDefaultImporters();
+        addDefaultExporters();
     }
 
     public static TGFileFormatManager instance() {
@@ -56,80 +56,80 @@ public class TGFileFormatManager {
     }
 
     public TGSongLoader getLoader() {
-        return this.loader;
+        return loader;
     }
 
     public TGSongWriter getWriter() {
-        return this.writer;
+        return writer;
     }
 
     public void addInputStream(TGInputStreamBase stream) {
-        this.inputStreams.add(stream);
+        inputStreams.add(stream);
     }
 
     public void removeInputStream(TGInputStreamBase stream) {
-        this.inputStreams.remove(stream);
+        inputStreams.remove(stream);
     }
 
     public int countInputStreams() {
-        return this.inputStreams.size();
+        return inputStreams.size();
     }
 
     public void addOutputStream(TGOutputStreamBase stream) {
-        this.outputStreams.add(stream);
+        outputStreams.add(stream);
     }
 
     public void removeOutputStream(TGOutputStreamBase stream) {
-        this.outputStreams.remove(stream);
+        outputStreams.remove(stream);
     }
 
     public int countOutputStreams() {
-        return this.outputStreams.size();
+        return outputStreams.size();
     }
 
-    public void addImporter(TGRawImporter importer) {
-        this.importers.add(importer);
+    public void addImporter(TGLocalFileImporter importer) {
+        importers.add(importer);
     }
 
-    public void removeImporter(TGRawImporter importer) {
-        this.importers.remove(importer);
+    public void removeImporter(TGLocalFileImporter importer) {
+        importers.remove(importer);
     }
 
     public int countImporters() {
-        return this.importers.size();
+        return importers.size();
     }
 
-    public void addExporter(TGRawExporter exporter) {
-        this.exporters.add(exporter);
+    public void addExporter(TGLocalFileExporter exporter) {
+        exporters.add(exporter);
     }
 
-    public void removeExporter(TGRawExporter exporter) {
-        this.exporters.remove(exporter);
+    public void removeExporter(TGLocalFileExporter exporter) {
+        exporters.remove(exporter);
     }
 
     public int countExporters() {
-        return this.exporters.size();
+        return exporters.size();
     }
 
-    public Iterator getInputStreams() {
-        return this.inputStreams.iterator();
+    public Iterator<TGInputStreamBase> getInputStreams() {
+        return inputStreams.iterator();
     }
 
-    public Iterator getOutputStreams() {
-        return this.outputStreams.iterator();
+    public Iterator<TGOutputStreamBase> getOutputStreams() {
+        return outputStreams.iterator();
     }
 
-    public Iterator getImporters() {
-        return this.importers.iterator();
+    public Iterator<TGLocalFileImporter> getImporters() {
+        return importers.iterator();
     }
 
-    public Iterator getExporters() {
-        return this.exporters.iterator();
+    public Iterator<TGLocalFileExporter> getExporters() {
+        return exporters.iterator();
     }
 
     public List getInputFormats() {
-        List formats = new ArrayList();
-        Iterator it = getInputStreams();
+        List<TGFileFormat> formats = new ArrayList<TGFileFormat>();
+        Iterator<TGInputStreamBase> it = getInputStreams();
         while (it.hasNext()) {
             TGInputStreamBase stream = (TGInputStreamBase) it.next();
             TGFileFormat format = stream.getFileFormat();
@@ -141,8 +141,8 @@ public class TGFileFormatManager {
     }
 
     public List getOutputFormats() {
-        List formats = new ArrayList();
-        Iterator it = getOutputStreams();
+        List<TGFileFormat> formats = new ArrayList<TGFileFormat>();
+        Iterator<TGOutputStreamBase> it = getOutputStreams();
         while (it.hasNext()) {
             TGOutputStreamBase stream = (TGOutputStreamBase) it.next();
             TGFileFormat format = stream.getFileFormat();
@@ -154,7 +154,7 @@ public class TGFileFormatManager {
     }
 
     private boolean existsFormat(TGFileFormat format, List formats) {
-        Iterator it = formats.iterator();
+        Iterator<TGFileFormat> it = formats.iterator();
         while (it.hasNext()) {
             TGFileFormat comparator = (TGFileFormat) it.next();
             if (comparator.getName().equals(format.getName()) || comparator.getSupportedFormats().equals(format.getSupportedFormats())) {
@@ -165,24 +165,24 @@ public class TGFileFormatManager {
     }
 
     private void addDefaultStreams() {
-        this.addInputStream(new TGInputStream());
-        this.addOutputStream(new TGOutputStream());
-        this.addInputStream(new GP1InputStream(new GTPSettings()));
-        this.addInputStream(new GP2InputStream(new GTPSettings()));
-        this.addInputStream(new GP3InputStream(new GTPSettings()));
-        this.addInputStream(new GP4InputStream(new GTPSettings()));
-        this.addInputStream(new GP5InputStream(new GTPSettings()));
-        this.addOutputStream(new GP5OutputStream(new GTPSettings()));
-        this.addInputStream(new GPXInputStream());
+        addInputStream(new TGInputStream());
+        addOutputStream(new TGOutputStream());
+        addInputStream(new GP1InputStream(new GTPSettings()));
+        addInputStream(new GP2InputStream(new GTPSettings()));
+        addInputStream(new GP3InputStream(new GTPSettings()));
+        addInputStream(new GP4InputStream(new GTPSettings()));
+        addInputStream(new GP5InputStream(new GTPSettings()));
+        addOutputStream(new GP5OutputStream(new GTPSettings()));
+        addInputStream(new GPXInputStream());
     }
 
     private void addDefaultExporters() {
-        this.addExporter(new MidiSongExporter());
-        this.addExporter(new MusicXMLSongExporter());
-        this.addExporter(new LilypondSongExporter());
+        addExporter(new MidiSongExporter());
+        addExporter(new MusicXMLSongExporter());
+        addExporter(new LilypondSongExporter());
     }
 
     private void addDefaultImporters() {
-        this.addImporter(new MidiSongImporter());
+        addImporter(new MidiSongImporter());
     }
 }

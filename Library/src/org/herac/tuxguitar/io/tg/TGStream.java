@@ -120,34 +120,34 @@ public class TGStream {
 		private TGVoiceData[] voices;
 		
 		protected TGBeatData(TGMeasure measure){
-			this.init(measure);
+            init(measure);
 		}
 		
 		private void init(TGMeasure measure){
-			this.currentStart = measure.getStart();
-			this.voices = new TGVoiceData[TGBeat.MAX_VOICES];
-			for(int i = 0 ; i < this.voices.length ; i ++ ){
-				this.voices[i] = new TGVoiceData(measure);
+            currentStart = measure.getStart();
+            voices = new TGVoiceData[TGBeat.MAX_VOICES];
+			for(int i = 0 ; i < voices.length ; i ++ ){
+                voices[i] = new TGVoiceData(measure);
 			}
 		}
 		
 		protected TGVoiceData getVoice(int index){
-			return this.voices[index];
+			return voices[index];
 		}
 		
 		public long getCurrentStart(){
 			long minimumStart = -1;
-			for(int i = 0 ; i < this.voices.length ; i ++ ){
-				if( this.voices[i].getStart() > this.currentStart ){
-					if( minimumStart < 0 || this.voices[i].getStart() < minimumStart ){
-						minimumStart = this.voices[i].getStart();
+			for(int i = 0 ; i < voices.length ; i ++ ){
+				if(voices[i].getStart() > currentStart){
+					if( minimumStart < 0 || voices[i].getStart() < minimumStart ){
+						minimumStart = voices[i].getStart();
 					}
 				}
 			}
-			if( minimumStart > this.currentStart ){
-				this.currentStart = minimumStart;
+			if( minimumStart > currentStart){
+                currentStart = minimumStart;
 			}
-			return this.currentStart;
+			return currentStart;
 		}
 	}
 	
@@ -158,18 +158,18 @@ public class TGStream {
 		private TGDuration duration;
 		
 		protected TGVoiceData(TGMeasure measure){
-			this.init(measure);
+            init(measure);
 		}
 		
 		private void init(TGMeasure measure){
-			this.flags = 0;
-			this.setStart(measure.getStart());
-			this.setVelocity(TGVelocities.DEFAULT);
-			this.setDuration(new TGFactory().newDuration());
+            flags = 0;
+            setStart(measure.getStart());
+            setVelocity(TGVelocities.DEFAULT);
+            setDuration(new TGFactory().newDuration());
 		}
 		
 		public TGDuration getDuration() {
-			return this.duration;
+			return duration;
 		}
 		
 		public void setDuration(TGDuration duration) {
@@ -177,7 +177,7 @@ public class TGStream {
 		}
 		
 		public long getStart() {
-			return this.start;
+			return start;
 		}
 		
 		public void setStart(long start) {
@@ -185,7 +185,7 @@ public class TGStream {
 		}
 		
 		public int getVelocity() {
-			return this.velocity;
+			return velocity;
 		}
 		
 		public void setVelocity(int velocity) {
@@ -193,7 +193,7 @@ public class TGStream {
 		}
 		
 		public int getFlags() {
-			return this.flags;
+			return flags;
 		}
 		
 		public void setFlags(int flags) {

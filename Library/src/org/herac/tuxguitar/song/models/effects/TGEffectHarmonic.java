@@ -43,12 +43,12 @@ public abstract class TGEffectHarmonic {
 	private int data;
 	
 	public TGEffectHarmonic(){
-		this.type = 0;
-		this.data = 0;
+        type = 0;
+        data = 0;
 	}
 	
 	public int getData() {
-		return this.data;
+		return data;
 	}
 	
 	public void setData(int data) {
@@ -56,7 +56,7 @@ public abstract class TGEffectHarmonic {
 	}
 	
 	public int getType() {
-		return this.type;
+		return type;
 	}
 	
 	public void setType(int type) {
@@ -64,29 +64,29 @@ public abstract class TGEffectHarmonic {
 	}
 	
 	public boolean isNatural(){
-		return (this.type == TYPE_NATURAL);
+		return (type == TYPE_NATURAL);
 	}
 	
 	public boolean isArtificial(){
-		return (this.type == TYPE_ARTIFICIAL);
+		return (type == TYPE_ARTIFICIAL);
 	}
 	
 	public boolean isTapped(){
-		return (this.type == TYPE_TAPPED);
+		return (type == TYPE_TAPPED);
 	}
 	
 	public boolean isPinch(){
-		return (this.type == TYPE_PINCH);
+		return (type == TYPE_PINCH);
 	}
 	
 	public boolean isSemi(){
-		return (this.type == TYPE_SEMI);
+		return (type == TYPE_SEMI);
 	}
 	
 	public TGEffectHarmonic clone(TGFactory factory){
 		TGEffectHarmonic effect = factory.newEffectHarmonic();
-		effect.setType(getType());
-		effect.setData(getData());
+		effect.setType(type);
+		effect.setData(data);
 		return effect;
 	}
 	

@@ -15,8 +15,7 @@ public class GPXScore {
 	private String notices;
 	
 	public GPXScore(){
-		super();
-	}
+    }
 
 	public String getTitle() {
 		return title;

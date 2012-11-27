@@ -9,12 +9,12 @@ public abstract class TGEffectTrill {
 	private TGDuration duration;
 	
 	public TGEffectTrill(TGFactory factory) {
-		this.fret = 0;
-		this.duration = factory.newDuration();
+        fret = 0;
+        duration = factory.newDuration();
 	}
 	
 	public int getFret() {
-		return this.fret;
+		return fret;
 	}
 	
 	public void setFret(int fret) {
@@ -22,7 +22,7 @@ public abstract class TGEffectTrill {
 	}
 	
 	public TGDuration getDuration() {
-		return this.duration;
+		return duration;
 	}
 	
 	public void setDuration(TGDuration duration) {
@@ -31,12 +31,12 @@ public abstract class TGEffectTrill {
 	
 	public TGEffectTrill clone(TGFactory factory){
 		TGEffectTrill effect = factory.newEffectTrill();
-		effect.setFret(getFret());
-		effect.getDuration().setValue(getDuration().getValue());
-		effect.getDuration().setDotted(getDuration().isDotted());
-		effect.getDuration().setDoubleDotted(getDuration().isDoubleDotted());
-		effect.getDuration().getDivision().setEnters(getDuration().getDivision().getEnters());
-		effect.getDuration().getDivision().setTimes(getDuration().getDivision().getTimes());
+		effect.setFret(fret);
+        effect.duration.setValue(duration.getValue());
+        effect.duration.setDotted(duration.isDotted());
+        effect.duration.setDoubleDotted(duration.isDoubleDotted());
+        effect.duration.getDivision().setEnters(duration.getDivision().getEnters());
+        effect.duration.getDivision().setTimes(duration.getDivision().getTimes());
 		
 		return effect;
 	}

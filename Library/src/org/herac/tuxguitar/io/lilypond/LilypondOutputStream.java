@@ -2,29 +2,19 @@ package org.herac.tuxguitar.io.lilypond;
 
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 import org.herac.tuxguitar.song.managers.TGSongManager;
 import org.herac.tuxguitar.song.models.TGBeat;
-import org.herac.tuxguitar.song.models.TGChord;
 import org.herac.tuxguitar.song.models.TGDuration;
 import org.herac.tuxguitar.song.models.TGMeasure;
-import org.herac.tuxguitar.song.models.TGMeasureHeader;
 import org.herac.tuxguitar.song.models.TGNote;
-import org.herac.tuxguitar.song.models.TGNoteEffect;
 import org.herac.tuxguitar.song.models.TGSong;
-import org.herac.tuxguitar.song.models.TGString;
-import org.herac.tuxguitar.song.models.TGStroke;
 import org.herac.tuxguitar.song.models.TGTempo;
 import org.herac.tuxguitar.song.models.TGTimeSignature;
 import org.herac.tuxguitar.song.models.TGTrack;
-import org.herac.tuxguitar.song.models.TGDivisionType;
 import org.herac.tuxguitar.song.models.TGVoice;
-import org.herac.tuxguitar.song.models.effects.TGEffectGrace;
 
-public class LilypondOutputStream {
+class LilypondOutputStream {
 	private static final String LILYPOND_VERSION = "2.14.0";
 
 	private static final String[] LILYPOND_SHARP_NOTES = new String[]{"c","cis","d","dis","e","f","fis","g","gis","a","ais","b"};
@@ -76,10 +66,10 @@ public class LilypondOutputStream {
 		writer.println("}");
 	}
 	
-	private void addHeader(String instrument, boolean drums, int indent){
-		writer.println(indent(indent) + "\\header {");
-        writer.println(indent(indent + 1) + "instrument = \"" + (drums ? "DRUMS" : instrument) + "\" ");
-		writer.println(indent(indent) + "}");
+	private void addHeader(String instrument, boolean drums){
+		writer.println(indent(1) + "\\header {");
+        writer.println(indent(2) + "instrument = \"" + (drums ? "DRUMS" : instrument) + "\" ");
+		writer.println(indent(1) + "}");
 	}
 	
 	private void addLayout(){
@@ -110,14 +100,14 @@ public class LilypondOutputStream {
             boolean drums = track.getChannel().getChannel() == 9;
             writer.println("\\score {");
             writer.println(indent(1) + "\\" + trackID(i, "Staff"));
-            addHeader(track.getName(), drums, 1);
+            addHeader(track.getName(), drums);
             writer.println("}");
 		}
 	}
 	
 	private void addMusic(TGTrack track,String id){
         boolean drums = track.getChannel().getChannel() == 9;
-        writer.println(id + "Music" + " = \\new " + (!drums ? "Voice" : "DrumVoice"));
+        writer.println(id + "Music" + " = \\new " + (drums ? "DrumVoice" : "Voice"));
         writer.println("{");
         TGMeasure previous = null;
         int count = track.countMeasures();
@@ -127,7 +117,7 @@ public class LilypondOutputStream {
         }
         for(int i = 0; i < count; i ++){
             TGMeasure measure = track.getMeasure(i);
-            addMeasure(measure, previous, indent, (i == (count - 1)));
+            addMeasure(measure, previous, indent);
             previous = measure;
         }
         writer.println(indent(indent) + "\\bar \"|.\"");
@@ -139,19 +129,19 @@ public class LilypondOutputStream {
 	}
 	
 	private void addScoreStaff(TGTrack track,String id){
-        writer.println(id + "Staff = \\new " + (track.getChannel().getChannel() != 9 ? "Staff" : "DrumStaff") + " {" );
+        writer.println(id + "Staff = \\new " + (track.getChannel().getChannel() == 9 ? "DrumStaff" : "Staff") + " {" );
         writer.println(indent(1) + "\\" + id + "Music");
 		writer.println("}");
 	}
 	
-	private void addMeasure(TGMeasure measure, TGMeasure previous, int indent, boolean isLast){
-		boolean drums = measure.getTrack().getChannel().getChannel() == 9;
+	private void addMeasure(TGMeasure measure, TGMeasure previous, int indent){
+		boolean instrument = measure.getTrack().getChannel().getChannel() != 9;
 
         if(previous == null || measure.getTempo().getValue() != previous.getTempo().getValue()){
 			addTempo(measure.getTempo(), indent);
 		}
 
-        if(!drums) {
+        if(instrument) {
             if(previous == null || measure.getClef() != previous.getClef()){
                 addClef(measure.getClef(), indent);
             }
@@ -299,15 +289,15 @@ public class LilypondOutputStream {
 	}
 	
 	private String getLilypondKey(int keySignature , int value){
-		String[] LILYPOND_NOTES = (keySignature <= 7 ? LILYPOND_SHARP_NOTES : LILYPOND_FLAT_NOTES );
-		String key = (LILYPOND_NOTES[ value % 12 ]);
+		String[] lilypondNotes = (keySignature <= 7 ? LILYPOND_SHARP_NOTES : LILYPOND_FLAT_NOTES );
+		StringBuilder key = new StringBuilder(lilypondNotes[ value % 12 ]);
 		for(int i = 4; i < (value / 12); i ++){
-			key += ("'");
+			key.append("'");
 		}
 		for(int i = (value / 12); i < 4; i ++){
-			key += (",");
+			key.append(",");
 		}
-		return key;
+		return key.toString();
 	}
 	
 	private String getLilypondDuration(TGDuration value){
@@ -322,13 +312,13 @@ public class LilypondOutputStream {
 	}
 	
 	private String toBase26(int value){
-		String result = "";
+		StringBuilder result = new StringBuilder();
 		int base = value;
 		while(base > 25){
-			result = ( (char)( (base % 26) + 'A') + result);
+			result.insert (0, (char)( (base % 26) + 'A'));
 			base = base / 26 - 1;
 		}
-		return ((char)(base + 'A') + result);
+		return result.insert(0, (char)(base + 'A')).toString();
 	}
 	
 	private String trackID(int index, String suffix){

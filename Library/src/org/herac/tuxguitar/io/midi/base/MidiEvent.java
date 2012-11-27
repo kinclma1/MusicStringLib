@@ -11,10 +11,10 @@ public class MidiEvent {
 	}
 	
 	public MidiMessage getMessage() {
-		return this.message;
+		return message;
 	}
 	
 	public long getTick() {
-		return this.tick;
+		return tick;
 	}
 }

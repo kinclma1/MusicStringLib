@@ -9,17 +9,20 @@ public abstract class TGImporterPlugin extends TGPluginAdapter{
 	private boolean loaded;
 	private TGRawImporter importer;
 	
-	protected abstract TGRawImporter getImporter() throws TGPluginException;
+	protected abstract TGRawImporter getImporter();
 	
-	public void init() throws TGPluginException {
-		this.importer = getImporter();
+	@Override
+    public void init() throws TGPluginException {
+        importer = getImporter();
 	}
 	
-	public void close() throws TGPluginException {
-		this.removePlugin();
+	@Override
+    public void close() throws TGPluginException {
+        removePlugin();
 	}
 	
-	public void setEnabled(boolean enabled) throws TGPluginException {
+	@Override
+    public void setEnabled(boolean enabled) throws TGPluginException {
 		if(enabled){
 			addPlugin();
 		}else{
@@ -27,17 +30,17 @@ public abstract class TGImporterPlugin extends TGPluginAdapter{
 		}
 	}
 	
-	protected void addPlugin() throws TGPluginException {
-		if(!this.loaded){
-			TGFileFormatManager.instance().addImporter(this.importer);
-			this.loaded = true;
+	protected void addPlugin() {
+		if(!loaded){
+			TGFileFormatManager.instance().addImporter(importer);
+            loaded = true;
 		}
 	}
 	
-	protected void removePlugin() throws TGPluginException {
-		if(this.loaded){
-			TGFileFormatManager.instance().removeImporter(this.importer);
-			this.loaded = false;
+	protected void removePlugin() {
+		if(loaded){
+			TGFileFormatManager.instance().removeImporter(importer);
+            loaded = false;
 		}
 	}
 }

@@ -16,8 +16,8 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 class MusicStringBeat {
-    private List<MusicStringNote> notes = null;
-    private MusicStringRest rest = null;
+    private List<MusicStringNote> notes;
+    private MusicStringRest rest;
 
     public MusicStringBeat(TGBeat tgBeat, boolean drumTrack) {
         if(tgBeat.isRestBeat()) {

@@ -22,23 +22,23 @@ public abstract class TGEffectTremoloBar {
 	public static final int MAX_POSITION_LENGTH = 12;
 	public static final int MAX_VALUE_LENGTH = 12;
 	
-	private List points;
+	private List<TremoloBarPoint> points;
 	
 	public TGEffectTremoloBar(){
-		this.points = new ArrayList();
+        points = new ArrayList<TremoloBarPoint>();
 	}
 	
 	public void addPoint(int position,int value){
-		this.points.add(new TremoloBarPoint(position,value));
+        points.add(new TremoloBarPoint(position, value));
 	}
 	
-	public List getPoints(){
-		return this.points;
+	public List<TremoloBarPoint> getPoints(){
+		return points;
 	}
 	
 	public TGEffectTremoloBar clone(TGFactory factory){
 		TGEffectTremoloBar effect = factory.newEffectTremoloBar();
-		Iterator it = getPoints().iterator();
+		Iterator<TremoloBarPoint> it = points.iterator();
 		while(it.hasNext()){
 			TremoloBarPoint point = (TremoloBarPoint)it.next();
 			effect.addPoint(point.getPosition(),point.getValue());
@@ -57,19 +57,20 @@ public abstract class TGEffectTremoloBar {
 		}
 		
 		public int getPosition() {
-			return this.position;
+			return position;
 		}
 		
 		public int getValue() {
-			return this.value;
+			return value;
 		}
 		
 		public long getTime(long duration){
-			return (duration * getPosition() / MAX_POSITION_LENGTH);
+			return (duration * position / MAX_POSITION_LENGTH);
 		}
 		
-		public Object clone(){
-			return new TremoloBarPoint(getPosition(),getValue());
+		@Override
+        public Object clone(){
+			return new TremoloBarPoint(position, value);
 		}
 	}
 	

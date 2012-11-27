@@ -18,7 +18,7 @@ public class GTPSettingsUtil {
 	private GTPSettings settings;
 	
 	private GTPSettingsUtil(){
-		this.settings = new GTPSettings();
+        settings = new GTPSettings();
 	}
 	
 	public static GTPSettingsUtil instance(){
@@ -29,7 +29,7 @@ public class GTPSettingsUtil {
 	}
 	
 	public GTPSettings getSettings(){
-		return this.settings;
+		return settings;
 	}
 	
 //	public TGConfigManager getConfig(){

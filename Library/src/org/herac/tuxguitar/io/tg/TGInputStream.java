@@ -54,16 +54,17 @@ public class TGInputStream extends TGStream implements TGInputStreamBase {
 	private TGFactory factory;
 	
 	public TGInputStream() {
-		super();
-	}
+    }
 	
-	public void init(TGFactory factory,InputStream stream) {
+	@Override
+    public void init(TGFactory factory,InputStream stream) {
 		this.factory = factory;
-		this.dataInputStream = new DataInputStream(stream);
-		this.version = null;
+        dataInputStream = new DataInputStream(stream);
+        version = null;
 	}
 	
-	public TGFileFormat getFileFormat(){
+	@Override
+    public TGFileFormat getFileFormat(){
 		return new TGFileFormat("TuxGuitar","*.tg");
 	}
 	
@@ -71,20 +72,22 @@ public class TGInputStream extends TGStream implements TGInputStreamBase {
 		return (version.equals(TG_FORMAT_VERSION));
 	}
 	
-	public boolean isSupportedVersion(){
+	@Override
+    public boolean isSupportedVersion(){
 		try{
 			readVersion();
-			return isSupportedVersion(this.version);
+			return isSupportedVersion(version);
 		}catch(Throwable throwable){
 			return false;
 		}
 	}
 	
-	public TGSong readSong() throws TGFileFormatException {
+	@Override
+    public TGSong readSong() throws TGFileFormatException {
 		try {
-			if(this.isSupportedVersion()){
-				TGSong song = this.read();
-				this.dataInputStream.close();
+			if(isSupportedVersion()){
+				TGSong song = read();
+                dataInputStream.close();
 				return song;
 			}
 			throw new TGFileFormatException("Unsopported Version");
@@ -94,13 +97,13 @@ public class TGInputStream extends TGStream implements TGInputStreamBase {
 	}
 	
 	private void readVersion(){
-		if(this.version == null){
-			this.version = readUnsignedByteString();
+		if(version == null){
+            version = readUnsignedByteString();
 		}
 	}
 	
 	private TGSong read(){
-		TGSong song = this.factory.newSong();
+		TGSong song = factory.newSong();
 		
 		//leo el nombre
 		song.setName(readUnsignedByteString());
@@ -157,7 +160,7 @@ public class TGInputStream extends TGStream implements TGInputStreamBase {
 		//header
 		int header = readHeader();
 		
-		TGTrack track = this.factory.newTrack();
+		TGTrack track = factory.newTrack();
 		
 		track.setNumber(number);
 		
@@ -209,7 +212,7 @@ public class TGInputStream extends TGStream implements TGInputStreamBase {
 	private TGMeasureHeader readMeasureHeader(int number,long start,TGMeasureHeader lastMeasureHeader){
 		int header = readHeader();
 		
-		TGMeasureHeader measureHeader = this.factory.newHeader();
+		TGMeasureHeader measureHeader = factory.newHeader();
 		measureHeader.setNumber(number);
 		measureHeader.setStart(start);
 		
@@ -256,7 +259,7 @@ public class TGInputStream extends TGStream implements TGInputStreamBase {
 	private TGMeasure readMeasure(TGMeasureHeader measureHeader,TGMeasure lastMeasure){
 		int header = readHeader();
 		
-		TGMeasure measure = this.factory.newMeasure(measureHeader);
+		TGMeasure measure = factory.newMeasure(measureHeader);
 		TGBeatData data = new TGBeatData(measure);
 		
 		//leo la los beats
@@ -315,7 +318,7 @@ public class TGInputStream extends TGStream implements TGInputStreamBase {
 	}
 	
 	private void readBeat(int header, TGMeasure measure,TGBeatData data){
-		TGBeat beat = this.factory.newBeat();
+		TGBeat beat = factory.newBeat();
 		
 		beat.setStart(data.getCurrentStart());
 		
@@ -386,7 +389,7 @@ public class TGInputStream extends TGStream implements TGInputStreamBase {
 	}
 	
 	private void readNote(int header,TGVoice voice,TGBeatData data){
-		TGNote note = this.factory.newNote();
+		TGNote note = factory.newNote();
 		
 		//leo el valor
 		note.setValue(readByte());
@@ -412,7 +415,7 @@ public class TGInputStream extends TGStream implements TGInputStreamBase {
 	}
 	
 	private void readChord(TGBeat beat){
-		TGChord chord = this.factory.newChord(readByte());
+		TGChord chord = factory.newChord(readByte());
 		
 		//leo el nombre
 		chord.setName( readUnsignedByteString() );
@@ -428,7 +431,7 @@ public class TGInputStream extends TGStream implements TGInputStreamBase {
 	}
 	
 	private void readText(TGBeat beat){
-		TGText text = this.factory.newText();
+		TGText text = factory.newText();
 		
 		//leo el texto
 		text.setValue(readUnsignedByteString());
@@ -437,7 +440,7 @@ public class TGInputStream extends TGStream implements TGInputStreamBase {
 	}
 	
 	private TGString readInstrumentString(int number){
-		TGString string = this.factory.newString();
+		TGString string = factory.newString();
 		
 		string.setNumber(number);
 		
@@ -571,7 +574,7 @@ public class TGInputStream extends TGStream implements TGInputStreamBase {
 	}
 	
 	private TGEffectBend readBendEffect(){
-		TGEffectBend bend = this.factory.newEffectBend();
+		TGEffectBend bend = factory.newEffectBend();
 		
 		//leo la cantidad de puntos
 		int count = readByte();
@@ -590,7 +593,7 @@ public class TGInputStream extends TGStream implements TGInputStreamBase {
 	}
 	
 	private TGEffectTremoloBar readTremoloBarEffect(){
-		TGEffectTremoloBar tremoloBar = this.factory.newEffectTremoloBar();
+		TGEffectTremoloBar tremoloBar = factory.newEffectTremoloBar();
 		
 		//leo la cantidad de puntos
 		int count = readByte();
@@ -609,7 +612,7 @@ public class TGInputStream extends TGStream implements TGInputStreamBase {
 	}
 	
 	private TGEffectHarmonic readHarmonicEffect(){
-		TGEffectHarmonic effect = this.factory.newEffectHarmonic();
+		TGEffectHarmonic effect = factory.newEffectHarmonic();
 		
 		//leo el tipo
 		effect.setType(readByte());
@@ -624,7 +627,7 @@ public class TGInputStream extends TGStream implements TGInputStreamBase {
 	private TGEffectGrace readGraceEffect(){
 		int header = readHeader();
 		
-		TGEffectGrace effect = this.factory.newEffectGrace();
+		TGEffectGrace effect = factory.newEffectGrace();
 		
 		effect.setDead((header & GRACE_FLAG_DEAD) != 0) ;
 		
@@ -646,7 +649,7 @@ public class TGInputStream extends TGStream implements TGInputStreamBase {
 	}
 	
 	private TGEffectTremoloPicking readTremoloPickingEffect(){
-		TGEffectTremoloPicking effect = this.factory.newEffectTremoloPicking();
+		TGEffectTremoloPicking effect = factory.newEffectTremoloPicking();
 		
 		//leo la duracion
 		effect.getDuration().setValue(readByte());
@@ -655,7 +658,7 @@ public class TGInputStream extends TGStream implements TGInputStreamBase {
 	}
 	
 	private TGEffectTrill readTrillEffect(){
-		TGEffectTrill effect = this.factory.newEffectTrill();
+		TGEffectTrill effect = factory.newEffectTrill();
 		
 		//leo el fret
 		effect.setFret(readByte());
@@ -667,7 +670,7 @@ public class TGInputStream extends TGStream implements TGInputStreamBase {
 	}
 	
 	private TGMarker readMarker(int measure){
-		TGMarker marker = this.factory.newMarker();
+		TGMarker marker = factory.newMarker();
 		
 		marker.setMeasure(measure);
 		
@@ -697,7 +700,7 @@ public class TGInputStream extends TGStream implements TGInputStreamBase {
 	
 	private byte readByte(){
 		try {
-			return (byte)this.dataInputStream.read();
+			return (byte) dataInputStream.read();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -706,7 +709,7 @@ public class TGInputStream extends TGStream implements TGInputStreamBase {
 	
 	private int readHeader(){
 		try {
-			return this.dataInputStream.read();
+			return dataInputStream.read();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -723,7 +726,7 @@ public class TGInputStream extends TGStream implements TGInputStreamBase {
 	
 	private short readShort(){
 		try {
-			return this.dataInputStream.readShort();
+			return dataInputStream.readShort();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -732,7 +735,7 @@ public class TGInputStream extends TGStream implements TGInputStreamBase {
 	
 	private String readUnsignedByteString(){
 		try {
-			return readString( (this.dataInputStream.read() & 0xFF ));
+			return readString( (dataInputStream.read() & 0xFF ));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -741,7 +744,7 @@ public class TGInputStream extends TGStream implements TGInputStreamBase {
 	
 	private String readIntegerString(){
 		try {
-			return readString(this.dataInputStream.readInt());
+			return readString(dataInputStream.readInt());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -752,7 +755,7 @@ public class TGInputStream extends TGStream implements TGInputStreamBase {
 		try {
 			char[] chars = new char[length];
 			for(int i = 0;i < chars.length; i++){
-				chars[i] = this.dataInputStream.readChar();
+				chars[i] = dataInputStream.readChar();
 			}
 			return String.copyValueOf(chars);
 		} catch (IOException e) {

@@ -9,8 +9,7 @@ public class GPXRhythm {
 	private String noteValue;
 	
 	public GPXRhythm(){
-		super();
-	}
+    }
 
 	public int getId() {
 		return id;

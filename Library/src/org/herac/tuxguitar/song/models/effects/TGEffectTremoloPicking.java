@@ -8,11 +8,11 @@ public abstract class TGEffectTremoloPicking {
 	private TGDuration duration;
 	
 	public TGEffectTremoloPicking(TGFactory factory) {
-		this.duration = factory.newDuration();
+        duration = factory.newDuration();
 	}
 	
 	public TGDuration getDuration() {
-		return this.duration;
+		return duration;
 	}
 	
 	public void setDuration(TGDuration duration) {
@@ -21,11 +21,11 @@ public abstract class TGEffectTremoloPicking {
 	
 	public TGEffectTremoloPicking clone(TGFactory factory){
 		TGEffectTremoloPicking effect = factory.newEffectTremoloPicking();
-		effect.getDuration().setValue(getDuration().getValue());
-		effect.getDuration().setDotted(getDuration().isDotted());
-		effect.getDuration().setDoubleDotted(getDuration().isDoubleDotted());
-		effect.getDuration().getDivision().setEnters(getDuration().getDivision().getEnters());
-		effect.getDuration().getDivision().setTimes(getDuration().getDivision().getTimes());
+        effect.duration.setValue(duration.getValue());
+        effect.duration.setDotted(duration.isDotted());
+        effect.duration.setDoubleDotted(duration.isDoubleDotted());
+        effect.duration.getDivision().setEnters(duration.getDivision().getEnters());
+        effect.duration.getDivision().setTimes(duration.getDivision().getTimes());
 		return effect;
 	}
 	

@@ -22,15 +22,15 @@ public abstract class TGNote {
 	private TGVoice voice;
 	
 	public TGNote(TGFactory factory) {
-		this.value = 0;
-		this.velocity = TGVelocities.DEFAULT;
-		this.string = 1;
-		this.tiedNote = false;
-		this.effect = factory.newEffect();
+        value = 0;
+        velocity = TGVelocities.DEFAULT;
+        string = 1;
+        tiedNote = false;
+        effect = factory.newEffect();
 	}
 	
 	public int getValue() {
-		return this.value;
+		return value;
 	}
 	
 	public void setValue(int value) {
@@ -38,7 +38,7 @@ public abstract class TGNote {
 	}
 	
 	public int getVelocity() {
-		return this.velocity;
+		return velocity;
 	}
 	
 	public void setVelocity(int velocity) {
@@ -46,7 +46,7 @@ public abstract class TGNote {
 	}
 	
 	public int getString() {
-		return this.string;
+		return string;
 	}
 	
 	public void setString(int string) {
@@ -54,7 +54,7 @@ public abstract class TGNote {
 	}
 	
 	public boolean isTiedNote() {
-		return this.tiedNote;
+		return tiedNote;
 	}
 	
 	public void setTiedNote(boolean tiedNote) {
@@ -62,7 +62,7 @@ public abstract class TGNote {
 	}
 	
 	public TGNoteEffect getEffect() {
-		return this.effect;
+		return effect;
 	}
 	
 	public void setEffect(TGNoteEffect effect) {
@@ -70,7 +70,7 @@ public abstract class TGNote {
 	}
 	
 	public TGVoice getVoice() {
-		return this.voice;
+		return voice;
 	}
 	
 	public void setVoice(TGVoice voice) {
@@ -79,11 +79,11 @@ public abstract class TGNote {
 	
 	public TGNote clone(TGFactory factory){
 		TGNote note = factory.newNote();
-		note.setValue(getValue());
-		note.setVelocity(getVelocity());
-		note.setString(getString());
-		note.setTiedNote(isTiedNote());
-		note.setEffect(getEffect().clone(factory));
+		note.setValue(value);
+		note.setVelocity(velocity);
+		note.setString(string);
+		note.setTiedNote(tiedNote);
+		note.setEffect(effect.clone(factory));
 		return note;
 	}
 }

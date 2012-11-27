@@ -23,8 +23,7 @@ import org.herac.tuxguitar.song.models.TGSong;
 public class TGSongWriter {
 	
 	public TGSongWriter(){
-		super();
-	}
+    }
 	
 	public void write(TGFactory factory,TGSong song,String path) throws TGFileFormatException{
 		try {

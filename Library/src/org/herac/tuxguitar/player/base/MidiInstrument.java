@@ -140,6 +140,6 @@ public class MidiInstrument {
 	}
 	
 	public String getName(){
-		return this.name;
+		return name;
 	}
 }

@@ -60,16 +60,16 @@ public class MusicStringTone {
         }
 
         public int toInteger() {
-            return this.ordinal();
+            return ordinal();
         }
     }
 
-    private RelativeTone tone = null;
+    private RelativeTone tone;
     private int octave;
 
     public MusicStringTone(int value) {
-        this.tone = RelativeTone.fromInt(value % 12);
-        this.octave = value / 12;
+        tone = RelativeTone.fromInt(value % 12);
+        octave = value / 12;
     }
 
     public MusicStringTone(String mStrTone) {

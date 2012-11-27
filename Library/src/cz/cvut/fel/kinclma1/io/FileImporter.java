@@ -20,7 +20,7 @@ import org.herac.tuxguitar.song.models.*;
 public class FileImporter {
 
     public TGSong importFile(String fileName) {
-        return this.importFile(new File(fileName));
+        return importFile(new File(fileName));
     }
 
     public TGSong importFile(File file) {

@@ -5,7 +5,8 @@ import org.herac.tuxguitar.io.base.TGRawExporter;
 
 public class MidiPluginExporter extends TGExporterPlugin{
 	
-	protected TGRawExporter getExporter() {
+	@Override
+    protected TGRawExporter getExporter() {
 		return new MidiSongExporter();
 	}
 }

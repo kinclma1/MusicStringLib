@@ -32,17 +32,17 @@ public abstract class TGMeasure {
 	private int clef;
 	private int keySignature;
 	
-	private List beats;
+	private List<TGBeat> beats;
 	
 	public TGMeasure(TGMeasureHeader header){
 		this.header = header;
-		this.clef = DEFAULT_CLEF;
-		this.keySignature = DEFAULT_KEY_SIGNATURE;
-		this.beats = new ArrayList();
+        clef = DEFAULT_CLEF;
+        keySignature = DEFAULT_KEY_SIGNATURE;
+        beats = new ArrayList<TGBeat>();
 	}
 	
 	public TGTrack getTrack() {
-		return this.track;
+		return track;
 	}
 	
 	public void setTrack(TGTrack track) {
@@ -50,7 +50,7 @@ public abstract class TGMeasure {
 	}
 	
 	public int getClef() {
-		return this.clef;
+		return clef;
 	}
 	
 	public void setClef(int clef) {
@@ -58,44 +58,44 @@ public abstract class TGMeasure {
 	}
 	
 	public int getKeySignature() {
-		return this.keySignature;
+		return keySignature;
 	}
 	
 	public void setKeySignature(int keySignature) {
 		this.keySignature = keySignature;
 	}
 	
-	public List getBeats() {
-		return this.beats;
+	public List<TGBeat> getBeats() {
+		return beats;
 	}
 	
 	public void addBeat(TGBeat beat){
 		beat.setMeasure(this);
-		this.beats.add(beat);
+        beats.add(beat);
 	}
 	
 	public void moveBeat(int index,TGBeat beat){
-		this.beats.remove(beat);
-		this.beats.add(index,beat);
+        beats.remove(beat);
+        beats.add(index, beat);
 	}
 	
 	public void removeBeat(TGBeat beat){
-		this.beats.remove(beat);
+        beats.remove(beat);
 	}
 	
 	public TGBeat getBeat(int index){
 		if(index >= 0 && index < countBeats()){
-			return (TGBeat)this.beats.get(index);
+			return beats.get(index);
 		}
 		return null;
 	}
 	
 	public int countBeats(){
-		return this.beats.size();
+		return beats.size();
 	}
 	
 	public TGMeasureHeader getHeader() {
-		return this.header;
+		return header;
 	}
 	
 	public void setHeader(TGMeasureHeader header) {
@@ -103,61 +103,61 @@ public abstract class TGMeasure {
 	}
 	
 	public int getNumber() {
-		return this.header.getNumber();
+		return header.getNumber();
 	}
 	
 	public int getRepeatClose() {
-		return this.header.getRepeatClose();
+		return header.getRepeatClose();
 	}
 	
 	public long getStart() {
-		return this.header.getStart();
+		return header.getStart();
 	}
 	
 	public TGTempo getTempo() {
-		return this.header.getTempo();
+		return header.getTempo();
 	}
 	
 	public TGTimeSignature getTimeSignature() {
-		return this.header.getTimeSignature();
+		return header.getTimeSignature();
 	}
 	
 	public boolean isRepeatOpen() {
-		return this.header.isRepeatOpen();
+		return header.isRepeatOpen();
 	}
 	
 	public int getTripletFeel() {
-		return this.header.getTripletFeel();
+		return header.getTripletFeel();
 	}
 	
 	public long getLength() {
-		return this.header.getLength();
+		return header.getLength();
 	}
 	
 	public boolean hasMarker() {
-		return this.header.hasMarker();
+		return header.hasMarker();
 	}
 	
 	public TGMarker getMarker(){
-		return this.header.getMarker();
+		return header.getMarker();
 	}
 	
 	public void makeEqual(TGMeasure measure){
-		this.clef = measure.getClef();
-		this.keySignature = measure.getKeySignature();
-		this.beats.clear();
+        clef = measure.clef;
+        keySignature = measure.keySignature;
+        beats.clear();
 		for(int i = 0; i < measure.countBeats(); i ++){
 			TGBeat beat = measure.getBeat(i);
-			this.addBeat(beat);
+            addBeat(beat);
 		}
 	}
 	
 	public TGMeasure clone(TGFactory factory,TGMeasureHeader header){
 		TGMeasure measure = factory.newMeasure(header);
-		measure.setClef(getClef());
-		measure.setKeySignature(getKeySignature());
+		measure.setClef(clef);
+		measure.setKeySignature(keySignature);
 		for(int i = 0; i < countBeats(); i ++){
-			TGBeat beat = (TGBeat)this.beats.get(i);
+			TGBeat beat = beats.get(i);
 			measure.addBeat(beat.clone(factory));
 		}
 		return measure;

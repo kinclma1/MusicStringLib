@@ -37,15 +37,11 @@ public enum Instrument {
 
     @Override
     public String toString() {
-        if (this.ordinal() == 103) {
-            return "SCI-FI";
-        } else {
-            return super.toString();
-        }
+        return ordinal() == 103 ? "SCI-FI" : super.toString();
     }
 
     public String toMusicString() {
-        return String.format("I[%1$s]", this.toString());
+        return String.format("I[%1$s]", toString());
     }
 
     public static Instrument fromInt(int instrument) {
@@ -53,6 +49,6 @@ public enum Instrument {
     }
 
     public int toInteger() {
-        return this.ordinal();
+        return ordinal();
     }
 }

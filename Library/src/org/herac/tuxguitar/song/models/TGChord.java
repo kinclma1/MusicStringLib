@@ -21,14 +21,14 @@ public abstract class TGChord {
 	private TGBeat beat;
 	
 	public TGChord(int length){
-		this.strings = new int[length];
-		for(int i = 0;i < this.strings.length;i++){
-			this.strings[i] = -1;
+        strings = new int[length];
+		for(int i = 0;i < strings.length;i++){
+            strings[i] = -1;
 		}
 	}
 	
 	public TGBeat getBeat() {
-		return this.beat;
+		return beat;
 	}
 	
 	public void setBeat(TGBeat beat) {
@@ -36,20 +36,20 @@ public abstract class TGChord {
 	}
 	
 	public void addFretValue(int string,int fret){
-		if(string >= 0 && string < this.strings.length){
-			this.strings[string] = fret;
+		if(string >= 0 && string < strings.length){
+            strings[string] = fret;
 		}
 	}
 	
 	public int getFretValue(int string){
-		if(string >= 0 && string < this.strings.length){
-			return this.strings[string];
+		if(string >= 0 && string < strings.length){
+			return strings[string];
 		}
 		return -1;
 	}
 	
 	public int getFirstFret() {
-		return this.firstFret;
+		return firstFret;
 	}
 	
 	public void setFirstFret(int firstFret) {
@@ -57,17 +57,17 @@ public abstract class TGChord {
 	}
 	
 	public int[] getStrings() {
-		return this.strings;
+		return strings;
 	}
 	
 	public int countStrings(){
-		return this.strings.length;
+		return strings.length;
 	}
 	
 	public int countNotes(){
 		int count = 0;
-		for(int i = 0;i < this.strings.length;i++){
-			if(this.strings[i] >= 0){
+		for(int i = 0;i < strings.length;i++){
+			if(strings[i] >= 0){
 				count ++;
 			}
 		}
@@ -75,7 +75,7 @@ public abstract class TGChord {
 	}
 	
 	public String getName() {
-		return this.name;
+		return name;
 	}
 	
 	public void setName(String name) {
@@ -83,10 +83,10 @@ public abstract class TGChord {
 	}
 	
 	public TGChord clone(TGFactory factory){
-		TGChord chord = factory.newChord(this.strings.length);
-		chord.setName(getName());
-		chord.setFirstFret(getFirstFret());
-        System.arraycopy(this.strings, 0, chord.strings, 0, chord.strings.length);
+		TGChord chord = factory.newChord(strings.length);
+		chord.setName(name);
+		chord.setFirstFret(firstFret);
+        System.arraycopy(strings, 0, chord.strings, 0, chord.strings.length);
 		return chord;
 	}
 	

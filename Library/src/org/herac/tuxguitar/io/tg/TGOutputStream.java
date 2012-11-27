@@ -51,23 +51,27 @@ public class TGOutputStream extends TGStream implements TGOutputStreamBase{
 	
 	private DataOutputStream dataOutputStream;
 	
-	public boolean isSupportedExtension(String extension) {
+	@Override
+    public boolean isSupportedExtension(String extension) {
 		return (extension.toLowerCase().equals(TG_FORMAT_EXTENSION));
 	}
 	
-	public void init(TGFactory factory,OutputStream stream) {
-		this.dataOutputStream = new DataOutputStream(stream);
+	@Override
+    public void init(TGFactory factory,OutputStream stream) {
+        dataOutputStream = new DataOutputStream(stream);
 	}
 	
-	public TGFileFormat getFileFormat(){
+	@Override
+    public TGFileFormat getFileFormat(){
 		return new TGFileFormat("TuxGuitar","*.tg");
 	}
 	
-	public void writeSong(TGSong song) throws IOException{
-		this.writeVersion();
-		this.write(song);
-		this.dataOutputStream.flush();
-		this.dataOutputStream.close();
+	@Override
+    public void writeSong(TGSong song) throws IOException{
+        writeVersion();
+        write(song);
+        dataOutputStream.flush();
+        dataOutputStream.close();
 	}
 	
 	private void writeVersion(){
@@ -659,7 +663,7 @@ public class TGOutputStream extends TGStream implements TGOutputStreamBase{
 	
 	public void writeByte(int v){
 		try {
-			this.dataOutputStream.write(v);
+            dataOutputStream.write(v);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -668,8 +672,8 @@ public class TGOutputStream extends TGStream implements TGOutputStreamBase{
 	private void writeUnsignedByteString(String v){
 		try {
 			String byteString = (v == null ? "" : ((v.length() > 0xFF)?v.substring(0, 0xFF):v) );
-			this.dataOutputStream.write(byteString.length());
-			this.dataOutputStream.writeChars(byteString);
+            dataOutputStream.write(byteString.length());
+            dataOutputStream.writeChars(byteString);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -677,8 +681,8 @@ public class TGOutputStream extends TGStream implements TGOutputStreamBase{
 	
 	private void writeIntegerString(String v){
 		try {
-			this.dataOutputStream.writeInt(v.length());
-			this.dataOutputStream.writeChars(v);
+            dataOutputStream.writeInt(v.length());
+            dataOutputStream.writeChars(v);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -686,7 +690,7 @@ public class TGOutputStream extends TGStream implements TGOutputStreamBase{
 	
 	public void writeHeader(int v){
 		try {
-			this.dataOutputStream.write(v);
+            dataOutputStream.write(v);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -700,7 +704,7 @@ public class TGOutputStream extends TGStream implements TGOutputStreamBase{
 	
 	public void writeShort(short v){
 		try {
-			this.dataOutputStream.writeShort(v);
+            dataOutputStream.writeShort(v);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

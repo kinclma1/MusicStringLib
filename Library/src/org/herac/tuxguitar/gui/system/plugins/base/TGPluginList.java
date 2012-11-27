@@ -11,10 +11,10 @@ public abstract class TGPluginList extends TGPluginAdapter{
 	private List plugins;
 	
 	public TGPluginList(){
-		super();
-	}
+    }
 	
-	public void init() throws TGPluginException {
+	@Override
+    public void init() throws TGPluginException {
 		Iterator it = getIterator();
 		while(it.hasNext()){
 			TGPlugin plugin = (TGPlugin)it.next();
@@ -22,7 +22,8 @@ public abstract class TGPluginList extends TGPluginAdapter{
 		}
 	}
 	
-	public void close() throws TGPluginException {
+	@Override
+    public void close() throws TGPluginException {
 		Iterator it = getIterator();
 		while(it.hasNext()){
 			TGPlugin plugin = (TGPlugin)it.next();
@@ -30,7 +31,8 @@ public abstract class TGPluginList extends TGPluginAdapter{
 		}
 	}
 	
-	public void setEnabled(boolean enabled) throws TGPluginException {
+	@Override
+    public void setEnabled(boolean enabled) throws TGPluginException {
 		Iterator it = getIterator();
 		while(it.hasNext()){
 			TGPlugin plugin = (TGPlugin)it.next();
@@ -39,11 +41,11 @@ public abstract class TGPluginList extends TGPluginAdapter{
 	}
 	
 	private Iterator getIterator() throws TGPluginException {
-		if(this.plugins == null){
-			this.plugins = getPlugins();
+		if(plugins == null){
+            plugins = getPlugins();
 		}
-		return this.plugins.iterator();
+		return plugins.iterator();
 	}
 	
-	protected abstract List getPlugins() throws TGPluginException ;
+	protected abstract List getPlugins();
 }

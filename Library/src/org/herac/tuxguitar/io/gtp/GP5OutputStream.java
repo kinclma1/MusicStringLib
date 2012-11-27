@@ -68,15 +68,18 @@ public class GP5OutputStream extends GTPOutputStream {
 		super(settings);
 	}
 	
-	public TGFileFormat getFileFormat(){
+	@Override
+    public TGFileFormat getFileFormat(){
 		return new TGFileFormat("Guitar Pro 5","*.gp5");
 	}
 	
-	public boolean isSupportedExtension(String extension) {
+	@Override
+    public boolean isSupportedExtension(String extension) {
 		return (extension.toLowerCase().equals(GP5_FORMAT_EXTENSION)) ;
 	}
 	
-	public void writeSong(TGSong song){
+	@Override
+    public void writeSong(TGSong song){
 		try {
 			if(song.isEmpty()){
 				throw new TGFileFormatException("Empty Song!!!");
@@ -266,7 +269,7 @@ public class GP5OutputStream extends GTPOutputStream {
 		for (int i = 0; i < 7; i++) {
 			int value = 0;
 			if (track.getStrings().size() > i) {
-				TGString string = (TGString) track.getStrings().get(i);
+				TGString string = track.getStrings().get(i);
 				value = string.getValue();
 			}
 			writeInt(value);
@@ -305,7 +308,7 @@ public class GP5OutputStream extends GTPOutputStream {
 					}
 				}
 			}
-			if( voices.size() > 0 ){
+			if(!voices.isEmpty()){
 				writeInt( voices.size() );
 				for( int i = 0; i < voices.size() ; i ++ ){
 					TGVoice voice = (TGVoice) voices.get( i );
@@ -504,14 +507,14 @@ public class GP5OutputStream extends GTPOutputStream {
 	}
 	
 	private void writeChord(TGChord chord) throws IOException{
-		this.writeBytes( new byte[] {1,1,0,0,0,12,0,0,-1,-1,-1,-1,0,0,0,0,0} );
+        writeBytes( new byte[] {1,1,0,0,0,12,0,0,-1,-1,-1,-1,0,0,0,0,0} );
 		writeStringByte( chord.getName(), 21);
 		skipBytes(4);
 		writeInt( chord.getFirstFret() );
 		for (int i = 0; i < 7; i++) {
 			writeInt( (i < chord.countStrings() ? chord.getFretValue(i) : -1 ) ) ;
 		}
-		this.skipBytes(32);
+        skipBytes(32);
 	}
 	
 	private void writeBeatEffects(TGBeat beat,TGNoteEffect effect) throws IOException{

@@ -25,13 +25,13 @@ public class GPXDocumentReader {
 	private GPXDocument gpxDocument;
 	
 	public GPXDocumentReader(InputStream stream){
-		this.xmlDocument = getDocument(stream);
-		this.gpxDocument = new GPXDocument();
+        xmlDocument = getDocument(stream);
+        gpxDocument = new GPXDocument();
 		// debug
-		DOMImplementationLS domImplLS = (DOMImplementationLS) this.xmlDocument
+		DOMImplementationLS domImplLS = (DOMImplementationLS) xmlDocument
 		    .getImplementation();
 		LSSerializer serializer = domImplLS.createLSSerializer();
-		String str = serializer.writeToString(this.xmlDocument);
+		String str = serializer.writeToString(xmlDocument);
 		System.out.println(str);
 	}
 	
@@ -45,42 +45,42 @@ public class GPXDocumentReader {
 	}
 	
 	public GPXDocument read(){
-		if( this.xmlDocument != null ){
-			this.readScore();
-			this.readAutomations();
-			this.readTracks();
-			this.readMasterBars();
-			this.readBars();
-			this.readVoices();
-			this.readBeats();
-			this.readNotes();
-			this.readRhythms();
+		if(xmlDocument != null ){
+            readScore();
+            readAutomations();
+            readTracks();
+            readMasterBars();
+            readBars();
+            readVoices();
+            readBeats();
+            readNotes();
+            readRhythms();
 		}
-		return this.gpxDocument;
+		return gpxDocument;
 	}
 	
 	public void readScore(){
-		if( this.xmlDocument != null ){
-			Node scoreNode = getChildNode(this.xmlDocument.getFirstChild(), "Score");
+		if(xmlDocument != null ){
+			Node scoreNode = getChildNode(xmlDocument.getFirstChild(), "Score");
 			if( scoreNode != null ){
-				this.gpxDocument.getScore().setTitle( getChildNodeContent(scoreNode, "Title"));
-				this.gpxDocument.getScore().setSubTitle( getChildNodeContent(scoreNode, "SubTitle"));
-				this.gpxDocument.getScore().setArtist( getChildNodeContent(scoreNode, "Artist"));
-				this.gpxDocument.getScore().setAlbum( getChildNodeContent(scoreNode, "Album"));
-				this.gpxDocument.getScore().setWords( getChildNodeContent(scoreNode, "Words"));
-				this.gpxDocument.getScore().setMusic( getChildNodeContent(scoreNode, "Music"));
-				this.gpxDocument.getScore().setWordsAndMusic( getChildNodeContent(scoreNode, "WordsAndMusic"));
-				this.gpxDocument.getScore().setCopyright( getChildNodeContent(scoreNode, "Copyright"));
-				this.gpxDocument.getScore().setTabber( getChildNodeContent(scoreNode, "Tabber"));
-				this.gpxDocument.getScore().setInstructions( getChildNodeContent(scoreNode, "Instructions"));
-				this.gpxDocument.getScore().setNotices( getChildNodeContent(scoreNode, "Notices"));
+                gpxDocument.getScore().setTitle( getChildNodeContent(scoreNode, "Title"));
+                gpxDocument.getScore().setSubTitle( getChildNodeContent(scoreNode, "SubTitle"));
+                gpxDocument.getScore().setArtist( getChildNodeContent(scoreNode, "Artist"));
+                gpxDocument.getScore().setAlbum( getChildNodeContent(scoreNode, "Album"));
+                gpxDocument.getScore().setWords( getChildNodeContent(scoreNode, "Words"));
+                gpxDocument.getScore().setMusic( getChildNodeContent(scoreNode, "Music"));
+                gpxDocument.getScore().setWordsAndMusic( getChildNodeContent(scoreNode, "WordsAndMusic"));
+                gpxDocument.getScore().setCopyright( getChildNodeContent(scoreNode, "Copyright"));
+                gpxDocument.getScore().setTabber( getChildNodeContent(scoreNode, "Tabber"));
+                gpxDocument.getScore().setInstructions( getChildNodeContent(scoreNode, "Instructions"));
+                gpxDocument.getScore().setNotices( getChildNodeContent(scoreNode, "Notices"));
 			}
 		}
 	}
 	
 	public void readAutomations(){
-		if( this.xmlDocument != null ){
-			Node masterTrackNode = getChildNode(this.xmlDocument.getFirstChild(), "MasterTrack");
+		if(xmlDocument != null ){
+			Node masterTrackNode = getChildNode(xmlDocument.getFirstChild(), "MasterTrack");
 			if( masterTrackNode != null ){
 				NodeList automationNodes = getChildNodeList(masterTrackNode, "Automations");
 				for( int i = 0 ; i < automationNodes.getLength() ; i ++ ){
@@ -93,8 +93,8 @@ public class GPXDocumentReader {
 						automation.setLinear( getChildNodeBooleanContent(automationNode, "Linear"));
 						automation.setPosition( getChildNodeIntegerContent(automationNode, "Position"));
 						automation.setVisible( getChildNodeBooleanContent(automationNode, "Visible"));
-						
-						this.gpxDocument.getAutomations().add( automation );
+
+                        gpxDocument.getAutomations().add( automation );
 					}
 				}
 			}
@@ -102,8 +102,8 @@ public class GPXDocumentReader {
 	}
 	
 	public void readTracks(){
-		if( this.xmlDocument != null ){
-			NodeList trackNodes = getChildNodeList(this.xmlDocument.getFirstChild(), "Tracks");
+		if(xmlDocument != null ){
+			NodeList trackNodes = getChildNodeList(xmlDocument.getFirstChild(), "Tracks");
 			for( int i = 0 ; i < trackNodes.getLength() ; i ++ ){
 				Node trackNode = trackNodes.item( i );
 				if( trackNode.getNodeName().equals("Track") ){
@@ -129,15 +129,15 @@ public class GPXDocumentReader {
 							}
 						}
 					}
-					this.gpxDocument.getTracks().add( track );
+                    gpxDocument.getTracks().add( track );
 				}
 			}
 		}
 	}
 	
 	public void readMasterBars(){
-		if( this.xmlDocument != null ){
-			NodeList masterBarNodes = getChildNodeList(this.xmlDocument.getFirstChild(), "MasterBars");
+		if(xmlDocument != null ){
+			NodeList masterBarNodes = getChildNodeList(xmlDocument.getFirstChild(), "MasterBars");
 			for( int i = 0 ; i < masterBarNodes.getLength() ; i ++ ){
 				Node masterBarNode = masterBarNodes.item( i );
 				if( masterBarNode.getNodeName().equals("MasterBar") ){
@@ -152,15 +152,15 @@ public class GPXDocumentReader {
 							masterBar.setRepeatCount( getAttributeIntegerValue(repeatNode, "count"));
 						}
 					}
-					this.gpxDocument.getMasterBars().add( masterBar );
+                    gpxDocument.getMasterBars().add( masterBar );
 				}
 			}
 		}
 	}
 	
 	public void readBars(){
-		if( this.xmlDocument != null ){
-			NodeList barNodes = getChildNodeList(this.xmlDocument.getFirstChild(), "Bars");
+		if(xmlDocument != null ){
+			NodeList barNodes = getChildNodeList(xmlDocument.getFirstChild(), "Bars");
 			for( int i = 0 ; i < barNodes.getLength() ; i ++ ){
 				Node barNode = barNodes.item( i );
 				if( barNode.getNodeName().equals("Bar") ){
@@ -169,32 +169,32 @@ public class GPXDocumentReader {
 					bar.setVoiceIds( getChildNodeIntegerContentArray(barNode, "Voices"));
 					bar.setClef(getChildNodeContent(barNode, "Clef"));
 					bar.setSimileMark(getChildNodeContent(barNode,"SimileMark"));
-					
-					this.gpxDocument.getBars().add( bar );
+
+                    gpxDocument.getBars().add( bar );
 				}
 			}
 		}
 	}
 	
 	public void readVoices(){
-		if( this.xmlDocument != null ){
-			NodeList voiceNodes = getChildNodeList(this.xmlDocument.getFirstChild(), "Voices");
+		if(xmlDocument != null ){
+			NodeList voiceNodes = getChildNodeList(xmlDocument.getFirstChild(), "Voices");
 			for( int i = 0 ; i < voiceNodes.getLength() ; i ++ ){
 				Node voiceNode = voiceNodes.item( i );
 				if( voiceNode.getNodeName().equals("Voice") ){
 					GPXVoice voice = new GPXVoice();
 					voice.setId(getAttributeIntegerValue(voiceNode, "id"));
 					voice.setBeatIds( getChildNodeIntegerContentArray(voiceNode, "Beats"));
-					
-					this.gpxDocument.getVoices().add( voice );
+
+                    gpxDocument.getVoices().add( voice );
 				}
 			}
 		}
 	}
 	
 	public void readBeats(){
-		if( this.xmlDocument != null ){
-			NodeList beatNodes = getChildNodeList(this.xmlDocument.getFirstChild(), "Beats");
+		if(xmlDocument != null ){
+			NodeList beatNodes = getChildNodeList(xmlDocument.getFirstChild(), "Beats");
 			for( int i = 0 ; i < beatNodes.getLength() ; i ++ ){
 				Node beatNode = beatNodes.item( i );
 				if( beatNode.getNodeName().equals("Beat") ){
@@ -205,15 +205,15 @@ public class GPXDocumentReader {
 					beat.setNoteIds( getChildNodeIntegerContentArray(beatNode, "Notes"));
 					// TODO: <Legato destination="false" origin="true"/>
 					// TODO: <Hairpin>Crescendo</Hairpin>
-					this.gpxDocument.getBeats().add( beat );
+                    gpxDocument.getBeats().add( beat );
 				}
 			}
 		}
 	}
 	
 	public void readNotes(){
-		if( this.xmlDocument != null ){
-			NodeList noteNodes = getChildNodeList(this.xmlDocument.getFirstChild(), "Notes");
+		if(xmlDocument != null ){
+			NodeList noteNodes = getChildNodeList(xmlDocument.getFirstChild(), "Notes");
 			for( int i = 0 ; i < noteNodes.getLength() ; i ++ ){
 				Node noteNode = noteNodes.item( i );
 				if( noteNode.getNodeName().equals("Note") ){
@@ -302,16 +302,16 @@ WhammyBarOriginValue
 							*/
 						}
 					}
-					
-					this.gpxDocument.getNotes().add( note );
+
+                    gpxDocument.getNotes().add( note );
 				}
 			}
 		}
 	}
 	
 	public void readRhythms(){
-		if( this.xmlDocument != null ){
-			NodeList rhythmNodes = getChildNodeList(this.xmlDocument.getFirstChild(), "Rhythms");
+		if(xmlDocument != null ){
+			NodeList rhythmNodes = getChildNodeList(xmlDocument.getFirstChild(), "Rhythms");
 			for( int i = 0 ; i < rhythmNodes.getLength() ; i ++ ){
 				Node rhythmNode = rhythmNodes.item( i );
 				if( rhythmNode.getNodeName().equals("Rhythm") ){
@@ -324,8 +324,8 @@ WhammyBarOriginValue
 					rhythm.setPrimaryTupletDen(primaryTupletNode != null ? getAttributeIntegerValue(primaryTupletNode, "den") : 1);
 					rhythm.setPrimaryTupletNum(primaryTupletNode != null ? getAttributeIntegerValue(primaryTupletNode, "num") : 1);
 					rhythm.setAugmentationDotCount(augmentationDotNode != null ? getAttributeIntegerValue(augmentationDotNode, "count") : 0);
-					
-					this.gpxDocument.getRhythms().add( rhythm );
+
+                    gpxDocument.getRhythms().add( rhythm );
 				}
 			}
 		}
@@ -340,14 +340,14 @@ WhammyBarOriginValue
 	
 	private int getAttributeIntegerValue(Node node, String attribute ){
 		try {
-			return Integer.parseInt(this.getAttributeValue(node, attribute));
+			return Integer.parseInt(getAttributeValue(node, attribute));
 		} catch( Throwable throwable ){ 
 			return 0;
 		}
 	}
 	
 	private boolean getAttributeBooleanValue(Node node, String attribute ){
-		String value = this.getAttributeValue(node, attribute);
+		String value = getAttributeValue(node, attribute);
         return value != null && value.equals("true");
     }
 	
@@ -379,13 +379,13 @@ WhammyBarOriginValue
 	}
 	
 	private boolean getChildNodeBooleanContent(Node node, String name ){
-		String value = this.getChildNodeContent(node, name);
+		String value = getChildNodeContent(node, name);
         return value != null && value.equals("true");
     }
 	
 	private int getChildNodeIntegerContent(Node node, String name ){
 		try {
-			return Integer.parseInt(this.getChildNodeContent(node, name));
+			return Integer.parseInt(getChildNodeContent(node, name));
 		} catch( Throwable throwable ){
 			return 0;
 		}
@@ -393,7 +393,7 @@ WhammyBarOriginValue
 	
 	private int[] getChildNodeIntegerContentArray(Node node, String name , String regex){
 		try {
-			String[] contents = ( this.getChildNodeContent(node, name).trim().split(regex) );
+			String[] contents = (getChildNodeContent(node, name).trim().split(regex) );
 			int[] intContents = new int[contents.length];
 			for( int i = 0 ; i < intContents.length; i ++ ){
 				intContents[i] = Integer.parseInt( contents[i].trim() );

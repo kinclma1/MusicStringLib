@@ -26,8 +26,6 @@ import java.util.List;
  */
 public class FileExporter {
 
-    //todo gp3, gp4, musicXML fucks note lengths - makes 64ths
-    //todo lilypond is empty
     public void exportSong(TGSong song, String filename) {
         BufferedOutputStream out;
         String[] tmp = filename.split("\\.");
@@ -47,8 +45,6 @@ public class FileExporter {
                 outputStreamBase.init(new TGFactory(), out);
                 try {
                     outputStreamBase.writeSong(song);
-                } catch (TGFileFormatException e) {
-                    System.err.println("File export failed, file format does not work correctly");
                 } catch (IOException e) {
                     System.err.println("File export failed: " + e.getMessage());
                 }

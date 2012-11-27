@@ -27,12 +27,12 @@ public abstract class TGDivisionType {
 	private int times;
 	
 	public TGDivisionType(){
-		this.enters = 1;
-		this.times = 1;
+        enters = 1;
+        times = 1;
 	}
 	
 	public int getEnters() {
-		return this.enters;
+		return enters;
 	}
 	
 	public void setEnters(int enters) {
@@ -40,7 +40,7 @@ public abstract class TGDivisionType {
 	}
 	
 	public int getTimes() {
-		return this.times;
+		return times;
 	}
 	
 	public void setTimes(int times) {
@@ -48,11 +48,11 @@ public abstract class TGDivisionType {
 	}
 	
 	public long convertTime(long time){
-		return time * this.times / this.enters;
+		return time * times / enters;
 	}
 	
 	public boolean isEqual(TGDivisionType divisionType){
-		return (divisionType.getEnters() == getEnters() && divisionType.getTimes() == getTimes());
+		return (divisionType.enters == enters && divisionType.times == times);
 	}
 	
 	public TGDivisionType clone(TGFactory factory){
@@ -62,8 +62,8 @@ public abstract class TGDivisionType {
 	}
 	
 	public void copy(TGDivisionType divisionType){
-		divisionType.setEnters(this.enters);
-		divisionType.setTimes(this.times);
+		divisionType.setEnters(enters);
+		divisionType.setTimes(times);
 	}
 	
 	private static TGDivisionType newDivisionType(int enters,int times){

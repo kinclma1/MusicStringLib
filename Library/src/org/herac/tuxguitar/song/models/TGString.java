@@ -19,16 +19,16 @@ public abstract class TGString {
 	private int value;
 	
 	public TGString(){
-		this.number = 0;
-		this.value = 0;
+        number = 0;
+        value = 0;
 	}
 	
 	public int getNumber() {
-		return this.number;
+		return number;
 	}
 	
 	public int getValue() {
-		return this.value;
+		return value;
 	}
 	
 	public void setNumber(int number) {
@@ -40,7 +40,7 @@ public abstract class TGString {
 	}
 	
 	public boolean isEqual(TGString string){
-		return (this.getNumber() == string.getNumber() && this.getValue() == string.getValue());
+		return (number == string.number && value == string.value);
 	}
 	
 	public TGString clone(TGFactory factory){
@@ -50,8 +50,8 @@ public abstract class TGString {
 	}
 	
 	public void copy(TGString string){
-		string.setNumber(getNumber());
-		string.setValue(getValue());
+		string.setNumber(number);
+		string.setValue(value);
 	}
 	
 }

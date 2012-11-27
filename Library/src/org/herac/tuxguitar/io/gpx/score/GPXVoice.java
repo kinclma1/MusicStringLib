@@ -6,11 +6,10 @@ public class GPXVoice {
 	private int[] beatIds;
 	
 	public GPXVoice(){
-		super();
-	}
+    }
 	
 	public int getId() {
-		return this.id;
+		return id;
 	}
 	
 	public void setId(int id) {
@@ -18,7 +17,7 @@ public class GPXVoice {
 	}
 	
 	public int[] getBeatIds() {
-		return this.beatIds;
+		return beatIds;
 	}
 	
 	public void setBeatIds(int[] beatIds) {

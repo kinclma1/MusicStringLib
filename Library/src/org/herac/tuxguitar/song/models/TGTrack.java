@@ -26,81 +26,81 @@ public abstract class TGTrack {
 	private boolean solo;
 	private boolean mute;
 	private String name;
-	private List measures;
-	private List strings;
+	private List<TGMeasure> measures;
+	private List<TGString> strings;
 	private TGChannel channel;
 	private TGColor color;
 	private TGLyric lyrics;
 	private TGSong song;
 	
 	public TGTrack(TGFactory factory) {
-		this.number = 0;
-		this.offset = 0;
-		this.solo = false;
-		this.mute = false;
-		this.name = "";
-		this.measures = new ArrayList();
-		this.strings = new ArrayList();
-		this.channel = factory.newChannel();
-		this.color = factory.newColor();
-		this.lyrics = factory.newLyric();
+        number = 0;
+        offset = 0;
+        solo = false;
+        mute = false;
+        name = "";
+        measures = new ArrayList<TGMeasure>();
+        strings = new ArrayList<TGString>();
+        channel = factory.newChannel();
+        color = factory.newColor();
+        lyrics = factory.newLyric();
 	}
 	
 	public int getNumber() {
-		return this.number;
+		return number;
 	}
 	
 	public void setNumber(int number) {
 		this.number = number;
 	}
 	
-	public Iterator getMeasures() {
-		return this.measures.iterator();
+	public Iterator<TGMeasure> getMeasures() {
+		return measures.iterator();
 	}
 	
 	public void addMeasure(TGMeasure measure){
 		measure.setTrack(this);
-		this.measures.add(measure);
+        measures.add(measure);
 	}
 	
 	public void addMeasure(int index,TGMeasure measure){
 		measure.setTrack(this);
-		this.measures.add(index,measure);
+        measures.add(index, measure);
 	}
 	
 	public TGMeasure getMeasure(int index){
 		if(index >= 0 && index < countMeasures()){
-			return (TGMeasure)this.measures.get(index);
+			return measures.get(index);
 		}
 		return null;
 	}
 	
 	public void removeMeasure(int index){
-		this.measures.remove(index);
+        measures.remove(index);
 	}
 	
 	public int countMeasures(){
-		return this.measures.size();
+		return measures.size();
 	}
 	
 	public TGChannel getChannel() {
-		return this.channel;
+		return channel;
 	}
 	
 	public void setChannel(TGChannel channel) {
 		this.channel = channel;
 	}
 	
-	public List getStrings() {
-		return this.strings;
+	public List<TGString> getStrings() {
+		return strings;
 	}
 	
-	public void setStrings(List strings) {
+	public void setStrings(List<TGString> strings) {
 		this.strings = strings;
 	}
 	
 	public TGColor getColor() {
-		return this.color;
+		return color;
 	}
 	
 	public void setColor(TGColor color) {
@@ -108,7 +108,7 @@ public abstract class TGTrack {
 	}
 	
 	public String getName() {
-		return this.name;
+		return name;
 	}
 	
 	public void setName(String name) {
@@ -116,7 +116,7 @@ public abstract class TGTrack {
 	}
 	
 	public int getOffset() {
-		return this.offset;
+		return offset;
 	}
 	
 	public void setOffset(int offset) {
@@ -124,7 +124,7 @@ public abstract class TGTrack {
 	}
 	
 	public boolean isSolo() {
-		return this.solo;
+		return solo;
 	}
 	
 	public void setSolo(boolean solo) {
@@ -132,7 +132,7 @@ public abstract class TGTrack {
 	}
 	
 	public boolean isMute() {
-		return this.mute;
+		return mute;
 	}
 	
 	public void setMute(boolean mute) {
@@ -140,7 +140,7 @@ public abstract class TGTrack {
 	}
 	
 	public TGLyric getLyrics() {
-		return this.lyrics;
+		return lyrics;
 	}
 	
 	public void setLyrics(TGLyric lyrics) {
@@ -148,19 +148,19 @@ public abstract class TGTrack {
 	}
 	
 	public TGString getString(int number){
-		return (TGString)this.strings.get(number - 1);
+		return strings.get(number - 1);
 	}
 	
 	public int stringCount(){
-		return this.strings.size();
+		return strings.size();
 	}
 	
 	public boolean isPercussionTrack(){
-		return (getChannel().isPercussionChannel());
+		return (channel.isPercussionChannel());
 	}
 	
 	public TGSong getSong() {
-		return this.song;
+		return song;
 	}
 	
 	public void setSong(TGSong song) {
@@ -168,8 +168,8 @@ public abstract class TGTrack {
 	}
 	
 	public void clear(){
-		this.strings.clear();
-		this.measures.clear();
+        strings.clear();
+        measures.clear();
 	}
 	
 	public TGTrack clone(TGFactory factory,TGSong song){
@@ -180,15 +180,15 @@ public abstract class TGTrack {
 	
 	public void copy(TGFactory factory,TGSong song,TGTrack track){
 		track.clear();
-		track.setNumber(getNumber());
-		track.setName(getName());
-		track.setOffset(getOffset());
-		getChannel().copy(track.getChannel());
-		getColor().copy(track.getColor());
-		getLyrics().copy(track.getLyrics());
-		for (int i = 0; i < getStrings().size(); i++) {
-			TGString string = (TGString) getStrings().get(i);
-			track.getStrings().add(string.clone(factory));
+		track.setNumber(number);
+		track.setName(name);
+		track.setOffset(offset);
+        channel.copy(track.channel);
+        color.copy(track.color);
+        lyrics.copy(track.lyrics);
+		for (int i = 0; i < strings.size(); i++) {
+			TGString string = strings.get(i);
+            track.strings.add(string.clone(factory));
 		}
 		for (int i = 0; i < countMeasures(); i++) {
 			TGMeasure measure = getMeasure(i);

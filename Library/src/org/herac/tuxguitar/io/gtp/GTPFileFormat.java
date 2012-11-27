@@ -19,10 +19,10 @@ public class GTPFileFormat {
 	}
 	
 	protected GTPSettings getSettings(){
-		return this.settings;
+		return settings;
 	}
 	
 	protected TGFactory getFactory(){
-		return this.factory;
+		return factory;
 	}
 }

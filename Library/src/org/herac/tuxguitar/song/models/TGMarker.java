@@ -11,13 +11,13 @@ public abstract class TGMarker {
 	private TGColor color;
 	
 	public TGMarker(TGFactory factory) {
-		this.measure = 0;
-		this.title = DEFAULT_TITLE;
-		this.color = DEFAULT_COLOR.clone(factory);
+        measure = 0;
+        title = DEFAULT_TITLE;
+        color = DEFAULT_COLOR.clone(factory);
 	}
 	
 	public int getMeasure() {
-		return this.measure;
+		return measure;
 	}
 	
 	public void setMeasure(int measure) {
@@ -25,7 +25,7 @@ public abstract class TGMarker {
 	}
 	
 	public String getTitle() {
-		return this.title;
+		return title;
 	}
 	
 	public void setTitle(String title) {
@@ -33,7 +33,7 @@ public abstract class TGMarker {
 	}
 	
 	public TGColor getColor() {
-		return this.color;
+		return color;
 	}
 	
 	public void setColor(TGColor color) {
@@ -42,9 +42,9 @@ public abstract class TGMarker {
 	
 	public TGMarker clone(TGFactory factory){
 		TGMarker marker = factory.newMarker();
-		marker.setMeasure(getMeasure());
-		marker.setTitle(getTitle());
-		getColor().copy(marker.getColor());
+		marker.setMeasure(measure);
+		marker.setTitle(title);
+        color.copy(marker.color);
 		return marker;
 	}
 	

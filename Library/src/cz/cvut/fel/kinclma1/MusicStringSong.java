@@ -22,8 +22,8 @@ public class MusicStringSong {
 
     private class TrackCreator implements Callable<MusicStringTrack> {
 
-        private TGTrack track = null;
-        private String strTrack = null;
+        private TGTrack track;
+        private String strTrack;
 
         public TrackCreator(TGTrack track) {
             this.track = track;
@@ -35,11 +35,7 @@ public class MusicStringSong {
 
         @Override
         public MusicStringTrack call() throws Exception {
-            if(track != null) {
-                return new MusicStringTrack(track);
-            } else {
-                return new MusicStringTrack(strTrack);
-            }
+            return track != null ? new MusicStringTrack(track) : new MusicStringTrack(strTrack);
         }
     }
 

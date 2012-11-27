@@ -20,11 +20,11 @@ public abstract class TGTempo {
 	private int value;
 	
 	public TGTempo(){
-		this.value = 120;
+        value = 120;
 	}
 	
 	public int getValue() {
-		return this.value;
+		return value;
 	}
 	
 	public void setValue(int value) {
@@ -32,12 +32,12 @@ public abstract class TGTempo {
 	}
 	
 	public long getInMillis(){
-		double millis = (60.00 / getValue() * SECOND_IN_MILLIS);
+		double millis = (60.00 / value * SECOND_IN_MILLIS);
 		return (long)millis;
 	}
 	
 	public long getInUSQ(){
-		double usq = ((60.00 / getValue() * SECOND_IN_MILLIS) * 1000.00);
+		double usq = ((60.00 / value * SECOND_IN_MILLIS) * 1000.00);
 		return (long)usq;
 	}
 	
@@ -55,7 +55,7 @@ public abstract class TGTempo {
 	}
 	
 	public void copy(TGTempo tempo){
-		tempo.setValue(getValue());
+		tempo.setValue(value);
 	}
 	
 }

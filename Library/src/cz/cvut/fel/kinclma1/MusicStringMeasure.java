@@ -23,7 +23,7 @@ class MusicStringMeasure {
         this.tempoTracker = tempoTracker;
         int numBeats = tgMeasure.countBeats();
         beats = new ArrayList<MusicStringBeat>(numBeats);
-        for (TGBeat tgBeat : (List<TGBeat>)tgMeasure.getBeats()) {
+        for (TGBeat tgBeat : tgMeasure.getBeats()) {
             beats.add(new MusicStringBeat(tgBeat, drumTrack));
         }
 

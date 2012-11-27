@@ -54,15 +54,18 @@ public class GP4OutputStream extends GTPOutputStream{
 		super(settings);
 	}
 	
-	public TGFileFormat getFileFormat(){
+	@Override
+    public TGFileFormat getFileFormat(){
 		return new TGFileFormat("Guitar Pro 4","*.gp4");
 	}
 	
-	public boolean isSupportedExtension(String extension) {
+	@Override
+    public boolean isSupportedExtension(String extension) {
 		return (extension.toLowerCase().equals(GP4_FORMAT_EXTENSION)) ;
 	}
 	
-	public void writeSong(TGSong song) {
+	@Override
+    public void writeSong(TGSong song) {
 		try {
 			if(song.isEmpty()){
 				throw new TGFileFormatException("Empty Song!!!");
@@ -211,7 +214,7 @@ public class GP4OutputStream extends GTPOutputStream{
 		for (int i = 0; i < 7; i++) {
 			int value = 0;
 			if (track.getStrings().size() > i) {
-				TGString string = (TGString) track.getStrings().get(i);
+				TGString string = track.getStrings().get(i);
 				value = string.getValue();
 			}
 			writeInt(value);

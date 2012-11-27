@@ -50,14 +50,16 @@ public class GP2InputStream extends GTPInputStream {
 		super(settings, SUPPORTED_VERSIONS);
 	}
 	
-	public TGFileFormat getFileFormat(){
+	@Override
+    public TGFileFormat getFileFormat(){
 		return new TGFileFormat("Guitar Pro 2","*.gtp");
 	}
 	
-	public TGSong readSong() throws GTPFormatException, IOException {
+	@Override
+    public TGSong readSong() throws GTPFormatException, IOException {
 		readVersion();
 		if (!isSupportedVersion(getVersion())) {
-			this.close();
+            close();
 			throw new GTPFormatException("Unsupported Version");
 		}
 		TGSong song = getFactory().newSong();
@@ -109,8 +111,8 @@ public class GP2InputStream extends GTPInputStream {
 		TGSongManager manager = new TGSongManager(getFactory());
 		manager.setSong(song);
 		manager.autoCompleteSilences();
-		
-		this.close();
+
+        close();
 		
 		return song;
 	}
@@ -310,11 +312,11 @@ public class GP2InputStream extends GTPInputStream {
 	
 	private void readBend(TGNoteEffect effect) throws IOException {
 		skip(6);
-		float value = Math.max(  ((readUnsignedByte() / 8f) - 26f) , 1f);
+		float value = Math.max(  ((readUnsignedByte() / 8.0f) - 26.0f) , 1.0f);
 		TGEffectBend bend = getFactory().newEffectBend();
 		bend.addPoint(0,0);
-		bend.addPoint(Math.round(TGEffectBend.MAX_POSITION_LENGTH / 2), Math.round(value * TGEffectBend.SEMITONE_LENGTH) );
-		bend.addPoint(Math.round(TGEffectBend.MAX_POSITION_LENGTH),Math.round(value * TGEffectBend.SEMITONE_LENGTH));
+		bend.addPoint(6, Math.round(value * TGEffectBend.SEMITONE_LENGTH) );
+		bend.addPoint(12,Math.round(value * TGEffectBend.SEMITONE_LENGTH));
 		effect.setBend(bend);
 		skip(1);
 	}
@@ -339,8 +341,8 @@ public class GP2InputStream extends GTPInputStream {
 	private void readChord(int strings, TGBeat beat) throws IOException {
 		TGChord chord = getFactory().newChord(strings);
 		chord.setName(readStringByte(0));
-		
-		this.skip(1);
+
+        skip(1);
 		if ( readInt() < 12 ) {
 			skip(32);
 		}

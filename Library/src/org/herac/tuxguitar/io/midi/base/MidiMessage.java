@@ -28,15 +28,15 @@ public class MidiMessage{
 	}
 	
 	public byte[] getData() {
-		return this.data;
+		return data;
 	}
 	
 	public int getType(){
-		return this.message;
+		return message;
 	}
 	
 	public int getCommand(){
-		return this.command;
+		return command;
 	}
 	
 	public static MidiMessage shortMessage(int command, int channel, int data1, int data2){

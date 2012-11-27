@@ -25,107 +25,107 @@ public class MidiRepeatController {
 		this.song = song;
 		this.sHeader = sHeader;
 		this.eHeader = eHeader;
-		this.count = song.countMeasureHeaders();
-		this.index = 0;
-		this.lastIndex = -1;
-		this.shouldPlay = true;
-		this.repeatOpen = true;
-		this.repeatAlternative = 0;
-		this.repeatStart = TGDuration.QUARTER_TIME;
-		this.repeatEnd = 0;
-		this.repeatMove = 0;
-		this.repeatStartIndex = 0;
-		this.repeatNumber = 0;
+        count = song.countMeasureHeaders();
+        index = 0;
+        lastIndex = -1;
+        shouldPlay = true;
+        repeatOpen = true;
+        repeatAlternative = 0;
+        repeatStart = TGDuration.QUARTER_TIME;
+        repeatEnd = 0;
+        repeatMove = 0;
+        repeatStartIndex = 0;
+        repeatNumber = 0;
 	}
 	
 	public void process(){
-		TGMeasureHeader header = this.song.getMeasureHeader(this.index);
+		TGMeasureHeader header = song.getMeasureHeader(index);
 		
 		//Verifica si el compas esta dentro del rango.
-		if( (this.sHeader != -1 && header.getNumber() < this.sHeader) || ( this.eHeader != -1 && header.getNumber() > this.eHeader ) ){
-			this.shouldPlay = false;
-			this.index ++;
+		if( (sHeader != -1 && header.getNumber() < sHeader) || (eHeader != -1 && header.getNumber() > eHeader) ){
+            shouldPlay = false;
+            index++;
 			return;
 		}
 		
 		//Abro repeticion siempre para el primer compas.
-		if( (this.sHeader != -1 && header.getNumber() == this.sHeader ) || header.getNumber() == 1 ){
-			this.repeatStartIndex = this.index;
-			this.repeatStart = header.getStart();
-			this.repeatOpen = true;
+		if( (sHeader != -1 && header.getNumber() == sHeader) || header.getNumber() == 1 ){
+            repeatStartIndex = index;
+            repeatStart = header.getStart();
+            repeatOpen = true;
 		}
 		
 		//Por defecto el compas deberia sonar
-		this.shouldPlay = true;
+        shouldPlay = true;
 		
 		//En caso de existir una repeticion nueva,
 		//guardo el indice de el compas donde empieza una repeticion
 		if (header.isRepeatOpen()) {
-			this.repeatStartIndex = this.index;
-			this.repeatStart = header.getStart();
-			this.repeatOpen = true;
+            repeatStartIndex = index;
+            repeatStart = header.getStart();
+            repeatOpen = true;
 			
 			//Si es la primer vez que paso por este compas
 			//Pongo numero de repeticion y final alternativo en cero
-			if(this.index > this.lastIndex){
-				this.repeatNumber = 0;
-				this.repeatAlternative = 0;
+			if(index > lastIndex){
+                repeatNumber = 0;
+                repeatAlternative = 0;
 			}
 		}
 		else{
 			//verifico si hay un final alternativo abierto
-			if(this.repeatAlternative == 0){
-				this.repeatAlternative = header.getRepeatAlternative();
+			if(repeatAlternative == 0){
+                repeatAlternative = header.getRepeatAlternative();
 			}
 			//Si estoy en un final alternativo.
 			//el compas solo puede sonar si el numero de repeticion coincide con el numero de final alternativo.
-			if (this.repeatOpen && (this.repeatAlternative > 0) && ((this.repeatAlternative & (1 << (this.repeatNumber))) == 0)){
-				this.repeatMove -= header.getLength();
+			if (repeatOpen && (repeatAlternative > 0) && ((repeatAlternative & (1 << (repeatNumber))) == 0)){
+                repeatMove -= header.getLength();
 				if (header.getRepeatClose() >0){
-					this.repeatAlternative = 0;
+                    repeatAlternative = 0;
 				}
-				this.shouldPlay = false;
-				this.index ++;
+                shouldPlay = false;
+                index++;
 				return;
 			}
 		}
 		
 		//antes de ejecutar una posible repeticion
 		//guardo el indice del ultimo compas tocado 
-		this.lastIndex = Math.max(this.lastIndex,this.index);
+        lastIndex = Math.max(lastIndex, index);
 		
 		//si hay una repeticion la hago
-		if (this.repeatOpen && header.getRepeatClose() > 0) {
-			if (this.repeatNumber < header.getRepeatClose() || (this.repeatAlternative > 0)) {
-				this.repeatEnd = header.getStart() + header.getLength();
-				this.repeatMove += this.repeatEnd - this.repeatStart;
-				this.index = this.repeatStartIndex - 1;
-				this.repeatNumber++;
+		if (repeatOpen && header.getRepeatClose() > 0) {
+			if (repeatNumber < header.getRepeatClose() || (repeatAlternative > 0)) {
+                repeatEnd = header.getStart() + header.getLength();
+                repeatMove += repeatEnd - repeatStart;
+                index = repeatStartIndex - 1;
+                repeatNumber++;
 			} else{
-				this.repeatStart = 0;
-				this.repeatNumber = 0;
-				this.repeatEnd = 0;
-				this.repeatOpen = false;
+                repeatStart = 0;
+                repeatNumber = 0;
+                repeatEnd = 0;
+                repeatOpen = false;
 			}
-			this.repeatAlternative = 0;
+            repeatAlternative = 0;
 		}
-		
-		this.index ++;
+
+        index++;
 	}
 	
 	public boolean finished(){
-		return (this.index >= this.count);
+		return (index >= count);
 	}
 	
 	public boolean shouldPlay(){
-		return this.shouldPlay;
+		return shouldPlay;
 	}
 	
 	public int getIndex(){
-		return this.index;
+		return index;
 	}
 	
 	public long getRepeatMove(){
-		return this.repeatMove;
+		return repeatMove;
 	}
 }

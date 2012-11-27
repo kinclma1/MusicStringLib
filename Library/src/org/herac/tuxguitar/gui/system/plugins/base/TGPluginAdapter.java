@@ -4,19 +4,23 @@ import org.herac.tuxguitar.gui.system.plugins.TGPlugin;
 
 public abstract class TGPluginAdapter implements TGPlugin{
 	
-	public String getName() {
+	@Override
+    public String getName() {
 		return "Untitled Plugin";
 	}
 	
-	public String getAuthor() {
+	@Override
+    public String getAuthor() {
 		return "Unavailable";
 	}
 	
-	public String getDescription() {
+	@Override
+    public String getDescription() {
 		return "Unavailable";
 	}
 	
-	public String getVersion() {
+	@Override
+    public String getVersion() {
 		return "Unavailable";
 	}
 }

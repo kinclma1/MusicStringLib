@@ -6,8 +6,7 @@ public class TGPluginException extends Exception{
 	private static final long serialVersionUID = 1L;
 	
 	public TGPluginException() {
-		super();
-	}
+    }
 	
 	public TGPluginException(String message, Throwable cause) {
 		super(message, cause);

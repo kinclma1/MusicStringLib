@@ -18,34 +18,36 @@ public abstract class GTPInputStream extends GTPFileFormat implements TGInputStr
 		this.versions = versions;
 	}
 	
-	public void init(TGFactory factory,InputStream stream) {
+	@Override
+    public void init(TGFactory factory,InputStream stream) {
 		super.init(factory);
 		this.stream = stream;
-		this.version = null;
+        version = null;
 	}
 	
 	protected String getVersion(){
-		return this.version;
+		return version;
 	}
 	
 	protected int getVersionIndex(){
-		return this.versionIndex;
+		return versionIndex;
 	}
 	
 	public boolean isSupportedVersion(String version) {
-		for (int i = 0; i < this.versions.length; i++) {
-			if (version.equals(this.versions[i])) {
-				this.versionIndex = i;
+		for (int i = 0; i < versions.length; i++) {
+			if (version.equals(versions[i])) {
+                versionIndex = i;
 				return true;
 			}
 		}
 		return false;
 	}
 	
-	public boolean isSupportedVersion(){
+	@Override
+    public boolean isSupportedVersion(){
 		try{
 			readVersion();
-			return isSupportedVersion(getVersion());
+			return isSupportedVersion(version);
 		}catch(Exception e){
 			return false;
 		}catch(Error e){
@@ -55,58 +57,58 @@ public abstract class GTPInputStream extends GTPFileFormat implements TGInputStr
 	
 	protected void readVersion(){
 		try {
-			if(this.version == null){
-				this.version = readStringByte(30, DEFAULT_VERSION_CHARSET);
+			if(version == null){
+                version = readStringByte(30, DEFAULT_VERSION_CHARSET);
 			}
 		} catch (IOException e) {
-			this.version = "NOT_SUPPORTED";
+            version = "NOT_SUPPORTED";
 		}
 	}
 	
 	protected int read() throws IOException {
-		return this.stream.read();
+		return stream.read();
 	}
 	
 	protected int read(byte[] bytes) throws IOException {
-		return this.stream.read(bytes);
+		return stream.read(bytes);
 	}
 	
 	protected int read(byte[] bytes,int off,int len) throws IOException {
-		return this.stream.read(bytes,off,len);
+		return stream.read(bytes, off, len);
 	}
 	
 	protected void skip(int bytes) throws IOException{
-		this.stream.read(new byte[bytes]);
+        stream.read(new byte[bytes]);
 	}
 	
 	protected int readUnsignedByte() throws IOException {
-		return (this.stream.read() & 0xff);
+		return (stream.read() & 0xff);
 	}
 	
 	protected byte readByte() throws IOException {
-		return ((byte)this.stream.read());
+		return ((byte) stream.read());
 	}
 	
 	protected boolean readBoolean() throws IOException {
-		return (this.stream.read() == 1);
+		return (stream.read() == 1);
 	}
 	
 	protected int readInt() throws IOException {
 		byte[] bytes = new byte[4];
-		this.stream.read(bytes);
+        stream.read(bytes);
 		return ((bytes[3] & 0xff) << 24) | ((bytes[2] & 0xff) << 16) | ((bytes[1] & 0xff) << 8) | (bytes[0] & 0xff);
 	}
 	
 	protected long readLong() throws IOException {
 		byte[] bytes = new byte[8];
-		this.stream.read(bytes);
+        stream.read(bytes);
 		return ((long) (bytes[7] & 0xff) << 56) | ((long) (bytes[6] & 0xff) << 48) | ((long) (bytes[5] & 0xff) << 40) | ((long) (bytes[4] & 0xff) << 32) |
 			   ((long) (bytes[3] & 0xff) << 24) | ((long) (bytes[2] & 0xff) << 16) | ((long) (bytes[1] & 0xff) << 8) | (bytes[0] & 0xff);
 	}
 	
 	protected String readString(int size, int len, String charset) throws IOException{
 		byte[] bytes = new byte[ (size > 0?size:len) ];
-		this.stream.read(bytes);
+        stream.read(bytes);
 		return newString(bytes,(len >= 0?len:size), charset);
 	}
 	
@@ -161,6 +163,6 @@ public abstract class GTPInputStream extends GTPFileFormat implements TGInputStr
 	}
 	
 	protected void close() throws IOException{
-		this.stream.close();
+        stream.close();
 	}
 }

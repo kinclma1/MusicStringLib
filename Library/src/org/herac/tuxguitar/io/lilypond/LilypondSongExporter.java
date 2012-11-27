@@ -11,25 +11,30 @@ public class LilypondSongExporter implements TGLocalFileExporter {
 	
 	private OutputStream stream;
 	
-	public String getExportName() {
+	@Override
+    public String getExportName() {
 		return "Lilypond";
 	}
 	
-	public TGFileFormat getFileFormat() {
+	@Override
+    public TGFileFormat getFileFormat() {
 		return new TGFileFormat("Lilypond","*.ly");
 	}
 	
-	public boolean configure(boolean setDefaults) {
+	@Override
+    public boolean configure(boolean setDefaults) {
 		return true;
 	}
 	
-	public void init(TGFactory factory,OutputStream stream){
+	@Override
+    public void init(TGFactory factory,OutputStream stream){
 		this.stream = stream;
 	}
 	
-	public void exportSong(TGSong song) {
-		if(this.stream != null){
-			new LilypondOutputStream(this.stream).writeSong(song);
+	@Override
+    public void exportSong(TGSong song) {
+		if(stream != null){
+			new LilypondOutputStream(stream).writeSong(song);
 		}
 	}
 }

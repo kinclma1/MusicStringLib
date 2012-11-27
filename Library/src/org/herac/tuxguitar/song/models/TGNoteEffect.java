@@ -42,207 +42,207 @@ public abstract class TGNoteEffect {
 	private boolean fadeIn;
 	
 	public TGNoteEffect(){
-		this.bend = null;
-		this.tremoloBar = null;
-		this.harmonic = null;
-		this.grace = null;
-		this.trill = null;
-		this.tremoloPicking = null;
-		this.vibrato = false;
-		this.deadNote = false;
-		this.slide = false;
-		this.hammer = false;
-		this.ghostNote = false;
-		this.accentuatedNote = false;
-		this.heavyAccentuatedNote = false;
-		this.palmMute = false;
-		this.staccato = false;
-		this.tapping = false;
-		this.slapping = false;
-		this.popping = false;
-		this.fadeIn = false;
+        bend = null;
+        tremoloBar = null;
+        harmonic = null;
+        grace = null;
+        trill = null;
+        tremoloPicking = null;
+        vibrato = false;
+        deadNote = false;
+        slide = false;
+        hammer = false;
+        ghostNote = false;
+        accentuatedNote = false;
+        heavyAccentuatedNote = false;
+        palmMute = false;
+        staccato = false;
+        tapping = false;
+        slapping = false;
+        popping = false;
+        fadeIn = false;
 	}
 	
 	public boolean isDeadNote() {
-		return this.deadNote;
+		return deadNote;
 	}
 	
 	public void setDeadNote(boolean deadNote) {
 		this.deadNote = deadNote;
 		//si es true, quito los efectos incompatibles
-		if(this.isDeadNote()){
-			this.tremoloBar = null;
-			this.bend = null;
-			this.trill = null;
-			this.slide = false;
-			this.hammer = false;
+		if(this.deadNote){
+            tremoloBar = null;
+            bend = null;
+            trill = null;
+            slide = false;
+            hammer = false;
 		}
 	}
 	
 	public boolean isVibrato() {
-		return this.vibrato;
+		return vibrato;
 	}
 	public void setVibrato(boolean vibrato) {
 		this.vibrato = vibrato;
 		//si no es null quito los efectos incompatibles
-		if(this.isVibrato()){
-			this.trill = null;
+		if(this.vibrato){
+            trill = null;
 		}
 	}
 	
 	public TGEffectBend getBend() {
-		return this.bend;
+		return bend;
 	}
 	
 	public void setBend(TGEffectBend bend) {
 		this.bend = bend;
 		//si no es null quito los efectos incompatibles
-		if(this.isBend()){
-			this.tremoloBar = null;
-			this.trill = null;
-			this.deadNote = false;
-			this.slide = false;
-			this.hammer = false;
+		if(isBend()){
+            tremoloBar = null;
+            trill = null;
+            deadNote = false;
+            slide = false;
+            hammer = false;
 		}
 	}
 	
 	public boolean isBend() {
-		return (this.bend != null && !this.bend.getPoints().isEmpty());
+		return (bend != null && !bend.getPoints().isEmpty());
 	}
 	
 	public TGEffectTremoloBar getTremoloBar() {
-		return this.tremoloBar;
+		return tremoloBar;
 	}
 	
 	public void setTremoloBar(TGEffectTremoloBar tremoloBar) {
 		this.tremoloBar = tremoloBar;
 		//si no es null quito los efectos incompatibles
-		if(this.isTremoloBar()){
-			this.bend = null;
-			this.trill = null;
-			this.deadNote = false;
-			this.slide = false;
-			this.hammer = false;
+		if(isTremoloBar()){
+            bend = null;
+            trill = null;
+            deadNote = false;
+            slide = false;
+            hammer = false;
 		}
 	}
 	
 	public boolean isTremoloBar() {
-		return (this.tremoloBar != null);
+		return (tremoloBar != null);
 	}
 	
 	
 	public TGEffectTrill getTrill() {
-		return this.trill;
+		return trill;
 	}
 	
 	public void setTrill(TGEffectTrill trill) {
 		this.trill = trill;
 		//si es true, quito los efectos incompatibles
-		if(this.isTrill()){
-			this.bend = null;
-			this.tremoloBar = null;
-			this.tremoloPicking = null;
-			this.slide = false;
-			this.hammer = false;
-			this.deadNote = false;
-			this.vibrato = false;
+		if(isTrill()){
+            bend = null;
+            tremoloBar = null;
+            tremoloPicking = null;
+            slide = false;
+            hammer = false;
+            deadNote = false;
+            vibrato = false;
 		}
 	}
 	
 	public boolean isTrill() {
-		return (this.trill != null);
+		return (trill != null);
 	}
 	
 	public TGEffectTremoloPicking getTremoloPicking() {
-		return this.tremoloPicking;
+		return tremoloPicking;
 	}
 	
 	public void setTremoloPicking(TGEffectTremoloPicking tremoloPicking) {
 		this.tremoloPicking = tremoloPicking;
 		//si es true, quito los efectos incompatibles
-		if(this.isTremoloPicking()){
-			this.trill = null;
-			this.bend = null;
-			this.tremoloBar = null;
-			this.slide = false;
-			this.hammer = false;
-			this.deadNote = false;
-			this.vibrato = false;
+		if(isTremoloPicking()){
+            trill = null;
+            bend = null;
+            tremoloBar = null;
+            slide = false;
+            hammer = false;
+            deadNote = false;
+            vibrato = false;
 		}
 	}
 	
 	public boolean isTremoloPicking() {
-		return (this.tremoloPicking != null);
+		return (tremoloPicking != null);
 	}
 	
 	public boolean isHammer() {
-		return this.hammer;
+		return hammer;
 	}
 	
 	public void setHammer(boolean hammer) {
 		this.hammer = hammer;
 		//si es true, quito los efectos incompatibles
-		if(this.isHammer()){
-			this.trill = null;
-			this.tremoloBar = null;
-			this.bend = null;
-			this.deadNote = false;
-			this.slide = false;
+		if(this.hammer){
+            trill = null;
+            tremoloBar = null;
+            bend = null;
+            deadNote = false;
+            slide = false;
 		}
 	}
 	
 	public boolean isSlide() {
-		return this.slide;
+		return slide;
 	}
 	
 	public void setSlide(boolean slide) {
 		this.slide = slide;
 		//si es true, quito los efectos incompatibles
-		if(this.isSlide()){
-			this.trill = null;
-			this.tremoloBar = null;
-			this.bend = null;
-			this.deadNote = false;
-			this.hammer = false;
+		if(this.slide){
+            trill = null;
+            tremoloBar = null;
+            bend = null;
+            deadNote = false;
+            hammer = false;
 		}
 	}
 	
 	public boolean isGhostNote() {
-		return this.ghostNote;
+		return ghostNote;
 	}
 	
 	public void setGhostNote(boolean ghostNote) {
 		this.ghostNote = ghostNote;
 		//si es true, quito los efectos incompatibles
-		if(this.isGhostNote()){
-			this.accentuatedNote = false;
-			this.heavyAccentuatedNote = false;
+		if(this.ghostNote){
+            accentuatedNote = false;
+            heavyAccentuatedNote = false;
 		}
 	}
 	
 	public boolean isAccentuatedNote() {
-		return this.accentuatedNote;
+		return accentuatedNote;
 	}
 	
 	public void setAccentuatedNote(boolean accentuatedNote) {
 		this.accentuatedNote = accentuatedNote;
 		//si es true, quito los efectos incompatibles
-		if(this.isAccentuatedNote()){
-			this.ghostNote = false;
-			this.heavyAccentuatedNote = false;
+		if(this.accentuatedNote){
+            ghostNote = false;
+            heavyAccentuatedNote = false;
 		}
 	}
 	
 	public boolean isHeavyAccentuatedNote() {
-		return this.heavyAccentuatedNote;
+		return heavyAccentuatedNote;
 	}
 	
 	public void setHeavyAccentuatedNote(boolean heavyAccentuatedNote) {
 		this.heavyAccentuatedNote = heavyAccentuatedNote;
 		//si es true, quito los efectos incompatibles
-		if(this.isHeavyAccentuatedNote()){
-			this.ghostNote = false;
-			this.accentuatedNote = false;
+		if(this.heavyAccentuatedNote){
+            ghostNote = false;
+            accentuatedNote = false;
 		}
 	}
 	
@@ -251,15 +251,15 @@ public abstract class TGNoteEffect {
 	}
 	
 	public TGEffectHarmonic getHarmonic() {
-		return this.harmonic;
+		return harmonic;
 	}
 	
 	public boolean isHarmonic() {
-		return (this.harmonic != null);
+		return (harmonic != null);
 	}
 	
 	public TGEffectGrace getGrace() {
-		return this.grace;
+		return grace;
 	}
 	
 	public void setGrace(TGEffectGrace grace) {
@@ -267,74 +267,74 @@ public abstract class TGNoteEffect {
 	}
 	
 	public boolean isGrace() {
-		return (this.grace != null);
+		return (grace != null);
 	}
 	
 	public boolean isPalmMute() {
-		return this.palmMute;
+		return palmMute;
 	}
 	
 	public void setPalmMute(boolean palmMute) {
 		this.palmMute = palmMute;
 		//si es true, quito los efectos incompatibles
-		if(this.isPalmMute()){
-			this.staccato = false;
+		if(this.palmMute){
+            staccato = false;
 		}
 	}
 	
 	public boolean isStaccato() {
-		return this.staccato;
+		return staccato;
 	}
 	
 	public void setStaccato(boolean staccato) {
 		this.staccato = staccato;
 		//si es true, quito los efectos incompatibles
-		if(this.isStaccato()){
-			this.palmMute = false;
+		if(this.staccato){
+            palmMute = false;
 		}
 	}
 	
 	public boolean isPopping() {
-		return this.popping;
+		return popping;
 	}
 	
 	public void setPopping(boolean popping) {
 		this.popping = popping;
 		//si es true, quito los efectos incompatibles
-		if(this.isPopping()){
-			this.tapping = false;
-			this.slapping = false;
+		if(this.popping){
+            tapping = false;
+            slapping = false;
 		}
 	}
 	
 	public boolean isSlapping() {
-		return this.slapping;
+		return slapping;
 	}
 	
 	public void setSlapping(boolean slapping) {
 		this.slapping = slapping;
 		//si es true, quito los efectos incompatibles
-		if(this.isSlapping()){
-			this.tapping = false;
-			this.popping = false;
+		if(this.slapping){
+            tapping = false;
+            popping = false;
 		}
 	}
 	
 	public boolean isTapping() {
-		return this.tapping;
+		return tapping;
 	}
 	
 	public void setTapping(boolean tapping) {
 		this.tapping = tapping;
 		//si es true, quito los efectos incompatibles
-		if(this.isTapping()){
-			this.slapping = false;
-			this.popping = false;
+		if(this.tapping){
+            slapping = false;
+            popping = false;
 		}
 	}
 	
 	public boolean isFadeIn() {
-		return this.fadeIn;
+		return fadeIn;
 	}
 	
 	public void setFadeIn(boolean fadeIn) {
@@ -348,42 +348,42 @@ public abstract class TGNoteEffect {
 				isGrace() ||
 				isTrill() ||
 				isTremoloPicking() ||
-				isVibrato() ||
-				isDeadNote() ||
-				isSlide() ||
-				isHammer() ||
-				isGhostNote() ||
-				isAccentuatedNote() ||
-				isHeavyAccentuatedNote() ||
-				isPalmMute() ||
-				isStaccato() ||
-				isTapping() ||
-				isSlapping() ||
-				isPopping() ||
-				isFadeIn());
+                vibrato ||
+                deadNote ||
+                slide ||
+                hammer ||
+                ghostNote ||
+                accentuatedNote ||
+                heavyAccentuatedNote ||
+                palmMute ||
+                staccato ||
+                tapping ||
+                slapping ||
+                popping ||
+                fadeIn);
 	}
 	
 	public TGNoteEffect clone(TGFactory factory){
 		TGNoteEffect effect = factory.newEffect();
-		effect.setVibrato(isVibrato());
-		effect.setDeadNote(isDeadNote());
-		effect.setSlide(isSlide());
-		effect.setHammer(isHammer());
-		effect.setGhostNote(isGhostNote());
-		effect.setAccentuatedNote(isAccentuatedNote());
-		effect.setHeavyAccentuatedNote(isHeavyAccentuatedNote());
-		effect.setPalmMute(isPalmMute());
-		effect.setStaccato(isStaccato());
-		effect.setTapping(isTapping());
-		effect.setSlapping(isSlapping());
-		effect.setPopping(isPopping());
-		effect.setFadeIn(isFadeIn());
-		effect.setBend(isBend()? this.bend.clone(factory) :null);
-		effect.setTremoloBar(isTremoloBar()? this.tremoloBar.clone(factory) :null);
-		effect.setHarmonic(isHarmonic()? this.harmonic.clone(factory) :null);
-		effect.setGrace(isGrace()? this.grace.clone(factory) :null);
-		effect.setTrill(isTrill()? this.trill.clone(factory) :null);
-		effect.setTremoloPicking(isTremoloPicking()? this.tremoloPicking.clone(factory) :null);
+		effect.setVibrato(vibrato);
+		effect.setDeadNote(deadNote);
+		effect.setSlide(slide);
+		effect.setHammer(hammer);
+		effect.setGhostNote(ghostNote);
+		effect.setAccentuatedNote(accentuatedNote);
+		effect.setHeavyAccentuatedNote(heavyAccentuatedNote);
+		effect.setPalmMute(palmMute);
+		effect.setStaccato(staccato);
+		effect.setTapping(tapping);
+		effect.setSlapping(slapping);
+		effect.setPopping(popping);
+		effect.setFadeIn(fadeIn);
+		effect.setBend(isBend()? bend.clone(factory) :null);
+		effect.setTremoloBar(isTremoloBar()? tremoloBar.clone(factory) :null);
+		effect.setHarmonic(isHarmonic()? harmonic.clone(factory) :null);
+		effect.setGrace(isGrace()? grace.clone(factory) :null);
+		effect.setTrill(isTrill()? trill.clone(factory) :null);
+		effect.setTremoloPicking(isTremoloPicking()? tremoloPicking.clone(factory) :null);
 		return effect;
 	}
 	

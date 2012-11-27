@@ -79,11 +79,8 @@ public class MidiFileReader implements MidiFileHeader{
 	}
 	
 	private void readTrack(DataInputStream in, MidiTrack track)throws MidiFileException, IOException{
-		while (true){
-			if (in.readInt() == TRACK_MAGIC){
-				break;
-			}
-			int chunkLength = in.readInt();
+		while (in.readInt() != TRACK_MAGIC){
+            int chunkLength = in.readInt();
 			if (chunkLength % 2 != 0){
 				chunkLength++;
 			}
@@ -126,7 +123,8 @@ public class MidiFileReader implements MidiFileHeader{
 			}
 			
 			return new MidiEvent(MidiMessage.shortMessage((statusByte & 0xF0),(statusByte & 0x0F) , data), helper.ticks);
-		}else if(type == STATUS_TWO_BYTES){
+		}
+        if(type == STATUS_TWO_BYTES){
 			int	data1;
 			if (runningStatusApplies){
 				data1 = savedByte;
@@ -136,7 +134,8 @@ public class MidiFileReader implements MidiFileHeader{
 			}
 			
 			return new MidiEvent(MidiMessage.shortMessage((statusByte & 0xF0),(statusByte & 0x0F) , data1, readUnsignedByte(in, helper)), helper.ticks);
-		}else if(type == STATUS_SYSEX){
+		}
+        if(type == STATUS_SYSEX){
 			if (CANCEL_RUNNING_STATUS_ON_META_AND_SYSEX){
 				helper.runningStatusByte = -1;
 			}
@@ -145,7 +144,8 @@ public class MidiFileReader implements MidiFileHeader{
 			for (int i = 0; i < dataLength; i++){
 				data[i] = (byte) readUnsignedByte(in, helper);
 			}
-		}else if(type == STATUS_META){
+		}
+        if(type == STATUS_META){
 			if (CANCEL_RUNNING_STATUS_ON_META_AND_SYSEX){
 				helper.runningStatusByte = -1;
 			}
@@ -168,20 +168,18 @@ public class MidiFileReader implements MidiFileHeader{
 			if(command == 0x80 || command == 0x90 || command == 0xa0 || command == 0xb0 || command == 0xe0){
 				return STATUS_TWO_BYTES;
 			}
-			else if(command == 0xc0 || command == 0xd0){
+			if(command == 0xc0 || command == 0xd0){
 				return STATUS_ONE_BYTE;
 			}
 			return STATUS_NONE;
 		}
-		else if (statusByte == 0xf0 || statusByte == 0xf7){
+		if (statusByte == 0xf0 || statusByte == 0xf7){
 			return STATUS_SYSEX;
 		}
-		else if (statusByte == 0xff){
+		if (statusByte == 0xff){
 			return STATUS_META;
 		}
-		else{
-			return STATUS_NONE;
-		}
+        return STATUS_NONE;
 	}
 	
 	public static long readVariableLengthQuantity(DataInputStream in, MidiTrackReaderHelper helper)throws MidiFileException, IOException{
@@ -205,7 +203,7 @@ public class MidiFileReader implements MidiFileHeader{
 	}
 	
 	private class MidiTrackReaderHelper{
-		protected long ticks = 0;
+		protected long ticks;
 		protected long remainingBytes;
 		protected int runningStatusByte;
 		

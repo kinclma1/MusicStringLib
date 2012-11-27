@@ -8,11 +8,10 @@ public class TGText{
 	private TGBeat beat;
 	
 	public TGText(){
-		super();
-	}
+    }
 	
 	public TGBeat getBeat() {
-		return this.beat;
+		return beat;
 	}
 	
 	public void setBeat(TGBeat beat) {
@@ -20,7 +19,7 @@ public class TGText{
 	}
 	
 	public String getValue() {
-		return this.value;
+		return value;
 	}
 	
 	public void setValue(String value) {
@@ -28,11 +27,11 @@ public class TGText{
 	}
 	
 	public boolean isEmpty(){
-		return (this.value == null || this.value.length() == 0);
+		return (value == null || value.isEmpty());
 	}
 	
 	public void copy(TGText text) {
-		text.setValue(getValue());
+		text.setValue(value);
 	}
 	
 	public TGText clone(TGFactory factory) {

@@ -9,28 +9,28 @@ public class GPXByteBuffer {
 	
 	public GPXByteBuffer( byte[] buffer ){
 		this.buffer = buffer;
-		this.position = 0;
+        position = 0;
 	}
 	
 	public int length(){
-		return ( this.buffer.length );
+		return (buffer.length );
 	}
 	
 	public int offset(){
-		return ( this.position / BUFFER_TYPE_BITS );
+		return (position / BUFFER_TYPE_BITS );
 	}
 	
 	public boolean end(){
-		return ( this.offset() >= this.length() );
+		return (offset() >= length() );
 	}
 	
 	public int readBit(){
 		int bit = -1;
-		int byteIndex = ( this.position / BUFFER_TYPE_BITS );
-		int byteOffset = ( (BUFFER_TYPE_BITS - 1) - ( this.position % BUFFER_TYPE_BITS ) );
-		if( byteIndex >= 0 && byteIndex < this.buffer.length ){
-			bit = ( ((this.buffer[ byteIndex ] & 0xff) >> byteOffset ) & 0x01 );
-			this.position ++;
+		int byteIndex = (position / BUFFER_TYPE_BITS );
+		int byteOffset = ( (BUFFER_TYPE_BITS - 1) - (position % BUFFER_TYPE_BITS ) );
+		if( byteIndex >= 0 && byteIndex < buffer.length ){
+			bit = ( ((buffer[ byteIndex ] & 0xff) >> byteOffset ) & 0x01 );
+            position++;
 		}
 		return bit;
 	}

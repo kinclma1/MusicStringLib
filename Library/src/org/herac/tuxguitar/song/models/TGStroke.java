@@ -12,11 +12,11 @@ public abstract class TGStroke {
 	private int value;
 	
 	public TGStroke(){
-		this.direction = STROKE_NONE;
+        direction = STROKE_NONE;
 	}
 
 	public int getDirection() {
-		return this.direction;
+		return direction;
 	}
 
 	public void setDirection(int direction) {
@@ -24,7 +24,7 @@ public abstract class TGStroke {
 	}
 	
 	public int getValue() {
-		return this.value;
+		return value;
 	}
 	
 	public void setValue(int value) {
@@ -33,7 +33,7 @@ public abstract class TGStroke {
 	
 	public int getIncrementTime( TGBeat beat ){
 		long duration = 0;
-		if( this.value > 0 ){
+		if(value > 0 ){
 			for(int v = 0; v < beat.countVoices(); v ++){
 				TGVoice voice = beat.getVoice( v );
 				if( !voice.isEmpty() ){
@@ -44,7 +44,7 @@ public abstract class TGStroke {
 				}
 			}
 			if( duration > 0 ){
-				return Math.round( ( ( duration / 8.0f ) * ( 4.0f / this.value ) ) );
+				return Math.round( ( ( duration / 8.0f ) * ( 4.0f / value) ) );
 			}
 		}
 		return 0;
@@ -57,7 +57,7 @@ public abstract class TGStroke {
 	}
 	
 	public void copy(TGStroke stroke){
-		stroke.setValue(getValue());
-		stroke.setDirection(getDirection());
+		stroke.setValue(value);
+		stroke.setDirection(direction);
 	}
 }

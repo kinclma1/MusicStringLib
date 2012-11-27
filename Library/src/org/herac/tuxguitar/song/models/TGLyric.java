@@ -7,12 +7,12 @@ public abstract class TGLyric {
 	private String lyrics;
 	
 	public TGLyric(){
-		this.from = 1;
-		this.lyrics = "";
+        from = 1;
+        lyrics = "";
 	}
 	
 	public int getFrom() {
-		return this.from;
+		return from;
 	}
 	
 	public void setFrom(int from) {
@@ -20,7 +20,7 @@ public abstract class TGLyric {
 	}
 	
 	public String getLyrics() {
-		return this.lyrics;
+		return lyrics;
 	}
 	
 	public void setLyrics(String lyrics) {
@@ -28,19 +28,19 @@ public abstract class TGLyric {
 	}
 	
 	public String[] getLyricBeats(){
-		String lyrics = getLyrics();
+		String lyrics = this.lyrics;
 		lyrics = lyrics.replaceAll("\n",REGEX);
 		lyrics = lyrics.replaceAll("\r",REGEX);
 		return lyrics.split(REGEX);
 	}
 	
 	public boolean isEmpty(){
-		return (getLyrics().length() == 0);
+		return (lyrics.isEmpty());
 	}
 	
 	public void copy(TGLyric lyric){
-		lyric.setFrom(getFrom());
-		lyric.setLyrics(getLyrics());
+		lyric.setFrom(from);
+		lyric.setLyrics(lyrics);
 	}
 	
 }

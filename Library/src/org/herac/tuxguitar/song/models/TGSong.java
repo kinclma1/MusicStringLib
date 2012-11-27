@@ -29,25 +29,25 @@ public abstract class TGSong {
 	private String writer;
 	private String transcriber;
 	private String comments;
-	private List tracks;
-	private List measureHeaders;
+	private List<TGTrack> tracks;
+	private List<TGMeasureHeader> measureHeaders;
 	
 	public TGSong() {
-		this.name = "";
-		this.artist = "";
-		this.album = "";
-		this.author = "";
-		this.date = "";
-		this.copyright = "";
-		this.writer = "";
-		this.transcriber = "";
-		this.comments = "";
-		this.tracks = new ArrayList();
-		this.measureHeaders = new ArrayList();
+        name = "";
+        artist = "";
+        album = "";
+        author = "";
+        date = "";
+        copyright = "";
+        writer = "";
+        transcriber = "";
+        comments = "";
+        tracks = new ArrayList<TGTrack>();
+        measureHeaders = new ArrayList<TGMeasureHeader>();
 	}
 	
 	public String getName() {
-		return this.name;
+		return name;
 	}
 	
 	public void setName(String name) {
@@ -55,7 +55,7 @@ public abstract class TGSong {
 	}
 	
 	public String getAlbum() {
-		return this.album;
+		return album;
 	}
 	
 	public void setAlbum(String album) {
@@ -63,7 +63,7 @@ public abstract class TGSong {
 	}
 	
 	public String getAuthor() {
-		return this.author;
+		return author;
 	}
 	
 	public void setAuthor(String author) {
@@ -71,7 +71,7 @@ public abstract class TGSong {
 	}
 	
 	public String getArtist() {
-		return this.artist;
+		return artist;
 	}
 	
 	public void setArtist(String artist) {
@@ -79,7 +79,7 @@ public abstract class TGSong {
 	}
 	
 	public String getDate() {
-		return this.date;
+		return date;
 	}
 	
 	public void setDate(String date) {
@@ -87,7 +87,7 @@ public abstract class TGSong {
 	}
 	
 	public String getCopyright() {
-		return this.copyright;
+		return copyright;
 	}
 	
 	public void setCopyright(String copyright) {
@@ -95,7 +95,7 @@ public abstract class TGSong {
 	}
 	
 	public String getWriter() {
-		return this.writer;
+		return writer;
 	}
 	
 	public void setWriter(String writer) {
@@ -103,7 +103,7 @@ public abstract class TGSong {
 	}
 	
 	public String getTranscriber() {
-		return this.transcriber;
+		return transcriber;
 	}
 	
 	public void setTranscriber(String transcriber) {
@@ -111,7 +111,7 @@ public abstract class TGSong {
 	}
 	
 	public String getComments() {
-		return this.comments;
+		return comments;
 	}
 	
 	public void setComments(String comments) {
@@ -119,63 +119,63 @@ public abstract class TGSong {
 	}
 	
 	public int countMeasureHeaders(){
-		return this.measureHeaders.size();
+		return measureHeaders.size();
 	}
 	
 	public void addMeasureHeader(TGMeasureHeader measureHeader){
-		this.addMeasureHeader(countMeasureHeaders(),measureHeader);
+        addMeasureHeader(countMeasureHeaders(),measureHeader);
 	}
 	
 	public void addMeasureHeader(int index,TGMeasureHeader measureHeader){
 		measureHeader.setSong(this);
-		this.measureHeaders.add(index,measureHeader);
+        measureHeaders.add(index, measureHeader);
 	}
 	
 	public void removeMeasureHeader(int index){
-		this.measureHeaders.remove(index);
+        measureHeaders.remove(index);
 	}
 	
 	public void removeMeasureHeader(TGMeasureHeader measureHeader){
-		this.measureHeaders.remove(measureHeader);
+        measureHeaders.remove(measureHeader);
 	}
 	
 	public TGMeasureHeader getMeasureHeader(int index){
-		return (TGMeasureHeader)this.measureHeaders.get(index);
+		return measureHeaders.get(index);
 	}
 	
-	public Iterator getMeasureHeaders() {
-		return this.measureHeaders.iterator();
+	public Iterator<TGMeasureHeader> getMeasureHeaders() {
+		return measureHeaders.iterator();
 	}
 	
 	public int countTracks(){
-		return this.tracks.size();
+		return tracks.size();
 	}
 	
 	public void addTrack(TGTrack track){
-		this.addTrack(countTracks(),track);
+        addTrack(countTracks(),track);
 	}
 	
 	public void addTrack(int index,TGTrack track){
 		track.setSong(this);
-		this.tracks.add(index,track);
+        tracks.add(index, track);
 	}
 	
 	public void moveTrack(int index,TGTrack track){
-		this.tracks.remove(track);
-		this.tracks.add(index,track);
+        tracks.remove(track);
+        tracks.add(index, track);
 	}
 	
 	public void removeTrack(TGTrack track){
-		this.tracks.remove(track);
+        tracks.remove(track);
 		track.clear();
 	}
 	
 	public TGTrack getTrack(int index){
-		return (TGTrack)this.tracks.get(index);
+		return tracks.get(index);
 	}
 	
-	public Iterator getTracks() {
-		return this.tracks.iterator();
+	public Iterator<TGTrack> getTracks() {
+		return tracks.iterator();
 	}
 	
 	public boolean isEmpty(){
@@ -183,13 +183,13 @@ public abstract class TGSong {
 	}
 	
 	public void clear(){
-		Iterator tracks = getTracks();
+		Iterator<TGTrack> tracks = getTracks();
 		while(tracks.hasNext()){
-			TGTrack track = (TGTrack)tracks.next();
+			TGTrack track = tracks.next();
 			track.clear();
 		}
 		this.tracks.clear();
-		this.measureHeaders.clear();
+        measureHeaders.clear();
 	}
 	
 	public TGSong clone(TGFactory factory){
@@ -200,23 +200,23 @@ public abstract class TGSong {
 	
 	public void copy(TGFactory factory,TGSong song){
 		song.clear();
-		song.setName(getName());
-		song.setArtist(getArtist());
-		song.setAlbum(getAlbum());
-		song.setAuthor(getAuthor());
-		song.setDate(getDate());
-		song.setCopyright(getCopyright());
-		song.setWriter(getWriter());
-		song.setTranscriber(getTranscriber());
-		song.setComments(getComments());
-		Iterator headers = getMeasureHeaders();
+		song.setName(name);
+		song.setArtist(artist);
+		song.setAlbum(album);
+		song.setAuthor(author);
+		song.setDate(date);
+		song.setCopyright(copyright);
+		song.setWriter(writer);
+		song.setTranscriber(transcriber);
+		song.setComments(comments);
+		Iterator<TGMeasureHeader> headers = getMeasureHeaders();
 		while(headers.hasNext()){
-			TGMeasureHeader header = (TGMeasureHeader)headers.next();
+			TGMeasureHeader header = headers.next();
 			song.addMeasureHeader(header.clone(factory));
 		}
-		Iterator tracks = getTracks();
+		Iterator<TGTrack> tracks = getTracks();
 		while(tracks.hasNext()){
-			TGTrack track = (TGTrack)tracks.next();
+			TGTrack track = tracks.next();
 			song.addTrack(track.clone(factory, song));
 		}
 	}

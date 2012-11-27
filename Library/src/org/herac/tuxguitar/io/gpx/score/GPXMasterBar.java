@@ -9,11 +9,10 @@ public class GPXMasterBar {
 	private boolean repeatStart;
 	
 	public GPXMasterBar(){
-		super();
-	}
+    }
 	
 	public int[] getBarIds() {
-		return this.barIds;
+		return barIds;
 	}
 	
 	public void setBarIds(int[] barIds) {

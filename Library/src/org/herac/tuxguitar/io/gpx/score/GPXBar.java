@@ -8,11 +8,10 @@ public class GPXBar {
 	private String simileMark;
 	
 	public GPXBar(){
-		super();
-	}
+    }
 	
 	public int getId() {
-		return this.id;
+		return id;
 	}
 	
 	public void setId(int id) {
@@ -20,7 +19,7 @@ public class GPXBar {
 	}
 	
 	public int[] getVoiceIds() {
-		return this.voiceIds;
+		return voiceIds;
 	}
 	
 	public void setVoiceIds(int[] voiceIds) {
@@ -28,7 +27,7 @@ public class GPXBar {
 	}
 	
 	public String getClef() {
-		return this.clef;
+		return clef;
 	}
 	
 	public void setClef(String clef) {

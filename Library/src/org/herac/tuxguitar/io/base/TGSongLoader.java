@@ -22,8 +22,7 @@ import org.herac.tuxguitar.song.models.TGSong;
 public class TGSongLoader {
 	
 	public TGSongLoader(){
-		super();
-	}
+    }
 	
 	/**
 	 * @return TGSong

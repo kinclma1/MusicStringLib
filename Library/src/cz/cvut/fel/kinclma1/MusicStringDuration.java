@@ -9,11 +9,11 @@ import org.herac.tuxguitar.song.models.TGDuration;
  * Time: 20:10
  * To change this template use File | Settings | File Templates.
  */
-public class MusicStringDuration {
+class MusicStringDuration {
     private boolean dotted;
     private Duration duration;
 
-    public MusicStringDuration(char dur) {
+    private MusicStringDuration(char dur) {
         duration =
                 dur == 'w' ? Duration.WHOLE :
                 dur == 'h' ? Duration.HALF :
@@ -30,7 +30,7 @@ public class MusicStringDuration {
         dotted = dur.contains(".");
     }
 
-    public MusicStringDuration(int dur) {
+    private MusicStringDuration(int dur) {
         duration =
                 dur == 1 ? Duration.WHOLE :
                 dur == 2 ? Duration.HALF :
@@ -49,7 +49,7 @@ public class MusicStringDuration {
 
     @Override
     public String toString() {
-        return !dotted ? duration.toString() : duration.toString() + ".";
+        return dotted ? duration.toString() + "." : duration.toString();
     }
 
     public int toInteger() {
@@ -62,6 +62,6 @@ public class MusicStringDuration {
 
     public int toIntegerDiv128() {
         int tmp = 128 / toInteger();
-        return !dotted ? tmp : tmp + tmp / 2;
+        return dotted ? tmp + tmp / 2 : tmp;
     }
 }

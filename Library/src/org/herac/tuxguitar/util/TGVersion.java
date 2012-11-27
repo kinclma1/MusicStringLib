@@ -9,31 +9,31 @@ public class TGVersion {
 	private int revision;
 	
 	public TGVersion(){
-		this.major = 1;
-		this.minor = 2;
-		this.revision = 0;
+        major = 1;
+        minor = 2;
+        revision = 0;
 	}
 	
 	public int getMajor() {
-		return this.major;
+		return major;
 	}
 	
 	public int getMinor() {
-		return this.minor;
+		return minor;
 	}
 	
 	public int getRevision() {
-		return this.revision;
+		return revision;
 	}
 	
 	public boolean isSameVersion(TGVersion version){
-        return version != null && (version.getMajor() == getMajor() && version.getMinor() == getMinor() && version.getRevision() == getRevision());
+        return version != null && (version.major == major && version.minor == minor && version.revision == revision);
     }
 	
 	public String getVersion(){
-		String version = (getMajor() + "." + getMinor());
-		if( getRevision() > 0 ){
-			version += ("." + getRevision());
+		String version = (major + "." + minor);
+		if(revision > 0 ){
+			version += ("." + revision);
 		}
 		return version;
 	}

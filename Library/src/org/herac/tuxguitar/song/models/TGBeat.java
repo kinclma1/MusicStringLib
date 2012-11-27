@@ -25,16 +25,16 @@ public abstract class TGBeat {
 	private TGStroke stroke;
 	
 	public TGBeat(TGFactory factory) {
-		this.start = TGDuration.QUARTER_TIME;
-		this.stroke = factory.newStroke();
-		this.voices = new TGVoice[ MAX_VOICES ];
+        start = TGDuration.QUARTER_TIME;
+        stroke = factory.newStroke();
+        voices = new TGVoice[ MAX_VOICES ];
 		for( int i = 0 ; i < MAX_VOICES ; i ++ ){
-			this.setVoice(i, factory.newVoice(i));
+            setVoice(i, factory.newVoice(i));
 		}
 	}
 	
 	public TGMeasure getMeasure() {
-		return this.measure;
+		return measure;
 	}
 	
 	public void setMeasure(TGMeasure measure) {
@@ -42,7 +42,7 @@ public abstract class TGBeat {
 	}
 	
 	public long getStart() {
-		return this.start;
+		return start;
 	}
 	
 	public void setStart(long start) {
@@ -50,21 +50,21 @@ public abstract class TGBeat {
 	}
 	
 	public void setVoice(int index, TGVoice voice){
-		if( index >= 0 && index < this.voices.length ){
-			this.voices[index] = voice;
-			this.voices[index].setBeat( this );
+		if( index >= 0 && index < voices.length ){
+            voices[index] = voice;
+            voices[index].setBeat( this );
 		}
 	}
 	
 	public TGVoice getVoice(int index){
-		if( index >= 0 && index < this.voices.length ){
-			return this.voices[index];
+		if( index >= 0 && index < voices.length ){
+			return voices[index];
 		}
 		return null;
 	}
 	
 	public int countVoices(){
-		return this.voices.length;
+		return voices.length;
 	}
 	
 	public void setChord(TGChord chord) {
@@ -73,15 +73,15 @@ public abstract class TGBeat {
 	}
 	
 	public TGChord getChord() {
-		return this.chord;
+		return chord;
 	}
 	
 	public void removeChord() {
-		this.chord = null;
+        chord = null;
 	}
 	
 	public TGText getText() {
-		return this.text;
+		return text;
 	}
 	
 	public void setText(TGText text) {
@@ -90,24 +90,24 @@ public abstract class TGBeat {
 	}
 	
 	public void removeText(){
-		this.text = null;
+        text = null;
 	}
 	
 	public boolean isChordBeat(){
-		return ( this.chord != null );
+		return (chord != null );
 	}
 	
 	public boolean isTextBeat(){
-		return ( this.text != null );
+		return (text != null );
 	}
 	
 	public TGStroke getStroke() {
-		return this.stroke;
+		return stroke;
 	}
 	
 	public boolean isRestBeat(){
-		for(int v = 0; v < this.countVoices() ; v ++ ){
-			TGVoice voice = this.getVoice( v );
+		for(int v = 0; v < countVoices() ; v ++ ){
+			TGVoice voice = getVoice( v );
 			if( !voice.isEmpty() && !voice.isRestVoice() ){
 				return false;
 			}
@@ -117,16 +117,16 @@ public abstract class TGBeat {
 	
 	public TGBeat clone(TGFactory factory){
 		TGBeat beat = factory.newBeat();
-		beat.setStart(getStart());
-		getStroke().copy( beat.getStroke() );
-		for( int i = 0 ; i < this.voices.length ; i ++ ){
-			beat.setVoice(i, this.voices[i].clone(factory));
+		beat.setStart(start);
+        stroke.copy(beat.stroke);
+		for( int i = 0 ; i < voices.length ; i ++ ){
+			beat.setVoice(i, voices[i].clone(factory));
 		}
-		if(this.chord != null){
-			beat.setChord( this.chord.clone(factory));
+		if(chord != null){
+			beat.setChord(chord.clone(factory));
 		}
-		if(this.text != null){
-			beat.setText( this.text.clone(factory));
+		if(text != null){
+			beat.setText(text.clone(factory));
 		}
 		return beat;
 	}

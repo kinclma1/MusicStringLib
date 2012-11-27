@@ -14,29 +14,34 @@ public class MidiSongExporter implements TGLocalFileExporter {
 	private OutputStream stream;
 	private MidiSettings settings;
 	
-	public String getExportName() {
+	@Override
+    public String getExportName() {
 		return "Midi";
 	}
 	
-	public TGFileFormat getFileFormat() {
+	@Override
+    public TGFileFormat getFileFormat() {
 		return new TGFileFormat("Midi","*.mid;*.midi");
 	}
 	
-	public boolean configure(boolean setDefaults) {
-		this.settings = MidiSettings.getDefaults();
-		return (this.settings != null);
+	@Override
+    public boolean configure(boolean setDefaults) {
+        settings = MidiSettings.getDefaults();
+		return (settings != null);
 	}
 	
-	public void init(TGFactory factory,OutputStream stream){
+	@Override
+    public void init(TGFactory factory,OutputStream stream){
 		this.stream = stream;
 	}
 	
-	public void exportSong(TGSong song) {
-		if( this.stream != null && this.settings != null ){
+	@Override
+    public void exportSong(TGSong song) {
+		if(stream != null && settings != null ){
 			TGSongManager manager = new TGSongManager();
 			manager.setSong(song);
-			MidiSequenceParser parser = new MidiSequenceParser(manager,MidiSequenceParser.DEFAULT_EXPORT_FLAGS,100,this.settings.getTranspose());
-			MidiSequenceHandlerImpl sequence = new MidiSequenceHandlerImpl( (song.countTracks() + 1) , this.stream);
+			MidiSequenceParser parser = new MidiSequenceParser(manager,MidiSequenceParser.DEFAULT_EXPORT_FLAGS,100, settings.getTranspose());
+			MidiSequenceHandlerImpl sequence = new MidiSequenceHandlerImpl( (song.countTracks() + 1) , stream);
 			parser.parse(sequence);
 		}
 	}

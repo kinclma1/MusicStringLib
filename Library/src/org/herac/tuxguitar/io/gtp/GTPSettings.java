@@ -7,11 +7,11 @@ public class GTPSettings {
 	private String charset;
 	
 	public GTPSettings(){
-		this.charset = DEFAULT_CHARSET;
+        charset = DEFAULT_CHARSET;
 	}
 	
 	public String getCharset() {
-		return this.charset;
+		return charset;
 	}
 	
 	public void setCharset(String charset) {

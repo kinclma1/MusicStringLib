@@ -10,8 +10,7 @@ public class GPXAutomation {
 	private int[] value;
 	
 	public GPXAutomation(){
-		super();
-	}
+    }
 
 	public String getType() {
 		return type;

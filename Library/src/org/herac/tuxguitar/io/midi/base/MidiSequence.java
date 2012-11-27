@@ -18,39 +18,39 @@ public class MidiSequence {
 	public MidiSequence(float divisionType, int resolution){
 		this.divisionType = divisionType;
 		this.resolution = resolution;
-		this.tracks = new ArrayList();
+        tracks = new ArrayList();
 	}
 	
 	public void addTrack(MidiTrack track){
-		this.tracks.add(track);
+        tracks.add(track);
 	}
 	
 	public MidiTrack getTrack(int index){
-		return (MidiTrack)this.tracks.get(index);
+		return (MidiTrack) tracks.get(index);
 	}
 	
 	public int countTracks(){
-		return this.tracks.size();
+		return tracks.size();
 	}
 	
 	public float getDivisionType() {
-		return this.divisionType;
+		return divisionType;
 	}
 	
 	public int getResolution() {
-		return this.resolution;
+		return resolution;
 	}
 	
 	public void sort(){
-		for(int i = 0; i < this.tracks.size(); i ++){
-			MidiTrack track = (MidiTrack)this.tracks.get(i);
+		for(int i = 0; i < tracks.size(); i ++){
+			MidiTrack track = (MidiTrack) tracks.get(i);
 			track.sort();
 		}
 	}
 	
 	public void finish(){
-		for(int i = 0; i < this.tracks.size(); i ++){
-			MidiTrack track = (MidiTrack)this.tracks.get(i);
+		for(int i = 0; i < tracks.size(); i ++){
+			MidiTrack track = (MidiTrack) tracks.get(i);
 			track.add(new MidiEvent(MidiMessage.metaMessage(47,new byte[]{}),track.ticks()));
 			track.sort();
 		}

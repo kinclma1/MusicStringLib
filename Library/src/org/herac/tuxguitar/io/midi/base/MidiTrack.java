@@ -11,25 +11,26 @@ public class MidiTrack {
 	private List events = new ArrayList();
 	
 	public void add(MidiEvent event) {
-		this.events.add(event);
-		this.ticks = Math.max(this.ticks,event.getTick());
+        events.add(event);
+        ticks = Math.max(ticks,event.getTick());
 	}
 	
 	public MidiEvent get(int index){
-		return (MidiEvent)this.events.get(index);
+		return (MidiEvent) events.get(index);
 	}
 	
 	public int size(){
-		return this.events.size();
+		return events.size();
 	}
 	
 	public long ticks(){
-		return this.ticks;
+		return ticks;
 	}
 	
 	public void sort(){
 		final Comparator comparator = new Comparator() {
-			public int compare(Object o1, Object o2) {
+			@Override
+            public int compare(Object o1, Object o2) {
 				if(o1 instanceof MidiEvent && o2 instanceof MidiEvent){
 					MidiEvent e1 = (MidiEvent)o1;
 					MidiEvent e2 = (MidiEvent)o2;
@@ -41,6 +42,6 @@ public class MidiTrack {
 				return 0;
 			}
 		};
-		Collections.sort(this.events,comparator);
+		Collections.sort(events,comparator);
 	}
 }

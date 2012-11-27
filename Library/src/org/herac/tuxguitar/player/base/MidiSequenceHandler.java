@@ -11,7 +11,7 @@ public abstract class MidiSequenceHandler {
 	}
 	
 	public int getTracks() {
-		return this.tracks;
+		return tracks;
 	}
 	
 	public abstract void addNoteOn(long tick,int track,int channel,int note,int velocity);

@@ -5,11 +5,11 @@ public class MidiSettings {
 	private int transpose;
 	
 	public MidiSettings(){
-		this.transpose = 0;
+        transpose = 0;
 	}
 	
 	public int getTranspose() {
-		return this.transpose;
+		return transpose;
 	}
 	
 	public void setTranspose(int transpose) {

@@ -24,19 +24,19 @@ public abstract class TGChannel {
 	private short tremolo;
 	
 	public TGChannel() {
-		this.channel = 0;
-		this.effectChannel = 0;
-		this.instrument = DEFAULT_INSTRUMENT;
-		this.volume = DEFAULT_VOLUME;
-		this.balance = DEFAULT_BALANCE;
-		this.chorus = DEFAULT_CHORUS;
-		this.reverb = DEFAULT_REVERB;
-		this.phaser = DEFAULT_PHASER;
-		this.tremolo = DEFAULT_TREMOLO;
+        channel = 0;
+        effectChannel = 0;
+        instrument = DEFAULT_INSTRUMENT;
+        volume = DEFAULT_VOLUME;
+        balance = DEFAULT_BALANCE;
+        chorus = DEFAULT_CHORUS;
+        reverb = DEFAULT_REVERB;
+        phaser = DEFAULT_PHASER;
+        tremolo = DEFAULT_TREMOLO;
 	}
 	
 	public short getBalance() {
-		return this.balance;
+		return balance;
 	}
 	
 	public void setBalance(short balance) {
@@ -44,7 +44,7 @@ public abstract class TGChannel {
 	}
 	
 	public short getChannel() {
-		return this.channel;
+		return channel;
 	}
 	
 	public void setChannel(short channel) {
@@ -52,7 +52,7 @@ public abstract class TGChannel {
 	}
 	
 	public short getEffectChannel() {
-		return this.effectChannel;
+		return effectChannel;
 	}
 	
 	public void setEffectChannel(short effectChannel) {
@@ -60,7 +60,7 @@ public abstract class TGChannel {
 	}
 	
 	public short getChorus() {
-		return this.chorus;
+		return chorus;
 	}
 	
 	public void setChorus(short chorus) {
@@ -68,7 +68,7 @@ public abstract class TGChannel {
 	}
 	
 	public short getInstrument() {
-		return (!this.isPercussionChannel()?this.instrument:0);
+		return (isPercussionChannel() ? 0 : instrument);
 	}
 	
 	public void setInstrument(short instrument) {
@@ -76,7 +76,7 @@ public abstract class TGChannel {
 	}
 	
 	public short getPhaser() {
-		return this.phaser;
+		return phaser;
 	}
 	
 	public void setPhaser(short phaser) {
@@ -84,7 +84,7 @@ public abstract class TGChannel {
 	}
 	
 	public short getReverb() {
-		return this.reverb;
+		return reverb;
 	}
 	
 	public void setReverb(short reverb) {
@@ -92,7 +92,7 @@ public abstract class TGChannel {
 	}
 	
 	public short getTremolo() {
-		return this.tremolo;
+		return tremolo;
 	}
 	
 	public void setTremolo(short tremolo) {
@@ -100,7 +100,7 @@ public abstract class TGChannel {
 	}
 	
 	public short getVolume() {
-		return this.volume;
+		return volume;
 	}
 	
 	public void setVolume(short volume) {
@@ -108,7 +108,7 @@ public abstract class TGChannel {
 	}
 	
 	public boolean isPercussionChannel(){
-		return TGChannel.isPercussionChannel(this.getChannel());
+		return TGChannel.isPercussionChannel(channel);
 	}
 	
 	public static boolean isPercussionChannel(int channel){
@@ -133,14 +133,14 @@ public abstract class TGChannel {
 	}
 	
 	public void copy(TGChannel channel){
-		channel.setChannel(getChannel());
-		channel.setEffectChannel(getEffectChannel());
+		channel.setChannel(this.channel);
+		channel.setEffectChannel(effectChannel);
 		channel.setInstrument(getInstrument());
-		channel.setVolume(getVolume());
-		channel.setBalance(getBalance());
-		channel.setChorus(getChorus());
-		channel.setReverb(getReverb());
-		channel.setPhaser(getPhaser());
-		channel.setTremolo(getTremolo());
+		channel.setVolume(volume);
+		channel.setBalance(balance);
+		channel.setChorus(chorus);
+		channel.setReverb(reverb);
+		channel.setPhaser(phaser);
+		channel.setTremolo(tremolo);
 	}
 }

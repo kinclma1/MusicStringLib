@@ -14,5 +14,5 @@ public interface TGOutputStreamBase {
 	
 	public TGFileFormat getFileFormat();
 	
-	public void writeSong(TGSong song) throws TGFileFormatException,IOException;
+	public void writeSong(TGSong song) throws IOException;
 }

@@ -18,19 +18,19 @@ public class GTPVoiceJoiner {
 	}
 	
 	public TGMeasure process(){
-		this.orderBeats();
-		this.joinBeats();
-		return this.measure;
+        orderBeats();
+        joinBeats();
+		return measure;
 	}
 	
 	public void joinBeats(){
 		TGBeat previous = null;
 		boolean finish = true;
 		
-		long measureStart = this.measure.getStart();
-		long measureEnd = (measureStart + this.measure.getLength());
-		for(int i = 0;i < this.measure.countBeats();i++){
-			TGBeat beat = this.measure.getBeat( i );
+		long measureStart = measure.getStart();
+		long measureEnd = (measureStart + measure.getLength());
+		for(int i = 0;i < measure.countBeats();i++){
+			TGBeat beat = measure.getBeat(i);
 			TGVoice voice = beat.getVoice(0);
 			for(int v = 1; v < beat.countVoices(); v++ ){
 				TGVoice currentVoice = beat.getVoice(v);
@@ -42,7 +42,7 @@ public class GTPVoiceJoiner {
 				}
 			}
 			if( voice.isEmpty() ){
-				this.measure.removeBeat(beat);
+                measure.removeBeat(beat);
 				finish = false;
 				break;
 			}
@@ -68,11 +68,11 @@ public class GTPVoiceJoiner {
 					previousBestDuration.copy( previous.getVoice(0).getDuration() );
 				}else{
 					if(voice.isRestVoice()){
-						this.measure.removeBeat(beat);
+                        measure.removeBeat(beat);
 						finish = false;
 						break;
 					}
-					TGDuration duration = TGDuration.fromTime(this.factory, (beatStart - previousStart) );
+					TGDuration duration = TGDuration.fromTime(factory, (beatStart - previousStart) );
 					duration.copy( previous.getVoice(0).getDuration() );
 				}
 			}
@@ -92,11 +92,11 @@ public class GTPVoiceJoiner {
 			
 			if(beatBestDuration == null){
 				if(voice.isRestVoice()){
-					this.measure.removeBeat(beat);
+                    measure.removeBeat(beat);
 					finish = false;
 					break;
 				}
-				TGDuration duration = TGDuration.fromTime(this.factory, (measureEnd - beatStart) );
+				TGDuration duration = TGDuration.fromTime(factory, (measureEnd - beatStart) );
 				duration.copy( voice.getDuration() );
 			}
 			previous = beat;
@@ -107,15 +107,15 @@ public class GTPVoiceJoiner {
 	}
 	
 	public void orderBeats(){
-		for(int i = 0;i < this.measure.countBeats();i++){
+		for(int i = 0;i < measure.countBeats();i++){
 			TGBeat minBeat = null;
-			for(int j = i;j < this.measure.countBeats();j++){
-				TGBeat beat = this.measure.getBeat(j);
+			for(int j = i;j < measure.countBeats();j++){
+				TGBeat beat = measure.getBeat(j);
 				if(minBeat == null || beat.getStart() < minBeat.getStart()){
 					minBeat = beat;
 				}
 			}
-			this.measure.moveBeat(i, minBeat);
+            measure.moveBeat(i, minBeat);
 		}
 	}
 }

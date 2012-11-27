@@ -9,17 +9,20 @@ public abstract class TGInputStreamPlugin extends TGPluginAdapter{
 	private boolean loaded;
 	private TGInputStreamBase stream;
 	
-	protected abstract TGInputStreamBase getInputStream() throws TGPluginException;
+	protected abstract TGInputStreamBase getInputStream();
 	
-	public void init() throws TGPluginException {
-		this.stream = getInputStream();
+	@Override
+    public void init() throws TGPluginException {
+        stream = getInputStream();
 	}
 	
-	public void close() throws TGPluginException {
-		this.removePlugin();
+	@Override
+    public void close() throws TGPluginException {
+        removePlugin();
 	}
 	
-	public void setEnabled(boolean enabled) throws TGPluginException {
+	@Override
+    public void setEnabled(boolean enabled) throws TGPluginException {
 		if(enabled){
 			addPlugin();
 		}else{
@@ -27,17 +30,17 @@ public abstract class TGInputStreamPlugin extends TGPluginAdapter{
 		}
 	}
 	
-	protected void addPlugin() throws TGPluginException {
-		if(!this.loaded){
-			TGFileFormatManager.instance().addInputStream(this.stream);
-			this.loaded = true;
+	protected void addPlugin() {
+		if(!loaded){
+			TGFileFormatManager.instance().addInputStream(stream);
+            loaded = true;
 		}
 	}
 	
-	protected void removePlugin() throws TGPluginException {
-		if(this.loaded){
-			TGFileFormatManager.instance().removeInputStream(this.stream);
-			this.loaded = false;
+	protected void removePlugin() {
+		if(loaded){
+			TGFileFormatManager.instance().removeInputStream(stream);
+            loaded = false;
 		}
 	}
 }

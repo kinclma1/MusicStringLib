@@ -13,8 +13,8 @@ import org.herac.tuxguitar.song.models.TGVoice;
  * To change this template use File | Settings | File Templates.
  */
 class MusicStringNote implements Comparable<MusicStringNote> {
-    private MusicStringTone tone = null;
-    private Drum drum = null;
+    private MusicStringTone tone;
+    private Drum drum;
     private MusicStringDuration duration;
 
     public MusicStringNote(TGNote note, boolean drumTrack) {
@@ -67,6 +67,6 @@ class MusicStringNote implements Comparable<MusicStringNote> {
 
     @Override
     public int compareTo(MusicStringNote note) {
-        return this.value() - note.value();
+        return value() - note.value();
     }
 }

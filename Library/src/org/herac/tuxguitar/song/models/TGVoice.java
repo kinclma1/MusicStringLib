@@ -24,21 +24,21 @@ public abstract class TGVoice {
 	
 	private TGBeat beat;
 	private TGDuration duration;
-	private List notes;
+	private List<TGNote> notes;
 	private int index;
 	private int direction;
 	private boolean empty;
 	
 	public TGVoice(TGFactory factory, int index) {
-		this.duration = factory.newDuration();
-		this.notes = new ArrayList();
+        duration = factory.newDuration();
+        notes = new ArrayList<TGNote>();
 		this.index = index;
-		this.empty = true;
-		this.direction = DIRECTION_NONE;
+        empty = true;
+        direction = DIRECTION_NONE;
 	}
 	
 	public int getIndex() {
-		return this.index;
+		return index;
 	}
 	
 	public void setIndex(int index) {
@@ -46,7 +46,7 @@ public abstract class TGVoice {
 	}
 	
 	public boolean isEmpty() {
-		return this.empty;
+		return empty;
 	}
 	
 	public void setEmpty(boolean empty) {
@@ -54,7 +54,7 @@ public abstract class TGVoice {
 	}
 	
 	public int getDirection() {
-		return this.direction;
+		return direction;
 	}
 	
 	public void setDirection(int direction) {
@@ -62,7 +62,7 @@ public abstract class TGVoice {
 	}
 	
 	public TGDuration getDuration() {
-		return this.duration;
+		return duration;
 	}
 	
 	public void setDuration(TGDuration duration) {
@@ -70,54 +70,54 @@ public abstract class TGVoice {
 	}
 	
 	public TGBeat getBeat() {
-		return this.beat;
+		return beat;
 	}
 
 	public void setBeat(TGBeat beat) {
 		this.beat = beat;
 	}
 
-	public List getNotes() {
-		return this.notes;
+	public List<TGNote> getNotes() {
+		return notes;
 	}
 	
 	public void addNote(TGNote note){
 		note.setVoice(this);
-		this.notes.add(note);
-		this.setEmpty(false);
+        notes.add(note);
+        setEmpty(false);
 	}
 	
 	public void moveNote(int index,TGNote note){
-		getNotes().remove(note);
-		getNotes().add(index,note);
+        notes.remove(note);
+        notes.add(index, note);
 	}
 	
 	public void removeNote(TGNote note){
-		this.notes.remove(note);
+        notes.remove(note);
 	}
 	
 	public TGNote getNote(int index){
 		if(index >= 0 && index < countNotes()){
-			return (TGNote)this.notes.get(index);
+			return notes.get(index);
 		}
 		return null;
 	}
 	
 	public int countNotes(){
-		return this.notes.size();
+		return notes.size();
 	}
 	
 	public boolean isRestVoice(){
-		return this.notes.isEmpty();
+		return notes.isEmpty();
 	}
 	
 	public TGVoice clone(TGFactory factory){
-		TGVoice voice = factory.newVoice(getIndex());
-		voice.setEmpty(isEmpty());
-		voice.setDirection( getDirection() );
-		getDuration().copy(voice.getDuration());
+		TGVoice voice = factory.newVoice(index);
+		voice.setEmpty(empty);
+		voice.setDirection(direction);
+        duration.copy(voice.duration);
 		for(int i = 0;i < countNotes();i++){
-			TGNote note = (TGNote)this.notes.get(i);
+			TGNote note = notes.get(i);
 			voice.addNote(note.clone(factory));
 		}
 		return voice;

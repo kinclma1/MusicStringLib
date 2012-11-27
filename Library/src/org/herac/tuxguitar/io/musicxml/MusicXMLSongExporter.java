@@ -12,25 +12,30 @@ public class MusicXMLSongExporter implements TGLocalFileExporter {
 	
 	private OutputStream stream;
 	
-	public String getExportName() {
+	@Override
+    public String getExportName() {
 		return "MusicXML";
 	}
 	
-	public TGFileFormat getFileFormat() {
+	@Override
+    public TGFileFormat getFileFormat() {
 		return new TGFileFormat("MusicXML","*.xml");
 	}
 	
-	public boolean configure(boolean setDefaults) {
+	@Override
+    public boolean configure(boolean setDefaults) {
 		return true;
 	}
 	
-	public void init(TGFactory factory,OutputStream stream){
+	@Override
+    public void init(TGFactory factory,OutputStream stream){
 		this.stream = stream;
 	}
 	
-	public void exportSong(TGSong song) throws TGFileFormatException {
-		if( this.stream != null ){
-			new MusicXMLWriter(this.stream).writeSong(song);
+	@Override
+    public void exportSong(TGSong song) throws TGFileFormatException {
+		if(stream != null ){
+			new MusicXMLWriter(stream).writeSong(song);
 		}
 	}
 }

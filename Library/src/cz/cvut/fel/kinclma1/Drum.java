@@ -29,7 +29,7 @@ public enum Drum {
     }
 
     public String toMusicString() {
-        return String.format("[%1$s]", this.toString());
+        return String.format("[%1$s]", toString());
     }
 
     public static Drum fromInt(int value) {
@@ -37,6 +37,6 @@ public enum Drum {
     }
 
     public int toInteger() {
-        return this.ordinal() + 35;
+        return ordinal() + 35;
     }
 }

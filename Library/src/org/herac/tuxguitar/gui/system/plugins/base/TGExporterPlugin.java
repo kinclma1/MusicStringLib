@@ -9,17 +9,20 @@ public abstract class TGExporterPlugin extends TGPluginAdapter{
 	private boolean loaded;
 	private TGRawExporter exporter;
 	
-	protected abstract TGRawExporter getExporter() throws TGPluginException;
+	protected abstract TGRawExporter getExporter();
 	
-	public void init() throws TGPluginException {
-		this.exporter = getExporter();
+	@Override
+    public void init() throws TGPluginException {
+        exporter = getExporter();
 	}
 	
-	public void close() throws TGPluginException {
-		this.removePlugin();
+	@Override
+    public void close() throws TGPluginException {
+        removePlugin();
 	}
 	
-	public void setEnabled(boolean enabled) throws TGPluginException {
+	@Override
+    public void setEnabled(boolean enabled) throws TGPluginException {
 		if(enabled){
 			addPlugin();
 		}else{
@@ -27,17 +30,17 @@ public abstract class TGExporterPlugin extends TGPluginAdapter{
 		}
 	}
 	
-	protected void addPlugin() throws TGPluginException {
-		if(!this.loaded && this.exporter != null){
-			TGFileFormatManager.instance().addExporter(this.exporter);
-			this.loaded = true;
+	protected void addPlugin() {
+		if(!loaded && exporter != null){
+			TGFileFormatManager.instance().addExporter(exporter);
+            loaded = true;
 		}
 	}
 	
-	protected void removePlugin() throws TGPluginException {
-		if(this.loaded && this.exporter != null){
-			TGFileFormatManager.instance().removeExporter(this.exporter);
-			this.loaded = false;
+	protected void removePlugin() {
+		if(loaded && exporter != null){
+			TGFileFormatManager.instance().removeExporter(exporter);
+            loaded = false;
 		}
 	}	
 }

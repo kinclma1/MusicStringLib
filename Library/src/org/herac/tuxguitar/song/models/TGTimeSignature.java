@@ -19,12 +19,12 @@ public abstract class TGTimeSignature {
 	private int numerator;
 	
 	public TGTimeSignature(TGFactory factory){
-		this.numerator = 4;
-		this.denominator = factory.newDuration();
+        numerator = 4;
+        denominator = factory.newDuration();
 	}
 	
 	public int getNumerator() {
-		return this.numerator;
+		return numerator;
 	}
 	
 	public void setNumerator(int numerator) {
@@ -32,7 +32,7 @@ public abstract class TGTimeSignature {
 	}
 	
 	public TGDuration getDenominator() {
-		return this.denominator;
+		return denominator;
 	}
 	
 	public void setDenominator(TGDuration denominator) {
@@ -46,11 +46,11 @@ public abstract class TGTimeSignature {
 	}
 	
 	public void copy(TGTimeSignature timeSignature){
-		timeSignature.setNumerator(getNumerator());
-		getDenominator().copy(timeSignature.getDenominator());
+		timeSignature.setNumerator(numerator);
+        denominator.copy(timeSignature.denominator);
 	}
 	
 	public boolean isEqual(TGTimeSignature ts){
-		return (getNumerator() == ts.getNumerator() && getDenominator().isEqual(ts.getDenominator()));
+		return (numerator == ts.numerator && denominator.isEqual(ts.denominator));
 	}
 }

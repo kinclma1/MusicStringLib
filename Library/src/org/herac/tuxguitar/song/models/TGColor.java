@@ -14,13 +14,13 @@ public abstract class TGColor {
 	private int b;
 	
 	public TGColor(){
-		this.r = 0;
-		this.g = 0;
-		this.b = 0;
+        r = 0;
+        g = 0;
+        b = 0;
 	}
 	
 	public int getB() {
-		return this.b;
+		return b;
 	}
 	
 	public void setB(int b) {
@@ -28,7 +28,7 @@ public abstract class TGColor {
 	}
 	
 	public int getG() {
-		return this.g;
+		return g;
 	}
 	
 	public void setG(int g) {
@@ -36,7 +36,7 @@ public abstract class TGColor {
 	}
 	
 	public int getR() {
-		return this.r;
+		return r;
 	}
 	
 	public void setR(int r) {
@@ -44,7 +44,7 @@ public abstract class TGColor {
 	}
 	
 	public boolean isEqual(TGColor color){
-		return (this.getR() == color.getR() && this.getG() == color.getG() && this.getB() == color.getB());
+		return (r == color.r && g == color.g && b == color.b);
 	}
 	
 	public TGColor clone(TGFactory factory){
@@ -54,9 +54,9 @@ public abstract class TGColor {
 	}
 	
 	public void copy(TGColor color){
-		color.setR(getR());
-		color.setG(getG());
-		color.setB(getB());
+		color.setR(r);
+		color.setG(g);
+		color.setB(b);
 	}
 	
 	public static TGColor newColor(int r,int g,int b){

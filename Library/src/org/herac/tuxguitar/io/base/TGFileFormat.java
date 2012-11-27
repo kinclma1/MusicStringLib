@@ -13,10 +13,10 @@ public class TGFileFormat {
 	}
 	
 	public String getName() {
-		return this.name;
+		return name;
 	}
 	
 	public String getSupportedFormats() {
-		return this.supportedFormats;
+		return supportedFormats;
 	}
 }

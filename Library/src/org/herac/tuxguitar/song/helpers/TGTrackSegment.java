@@ -9,27 +9,27 @@ import org.herac.tuxguitar.song.models.TGMeasureHeader;
 
 public class TGTrackSegment {
 	private int track;
-	private List measures;
+	private List<TGMeasure> measures;
 	
-	public TGTrackSegment(int track,List measures){
+	public TGTrackSegment(int track,List<TGMeasure> measures){
 		this.track = track;
 		this.measures = measures;
 	}
 	
-	public List getMeasures() {
-		return this.measures;
+	public List<TGMeasure> getMeasures() {
+		return measures;
 	}
 	
 	public int getTrack() {
-		return this.track;
+		return track;
 	}
 	
-	public Object clone(TGFactory factory,List headers){
-		List measures = new ArrayList();
-		for(int i = 0;i < getMeasures().size();i++){
-			TGMeasure measure = (TGMeasure)getMeasures().get(i);
+	public TGTrackSegment clone(TGFactory factory,List<TGMeasureHeader> headers){
+		List<TGMeasure> measures = new ArrayList();
+		for(int i = 0;i < this.measures.size();i++){
+			TGMeasure measure = (TGMeasure) this.measures.get(i);
 			measures.add(measure.clone(factory,(TGMeasureHeader)headers.get(i)));
 		}
-		return new TGTrackSegment(getTrack(),measures);
+		return new TGTrackSegment(track,measures);
 	}
 }

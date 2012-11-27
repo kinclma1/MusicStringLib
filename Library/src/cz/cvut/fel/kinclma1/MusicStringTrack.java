@@ -73,7 +73,7 @@ public class MusicStringTrack {
         instrument = Instrument.fromInt(tgTrack.getChannel().getInstrument());
         id = buildId();
         metaInfo = buildMeta();
-        this.measures = new ArrayList<MusicStringMeasure>(tgTrack.countMeasures());
+        measures = new ArrayList<MusicStringMeasure>(tgTrack.countMeasures());
         Iterator<TGMeasure> tgMeasureIterator = tgTrack.getMeasures();
         TGMeasure tgMeasure;
         while (tgMeasureIterator.hasNext()) {

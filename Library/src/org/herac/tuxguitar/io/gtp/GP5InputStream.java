@@ -35,21 +35,23 @@ import org.herac.tuxguitar.song.models.effects.TGEffectTrill;
 
 public class GP5InputStream extends GTPInputStream {
 	private static final String supportedVersions[] = { "FICHIER GUITAR PRO v5.00","FICHIER GUITAR PRO v5.10"};
-	private static final float GP_BEND_SEMITONE = 25f;
-	private static final float GP_BEND_POSITION = 60f;
+	private static final float GP_BEND_SEMITONE = 25.0f;
+	private static final float GP_BEND_POSITION = 60.0f;
 	
 	public GP5InputStream(GTPSettings settings) {
 		super(settings, supportedVersions);
 	}
 	
-	public TGFileFormat getFileFormat(){
+	@Override
+    public TGFileFormat getFileFormat(){
 		return new TGFileFormat("Guitar Pro 5","*.gp5");
 	}
 	
-	public TGSong readSong() throws IOException, GTPFormatException {
+	@Override
+    public TGSong readSong() throws IOException, GTPFormatException {
 		readVersion();
 		if (!isSupportedVersion(getVersion())) {
-			this.close();
+            close();
 			throw new GTPFormatException("Unsupported Version");
 		}
 		TGSong song = getFactory().newSong();
@@ -82,8 +84,8 @@ public class GP5InputStream extends GTPInputStream {
 		readMeasureHeaders(song, measures);
 		readTracks(song, tracks, channels, lyric, lyricTrack);
 		readMeasures(song, measures, tracks, tempoValue);
-		
-		this.close();
+
+        close();
 		
 		return song;
 	}
@@ -200,7 +202,7 @@ public class GP5InputStream extends GTPInputStream {
 			skip(1);
 		}
 		
-		return (!voice.isEmpty() ? duration.getTime() : 0 );
+		return (voice.isEmpty() ? 0 : duration.getTime());
 	}
 	
 	private List readChannels() throws IOException{
@@ -467,9 +469,9 @@ public class GP5InputStream extends GTPInputStream {
 	
 	private void readChord(int strings,TGBeat beat) throws IOException{
 		TGChord chord = getFactory().newChord(strings);
-		this.skip(17);
+        skip(17);
 		chord.setName(readStringByte(21));
-		this.skip(4);
+        skip(4);
 		chord.setFirstFret(readInt());
 		for (int i = 0; i < 7; i++) {
 			int fret = readInt();
@@ -477,7 +479,7 @@ public class GP5InputStream extends GTPInputStream {
 				chord.addFretValue(i,fret);
 			}
 		}
-		this.skip(32);
+        skip(32);
 		if(chord.countNotes() > 0){
 			beat.setChord(chord);
 		}
@@ -596,7 +598,7 @@ public class GP5InputStream extends GTPInputStream {
 			readByte();
 			
 			int pointPosition = Math.round(position * TGEffectTremoloBar.MAX_POSITION_LENGTH / GP_BEND_POSITION);
-			int pointValue = Math.round(value / (GP_BEND_SEMITONE * 2f));
+			int pointValue = Math.round(value / (GP_BEND_SEMITONE * 2.0f));
 			tremoloBar.addPoint(pointPosition,pointValue);
 		}
 		if(!tremoloBar.getPoints().isEmpty()){
