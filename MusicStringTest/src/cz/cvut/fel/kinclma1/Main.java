@@ -25,9 +25,9 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        MusicStringSong ms = new MusicStringSong(new File("/home/void/project/mayhem.gp4"));
+        MusicStringSong ms = new MusicStringSong(new File("/home/void/project/house.gp5"));
         TGSong tgs = ms.toTGSong();
-        new FileExporter().exportSong(tgs, "/home/void/project/newmayhem.ly");
+        new FileExporter().exportSong(tgs, "/home/void/project/newhouse.ly");
 //        MusicStringParser parser = new MusicStringParser();
 //        MusicXmlRenderer renderer = new MusicXmlRenderer();
 //        parser.addParserListener(renderer);

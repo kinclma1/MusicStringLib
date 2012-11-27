@@ -8,7 +8,7 @@ public abstract class TGLyric {
 	
 	public TGLyric(){
 		this.from = 1;
-		this.lyrics = new String();
+		this.lyrics = "";
 	}
 	
 	public int getFrom() {

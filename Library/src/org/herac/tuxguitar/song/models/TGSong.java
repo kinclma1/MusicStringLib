@@ -33,15 +33,15 @@ public abstract class TGSong {
 	private List measureHeaders;
 	
 	public TGSong() {
-		this.name = new String();
-		this.artist = new String();
-		this.album = new String();
-		this.author = new String();
-		this.date = new String();
-		this.copyright = new String();
-		this.writer = new String();
-		this.transcriber = new String();
-		this.comments = new String();
+		this.name = "";
+		this.artist = "";
+		this.album = "";
+		this.author = "";
+		this.date = "";
+		this.copyright = "";
+		this.writer = "";
+		this.transcriber = "";
+		this.comments = "";
 		this.tracks = new ArrayList();
 		this.measureHeaders = new ArrayList();
 	}

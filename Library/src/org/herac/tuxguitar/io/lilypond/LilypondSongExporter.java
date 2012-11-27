@@ -10,7 +10,6 @@ import org.herac.tuxguitar.song.models.TGSong;
 public class LilypondSongExporter implements TGLocalFileExporter {
 	
 	private OutputStream stream;
-	private LilypondSettings settings;
 	
 	public String getExportName() {
 		return "Lilypond";
@@ -21,24 +20,16 @@ public class LilypondSongExporter implements TGLocalFileExporter {
 	}
 	
 	public boolean configure(boolean setDefaults) {
-		this.settings = LilypondSettings.getDefaults();
-        settings.setTablatureEnabled(false);
-        settings.setTextEnabled(true);
-        settings.setLyricsEnabled(false);
-        settings.setChordDiagramEnabled(false);
-        settings.setTrackNameEnabled(true);
-        settings.setTrackGroupEnabled(false);
-		return (this.settings != null);
+		return true;
 	}
 	
 	public void init(TGFactory factory,OutputStream stream){
 		this.stream = stream;
-        configure(true);
 	}
 	
 	public void exportSong(TGSong song) {
-		if(this.stream != null && this.settings != null){
-			new LilypondOutputStream(this.stream,this.settings).writeSong(song);
+		if(this.stream != null){
+			new LilypondOutputStream(this.stream).writeSong(song);
 		}
 	}
 }

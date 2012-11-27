@@ -481,7 +481,7 @@ public class GP4InputStream extends GTPInputStream {
 			readByte();
 			
 			int pointPosition = Math.round(position * TGEffectBend.MAX_POSITION_LENGTH / GP_BEND_POSITION);
-			int pointValue = Math.round(value * TGEffectBend.SEMITONE_LENGTH / GP_BEND_SEMITONE);
+			int pointValue = Math.round(value / GP_BEND_SEMITONE);
 			bend.addPoint(pointPosition,pointValue);
 		}
 		if(!bend.getPoints().isEmpty()){

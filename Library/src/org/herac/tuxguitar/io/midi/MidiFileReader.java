@@ -42,8 +42,8 @@ public class MidiFileReader implements MidiFileHeader{
 		if (type == 0 && trackCount != 1){
 			throw new MidiFileException("corrupt MIDI file:  type 0 files must contain exactely one track");
 		}
-		float divisionType = -1.0F;
-		int resolution = -1;
+		float divisionType;
+		int resolution;
 		int division = in.readUnsignedShort();
 		if ((division & 0x8000) != 0){
 			int frameType = -((division >>> 8) & 0xFF);
@@ -117,7 +117,7 @@ public class MidiFileReader implements MidiFileHeader{
 		
 		int type = getType(statusByte);
 		if(type == STATUS_ONE_BYTE){
-			int data = 0;
+			int data;
 			if (runningStatusApplies){
 				data = savedByte;
 			}else{
@@ -127,7 +127,7 @@ public class MidiFileReader implements MidiFileHeader{
 			
 			return new MidiEvent(MidiMessage.shortMessage((statusByte & 0xF0),(statusByte & 0x0F) , data), helper.ticks);
 		}else if(type == STATUS_TWO_BYTES){
-			int	data1 = 0;
+			int	data1;
 			if (runningStatusApplies){
 				data1 = savedByte;
 			}else{

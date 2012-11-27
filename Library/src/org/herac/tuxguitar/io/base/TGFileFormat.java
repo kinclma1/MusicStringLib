@@ -2,7 +2,7 @@ package org.herac.tuxguitar.io.base;
 
 public class TGFileFormat {
 	
-	public static final String EXTENSION_SEPARATOR = new String(";");
+	public static final String EXTENSION_SEPARATOR = ";";
 	
 	private String name;
 	private String supportedFormats;

@@ -163,7 +163,7 @@ public abstract class TGMeasureHeader {
 		header.setTripletFeel(getTripletFeel());
 		getTimeSignature().copy(header.getTimeSignature());
 		getTempo().copy(header.getTempo());
-		header.setMarker(hasMarker()?(TGMarker)getMarker().clone(factory):null);
+		header.setMarker(hasMarker()? getMarker().clone(factory) :null);
 		return header;
 	}
 }

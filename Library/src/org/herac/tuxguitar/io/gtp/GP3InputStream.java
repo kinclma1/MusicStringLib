@@ -466,7 +466,7 @@ public class GP3InputStream extends GTPInputStream {
 			readByte(); //vibrato
 			
 			int pointPosition = Math.round(bendPosition * TGEffectBend.MAX_POSITION_LENGTH / GP_BEND_POSITION);
-			int pointValue = Math.round(bendValue * TGEffectBend.SEMITONE_LENGTH / GP_BEND_SEMITONE);
+			int pointValue = Math.round(bendValue / GP_BEND_SEMITONE);
 			bend.addPoint(pointPosition,pointValue);
 		}
 		if(!bend.getPoints().isEmpty()){

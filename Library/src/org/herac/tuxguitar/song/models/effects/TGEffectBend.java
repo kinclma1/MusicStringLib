@@ -21,7 +21,7 @@ import org.herac.tuxguitar.song.factory.TGFactory;
 public abstract class TGEffectBend {
 	public static final int SEMITONE_LENGTH = 1;
 	public static final int MAX_POSITION_LENGTH = 12;
-	public static final int MAX_VALUE_LENGTH = (SEMITONE_LENGTH * 12);
+	public static final int MAX_VALUE_LENGTH = (12);
 	
 	private List points;
 	

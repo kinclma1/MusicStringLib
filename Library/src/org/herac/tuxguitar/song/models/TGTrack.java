@@ -38,7 +38,7 @@ public abstract class TGTrack {
 		this.offset = 0;
 		this.solo = false;
 		this.mute = false;
-		this.name = new String();
+		this.name = "";
 		this.measures = new ArrayList();
 		this.strings = new ArrayList();
 		this.channel = factory.newChannel();

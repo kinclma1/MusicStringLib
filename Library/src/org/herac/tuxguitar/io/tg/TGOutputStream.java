@@ -667,7 +667,7 @@ public class TGOutputStream extends TGStream implements TGOutputStreamBase{
 	
 	private void writeUnsignedByteString(String v){
 		try {
-			String byteString = (v == null ? new String() : ((v.length() > 0xFF)?v.substring(0, 0xFF):v) );
+			String byteString = (v == null ? "" : ((v.length() > 0xFF)?v.substring(0, 0xFF):v) );
 			this.dataOutputStream.write(byteString.length());
 			this.dataOutputStream.writeChars(byteString);
 		} catch (IOException e) {

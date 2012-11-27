@@ -50,7 +50,7 @@ public class MusicStringExporter implements TGLocalFileExporter {
                 stream.write(music.getBytes());
                 stream.flush();
             } catch (IOException ex) {
-                
+                throw new TGFileFormatException("Unable to export song");
             }
         }
     }

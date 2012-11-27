@@ -85,7 +85,7 @@ public class GPXFileSystem {
 					int indexFileSize = (offset + 0x8C);
 					int indexOfBlock  = (offset + 0x94);
 					
-					int block = 0;
+					int block;
 					int blockCount = 0;
 					ByteArrayOutputStream fileBytesStream = new ByteArrayOutputStream();
 					while( (block = (getInteger(bcfsBytes, (indexOfBlock + (4 * (blockCount ++)))))) != 0 ){
@@ -136,7 +136,7 @@ public class GPXFileSystem {
 	
 	private byte[] getBytes(InputStream in) throws Throwable {
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
-		int read = 0;
+		int read;
 		while((read = in.read()) != -1){
 			out.write(read);
 		}
@@ -149,7 +149,7 @@ public class GPXFileSystem {
 	
 	private int getInteger(byte[] source, int offset)  {
 		byte[] bytes = new byte[4];
-		bytes[0] = source[ offset + 0];
+		bytes[0] = source[offset];
 		bytes[1] = source[ offset + 1];
 		bytes[2] = source[ offset + 2];
 		bytes[3] = source[ offset + 3];
@@ -180,9 +180,7 @@ public class GPXFileSystem {
 		}
 		
 		char[] string = new char[ charsLength ];
-		for( int i = 0 ; i < charsLength ; i ++ ){
-			string[i] = chars[i];
-		}
+        System.arraycopy(chars, 0, string, 0, charsLength);
 		
 		return new String( string );
 	}

@@ -221,7 +221,7 @@ public class GPXDocumentReader {
 					note.setId( getAttributeIntegerValue(noteNode, "id") );
 					
 					Node tieNode = getChildNode(noteNode, "Tie");
-					note.setTieDestination( tieNode != null ? getAttributeValue(tieNode, "destination").equals("true") : false);
+					note.setTieDestination(tieNode != null && getAttributeValue(tieNode, "destination").equals("true"));
 					
 					note.setVibrato( getChildNode(noteNode, "Vibrato") != null );
 					
@@ -348,11 +348,8 @@ WhammyBarOriginValue
 	
 	private boolean getAttributeBooleanValue(Node node, String attribute ){
 		String value = this.getAttributeValue(node, attribute);
-		if( value != null ){
-			return value.equals("true");
-		}
-		return false;
-	}
+        return value != null && value.equals("true");
+    }
 	
 	private Node getChildNode(Node node, String name ){
 		NodeList childNodes = node.getChildNodes();
@@ -383,11 +380,8 @@ WhammyBarOriginValue
 	
 	private boolean getChildNodeBooleanContent(Node node, String name ){
 		String value = this.getChildNodeContent(node, name);
-		if( value != null ){
-			return value.equals("true");
-		}
-		return false;
-	}
+        return value != null && value.equals("true");
+    }
 	
 	private int getChildNodeIntegerContent(Node node, String name ){
 		try {

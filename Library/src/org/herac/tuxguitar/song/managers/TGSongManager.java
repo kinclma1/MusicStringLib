@@ -479,7 +479,7 @@ public class TGSongManager {
 	
 	public void addNewMeasure(int number){
 		//Obtengo un clon para el nuevo Header.
-		TGMeasureHeader header = null;
+		TGMeasureHeader header;
 		if(number == 1){
 			header = getMeasureHeader(number).clone(getFactory());
 		}else{

@@ -43,7 +43,7 @@ public class MusicXMLWriter {
     private static final int[] DURATION_VALUES = new int[]{
         DURATION_DIVISIONS * 4, // WHOLE
         DURATION_DIVISIONS * 2, // HALF
-        DURATION_DIVISIONS * 1, // QUARTER
+            DURATION_DIVISIONS, // QUARTER
         DURATION_DIVISIONS / 2, // EIGHTH
         DURATION_DIVISIONS / 4, // SIXTEENTH
         DURATION_DIVISIONS / 8, // THIRTY_SECOND
@@ -319,8 +319,7 @@ public class MusicXMLWriter {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
-            Document document = builder.newDocument();
-            return document;
+            return builder.newDocument();
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }

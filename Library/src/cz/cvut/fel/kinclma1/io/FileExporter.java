@@ -29,7 +29,7 @@ public class FileExporter {
     //todo gp3, gp4, musicXML fucks note lengths - makes 64ths
     //todo lilypond is empty
     public void exportSong(TGSong song, String filename) {
-        BufferedOutputStream out = null;
+        BufferedOutputStream out;
         String[] tmp = filename.split("\\.");
         String extension = tmp[tmp.length - 1];
 

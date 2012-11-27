@@ -45,10 +45,7 @@ public class TGSongWriter {
 	
 	private boolean isSupportedExtension(TGOutputStreamBase writer,String path){
 		int index = path.lastIndexOf(".");
-		if(index > 0){
-			return writer.isSupportedExtension(path.substring(index));
-		}
-		return false;
-	}
+        return index > 0 && writer.isSupportedExtension(path.substring(index));
+    }
 	
 }

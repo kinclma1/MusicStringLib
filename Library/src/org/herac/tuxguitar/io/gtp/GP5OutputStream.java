@@ -620,7 +620,7 @@ public class GP5OutputStream extends GTPOutputStream {
 		for (int i = 0; i < points; i++) {
 			TGEffectBend.BendPoint point = (TGEffectBend.BendPoint) bend.getPoints().get(i);
 			writeInt( (point.getPosition() * GP_BEND_POSITION / TGEffectBend.MAX_POSITION_LENGTH) );
-			writeInt( (point.getValue() * GP_BEND_SEMITONE / TGEffectBend.SEMITONE_LENGTH) );
+			writeInt( (point.getValue() * GP_BEND_SEMITONE) );
 			writeByte((byte) 0);
 		}
 	}

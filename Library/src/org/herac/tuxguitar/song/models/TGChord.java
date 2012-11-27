@@ -86,9 +86,7 @@ public abstract class TGChord {
 		TGChord chord = factory.newChord(this.strings.length);
 		chord.setName(getName());
 		chord.setFirstFret(getFirstFret());
-		for(int i = 0;i < chord.strings.length;i++){
-			chord.strings[i] = this.strings[i];
-		}
+        System.arraycopy(this.strings, 0, chord.strings, 0, chord.strings.length);
 		return chord;
 	}
 	
