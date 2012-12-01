@@ -1,27 +1,16 @@
 package org.herac.tuxguitar.io.base;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import org.herac.tuxguitar.io.gpx.GPXInputStream;
-import org.herac.tuxguitar.io.gtp.GP1InputStream;
-import org.herac.tuxguitar.io.gtp.GP2InputStream;
-import org.herac.tuxguitar.io.gtp.GP3InputStream;
-import org.herac.tuxguitar.io.gtp.GP3OutputStream;
-import org.herac.tuxguitar.io.gtp.GP4InputStream;
-import org.herac.tuxguitar.io.gtp.GP4OutputStream;
-import org.herac.tuxguitar.io.gtp.GP5InputStream;
-import org.herac.tuxguitar.io.gtp.GP5OutputStream;
-import org.herac.tuxguitar.io.gtp.GTPSettings;
+import org.herac.tuxguitar.io.gtp.*;
 import org.herac.tuxguitar.io.lilypond.LilypondSongExporter;
-import org.herac.tuxguitar.io.midi.MidiSongExporter;
-import org.herac.tuxguitar.io.midi.MidiSongImporter;
 import org.herac.tuxguitar.io.musicxml.MusicXMLSongExporter;
-
 import org.herac.tuxguitar.io.tg.TGInputStream;
 import org.herac.tuxguitar.io.tg.TGOutputStream;
 import org.herac.tuxguitar.io.tg.TGStream;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class TGFileFormatManager {
 
@@ -103,7 +92,7 @@ public class TGFileFormatManager {
         exporters.add(exporter);
     }
 
-    public void removeExporter(TGLocalFileExporter exporter) {
+    public void removeExporter(TGRawExporter exporter) {
         exporters.remove(exporter);
     }
 
@@ -177,12 +166,11 @@ public class TGFileFormatManager {
     }
 
     private void addDefaultExporters() {
-        addExporter(new MidiSongExporter());
         addExporter(new MusicXMLSongExporter());
         addExporter(new LilypondSongExporter());
     }
 
     private void addDefaultImporters() {
-        addImporter(new MidiSongImporter());
+
     }
 }

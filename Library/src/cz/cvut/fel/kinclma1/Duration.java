@@ -38,7 +38,8 @@ public enum Duration {
                 return "x";
             case ONE_TWENTY_EIGHTH:
                 return "o";
-
+            default:
+                return null;
         }
     }
 

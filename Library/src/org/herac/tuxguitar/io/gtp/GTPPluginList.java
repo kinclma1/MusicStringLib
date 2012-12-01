@@ -3,8 +3,10 @@ package org.herac.tuxguitar.io.gtp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.herac.tuxguitar.gui.system.plugins.TGPlugin;
 import org.herac.tuxguitar.gui.system.plugins.base.TGInputStreamPlugin;
 import org.herac.tuxguitar.gui.system.plugins.base.TGOutputStreamPlugin;
+import org.herac.tuxguitar.gui.system.plugins.base.TGPluginAdapter;
 import org.herac.tuxguitar.gui.system.plugins.base.TGPluginList;
 import org.herac.tuxguitar.io.base.TGInputStreamBase;
 import org.herac.tuxguitar.io.base.TGOutputStreamBase;
@@ -12,10 +14,10 @@ import org.herac.tuxguitar.io.base.TGOutputStreamBase;
 public class GTPPluginList extends TGPluginList {
 	
 	@Override
-    protected List getPlugins() {
+    protected List<TGPlugin> getPlugins() {
 //		GTPSettingsUtil.instance().load();
 		
-		List plugins = new ArrayList();
+		List<TGPlugin> plugins = new ArrayList();
 		plugins.add(new TGInputStreamPlugin() {
 			@Override
             protected TGInputStreamBase getInputStream() {
@@ -52,18 +54,18 @@ public class GTPPluginList extends TGPluginList {
 				return new GP5OutputStream(GTPSettingsUtil.instance().getSettings());
 			}
 		});
-		plugins.add(new TGOutputStreamPlugin() {
-			@Override
-            protected TGOutputStreamBase getOutputStream() {
-				return new GP4OutputStream(GTPSettingsUtil.instance().getSettings());
-			}
-		});
-		plugins.add(new TGOutputStreamPlugin() {
-			@Override
-            protected TGOutputStreamBase getOutputStream() {
-				return new GP3OutputStream(GTPSettingsUtil.instance().getSettings());
-			}
-		});
+//		plugins.add(new TGOutputStreamPlugin() {
+//			@Override
+//            protected TGOutputStreamBase getOutputStream() {
+//				return new GP4OutputStream(GTPSettingsUtil.instance().getSettings());
+//			}
+//		});
+//		plugins.add(new TGOutputStreamPlugin() {
+//			@Override
+//            protected TGOutputStreamBase getOutputStream() {
+//				return new GP3OutputStream(GTPSettingsUtil.instance().getSettings());
+//			}
+//		});
 		return plugins;
 	}
 	

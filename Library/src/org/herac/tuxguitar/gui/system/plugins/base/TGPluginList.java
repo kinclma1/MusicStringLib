@@ -8,14 +8,14 @@ import org.herac.tuxguitar.gui.system.plugins.TGPluginException;
 
 public abstract class TGPluginList extends TGPluginAdapter{
 	
-	private List plugins;
+	private List<TGPlugin> plugins;
 	
 	public TGPluginList(){
     }
 	
 	@Override
     public void init() throws TGPluginException {
-		Iterator it = getIterator();
+		Iterator<TGPlugin> it = getIterator();
 		while(it.hasNext()){
 			TGPlugin plugin = (TGPlugin)it.next();
 			plugin.init();
@@ -24,7 +24,7 @@ public abstract class TGPluginList extends TGPluginAdapter{
 	
 	@Override
     public void close() throws TGPluginException {
-		Iterator it = getIterator();
+		Iterator<TGPlugin> it = getIterator();
 		while(it.hasNext()){
 			TGPlugin plugin = (TGPlugin)it.next();
 			plugin.close();
@@ -33,19 +33,19 @@ public abstract class TGPluginList extends TGPluginAdapter{
 	
 	@Override
     public void setEnabled(boolean enabled) throws TGPluginException {
-		Iterator it = getIterator();
+		Iterator<TGPlugin> it = getIterator();
 		while(it.hasNext()){
 			TGPlugin plugin = (TGPlugin)it.next();
 			plugin.setEnabled( enabled);
 		}
 	}
 	
-	private Iterator getIterator() throws TGPluginException {
+	private Iterator<TGPlugin> getIterator() throws TGPluginException {
 		if(plugins == null){
             plugins = getPlugins();
 		}
 		return plugins.iterator();
 	}
 	
-	protected abstract List getPlugins();
+	protected abstract List<TGPlugin> getPlugins();
 }

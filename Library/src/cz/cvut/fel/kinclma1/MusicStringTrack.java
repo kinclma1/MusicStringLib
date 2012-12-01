@@ -158,9 +158,12 @@ public class MusicStringTrack {
             }
             track.setStrings(stringList);
         }
+        int measureNumber = 1;
+        boolean bass = track.stringCount() < 6;
         for (MusicStringMeasure measure : measures) {
             TGMeasure tgMeasure = measure.toTGMeasure(factory, track);
-            if (track.stringCount() < 6) {
+            tgMeasure.getHeader().setNumber(measureNumber ++);
+            if (bass) {
                 tgMeasure.setClef(2);
             }
             track.addMeasure(tgMeasure);

@@ -1,7 +1,10 @@
 package org.herac.tuxguitar.io.musicxml;
 
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -13,6 +16,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import cz.cvut.fel.kinclma1.Drum;
 import org.herac.tuxguitar.io.base.TGFileFormatException;
 import org.herac.tuxguitar.player.base.MidiInstrument;
 import org.herac.tuxguitar.song.factory.TGFactory;
@@ -60,6 +64,13 @@ public class MusicXMLWriter {
     public void writeSong(TGSong song) throws TGFileFormatException {
         try {
             manager = new TGSongManager();
+//            TGSong newsong = song.clone(manager.getFactory());
+//            for (int i = 0; i < newsong.countTracks(); i ++) {
+//                if (newsong.getTrack(i).getChannel().getChannel() == 9) {
+//                    newsong.removeTrack(newsong.getTrack(i));
+//                }
+//            }
+//            manager.setSong(newsong);
             manager.setSong(song);
             document = newDocument();
 
@@ -99,20 +110,45 @@ public class MusicXMLWriter {
         Node partList = addNode(parent, "part-list");
 
         Iterator<TGTrack> tracks = manager.getSong().getTracks();
+        boolean drums = false;
         while (tracks.hasNext()) {
             TGTrack track = tracks.next();
+            drums = track.getChannel().getChannel() == 9;
 
             Node scoreParts = addNode(partList, "score-part");
             addAttribute(scoreParts, "id", "P" + track.getNumber());
 
-            addNode(scoreParts, "part-name", track.getName());
+            addNode(scoreParts, "part-name", drums ? "Drums" : track.getName());
+            if (!drums) {
+                Node scoreInstrument = addAttribute(addNode(scoreParts, "score-instrument"), "id", "P" + track.getNumber() + "-I1");
+                addNode(scoreInstrument, "instrument-name", MidiInstrument.INSTRUMENT_LIST[track.getChannel().getInstrument()].getName());
 
-            Node scoreInstrument = addAttribute(addNode(scoreParts, "score-instrument"), "id", "P" + track.getNumber() + "-I1");
-            addNode(scoreInstrument, "instrument-name", MidiInstrument.INSTRUMENT_LIST[track.getChannel().getInstrument()].getName());
-
-            Node midiInstrument = addAttribute(addNode(scoreParts, "midi-instrument"), "id", "P" + track.getNumber() + "-I1");
-            addNode(midiInstrument, "midi-channel", Integer.toString(track.getChannel().getChannel() + 1));
-            addNode(midiInstrument, "midi-program", Integer.toString(track.getChannel().getInstrument() + 1));
+                Node midiInstrument = addAttribute(addNode(scoreParts, "midi-instrument"), "id", "P" + track.getNumber() + "-I1");
+                addNode(midiInstrument, "midi-channel", Integer.toString(track.getChannel().getChannel() + 1));
+                addNode(midiInstrument, "midi-program", Integer.toString(track.getChannel().getInstrument() + 1));
+            } else {
+                HashSet<Integer> instruments = new HashSet<Integer>();
+                Iterator<TGMeasure> measureIterator = track.getMeasures();
+                while (measureIterator.hasNext()) {
+                    TGMeasure measure = measureIterator.next();
+                    for (TGBeat beat : measure.getBeats()) {
+                        TGVoice voice = beat.getVoice(0);
+                        for (TGNote note : voice.getNotes()) {
+                            instruments.add(note.getValue());
+                        }
+                    }
+                }
+                for (Integer instrument : instruments) {
+                    Node scoreInstrument = addAttribute(addNode(scoreParts, "score-instrument"), "id", "Drums" + "-I" + instrument);
+                    addNode(scoreInstrument, "instrument-name", Drum.fromInt(instrument).toString());
+                }
+                for (Integer instrument : instruments) {
+                    Node midiInstrument = addAttribute(addNode(scoreParts, "midi-instrument"), "id", "Drums" + "-I" + instrument);
+                    addNode(midiInstrument, "midi-channel", "10");
+                    addNode(midiInstrument, "midi-program", "1");
+                    addNode(midiInstrument, "midi-unpitched", instrument.toString());
+                }
+            }
         }
     }
 
@@ -120,20 +156,19 @@ public class MusicXMLWriter {
         Iterator<TGTrack> tracks = manager.getSong().getTracks();
         while (tracks.hasNext()) {
             TGTrack track = tracks.next();
-            Node part = addAttribute(addNode(parent, "part"), "id", "P" + track.getNumber());
+            boolean drums = track.getChannel().getChannel() == 9;
+            Node part = addAttribute(addNode(parent, "part"), "id", drums ? "Drums" : "P" + track.getNumber());
 
             TGMeasure previous = null;
 
             Iterator<TGMeasure> measures = track.getMeasures();
             while (measures.hasNext()) {
-                // TODO: Add multivoice support.
                 TGMeasure measure = measures.next();
-//                TGMeasure measure = new TGVoiceJoiner(this.manager.getFactory(), srcMeasure).process();
                 Node measureNode = addAttribute(addNode(part, "measure"), "number", Integer.toString(measure.getNumber()));
 
                 writeMeasureAttributes(measureNode, measure, previous);
                 writeDirection(measureNode, measure, previous);
-                writeBeats(measureNode, measure);
+                writeBeats(measureNode, measure, drums);
 
                 previous = measure;
             }
@@ -141,11 +176,12 @@ public class MusicXMLWriter {
     }
 
     private void writeMeasureAttributes(Node parent, TGMeasure measure, TGMeasure previous) {
+        boolean drums = measure.getTrack().getChannel().getChannel() == 9;
         boolean divisionChanges = (previous == null);
         boolean keyChanges = (previous == null || measure.getKeySignature() != previous.getKeySignature());
-        boolean clefChanges = (previous == null || measure.getClef() != previous.getClef());
+        boolean clefChanges = (previous == null);
         boolean timeSignatureChanges = (previous == null || !measure.getTimeSignature().isEqual(previous.getTimeSignature()));
-        boolean tuningChanges = (measure.getNumber() == 1);
+        boolean tuningChanges = (!drums && measure.getNumber() == 1);
         if (divisionChanges || keyChanges || clefChanges || timeSignatureChanges) {
             Node measureAttributes = addNode(parent, "attributes");
             if (divisionChanges) {
@@ -155,7 +191,7 @@ public class MusicXMLWriter {
                 writeKeySignature(measureAttributes, measure.getKeySignature());
             }
             if (clefChanges) {
-                writeClef(measureAttributes, measure.getClef());
+                writeClef(measureAttributes, drums ? 9 : measure.getClef());
             }
             if (timeSignatureChanges) {
                 writeTimeSignature(measureAttributes, measure.getTimeSignature());
@@ -196,7 +232,9 @@ public class MusicXMLWriter {
 
     private void writeClef(Node parent, int clef) {
         Node node = addNode(parent, "clef");
-        if (clef == TGMeasure.CLEF_BASS) {
+        if(clef == 9) {
+            addNode(node, "sign", "percussion");
+        } else if (clef == TGMeasure.CLEF_BASS) {
             addNode(node, "sign", "F");
             addNode(node, "line", "4");
         } else {
@@ -218,7 +256,7 @@ public class MusicXMLWriter {
         addAttribute(addNode(parent, "sound"), "tempo", Integer.toString(tempo.getValue()));
     }
 
-    private void writeBeats(Node parent, TGMeasure measure) {
+    private void writeBeats(Node parent, TGMeasure measure, boolean drums) {
         int ks = measure.getKeySignature();
         int beatCount = measure.countBeats();
         for (int b = 0; b < beatCount; b++) {
@@ -237,29 +275,120 @@ public class MusicXMLWriter {
                     Node noteNode = addNode(parent, "note");
                     int value = (beat.getMeasure().getTrack().getString(note.getString()).getValue() + note.getValue());
 
-                    Node pitchNode = addNode(noteNode, "pitch");
-                    addNode(pitchNode, "step", NOTE_NAMES[ (ks <= 7 ? NOTE_SHARPS[value % 12] : NOTE_FLATS[value % 12])]);
-                    addNode(pitchNode, "octave", Integer.toString(value / 12));
-                    if (NOTE_ALTERATIONS[ value % 12]) {
-                        addNode(pitchNode, "alter", (ks <= 7 ? "1" : "-1"));
+                    String[] drumNoteAttributes = null;
+
+                    if (!drums) {
+                        Node pitchNode = addNode(noteNode, "pitch");
+                        addNode(pitchNode, "step", NOTE_NAMES[ (ks <= 7 ? NOTE_SHARPS[value % 12] : NOTE_FLATS[value % 12])]);
+                        addNode(pitchNode, "octave", Integer.toString(value / 12));
+                        if (NOTE_ALTERATIONS[ value % 12]) {
+                            addNode(pitchNode, "alter", (ks <= 7 ? "1" : "-1"));
+                        }
+                    } else {
+                        drumNoteAttributes = drumNote(value);
+                        Node pitchNode = addNode(noteNode, "unpitched");
+                        addNode(pitchNode, "display-step", drumNoteAttributes[0]);
+                        addNode(pitchNode, "display-octave", drumNoteAttributes[1]);
                     }
-
-                    Node technicalNode = addNode(addNode(noteNode, "notations"), "technical");
-                    addNode(technicalNode, "fret", Integer.toString(note.getValue()));
-                    addNode(technicalNode, "string", Integer.toString(note.getString()));
-
                     addNode(noteNode, "voice", "1");
                     writeDuration(noteNode, voice.getDuration());
 
-                    if (note.isTiedNote()) {
-                        addAttribute(addNode(noteNode, "tie"), "type", "stop");
-                    }
                     if (n > 0) {
                         addNode(noteNode, "chord");
+                    }
+                    if (drums) {
+                        Node instrument = addNode(noteNode, "instrument");
+                        addAttribute(instrument,"id","Drums-I" + value);
+                        if (drumNoteAttributes[2] != null) {
+                            addNode(noteNode, "notehead", drumNoteAttributes[2]);
+                        }
                     }
                 }
             }
         }
+    }
+
+    private String[] drumNote(int drum) {
+        String[] attributes = new String[3];
+        if (drum == 35 || drum == 36) {
+            attributes[0] = "F";
+            attributes[1] = "4";
+            attributes[2] = null;
+        } else if (drum == 38 || drum == 40) {
+            attributes[0] = "C";
+            attributes[1] = "5";
+            attributes[2] = null;
+        } else if (drum == 37) {
+            attributes[0] = "C";
+            attributes[1] = "5";
+            attributes[2] = "x";
+        } else if (drum == 39) {
+            attributes[0] = "C";
+            attributes[1] = "5";
+            attributes[2] = "triangle";
+        } else if (drum == 41) {
+            attributes[0] = "E";
+            attributes[1] = "4";
+            attributes[2] = null;
+        } else if (drum == 42 || drum == 46) {
+            attributes[0] = "E";
+            attributes[1] = "5";
+            attributes[2] = "x";
+        } else if (drum == 43) {
+            attributes[0] = "G";
+            attributes[1] = "4";
+            attributes[2] = null;
+        } else if (drum == 44) {
+            attributes[0] = "D";
+            attributes[1] = "4";
+            attributes[2] = "x";
+        } else if (drum == 45) {
+            attributes[0] = "A";
+            attributes[1] = "4";
+            attributes[2] = null;
+        } else if (drum == 48) {
+            attributes[0] = "D";
+            attributes[1] = "5";
+            attributes[2] = null;
+        } else if (drum == 49 || drum == 57) {
+            attributes[0] = "G";
+            attributes[1] = "5";
+            attributes[2] = "circle-x";
+        } else if (drum == 50) {
+            attributes[0] = "F";
+            attributes[1] = "5";
+            attributes[2] = null;
+        } else if (drum == 51 || drum == 59) {
+            attributes[0] = "G";
+            attributes[1] = "5";
+            attributes[2] = "x";
+        } else if (drum == 52) {
+            attributes[0] = "G";
+            attributes[1] = "5";
+            attributes[2] = "x";
+        } else if (drum == 53) {
+            attributes[0] = "G";
+            attributes[1] = "5";
+            attributes[2] = null;
+        } else if (drum == 55) {
+            attributes[0] = "G";
+            attributes[1] = "5";
+            attributes[2] = "diamond";
+        } else if (drum == 56) {
+            attributes[0] = "G";
+            attributes[1] = "5";
+            attributes[2] = "triangle";
+        } else if (drum == 58) {
+            attributes[0] = "F";
+            attributes[1] = "5";
+            attributes[2] = "diamond";
+        } else {
+            attributes[0] = "B";
+            attributes[1] = "4";
+            attributes[2] = null;
+        }
+
+        return attributes;
     }
 
     private void writeDuration(Node parent, TGDuration duration) {
