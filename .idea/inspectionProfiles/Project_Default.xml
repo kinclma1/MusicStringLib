@@ -132,12 +132,6 @@
     </inspection_tool>
     <inspection_tool class="ConfusingFloatingPointLiteral" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="ConstantMathCall" enabled="true" level="WARNING" enabled_by_default="true" />
-    <inspection_tool class="ConstantNamingConvention" enabled="true" level="WARNING" enabled_by_default="true">
-      <option name="onlyCheckImmutables" value="false" />
-      <option name="m_regex" value="[A-Z_\d]*" />
-      <option name="m_minLength" value="5" />
-      <option name="m_maxLength" value="32" />
-    </inspection_tool>
     <inspection_tool class="ConstantValueVariableUse" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="CyclicClassDependency" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="CyclicPackageDependency" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -153,16 +147,6 @@
     <inspection_tool class="DynamicRegexReplaceableByCompiledPattern" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="EnumSwitchStatementWhichMissesCases" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoreSwitchStatementsWithDefault" value="false" />
-    </inspection_tool>
-    <inspection_tool class="EnumeratedClassNamingConvention" enabled="true" level="WARNING" enabled_by_default="true">
-      <option name="m_regex" value="[A-Z][A-Za-z\d]*" />
-      <option name="m_minLength" value="8" />
-      <option name="m_maxLength" value="64" />
-    </inspection_tool>
-    <inspection_tool class="EnumeratedConstantNamingConvention" enabled="true" level="WARNING" enabled_by_default="true">
-      <option name="m_regex" value="[A-Z][A-Za-z\d]*" />
-      <option name="m_minLength" value="5" />
-      <option name="m_maxLength" value="32" />
     </inspection_tool>
     <inspection_tool class="EqualsAndHashcode" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="EqualsCalledOnEnumConstant" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -246,25 +230,10 @@
       <option name="IGNORE_NODESET_TO_BOOLEAN_VIA_STRING" value="true" />
     </inspection_tool>
     <inspection_tool class="IndexZeroUsage" enabled="false" level="WARNING" enabled_by_default="false" />
-    <inspection_tool class="InstanceMethodNamingConvention" enabled="true" level="WARNING" enabled_by_default="true">
-      <option name="m_regex" value="[a-z][A-Za-z\d]*" />
-      <option name="m_minLength" value="4" />
-      <option name="m_maxLength" value="32" />
-    </inspection_tool>
-    <inspection_tool class="InstanceVariableNamingConvention" enabled="true" level="WARNING" enabled_by_default="true">
-      <option name="m_regex" value="m_[a-z][A-Za-z\d]*" />
-      <option name="m_minLength" value="5" />
-      <option name="m_maxLength" value="32" />
-    </inspection_tool>
     <inspection_tool class="IntLiteralMayBeLongLiteral" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="IntegerDivisionInFloatingPointContext" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="IntegerMultiplicationImplicitCastToLong" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoreNonOverflowingCompileTimeConstants" value="true" />
-    </inspection_tool>
-    <inspection_tool class="InterfaceNamingConvention" enabled="true" level="WARNING" enabled_by_default="true">
-      <option name="m_regex" value="[A-Z][A-Za-z\d]*" />
-      <option name="m_minLength" value="8" />
-      <option name="m_maxLength" value="64" />
     </inspection_tool>
     <inspection_tool class="KeySetIterationMayUseEntrySet" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="LawOfDemeter" enabled="true" level="WARNING" enabled_by_default="true">
@@ -272,13 +241,6 @@
     </inspection_tool>
     <inspection_tool class="LengthOneStringInIndexOf" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="LengthOneStringsInConcatenation" enabled="true" level="WARNING" enabled_by_default="true" />
-    <inspection_tool class="LocalVariableNamingConvention" enabled="true" level="WARNING" enabled_by_default="true">
-      <option name="m_ignoreForLoopParameters" value="false" />
-      <option name="m_ignoreCatchParameters" value="false" />
-      <option name="m_regex" value="[a-z][A-Za-z\d]*" />
-      <option name="m_minLength" value="1" />
-      <option name="m_maxLength" value="20" />
-    </inspection_tool>
     <inspection_tool class="LongLiteralsEndingWithLowercaseL" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="LoopConditionNotUpdatedInsideLoop" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoreIterators" value="false" />
@@ -315,11 +277,6 @@
     <inspection_tool class="PackageVisibleField" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="PackageVisibleInnerClass" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoreEnums" value="false" />
-    </inspection_tool>
-    <inspection_tool class="ParameterNamingConvention" enabled="true" level="WARNING" enabled_by_default="true">
-      <option name="m_regex" value="[a-z][A-Za-z\d]*" />
-      <option name="m_minLength" value="1" />
-      <option name="m_maxLength" value="20" />
     </inspection_tool>
     <inspection_tool class="PointlessNullCheck" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="ProtectedField" enabled="true" level="WARNING" enabled_by_default="true" />

@@ -5,13 +5,14 @@ import org.herac.tuxguitar.song.models.TGBeat;
 import org.herac.tuxguitar.song.models.TGDuration;
 import org.herac.tuxguitar.song.models.TGMeasure;
 import org.herac.tuxguitar.song.models.TGVelocities;
-import org.herac.tuxguitar.util.TGVersion;
 
 public class TGStream {
 	
-	public static final String TG_FORMAT_NAME = ("TuxGuitar File Format");
+	public static final String TG_FORMAT_NAME = "TuxGuitar File Format";
+
+    public static final String TG_VERSION = "1.2";
 	
-	public static final String TG_FORMAT_VERSION = (TG_FORMAT_NAME + " - " + TGVersion.CURRENT.getVersion() );
+	public static final String TG_FORMAT_VERSION = (TG_FORMAT_NAME + " - " + TG_VERSION);
 	
 	public static final String TG_FORMAT_EXTENSION = (".tg");
 	

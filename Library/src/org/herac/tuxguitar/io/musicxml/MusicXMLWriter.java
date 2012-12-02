@@ -1,40 +1,23 @@
 package org.herac.tuxguitar.io.musicxml;
 
-import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Result;
-import javax.xml.transform.Source;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
 import cz.cvut.fel.kinclma1.Drum;
 import org.herac.tuxguitar.io.base.TGFileFormatException;
 import org.herac.tuxguitar.player.base.MidiInstrument;
-import org.herac.tuxguitar.song.factory.TGFactory;
 import org.herac.tuxguitar.song.managers.TGSongManager;
-import org.herac.tuxguitar.song.models.TGBeat;
-import org.herac.tuxguitar.song.models.TGDuration;
-import org.herac.tuxguitar.song.models.TGMeasure;
-import org.herac.tuxguitar.song.models.TGNote;
-import org.herac.tuxguitar.song.models.TGSong;
-import org.herac.tuxguitar.song.models.TGString;
-import org.herac.tuxguitar.song.models.TGTempo;
-import org.herac.tuxguitar.song.models.TGTimeSignature;
-import org.herac.tuxguitar.song.models.TGTrack;
-import org.herac.tuxguitar.song.models.TGDivisionType;
-import org.herac.tuxguitar.song.models.TGVoice;
+import org.herac.tuxguitar.song.models.*;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
+import org.w3c.dom.DocumentType;
 import org.w3c.dom.Node;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.OutputStream;
+import java.util.HashSet;
+import java.util.Iterator;
 
 public class MusicXMLWriter {
 
@@ -64,18 +47,10 @@ public class MusicXMLWriter {
     public void writeSong(TGSong song) throws TGFileFormatException {
         try {
             manager = new TGSongManager();
-//            TGSong newsong = song.clone(manager.getFactory());
-//            for (int i = 0; i < newsong.countTracks(); i ++) {
-//                if (newsong.getTrack(i).getChannel().getChannel() == 9) {
-//                    newsong.removeTrack(newsong.getTrack(i));
-//                }
-//            }
-//            manager.setSong(newsong);
             manager.setSong(song);
             document = newDocument();
 
-            Node node = addNode(document, "score-partwise");
-            writeHeaders(node);
+            Node node = document.getDocumentElement();
             writeSong(node);
             saveDocument();
 
@@ -84,21 +59,6 @@ public class MusicXMLWriter {
         } catch (Throwable throwable) {
             throw new TGFileFormatException("Could not write song!.", throwable);
         }
-    }
-
-    private void writeHeaders(Node parent) {
-        writeWork(parent);
-        writeIdentification(parent);
-    }
-
-    private void writeWork(Node parent) {
-        addNode(addNode(parent, "work"), "work-title", manager.getSong().getName());
-    }
-
-    private void writeIdentification(Node parent) {
-        Node identification = addNode(parent, "identification");
-        addNode(addNode(identification, "encoding"), "software", "TuxGuitar");
-        addAttribute(addNode(identification, "creator", manager.getSong().getAuthor()), "type", "composer");
     }
 
     private void writeSong(Node parent) {
@@ -116,7 +76,7 @@ public class MusicXMLWriter {
             drums = track.getChannel().getChannel() == 9;
 
             Node scoreParts = addNode(partList, "score-part");
-            addAttribute(scoreParts, "id", "P" + track.getNumber());
+            addAttribute(scoreParts, "id", drums ? "Drums" : "P" + track.getNumber());
 
             addNode(scoreParts, "part-name", drums ? "Drums" : track.getName());
             if (!drums) {
@@ -177,40 +137,19 @@ public class MusicXMLWriter {
 
     private void writeMeasureAttributes(Node parent, TGMeasure measure, TGMeasure previous) {
         boolean drums = measure.getTrack().getChannel().getChannel() == 9;
-        boolean divisionChanges = (previous == null);
-        boolean keyChanges = (previous == null || measure.getKeySignature() != previous.getKeySignature());
-        boolean clefChanges = (previous == null);
-        boolean timeSignatureChanges = (previous == null || !measure.getTimeSignature().isEqual(previous.getTimeSignature()));
-        boolean tuningChanges = (!drums && measure.getNumber() == 1);
-        if (divisionChanges || keyChanges || clefChanges || timeSignatureChanges) {
+        boolean first = previous == null;
+        boolean timeSignatureChanges = (first || !measure.getTimeSignature().isEqual(previous.getTimeSignature()));
+
+        if (timeSignatureChanges) {
             Node measureAttributes = addNode(parent, "attributes");
-            if (divisionChanges) {
+            if (first) {
                 addNode(measureAttributes, "divisions", Integer.toString(DURATION_DIVISIONS));
-            }
-            if (keyChanges) {
-                writeKeySignature(measureAttributes, measure.getKeySignature());
-            }
-            if (clefChanges) {
                 writeClef(measureAttributes, drums ? 9 : measure.getClef());
             }
+
             if (timeSignatureChanges) {
                 writeTimeSignature(measureAttributes, measure.getTimeSignature());
             }
-            if (tuningChanges) {
-                writeTuning(measureAttributes, measure.getTrack());
-            }
-        }
-    }
-
-    private void writeTuning(Node parent, TGTrack track) {
-        Node staffDetailsNode = addNode(parent, "staff-details");
-        addNode(staffDetailsNode, "staff-lines", Integer.toString(track.stringCount()));
-        for (int i = track.stringCount(); i > 0; i--) {
-            TGString string = track.getString(i);
-            Node stringNode = addNode(staffDetailsNode, "staff-tuning");
-            addAttribute(stringNode, "line", Integer.toString((track.stringCount() - string.getNumber()) + 1));
-            addNode(stringNode, "tuning-step", NOTE_NAMES[ NOTE_SHARPS[ (string.getValue() % 12)]]);
-            addNode(stringNode, "tuning-octave", Integer.toString(string.getValue() / 12));
         }
     }
 
@@ -218,16 +157,6 @@ public class MusicXMLWriter {
         Node node = addNode(parent, "time");
         addNode(node, "beats", Integer.toString(ts.getNumerator()));
         addNode(node, "beat-type", Integer.toString(ts.getDenominator().getValue()));
-    }
-
-    private void writeKeySignature(Node parent, int ks) {
-        int value = ks;
-        if (value != 0) {
-            value = ((((ks - 1) % 7) + 1) * (ks > 7 ? -1 : 1));
-        }
-        Node key = addNode(parent, "key");
-        addNode(key, "fifths", Integer.toString(value));
-        addNode(key, "mode", "major");
     }
 
     private void writeClef(Node parent, int clef) {
@@ -309,86 +238,60 @@ public class MusicXMLWriter {
     }
 
     private String[] drumNote(int drum) {
-        String[] attributes = new String[3];
         if (drum == 35 || drum == 36) {
-            attributes[0] = "F";
-            attributes[1] = "4";
-            attributes[2] = null;
-        } else if (drum == 38 || drum == 40) {
-            attributes[0] = "C";
-            attributes[1] = "5";
-            attributes[2] = null;
-        } else if (drum == 37) {
-            attributes[0] = "C";
-            attributes[1] = "5";
-            attributes[2] = "x";
-        } else if (drum == 39) {
-            attributes[0] = "C";
-            attributes[1] = "5";
-            attributes[2] = "triangle";
-        } else if (drum == 41) {
-            attributes[0] = "E";
-            attributes[1] = "4";
-            attributes[2] = null;
-        } else if (drum == 42 || drum == 46) {
-            attributes[0] = "E";
-            attributes[1] = "5";
-            attributes[2] = "x";
-        } else if (drum == 43) {
-            attributes[0] = "G";
-            attributes[1] = "4";
-            attributes[2] = null;
-        } else if (drum == 44) {
-            attributes[0] = "D";
-            attributes[1] = "4";
-            attributes[2] = "x";
-        } else if (drum == 45) {
-            attributes[0] = "A";
-            attributes[1] = "4";
-            attributes[2] = null;
-        } else if (drum == 48) {
-            attributes[0] = "D";
-            attributes[1] = "5";
-            attributes[2] = null;
-        } else if (drum == 49 || drum == 57) {
-            attributes[0] = "G";
-            attributes[1] = "5";
-            attributes[2] = "circle-x";
-        } else if (drum == 50) {
-            attributes[0] = "F";
-            attributes[1] = "5";
-            attributes[2] = null;
-        } else if (drum == 51 || drum == 59) {
-            attributes[0] = "G";
-            attributes[1] = "5";
-            attributes[2] = "x";
-        } else if (drum == 52) {
-            attributes[0] = "G";
-            attributes[1] = "5";
-            attributes[2] = "x";
-        } else if (drum == 53) {
-            attributes[0] = "G";
-            attributes[1] = "5";
-            attributes[2] = null;
-        } else if (drum == 55) {
-            attributes[0] = "G";
-            attributes[1] = "5";
-            attributes[2] = "diamond";
-        } else if (drum == 56) {
-            attributes[0] = "G";
-            attributes[1] = "5";
-            attributes[2] = "triangle";
-        } else if (drum == 58) {
-            attributes[0] = "F";
-            attributes[1] = "5";
-            attributes[2] = "diamond";
-        } else {
-            attributes[0] = "B";
-            attributes[1] = "4";
-            attributes[2] = null;
-        }
+            return new String[]{"F","4",null};
 
-        return attributes;
+        } else if (drum == 38 || drum == 40) {
+            return new String[]{"C","5",null};
+
+        } else if (drum == 37) {
+            return new String[]{"C","5","x"};
+
+        } else if (drum == 39) {
+            return new String[]{"C","5","triangle"};
+
+        } else if (drum == 41) {
+            return new String[]{"E","4",null};
+
+        } else if (drum == 42 || drum == 46) {
+            return new String[]{"E","5","x"};
+
+        } else if (drum == 43) {
+            return new String[]{"G","4",null};
+
+        } else if (drum == 44) {
+            return new String[]{"D","4","x"};
+
+        } else if (drum == 45) {
+            return new String[]{"A","4",null};
+
+        } else if (drum == 48) {
+            return new String[]{"D","5",null};
+
+        } else if (drum == 49 || drum == 57) {
+            return new String[]{"G","5","circle-x"};
+
+        } else if (drum == 50) {
+            return new String[]{"F","5",null};
+
+        } else if (drum == 51 || drum == 52 || drum == 59) {
+            return new String[]{"G","5","x"};
+
+        } else if (drum == 53) {
+            return new String[]{"G","5",null};
+
+        } else if (drum == 55) {
+            return new String[]{"G","5","diamond"};
+
+        } else if (drum == 56) {
+            return new String[]{"G","5","triangle"};
+
+        } else if (drum == 58) {
+            return new String[]{"F","5","diamond"};
+
+        } else {
+            return new String[]{"B","4",null};
+        }
     }
 
     private void writeDuration(Node parent, TGDuration duration) {
@@ -397,8 +300,6 @@ public class MusicXMLWriter {
             int value = (DURATION_VALUES[ index] * duration.getDivision().getTimes() / duration.getDivision().getEnters());
             if (duration.isDotted()) {
                 value += (value / 2);
-            } else if (duration.isDoubleDotted()) {
-                value += ((value / 4) * 3);
             }
 
             addNode(parent, "duration", Integer.toString(value));
@@ -406,15 +307,6 @@ public class MusicXMLWriter {
 
             if (duration.isDotted()) {
                 addNode(parent, "dot");
-            } else if (duration.isDoubleDotted()) {
-                addNode(parent, "dot");
-                addNode(parent, "dot");
-            }
-
-            if (!duration.getDivision().isEqual(TGDivisionType.NORMAL)) {
-                Node divisionType = addNode(parent, "time-modification");
-                addNode(divisionType, "actual-notes", Integer.toString(duration.getDivision().getEnters()));
-                addNode(divisionType, "normal-notes", Integer.toString(duration.getDivision().getTimes()));
             }
         }
     }
@@ -442,7 +334,9 @@ public class MusicXMLWriter {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
-            return builder.newDocument();
+            DocumentType type = builder.getDOMImplementation().createDocumentType("score-partwise",
+                    "-//Recordare//DTD MusicXML 3.0 Partwise//EN", "http://www.musicxml.org/dtds/partwise.dtd");
+            return builder.getDOMImplementation().createDocument("http://www.musicxml.org/xsd/MusicXML", "score-partwise", type);
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
@@ -456,6 +350,9 @@ public class MusicXMLWriter {
             Source input = new DOMSource(document);
             Result output = new StreamResult(stream);
             idTransform.setOutputProperty(OutputKeys.INDENT, "yes");
+            idTransform.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+            idTransform.setOutputProperty(OutputKeys.DOCTYPE_PUBLIC, "-//Recordare//DTD MusicXML 3.0 Partwise//EN");
+            idTransform.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, "http://www.musicxml.org/dtds/partwise.dtd");
             idTransform.transform(input, output);
         } catch (Throwable throwable) {
             throwable.printStackTrace();

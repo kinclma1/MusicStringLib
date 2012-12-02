@@ -3,6 +3,7 @@ package cz.cvut.fel.kinclma1;
 
 import cz.cvut.fel.kinclma1.io.FileExporter;
 import org.herac.tuxguitar.io.base.TGFileFormatException;
+import org.herac.tuxguitar.io.musicxml.MusicXMLReader;
 import org.herac.tuxguitar.io.tg.TGInputStream;
 import org.herac.tuxguitar.song.factory.TGFactory;
 import org.herac.tuxguitar.song.models.*;
@@ -25,9 +26,16 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        MusicStringSong ms = new MusicStringSong(new File("/home/void/project/mayhem.gp4"));
-        TGSong tgs = ms.toTGSong();
-        new FileExporter().exportSong(tgs, "/home/void/project/newmayhem.ly");
+//        MusicStringSong ms = new MusicStringSong(new File("/home/void/project/mayhem-short.tg"));
+//        TGSong tgs = ms.toTGSong();
+//        new FileExporter().exportSong(tgs, "/home/void/project/newmayhem-short.xml");
+
+        try {
+            new MusicXMLReader(new TGFactory(), new BufferedInputStream(new FileInputStream("/home/void/project/newmayhem-short.xml"))).readSong();
+        } catch (FileNotFoundException e) {
+
+        }
+
 //        MusicStringParser parser = new MusicStringParser();
 //        MusicXmlRenderer renderer = new MusicXmlRenderer();
 //        parser.addParserListener(renderer);

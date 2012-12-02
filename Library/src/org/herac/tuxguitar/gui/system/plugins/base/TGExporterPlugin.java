@@ -2,14 +2,15 @@ package org.herac.tuxguitar.gui.system.plugins.base;
 
 import org.herac.tuxguitar.gui.system.plugins.TGPluginException;
 import org.herac.tuxguitar.io.base.TGFileFormatManager;
+import org.herac.tuxguitar.io.base.TGLocalFileExporter;
 import org.herac.tuxguitar.io.base.TGRawExporter;
 
 public abstract class TGExporterPlugin extends TGPluginAdapter{
 	
 	private boolean loaded;
-	private TGRawExporter exporter;
+	private TGLocalFileExporter exporter;
 	
-	protected abstract TGRawExporter getExporter();
+	protected abstract TGLocalFileExporter getExporter();
 	
 	@Override
     public void init() throws TGPluginException {
