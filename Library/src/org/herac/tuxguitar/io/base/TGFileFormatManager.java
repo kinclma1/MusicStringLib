@@ -4,6 +4,7 @@ import org.herac.tuxguitar.io.gpx.GPXInputStream;
 import org.herac.tuxguitar.io.gtp.*;
 import org.herac.tuxguitar.io.lilypond.LilypondSongExporter;
 import org.herac.tuxguitar.io.musicxml.MusicXMLSongExporter;
+import org.herac.tuxguitar.io.musicxml.MusicXMLSongImporter;
 import org.herac.tuxguitar.io.tg.TGInputStream;
 import org.herac.tuxguitar.io.tg.TGOutputStream;
 import org.herac.tuxguitar.io.tg.TGStream;
@@ -171,6 +172,6 @@ public class TGFileFormatManager {
     }
 
     private void addDefaultImporters() {
-
+        addImporter(new MusicXMLSongImporter());
     }
 }
