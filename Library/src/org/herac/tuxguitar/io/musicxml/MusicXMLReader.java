@@ -61,7 +61,6 @@ public class MusicXMLReader {
         tones.put("B", 11);
     }
     //todo check null everywhere
-    //todo rests and twice as long measures
     public TGSong readSong() {
         DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
         docFactory.setIgnoringElementContentWhitespace(true);
@@ -86,14 +85,26 @@ public class MusicXMLReader {
         for (int i = 0; i < parts.getLength(); i ++) {
             addMeasures((Element) parts.item(i));
         }
+        List<TGTrack> tracks = new ArrayList<TGTrack>(trackMap.size());
         for (TGTrack track : trackMap.values()) {
+            tracks.add(track);
+        }
+        Collections.sort(tracks, new Comparator<TGTrack>() {
+            @Override
+            public int compare(TGTrack o1, TGTrack o2) {
+                return o1.getChannel().getChannel() - o2.getChannel().getChannel();
+            }
+        });
+        for (TGTrack track : tracks) {
+            if (!track.isPercussionTrack()) {
+                track.setName(MidiInstrument.INSTRUMENT_LIST[track.getChannel().getInstrument()].getName());
+            }
             song.addTrack(track);
         }
         TGTrack track = manager.getTrack(0);
         for (int i = 0; i < track.countMeasures(); i ++) {
             song.addMeasureHeader(track.getMeasure(i).getHeader());
         }
-        song.setName("Song");
 
         return song;
     }
@@ -108,7 +119,6 @@ public class MusicXMLReader {
 
     private void addMeasure(Element srcMeasure, TGTrack track) {
         TGMeasure measure = factory.newMeasure(factory.newHeader());
-        manager.getMeasureManager().moveOutOfBoundsBeatsToNewMeasure(measure, false);
         track.addMeasure(measure);
 
         NodeList atts = srcMeasure.getElementsByTagName("attributes");
@@ -166,6 +176,7 @@ public class MusicXMLReader {
                 stringNum ++;
             }
         }
+
         measure.addBeat(tgBeat);
     }
 

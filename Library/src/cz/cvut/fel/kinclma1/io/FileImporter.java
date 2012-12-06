@@ -35,7 +35,8 @@ public class FileImporter {
 
             if (song != null) {
                 manager.setSong(song);
-                manager.autoCompleteSilences();
+                //todo test if needed
+//                manager.autoCompleteSilences();
                 manager.orderBeats();
             }
         } catch (FileNotFoundException ex) {
