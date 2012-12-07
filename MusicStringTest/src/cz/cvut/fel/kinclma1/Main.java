@@ -27,17 +27,17 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-//        MusicStringSong ms = new MusicStringSong(new File("/home/void/project/test.tg"));
-//        TGSong tgs = ms.toTGSong();
-//        new FileExporter().exportSong(tgs, "/home/void/project/newtest.xml");
+        MusicStringSong ms = new MusicStringSong(new File("/home/void/project/AcesHigh.gp3"));
+        TGSong tgs = ms.toTGSong();
+        new FileExporter().exportSong(tgs, "/home/void/project/AcesHigh.tg");
 
 //        try {
 //            new  MusicXMLReader(new TGFactory(), new BufferedInputStream(new FileInputStream("/home/void/project/newmayhem-short.xml"))).readSong();
 //        } catch (FileNotFoundException e) {
 //
 //        }
-        TGSong song = new FileImporter().importFile("/home/void/project/newmayhem-short.xml");
-        new FileExporter().exportSong(song, "/home/void/project/newmayhem-short.tg");
+//        TGSong song = new FileImporter().importFile("/home/void/project/newtest-debug.xml");
+//        new FileExporter().exportSong(song, "/home/void/project/newtest-debug.tg");
 //        MusicStringParser parser = new MusicStringParser();
 //        MusicXmlRenderer renderer = new MusicXmlRenderer();
 //        parser.addParserListener(renderer);

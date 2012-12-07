@@ -157,8 +157,6 @@ public class TGFileFormatManager {
     private void addDefaultStreams() {
         addInputStream(new TGInputStream());
         addOutputStream(new TGOutputStream());
-        addInputStream(new GP1InputStream(new GTPSettings()));
-        addInputStream(new GP2InputStream(new GTPSettings()));
         addInputStream(new GP3InputStream(new GTPSettings()));
         addInputStream(new GP4InputStream(new GTPSettings()));
         addInputStream(new GP5InputStream(new GTPSettings()));

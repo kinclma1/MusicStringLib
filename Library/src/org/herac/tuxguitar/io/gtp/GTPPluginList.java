@@ -36,18 +36,6 @@ public class GTPPluginList extends TGPluginList {
 				return new GP3InputStream(GTPSettingsUtil.instance().getSettings());
 			}
 		});
-		plugins.add(new TGInputStreamPlugin() {
-			@Override
-            protected TGInputStreamBase getInputStream() {
-				return new GP2InputStream(GTPSettingsUtil.instance().getSettings());
-			}
-		});
-		plugins.add(new TGInputStreamPlugin() {
-			@Override
-            protected TGInputStreamBase getInputStream() {
-				return new GP1InputStream(GTPSettingsUtil.instance().getSettings());
-			}
-		});
 		plugins.add(new TGOutputStreamPlugin() {
 			@Override
             protected TGOutputStreamBase getOutputStream() {
