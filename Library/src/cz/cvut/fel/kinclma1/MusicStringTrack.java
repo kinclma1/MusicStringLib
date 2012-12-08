@@ -39,7 +39,6 @@ public class MusicStringTrack {
         private final int MEASURE_REP_ALT_CLOSE = 4;
         private final int MEASURE_REP_OPEN_CLOSE = 5;
 
-        //todo test on aces high
         RepetitionTracker() {
             repeatBeginning = new LinkedList<TGMeasure>();
             repeatAlternatives = new LinkedList[8];
@@ -83,6 +82,7 @@ public class MusicStringTrack {
                 } else if (measureType == MEASURE_REPEAT_CLOSE) {
                     state = REPETITION_CLOSED;
                     addMeasure(measure);
+                    addBeginning(measure);
                     addBeginningNTimes(measure.getRepeatClose());
                 } else if (measureType == MEASURE_REPEAT_ALT) {
                     state = REPETITION_ALT;
@@ -190,6 +190,7 @@ public class MusicStringTrack {
                 repeatAlternatives[i].clear();
             }
             alternativeIndexes.clear();
+            firstAlt = 0;
         }
 
         private void addBeginning(TGMeasure measure) {
@@ -217,14 +218,14 @@ public class MusicStringTrack {
         }
 
         private void addAlternativeAndBeginning() {
-            for (; firstAlt < 8 && repeatAlternatives[firstAlt].size() > 0; firstAlt ++) {
+            for (; firstAlt < 8 && !repeatAlternatives[firstAlt].isEmpty(); firstAlt ++) {
                 addMeasures(repeatAlternatives[firstAlt]);
                 addMeasures(repeatBeginning);
             }
         }
 
         private void addAlternative() {
-            for (; firstAlt < 8 && repeatAlternatives[firstAlt].size() > 0; firstAlt ++) {
+            for (; firstAlt < 8 && !repeatAlternatives[firstAlt].isEmpty(); firstAlt ++) {
                 addMeasures(repeatAlternatives[firstAlt]);
             }
         }
@@ -257,6 +258,7 @@ public class MusicStringTrack {
     }
 
     private void addMeasure(TGMeasure measure) {
+        if (measure.getTrack().getNumber() == 1) System.out.println(measure.getNumber());
         measures.add(new MusicStringMeasure(measure,tempoTracker,drumTrack));
     }
 

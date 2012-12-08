@@ -27,9 +27,9 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        MusicStringSong ms = new MusicStringSong(new File("/home/void/project/altend1.tg"));
+        MusicStringSong ms = new MusicStringSong(new File("/home/void/project/AcesHigh.gp3"));
         TGSong tgs = ms.toTGSong();
-        new FileExporter().exportSong(tgs, "/home/void/project/newaltend1.tg");
+        new FileExporter().exportSong(tgs, "/home/void/project/AcesHigh.tg");
 
 //        try {
 //            new  MusicXMLReader(new TGFactory(), new BufferedInputStream(new FileInputStream("/home/void/project/newmayhem-short.xml"))).readSong();
