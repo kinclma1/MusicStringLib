@@ -20,8 +20,10 @@ public class MusicStringTrack {
     private class RepetitionTracker {
         private LinkedList<TGMeasure> repeatBeginning;
         private LinkedList<TGMeasure>[] repeatAlternatives;
+        private HashSet<Integer> alternativeIndexes;
         private int state;
         private int repetitionAlt;
+        private int firstAlt;
 
         //States
         private final int REPETITION_CLOSED = 0;
@@ -37,18 +39,21 @@ public class MusicStringTrack {
         private final int MEASURE_REP_ALT_CLOSE = 4;
         private final int MEASURE_REP_OPEN_CLOSE = 5;
 
-        //todo something rotting here
+        //todo test on aces high
         RepetitionTracker() {
             repeatBeginning = new LinkedList<TGMeasure>();
             repeatAlternatives = new LinkedList[8];
             for (int i = 0; i < repeatAlternatives.length; i ++) {
                 repeatAlternatives[i] = new LinkedList<TGMeasure>();
             }
+            alternativeIndexes = new HashSet<Integer>();
             state = REPETITION_OPEN;
+            firstAlt = 0;
         }
 
         void processMeasure(TGMeasure measure) {
             int measureType = getMeasureType(measure);
+            boolean lastMeasure = measure.getTrack().getMeasure(measure.getTrack().countMeasures() - 1) == measure;
             if (state == REPETITION_CLOSED) {
                 if (measureType == MEASURE_REPEAT_OPEN) {
                     state = REPETITION_OPEN;
@@ -85,6 +90,7 @@ public class MusicStringTrack {
                 } else if (measureType == MEASURE_REP_ALT_CLOSE) {
                     state = WAITING_FOR_ALT;
                     addToAlternatives(measure);
+                    addAlternativeAndBeginning();
                 } else if (measureType == MEASURE_REP_OPEN_CLOSE) {
                     state = REPETITION_CLOSED;
                     addMeasure(measure);
@@ -96,6 +102,9 @@ public class MusicStringTrack {
                 if (measureType == MEASURE_ORDINARY) {
                     state = REPETITION_ALT;
                     addToAlternatives(measure);
+                    if (lastMeasure) {
+                        addAlternative();
+                    }
                 } else if (measureType == MEASURE_REPEAT_OPEN) {
                     state = REPETITION_OPEN;
                     addAlternative();
@@ -105,6 +114,7 @@ public class MusicStringTrack {
                 } else if (measureType == MEASURE_REPEAT_CLOSE) {
                     state = WAITING_FOR_ALT;
                     addToAlternatives(measure);
+                    addAlternativeAndBeginning();
                 } else if (measureType == MEASURE_REPEAT_ALT) {
                     state = REPETITION_CLOSED;
                     addAlternative();
@@ -179,6 +189,7 @@ public class MusicStringTrack {
             for (int i = 0; i < repeatAlternatives.length; i ++) {
                 repeatAlternatives[i].clear();
             }
+            alternativeIndexes.clear();
         }
 
         private void addBeginning(TGMeasure measure) {
@@ -186,10 +197,15 @@ public class MusicStringTrack {
         }
 
         private void addToAlternatives(TGMeasure measure) {
-            repetitionAlt = measure.getHeader().getRepeatAlternative();
+            int repAlt = measure.getHeader().getRepeatAlternative();
+            if (repAlt > 0) {
+                repetitionAlt = repAlt;
+                alternativeIndexes.clear();
+            }
             for (int i = 0; i < 8; i ++) {
                 if ((repetitionAlt & 1 << i) > 0) {
                     repeatAlternatives[i].add(measure);
+                    alternativeIndexes.add(i);
                 }
             }
         }
@@ -201,15 +217,15 @@ public class MusicStringTrack {
         }
 
         private void addAlternativeAndBeginning() {
-            for (int i = 0; i < 8 && repeatAlternatives[i].size() > 0; i ++) {
-                addMeasures(repeatAlternatives[i]);
+            for (; firstAlt < 8 && repeatAlternatives[firstAlt].size() > 0; firstAlt ++) {
+                addMeasures(repeatAlternatives[firstAlt]);
                 addMeasures(repeatBeginning);
             }
         }
 
         private void addAlternative() {
-            for (int i = 0; i < 8 && repeatAlternatives[i].size() > 0; i ++) {
-                addMeasures(repeatAlternatives[i]);
+            for (; firstAlt < 8 && repeatAlternatives[firstAlt].size() > 0; firstAlt ++) {
+                addMeasures(repeatAlternatives[firstAlt]);
             }
         }
     }
