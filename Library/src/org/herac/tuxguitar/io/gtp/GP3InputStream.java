@@ -32,8 +32,7 @@ import org.herac.tuxguitar.song.models.effects.TGEffectTremoloBar;
 
 /**
  * @author julian
- * 
- * TODO To change the template for this generated type comment go to Window - Preferences - Java - Code Style - Code Templates
+ *
  */
 public class GP3InputStream extends GTPInputStream {
 	private static final String SUPPORTED_VERSIONS[] = new String[]{ "FICHIER GUITAR PRO v3.00" };
