@@ -28,6 +28,7 @@ public class Main {
      */
     public static void main(String[] args) {
         MusicStringSong ms = new MusicStringSong(new File("/home/void/project/AcesHigh.gp3"));
+        ms.getPossibleNotes();
         TGSong tgs = ms.toTGSong();
         new FileExporter().exportSong(tgs, "/home/void/project/AcesHigh.tg");
 

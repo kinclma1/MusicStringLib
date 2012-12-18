@@ -175,6 +175,57 @@ public class MusicStringSong {
         return tracks.get(id);
     }
 
+    public MusicStringTrack getPossibleNotes() {
+        int shortest = getShortestNote().toInteger();
+        MusicStringTrack[] trackarr = getToneTracks();
+
+        //note length / shortest length
+        int[] durationCoef = new int[trackarr.length];
+        for (int i = 0; i < durationCoef.length; durationCoef[i ++] = 0);
+
+        //short notes
+        StringBuilder trackString = new StringBuilder();
+
+        //iterate over measures
+        for (int measureNum = 0; measureNum < trackarr[0].getMeasures().size(); measureNum ++) {
+            MusicStringMeasure[] measures = new MusicStringMeasure[trackarr.length];
+            Iterator<MusicStringBeat>[] beats = new Iterator[trackarr.length];
+
+            //iterate over same measures on different tracks
+            for (int trackNum = 0; trackNum < measures.length; trackNum ++) {
+                measures[trackNum] = trackarr[trackNum].getMeasures().get(measureNum);
+                beats[trackNum] = measures[trackNum].getBeats().iterator();
+
+                //while some remaining short notes to write
+                while (beats[0].hasNext() || durationCoef[0] > 0) {
+
+                }
+            }
+        }
+        return null;
+    }
+
+    private MusicStringTrack[] getToneTracks() {
+        ArrayList<MusicStringTrack> toneTracks = new ArrayList<MusicStringTrack>(tracks.size());
+        for (String trackId : getTrackIds()) {
+            if (!trackId.contains("V9")) {
+                toneTracks.add(tracks.get(trackId));
+            }
+        }
+        return toneTracks.toArray(new MusicStringTrack[toneTracks.size()]);
+    }
+
+    private Duration getShortestNote() {
+        Duration shortest = Duration.WHOLE;
+        for (MusicStringTrack track : tracks.values()) {
+            Duration trackShortest = track.getShortestNote();
+            if (trackShortest.toInteger() > shortest.toInteger()) {
+                shortest = trackShortest;
+            }
+        }
+        return shortest;
+    }
+
     private void create(List<TrackCreator> tcs) {
         Collection<Future<MusicStringTrack>> results;
         try {

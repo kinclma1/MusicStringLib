@@ -258,7 +258,6 @@ public class MusicStringTrack {
     }
 
     private void addMeasure(TGMeasure measure) {
-        if (measure.getTrack().getNumber() == 1) System.out.println(measure.getNumber());
         measures.add(new MusicStringMeasure(measure,tempoTracker,drumTrack));
     }
 
@@ -303,8 +302,19 @@ public class MusicStringTrack {
         return id;
     }
 
-    public List<MusicStringMeasure> getMeasures() {
+    List<MusicStringMeasure> getMeasures() {
         return new ArrayList<MusicStringMeasure>(measures);
+    }
+
+    Duration getShortestNote() {
+        Duration shortest = Duration.WHOLE;
+        for (MusicStringMeasure measure : measures) {
+            Duration measureShortest = measure.getShortestNote();
+            if (measureShortest.toInteger() > shortest.toInteger()) {
+                shortest = measureShortest;
+            }
+        }
+        return shortest;
     }
 
     @Override

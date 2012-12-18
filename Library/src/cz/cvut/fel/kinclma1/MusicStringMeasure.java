@@ -45,6 +45,10 @@ class MusicStringMeasure {
         }
     }
 
+    List<MusicStringBeat> getBeats() {
+        return beats;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder(tempoIndicator());
@@ -96,6 +100,17 @@ class MusicStringMeasure {
             }
         }
         return ltms;
+    }
+
+    Duration getShortestNote() {
+        Duration shortest = Duration.WHOLE;
+        for (MusicStringBeat beat : beats) {
+            Duration beatShortest = beat.getShortestNote();
+            if (beatShortest.toInteger() > shortest.toInteger()) {
+                shortest = beatShortest;
+            }
+        }
+        return shortest;
     }
 
     private String tempoIndicator() {

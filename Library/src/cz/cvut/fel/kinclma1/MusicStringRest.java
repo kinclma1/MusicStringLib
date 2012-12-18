@@ -15,7 +15,6 @@ class MusicStringRest {
 
     public MusicStringRest(TGVoice tgVoice) {
         duration = new MusicStringDuration(tgVoice.getDuration());
-//        System.out.println(toString());
     }
 
     public MusicStringRest(String strRest) {
@@ -36,5 +35,9 @@ class MusicStringRest {
 
     public int getDurationDiv128() {
         return duration.toIntegerDiv128();
+    }
+
+    Duration shortestDuration() {
+        return duration.shortest();
     }
 }

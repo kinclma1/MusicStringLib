@@ -69,4 +69,8 @@ class MusicStringNote implements Comparable<MusicStringNote> {
     public int compareTo(MusicStringNote note) {
         return value() - note.value();
     }
+
+    Duration shortestDuration() {
+        return duration.shortest();
+    }
 }

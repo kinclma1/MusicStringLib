@@ -64,4 +64,17 @@ class MusicStringDuration {
         int tmp = 128 / toInteger();
         return dotted ? tmp + tmp / 2 : tmp;
     }
+
+    Duration shortest() {
+        return dotted ? shorter() : duration;
+    }
+
+    private Duration shorter() {
+        return duration == Duration.WHOLE ? Duration.HALF :
+               duration == Duration.HALF ? Duration.QUARTER :
+               duration == Duration.QUARTER ? Duration.EIGHTH :
+               duration == Duration.EIGHTH ? Duration.SIXTEENTH :
+               duration == Duration.SIXTEENTH ? Duration.THIRTY_SECOND :
+               duration == Duration.THIRTY_SECOND ? Duration.SIXTY_FOURTH : Duration.ONE_TWENTY_EIGHTH;
+    }
 }
