@@ -1,8 +1,7 @@
 package cz.cvut.fel.kinclma1;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.*;
+import java.util.concurrent.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,90 +12,134 @@ import java.util.LinkedList;
  */
 class HarmonyDetector {
 
-    private MusicStringSong song;
-    private MusicStringTrack[] toneTracks;
-    private Duration shortestNote;
-    private int shortestValue;
-    private int trackCount;
-    private LinkedList<String>[] newTracks;
-    private StringBuilder trackString;
+    private class TrackShortestNoteFinder implements Callable<MusicStringDuration> {
 
-    HarmonyDetector(MusicStringSong song) {
-        this.song = song;
-        this.toneTracks = getToneTracks();
-        this.shortestNote = getShortestNote();
-        this.shortestValue = shortestNote.toInteger();
-        this.trackCount = toneTracks.length;
-        trackString = new StringBuilder();
-        this.newTracks = new LinkedList[trackCount];
-        for (int i = 0; i < trackCount; i ++) {
-            newTracks[i] = new LinkedList<String>();
+        private MusicStringTrack track;
+
+        public TrackShortestNoteFinder(MusicStringTrack track) {
+            this.track = track;
+        }
+
+        @Override
+        public MusicStringDuration call() throws Exception {
+            return track.getShortestNote();
         }
     }
 
-    private MusicStringTrack[] getToneTracks() {
+    private class TrackNoteSplitter implements Callable<FlatTrack> {
+
+        private MusicStringTrack track;
+        private FlatTrack flatTrack;
+
+        public TrackNoteSplitter(MusicStringTrack track) {
+            this.track = track;
+            this.flatTrack = new FlatTrack(shortestNote);
+        }
+
+        @Override
+        public FlatTrack call() throws Exception {
+            Iterator<MusicStringMeasure> measureIterator = track.getMeasures().iterator();
+
+            while (measureIterator.hasNext()) {
+                processMeasure(measureIterator.next());
+                if (measureIterator.hasNext()) {
+                    flatTrack.addMeasureDelimiter();
+                }
+            }
+
+            return flatTrack;
+        }
+
+        private void processMeasure(MusicStringMeasure measure) {
+            Iterator<MusicStringBeat> beats;
+            int durationCoef = 0;
+
+            beats = measure.getBeats().iterator();
+
+            //while some remaining short notes to write
+            while (beats.hasNext()) {
+                MusicStringBeat beat = beats.next();
+                durationCoef = beat.getDurationDiv128() / shortestNote.toIntegerDiv128();
+                HashSet<String> toneSet = beat.getToneSet();
+                while (durationCoef > 0) {
+                    flatTrack.addToneSet(new HashSet<String>(toneSet));
+                    durationCoef --;
+                }
+            }
+        }
+    }
+
+    private ArrayList<MusicStringTrack> toneTracks;
+    private MusicStringDuration shortestNote;
+    private int trackCount;
+    private ArrayList<FlatTrack> newTracks;
+    private StringBuilder trackString;
+    private ExecutorService exec;
+
+    HarmonyDetector(MusicStringSong song) {
+        exec = Parallellization.executorService();
+        this.toneTracks = getToneTracks(song);
+        this.shortestNote = getShortestNote();
+        this.trackCount = toneTracks.size();
+        trackString = new StringBuilder();
+        newTracks = new ArrayList<FlatTrack>(trackCount);
+    }
+
+    private ArrayList<MusicStringTrack> getToneTracks(MusicStringSong song) {
         ArrayList<MusicStringTrack> toneTracks = new ArrayList<MusicStringTrack>(song.getTrackIds().size());
         for (String trackId : song.getTrackIds()) {
             if (!trackId.contains("V9")) {
                 toneTracks.add(song.getTrack(trackId));
             }
         }
-        return toneTracks.toArray(new MusicStringTrack[toneTracks.size()]);
+        return toneTracks;
     }
 
-    private Duration getShortestNote() {
-        Duration shortest = Duration.WHOLE;
-        MusicStringTrack track;
-        for (int i = 0; i < toneTracks.length; i ++) {
-            track = toneTracks[i];
-            Duration trackShortest = track.getShortestNote();
-            if (trackShortest.toInteger() > shortest.toInteger()) {
-                shortest = trackShortest;
+    private MusicStringDuration getShortestNote() {
+        MusicStringDuration shortest = new MusicStringDuration(Duration.WHOLE.toString());
+        ArrayList<TrackShortestNoteFinder> finders = new ArrayList<TrackShortestNoteFinder>(trackCount);
+        for (MusicStringTrack track : toneTracks) {
+            finders.add(new TrackShortestNoteFinder(track));
+        }
+        try {
+            List<Future<MusicStringDuration>> results = exec.invokeAll(finders);
+            for (Future<MusicStringDuration> result : results) {
+                MusicStringDuration trackShortest = result.get();
+                if (trackShortest.toInteger() > shortest.toInteger()) {
+                    shortest = trackShortest;
+                }
             }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
         return shortest;
     }
 
-    MusicStringTrack detectHarmony() {
-
-        Iterator<MusicStringMeasure>[] measureIterators = new Iterator[trackCount];
-        for (int i = 0; i < trackCount; i ++) {
-            measureIterators[i] = toneTracks[i].getMeasures().iterator();
+    FlatTrack detectHarmony() {
+        ArrayList<TrackNoteSplitter> splitters = new ArrayList<TrackNoteSplitter>(trackCount);
+        for (MusicStringTrack track : toneTracks) {
+            splitters.add(new TrackNoteSplitter(track));
+        }
+        try {
+            List<Future<FlatTrack>> results = exec.invokeAll(splitters);
+            for (Future<FlatTrack> result : results) {
+                newTracks.add(result.get());
+            }
+            exec.shutdown();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
 
-        //iterate over measures
-        while (measureIterators[0].hasNext()){
-            processMeasureThroughTracks(measureIterators);
-        }
-
+        //todo merge newTracks to a single FlatTrack
         //todo merge newTracks to stringbuilder
-        //todo fuck arrays do one by one parallellized
-        //todo create class musicstringtracknooctaves
         //todo in musicstringtrack setdefaultoctave if none
         //todo instrument defined notes -- not necessary
 
         return null;
 
-    }
-
-    private void processMeasureThroughTracks(Iterator<MusicStringMeasure>[] measureIterators) {
-        MusicStringMeasure[] measures = new MusicStringMeasure[trackCount];
-        Iterator<MusicStringBeat> beats;
-        int durationCoef = 0;
-
-        //iterate over same measures on different tracks
-        for (int trackNum = 0; trackNum < trackCount; trackNum ++) {
-            measures[trackNum] = measureIterators[trackNum].next();
-            beats = measures[trackNum].getBeats().iterator();
-
-            //while some remaining short notes to write
-            while (beats.hasNext()) {
-                MusicStringBeat beat = beats.next();
-                while (durationCoef > 0) {
-                    //todo to non octaved, non duration string
-                    newTracks[trackNum].add(beat.toString());
-                }
-            }
-        }
     }
 }

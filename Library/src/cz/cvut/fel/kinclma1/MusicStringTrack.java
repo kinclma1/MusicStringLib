@@ -306,10 +306,10 @@ public class MusicStringTrack {
         return new ArrayList<MusicStringMeasure>(measures);
     }
 
-    Duration getShortestNote() {
-        Duration shortest = Duration.WHOLE;
+    MusicStringDuration getShortestNote() {
+        MusicStringDuration shortest = new MusicStringDuration(Duration.WHOLE.toString());
         for (MusicStringMeasure measure : measures) {
-            Duration measureShortest = measure.getShortestNote();
+            MusicStringDuration measureShortest = measure.getShortestNote();
             if (measureShortest.toInteger() > shortest.toInteger()) {
                 shortest = measureShortest;
             }

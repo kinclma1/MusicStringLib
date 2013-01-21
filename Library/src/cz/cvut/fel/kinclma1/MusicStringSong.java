@@ -103,13 +103,13 @@ public class MusicStringSong {
 
     private MusicStringSong() {
         tracks = new HashMap<String, MusicStringTrack>();
-        initExec();
+        exec = Parallellization.executorService();
     }
 
-    private void initExec() {
-        int cpus = Runtime.getRuntime().availableProcessors();
-        exec = Executors.newFixedThreadPool(cpus > 0 ? cpus < 5 ? cpus : 4 : 1);
-    }
+//    private void initExec() {
+//        int cpus = Runtime.getRuntime().availableProcessors();
+//        exec = Executors.newFixedThreadPool(cpus > 0 ? cpus < 5 ? cpus : 4 : 1);
+//    }
 
     /**
      * Returns a music String containing all tracks of the song
@@ -135,7 +135,7 @@ public class MusicStringSong {
 
         Collection<Future<TGTrack>> results;
         try {
-            initExec();
+            exec = Parallellization.executorService();
             results = exec.invokeAll(tcs);
             int i = 0;
             for (Future<TGTrack> result : results) {
@@ -176,7 +176,7 @@ public class MusicStringSong {
     }
 
     public MusicStringTrack getPossibleNotes() {
-
+        new HarmonyDetector(this).detectHarmony();
         return null;
     }
 

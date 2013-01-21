@@ -3,10 +3,7 @@ package cz.cvut.fel.kinclma1;
 import org.herac.tuxguitar.song.factory.TGFactory;
 import org.herac.tuxguitar.song.models.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -145,7 +142,19 @@ class MusicStringBeat {
         return notes == null ? 0 : notes.size();
     }
 
-    Duration getShortestNote() {
+    MusicStringDuration getShortestNote() {
         return rest == null ? notes.get(0).shortestDuration() : rest.shortestDuration();
+    }
+
+    HashSet<String> getToneSet() {
+        HashSet<String> toneSet = new HashSet<String>();
+        if (rest == null) {
+            for (MusicStringNote note : notes) {
+                toneSet.add(note.getTone());
+            }
+        } else {
+            toneSet.add("R");
+        }
+        return toneSet;
     }
 }

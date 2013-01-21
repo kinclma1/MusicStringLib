@@ -70,7 +70,11 @@ class MusicStringNote implements Comparable<MusicStringNote> {
         return value() - note.value();
     }
 
-    Duration shortestDuration() {
+    MusicStringDuration shortestDuration() {
         return duration.shortest();
+    }
+
+    String getTone() {
+        return tone.relativeTone();
     }
 }

@@ -65,8 +65,8 @@ class MusicStringDuration {
         return dotted ? tmp + tmp / 2 : tmp;
     }
 
-    Duration shortest() {
-        return dotted ? shorter() : duration;
+    MusicStringDuration shortest() {
+        return dotted ? new MusicStringDuration(shorter().toString()) : this;
     }
 
     private Duration shorter() {

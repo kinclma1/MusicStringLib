@@ -37,7 +37,7 @@ class MusicStringRest {
         return duration.toIntegerDiv128();
     }
 
-    Duration shortestDuration() {
+    MusicStringDuration shortestDuration() {
         return duration.shortest();
     }
 }

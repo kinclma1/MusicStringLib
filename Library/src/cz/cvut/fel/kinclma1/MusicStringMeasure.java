@@ -102,10 +102,10 @@ class MusicStringMeasure {
         return ltms;
     }
 
-    Duration getShortestNote() {
-        Duration shortest = Duration.WHOLE;
+    MusicStringDuration getShortestNote() {
+        MusicStringDuration shortest = new MusicStringDuration(Duration.WHOLE.toString());
         for (MusicStringBeat beat : beats) {
-            Duration beatShortest = beat.getShortestNote();
+            MusicStringDuration beatShortest = beat.getShortestNote();
             if (beatShortest.toInteger() > shortest.toInteger()) {
                 shortest = beatShortest;
             }

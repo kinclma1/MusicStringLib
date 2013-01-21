@@ -102,4 +102,8 @@ public class MusicStringTone {
     public int toInteger() {
         return octave * 12 + tone.toInteger();
     }
+
+    String relativeTone() {
+        return tone.toString();
+    }
 }
