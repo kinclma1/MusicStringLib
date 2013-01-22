@@ -27,10 +27,10 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        MusicStringSong ms = new MusicStringSong(new File("/home/void/project/AcesHigh.gp3"));
+        MusicStringSong ms = new MusicStringSong(new File("/home/void/project/test.tg"));
         ms.getPossibleNotes();
         TGSong tgs = ms.toTGSong();
-        new FileExporter().exportSong(tgs, "/home/void/project/AcesHigh.tg");
+        new FileExporter().exportSong(tgs, "/home/void/project/newtest.tg");
 
 //        try {
 //            new  MusicXMLReader(new TGFactory(), new BufferedInputStream(new FileInputStream("/home/void/project/newmayhem-short.xml"))).readSong();

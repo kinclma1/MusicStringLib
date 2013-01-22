@@ -1,6 +1,7 @@
 package cz.cvut.fel.kinclma1;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
@@ -29,5 +30,31 @@ class FlatTrack {
         tones.add(set);
     }
 
+    Iterator<HashSet<String>> getIterator() {
+        return tones.iterator();
+    }
+
     //todo tostring
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        Iterator<String> iterator;
+        String currTone;
+        for (HashSet<String> beat : tones) {
+            iterator = beat.iterator();
+            while (iterator.hasNext()) {
+                currTone = iterator.next();
+                sb.append(currTone);
+                if (!currTone.equals("|")) {
+                    sb.append(duration.toString());
+                }
+                if (iterator.hasNext()) {
+                    sb.append("+");
+                }
+            }
+            sb.append(" ");
+        }
+
+        return sb.toString();
+    }
 }

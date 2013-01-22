@@ -176,7 +176,7 @@ public class MusicStringSong {
     }
 
     public MusicStringTrack getPossibleNotes() {
-        new HarmonyDetector(this).detectHarmony();
+        System.out.println(new HarmonyDetector(this).detectHarmony());
         return null;
     }
 

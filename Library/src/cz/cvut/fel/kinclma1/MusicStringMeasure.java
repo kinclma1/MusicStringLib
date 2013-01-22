@@ -26,7 +26,7 @@ class MusicStringMeasure {
         for (TGBeat tgBeat : tgMeasure.getBeats()) {
             beats.add(new MusicStringBeat(tgBeat, drumTrack));
         }
-
+        supplyRests(tgMeasure.getTimeSignature(), drumTrack);
     }
 
     public MusicStringMeasure(List<String> measure, TempoTracker tempoTracker, boolean drumTrack) {
@@ -122,5 +122,22 @@ class MusicStringMeasure {
         sb.append(Integer.toString(tempo));
         sb.append(" ");
         return sb.toString();
+    }
+
+    private void supplyRests(TGTimeSignature ts, boolean drumTrack) {
+        int beatsDuration = 0;
+        for (MusicStringBeat beat : beats) {
+            beatsDuration += beat.getDurationDiv128();
+        }
+        int measureDuration = (128 / ts.getDenominator().getValue()) * ts.getNumerator();
+        int remaining = measureDuration - beatsDuration;
+        if (remaining > 0) {
+            for (Duration d : Duration.values()) {
+                while (128 / d.toInteger() <= remaining) {
+                    beats.add(new MusicStringBeat("R" + d.toString(), drumTrack));
+                    remaining -= 128 / d.toInteger();
+                }
+            }
+        }
     }
 }

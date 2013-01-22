@@ -72,7 +72,6 @@ class HarmonyDetector {
     private ArrayList<MusicStringTrack> toneTracks;
     private MusicStringDuration shortestNote;
     private int trackCount;
-    private ArrayList<FlatTrack> newTracks;
     private StringBuilder trackString;
     private ExecutorService exec;
 
@@ -82,7 +81,6 @@ class HarmonyDetector {
         this.shortestNote = getShortestNote();
         this.trackCount = toneTracks.size();
         trackString = new StringBuilder();
-        newTracks = new ArrayList<FlatTrack>(trackCount);
     }
 
     private ArrayList<MusicStringTrack> getToneTracks(MusicStringSong song) {
@@ -122,6 +120,7 @@ class HarmonyDetector {
         for (MusicStringTrack track : toneTracks) {
             splitters.add(new TrackNoteSplitter(track));
         }
+        ArrayList<FlatTrack> newTracks = new ArrayList<FlatTrack>(trackCount);
         try {
             List<Future<FlatTrack>> results = exec.invokeAll(splitters);
             for (Future<FlatTrack> result : results) {
@@ -134,12 +133,34 @@ class HarmonyDetector {
             e.printStackTrace();
         }
 
-        //todo merge newTracks to a single FlatTrack
+        FlatTrack newTrack = mergeTracks(newTracks);
+
         //todo merge newTracks to stringbuilder
         //todo in musicstringtrack setdefaultoctave if none
         //todo instrument defined notes -- not necessary
 
-        return null;
+        return newTrack;
 
+    }
+
+    private FlatTrack mergeTracks(ArrayList<FlatTrack> newTracks) {
+        FlatTrack track = new FlatTrack(shortestNote);
+        ArrayList<Iterator<HashSet<String>>> iterators = new ArrayList<Iterator<HashSet<String>>>(trackCount);
+        for (FlatTrack flatTrack : newTracks) {
+            iterators.add(flatTrack.getIterator());
+        }
+        HashSet<String> currentBeat;
+        while (iterators.get(0).hasNext()) {
+            currentBeat = new HashSet<String>();
+            for (Iterator<HashSet<String>> iterator : iterators) {
+                currentBeat.addAll(iterator.next());
+            }
+            if (currentBeat.size() > 1 && currentBeat.contains("R")) {
+                currentBeat.remove("R");
+            }
+            track.addToneSet(currentBeat);
+        }
+
+        return track;
     }
 }

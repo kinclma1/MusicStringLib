@@ -21,6 +21,10 @@ class MusicStringRest {
         duration = new MusicStringDuration(strRest.substring(1));
     }
 
+    public MusicStringRest(MusicStringDuration duration) {
+        this.duration = duration;
+    }
+
     public TGVoice toTGVoice(TGVoice voice) {
         voice.getDuration().setValue(duration.toInteger());
         voice.getDuration().setDotted(duration.isDotted());
