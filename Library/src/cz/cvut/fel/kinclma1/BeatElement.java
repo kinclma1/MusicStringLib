@@ -13,6 +13,22 @@ public class BeatElement {
     //todo BeatContents encapsulating a list of beat elements, later maybe stick duration in it and remove element
     protected MusicStringDuration duration;
 
+    protected BeatElement() {
+
+    }
+
+    public BeatElement(TGVoice tgVoice) {
+        duration = new MusicStringDuration(tgVoice.getDuration());
+    }
+
+    public BeatElement(String strRest) {
+        duration = new MusicStringDuration(strRest.substring(1));
+    }
+
+    public BeatElement(MusicStringDuration duration) {
+        this.duration = duration;
+    }
+
     public void handleTGVoice(TGVoice voice) {
         voice.getDuration().setValue(duration.toInteger());
         voice.getDuration().setDotted(duration.isDotted());
@@ -25,5 +41,10 @@ public class BeatElement {
 
     MusicStringDuration shortestDuration() {
         return duration.shortest();
+    }
+
+    @Override
+    public String toString() {
+        return duration.toString();
     }
 }

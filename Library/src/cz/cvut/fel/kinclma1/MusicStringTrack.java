@@ -159,13 +159,13 @@ public class MusicStringTrack {
 
     private ArrayList<TGString> initStrings(TGFactory factory) {
         int[] ltms = getLowestToneAndMaxTones();
-        if (ltms[0] >= new MusicStringTone("E3").toInteger() && ltms[1] <= 6) {
+        if (ltms[0] >= new MusicStringTone("E3").toInt() && ltms[1] <= 6) {
             return createStrings(factory, new String[]{"E5", "B4", "G4", "D4", "A3", "E3"});
-        } else if (ltms[0] >= new MusicStringTone("E2").toInteger() && ltms[1] < 4) {
+        } else if (ltms[0] >= new MusicStringTone("E2").toInt() && ltms[1] < 4) {
             return createStrings(factory, new String[]{"G3", "D3", "A2", "E2"});
-        } else if (ltms[0] >= new MusicStringTone("B2").toInteger() && ltms[1] <= 7) {
+        } else if (ltms[0] >= new MusicStringTone("B2").toInt() && ltms[1] <= 7) {
             return createStrings(factory, new String[]{"E5", "B4", "G4", "D4", "A3", "E3", "B2"});
-        } else if (ltms[0] >= new MusicStringTone("B1").toInteger() && ltms[1] < 4) {
+        } else if (ltms[0] >= new MusicStringTone("B1").toInt() && ltms[1] < 4) {
             return createStrings(factory, new String[]{"G3", "D3", "A2", "E2", "B1"});
         } else {
             return createStrings(factory, new String[]{"C0", "C0", "C0", "C0", "C0", "C0", "C0"});
@@ -178,7 +178,7 @@ public class MusicStringTrack {
         for (int i = 0; i < tones.length; i ++) {
             string = factory.newString();
             string.setNumber(i + 1);
-            string.setValue(new MusicStringTone(tones[i]).toInteger());
+            string.setValue(new MusicStringTone(tones[i]).toInt());
             stringList.add(string);
         }
         return stringList;

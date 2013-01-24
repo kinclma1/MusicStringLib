@@ -280,7 +280,7 @@ public class MusicXMLReader {
             for (int i = 0; i < 4; i ++) {
                 TGString string = factory.newString();
                 string.setNumber(i + 1);
-                string.setValue(new MusicStringTone(stringArray[i]).toInteger());
+                string.setValue(new MusicStringTone(stringArray[i]).toInt());
                 strings.add(string);
             }
             measure.getTrack().setStrings(strings);
