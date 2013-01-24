@@ -1,7 +1,6 @@
 package cz.cvut.fel.kinclma1;
 
 import org.herac.tuxguitar.song.factory.TGFactory;
-import org.herac.tuxguitar.song.models.TGDivisionType;
 import org.herac.tuxguitar.song.models.TGNote;
 import org.herac.tuxguitar.song.models.TGVoice;
 
@@ -12,10 +11,9 @@ import org.herac.tuxguitar.song.models.TGVoice;
  * Time: 23:26
  * To change this template use File | Settings | File Templates.
  */
-class MusicStringNote implements Comparable<MusicStringNote> {
+class MusicStringNote extends BeatElement implements Comparable<MusicStringNote> {
     private MusicStringTone tone;
     private Drum drum;
-    private MusicStringDuration duration;
 
     public MusicStringNote(TGNote note, boolean drumTrack) {
         int value = note.getVoice().getBeat().getMeasure().getTrack().getString(note.getString()).getValue()
@@ -46,19 +44,10 @@ class MusicStringNote implements Comparable<MusicStringNote> {
         return sb.toString();
     }
 
-    public void configureTGVoice(TGVoice voice) {
-        voice.getDuration().setValue(duration.toInteger());
-        voice.getDuration().setDotted(duration.isDotted());
-    }
-
     public TGNote toTGNote(TGFactory factory) {
         TGNote note = factory.newNote();
         note.setValue(tone != null ? tone.toInteger() : drum.toInteger());
         return note;
-    }
-
-    public int getDurationDiv128() {
-        return duration.toIntegerDiv128();
     }
 
     int value() {
@@ -68,10 +57,6 @@ class MusicStringNote implements Comparable<MusicStringNote> {
     @Override
     public int compareTo(MusicStringNote note) {
         return value() - note.value();
-    }
-
-    MusicStringDuration shortestDuration() {
-        return duration.shortest();
     }
 
     String getTone() {

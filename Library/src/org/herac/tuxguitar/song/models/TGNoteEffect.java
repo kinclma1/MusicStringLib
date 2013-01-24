@@ -5,12 +5,7 @@
 package org.herac.tuxguitar.song.models;
 
 import org.herac.tuxguitar.song.factory.TGFactory;
-import org.herac.tuxguitar.song.models.effects.TGEffectBend;
-import org.herac.tuxguitar.song.models.effects.TGEffectGrace;
-import org.herac.tuxguitar.song.models.effects.TGEffectHarmonic;
-import org.herac.tuxguitar.song.models.effects.TGEffectTremoloBar;
-import org.herac.tuxguitar.song.models.effects.TGEffectTremoloPicking;
-import org.herac.tuxguitar.song.models.effects.TGEffectTrill;
+import org.herac.tuxguitar.song.models.effects.*;
 
 /**
  * @author julian

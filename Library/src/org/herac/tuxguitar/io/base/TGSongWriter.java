@@ -5,13 +5,13 @@
  */
 package org.herac.tuxguitar.io.base;
 
+import org.herac.tuxguitar.song.factory.TGFactory;
+import org.herac.tuxguitar.song.models.TGSong;
+
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Iterator;
-
-import org.herac.tuxguitar.song.factory.TGFactory;
-import org.herac.tuxguitar.song.models.TGSong;
 
 /**
  * @author julian

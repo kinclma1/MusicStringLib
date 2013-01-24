@@ -1,7 +1,8 @@
 package cz.cvut.fel.kinclma1;
 
 import java.util.*;
-import java.util.concurrent.*;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
 
 /**
  * Created with IntelliJ IDEA.
@@ -72,7 +73,6 @@ class HarmonyDetector {
     private ArrayList<MusicStringTrack> toneTracks;
     private MusicStringDuration shortestNote;
     private int trackCount;
-    private StringBuilder trackString;
     private ExecutorService exec;
 
     HarmonyDetector(MusicStringSong song) {
@@ -80,7 +80,6 @@ class HarmonyDetector {
         this.toneTracks = getToneTracks(song);
         this.shortestNote = getShortestNote();
         this.trackCount = toneTracks.size();
-        trackString = new StringBuilder();
     }
 
     private ArrayList<MusicStringTrack> getToneTracks(MusicStringSong song) {
@@ -94,48 +93,24 @@ class HarmonyDetector {
     }
 
     private MusicStringDuration getShortestNote() {
-        MusicStringDuration shortest = new MusicStringDuration(Duration.WHOLE.toString());
-        ArrayList<TrackShortestNoteFinder> finders = new ArrayList<TrackShortestNoteFinder>(trackCount);
+        ArrayList<Callable<MusicStringDuration>> finders = new ArrayList<Callable<MusicStringDuration>>(trackCount);
         for (MusicStringTrack track : toneTracks) {
             finders.add(new TrackShortestNoteFinder(track));
         }
-        try {
-            List<Future<MusicStringDuration>> results = exec.invokeAll(finders);
-            for (Future<MusicStringDuration> result : results) {
-                MusicStringDuration trackShortest = result.get();
-                if (trackShortest.toInteger() > shortest.toInteger()) {
-                    shortest = trackShortest;
-                }
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-        return shortest;
+        List<MusicStringDuration> results = Parallellization.runExecutor(exec, finders);
+
+        return Collections.min(results);
     }
 
     FlatTrack detectHarmony() {
-        ArrayList<TrackNoteSplitter> splitters = new ArrayList<TrackNoteSplitter>(trackCount);
+        ArrayList<Callable<FlatTrack>> splitters = new ArrayList<Callable<FlatTrack>>(trackCount);
         for (MusicStringTrack track : toneTracks) {
             splitters.add(new TrackNoteSplitter(track));
         }
-        ArrayList<FlatTrack> newTracks = new ArrayList<FlatTrack>(trackCount);
-        try {
-            List<Future<FlatTrack>> results = exec.invokeAll(splitters);
-            for (Future<FlatTrack> result : results) {
-                newTracks.add(result.get());
-            }
-            exec.shutdown();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-
+        List<FlatTrack> newTracks = Parallellization.runExecutor(exec, splitters);
+        exec.shutdown();
         FlatTrack newTrack = mergeTracks(newTracks);
 
-        //todo merge newTracks to stringbuilder
         //todo in musicstringtrack setdefaultoctave if none
         //todo instrument defined notes -- not necessary
 
@@ -143,7 +118,7 @@ class HarmonyDetector {
 
     }
 
-    private FlatTrack mergeTracks(ArrayList<FlatTrack> newTracks) {
+    private FlatTrack mergeTracks(List<FlatTrack> newTracks) {
         FlatTrack track = new FlatTrack(shortestNote);
         ArrayList<Iterator<HashSet<String>>> iterators = new ArrayList<Iterator<HashSet<String>>>(trackCount);
         for (FlatTrack flatTrack : newTracks) {

@@ -9,9 +9,7 @@ import org.herac.tuxguitar.song.models.TGVoice;
  * Time: 3:07
  * To change this template use File | Settings | File Templates.
  */
-class MusicStringRest {
-
-    private MusicStringDuration duration;
+class MusicStringRest extends BeatElement {
 
     public MusicStringRest(TGVoice tgVoice) {
         duration = new MusicStringDuration(tgVoice.getDuration());
@@ -25,23 +23,8 @@ class MusicStringRest {
         this.duration = duration;
     }
 
-    public TGVoice toTGVoice(TGVoice voice) {
-        voice.getDuration().setValue(duration.toInteger());
-        voice.getDuration().setDotted(duration.isDotted());
-        voice.setEmpty(false);
-        return voice;
-    }
-
     @Override
     public String toString() {
         return "R" + duration.toString();
-    }
-
-    public int getDurationDiv128() {
-        return duration.toIntegerDiv128();
-    }
-
-    MusicStringDuration shortestDuration() {
-        return duration.shortest();
     }
 }

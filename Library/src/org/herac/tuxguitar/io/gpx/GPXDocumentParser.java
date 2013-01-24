@@ -1,32 +1,14 @@
 package org.herac.tuxguitar.io.gpx;
 
-import java.util.Iterator;
-import java.util.List;
-
-import org.herac.tuxguitar.io.gpx.score.GPXAutomation;
-import org.herac.tuxguitar.io.gpx.score.GPXBar;
-import org.herac.tuxguitar.io.gpx.score.GPXBeat;
-import org.herac.tuxguitar.io.gpx.score.GPXDocument;
-import org.herac.tuxguitar.io.gpx.score.GPXDrumkit;
-import org.herac.tuxguitar.io.gpx.score.GPXMasterBar;
-import org.herac.tuxguitar.io.gpx.score.GPXNote;
-import org.herac.tuxguitar.io.gpx.score.GPXRhythm;
-import org.herac.tuxguitar.io.gpx.score.GPXTrack;
-import org.herac.tuxguitar.io.gpx.score.GPXVoice;
+import org.herac.tuxguitar.io.gpx.score.*;
 import org.herac.tuxguitar.song.factory.TGFactory;
 import org.herac.tuxguitar.song.managers.TGSongManager;
-import org.herac.tuxguitar.song.models.TGBeat;
-import org.herac.tuxguitar.song.models.TGDuration;
-import org.herac.tuxguitar.song.models.TGMeasure;
-import org.herac.tuxguitar.song.models.TGMeasureHeader;
-import org.herac.tuxguitar.song.models.TGNote;
-import org.herac.tuxguitar.song.models.TGSong;
-import org.herac.tuxguitar.song.models.TGString;
-import org.herac.tuxguitar.song.models.TGTrack;
-import org.herac.tuxguitar.song.models.TGVelocities;
-import org.herac.tuxguitar.song.models.TGVoice;
+import org.herac.tuxguitar.song.models.*;
 import org.herac.tuxguitar.song.models.effects.TGEffectBend;
 import org.herac.tuxguitar.song.models.effects.TGEffectHarmonic;
+
+import java.util.Iterator;
+import java.util.List;
 
 public class GPXDocumentParser {
 	

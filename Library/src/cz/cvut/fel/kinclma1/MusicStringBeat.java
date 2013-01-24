@@ -96,10 +96,10 @@ class MusicStringBeat {
     public TGBeat toTGBeat(TGFactory factory, TGMeasure measure) {
         TGBeat beat = factory.newBeat();
         if (rest != null) {
-            beat.setVoice(0, rest.toTGVoice(beat.getVoice(0)));
+            rest.handleTGVoice(beat.getVoice(0));
         } else {
             TGVoice voice = beat.getVoice(0);
-            notes.get(0).configureTGVoice(voice);
+            notes.get(0).handleTGVoice(voice);
 
             int i = 1;
             List<TGString> strings = measure.getTrack().getStrings();

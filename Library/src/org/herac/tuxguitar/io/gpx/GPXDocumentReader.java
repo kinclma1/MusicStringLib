@@ -1,23 +1,14 @@
 package org.herac.tuxguitar.io.gpx;
 
-import java.io.InputStream;
-
-import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.herac.tuxguitar.io.gpx.score.GPXAutomation;
-import org.herac.tuxguitar.io.gpx.score.GPXBar;
-import org.herac.tuxguitar.io.gpx.score.GPXBeat;
-import org.herac.tuxguitar.io.gpx.score.GPXDocument;
-import org.herac.tuxguitar.io.gpx.score.GPXMasterBar;
-import org.herac.tuxguitar.io.gpx.score.GPXNote;
-import org.herac.tuxguitar.io.gpx.score.GPXRhythm;
-import org.herac.tuxguitar.io.gpx.score.GPXTrack;
-import org.herac.tuxguitar.io.gpx.score.GPXVoice;
+import org.herac.tuxguitar.io.gpx.score.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.ls.DOMImplementationLS;
 import org.w3c.dom.ls.LSSerializer;
+
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.InputStream;
 
 public class GPXDocumentReader {
 	

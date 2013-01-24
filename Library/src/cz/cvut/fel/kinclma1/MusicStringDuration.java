@@ -9,7 +9,7 @@ import org.herac.tuxguitar.song.models.TGDuration;
  * Time: 20:10
  * To change this template use File | Settings | File Templates.
  */
-class MusicStringDuration {
+class MusicStringDuration implements Comparable<MusicStringDuration> {
     private boolean dotted;
     private Duration duration;
 
@@ -76,5 +76,10 @@ class MusicStringDuration {
                duration == Duration.EIGHTH ? Duration.SIXTEENTH :
                duration == Duration.SIXTEENTH ? Duration.THIRTY_SECOND :
                duration == Duration.THIRTY_SECOND ? Duration.SIXTY_FOURTH : Duration.ONE_TWENTY_EIGHTH;
+    }
+
+    @Override
+    public int compareTo(MusicStringDuration d) {
+        return this.toIntegerDiv128() - d.toIntegerDiv128();
     }
 }

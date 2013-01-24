@@ -4,15 +4,15 @@
  */
 package org.herac.tuxguitar.io.musicstring;
 
-import java.io.IOException;
-import java.io.OutputStream;
-
 import cz.cvut.fel.kinclma1.MusicStringSong;
 import org.herac.tuxguitar.io.base.TGFileFormat;
 import org.herac.tuxguitar.io.base.TGFileFormatException;
 import org.herac.tuxguitar.io.base.TGLocalFileExporter;
 import org.herac.tuxguitar.song.factory.TGFactory;
 import org.herac.tuxguitar.song.models.TGSong;
+
+import java.io.IOException;
+import java.io.OutputStream;
 
 /**
  *

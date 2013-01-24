@@ -1,8 +1,8 @@
 package org.herac.tuxguitar.io.base;
 
-import java.io.InputStream;
-
 import org.herac.tuxguitar.song.factory.TGFactory;
+
+import java.io.InputStream;
 
 public interface TGLocalFileImporter extends TGRawImporter {
 	

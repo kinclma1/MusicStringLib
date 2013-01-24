@@ -1,7 +1,10 @@
 package cz.cvut.fel.kinclma1;
 
 import org.herac.tuxguitar.song.factory.TGFactory;
-import org.herac.tuxguitar.song.models.*;
+import org.herac.tuxguitar.song.models.TGBeat;
+import org.herac.tuxguitar.song.models.TGMeasure;
+import org.herac.tuxguitar.song.models.TGTimeSignature;
+import org.herac.tuxguitar.song.models.TGTrack;
 
 import java.util.ArrayList;
 import java.util.List;

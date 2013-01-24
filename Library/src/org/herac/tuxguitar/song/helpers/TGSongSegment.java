@@ -1,11 +1,11 @@
 package org.herac.tuxguitar.song.helpers;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.herac.tuxguitar.song.factory.TGFactory;
 import org.herac.tuxguitar.song.models.TGMeasure;
 import org.herac.tuxguitar.song.models.TGMeasureHeader;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TGSongSegment {
 	private List<TGMeasureHeader> headers;

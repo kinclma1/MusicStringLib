@@ -4,14 +4,15 @@
  */
 package cz.cvut.fel.kinclma1.io;
 
-import java.io.*;
-import java.util.Iterator;
 import org.herac.tuxguitar.io.base.TGFileFormatException;
 import org.herac.tuxguitar.io.base.TGFileFormatManager;
 import org.herac.tuxguitar.io.base.TGLocalFileImporter;
 import org.herac.tuxguitar.song.factory.TGFactory;
 import org.herac.tuxguitar.song.managers.TGSongManager;
-import org.herac.tuxguitar.song.models.*;
+import org.herac.tuxguitar.song.models.TGSong;
+
+import java.io.*;
+import java.util.Iterator;
 
 /**
  *

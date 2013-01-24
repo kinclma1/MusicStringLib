@@ -4,10 +4,10 @@
  */
 package org.herac.tuxguitar.song.models;
 
+import org.herac.tuxguitar.song.factory.TGFactory;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import org.herac.tuxguitar.song.factory.TGFactory;
 
 /**
  * @author julian

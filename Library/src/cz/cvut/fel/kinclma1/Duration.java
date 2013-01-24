@@ -1,7 +1,5 @@
 package cz.cvut.fel.kinclma1;
 
-import org.herac.tuxguitar.song.models.TGDuration;
-
 /**
  * Created with IntelliJ IDEA.
  * User: void

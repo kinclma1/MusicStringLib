@@ -1,15 +1,14 @@
 package org.herac.tuxguitar.io.gtp;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.herac.tuxguitar.gui.system.plugins.TGPlugin;
 import org.herac.tuxguitar.gui.system.plugins.base.TGInputStreamPlugin;
 import org.herac.tuxguitar.gui.system.plugins.base.TGOutputStreamPlugin;
-import org.herac.tuxguitar.gui.system.plugins.base.TGPluginAdapter;
 import org.herac.tuxguitar.gui.system.plugins.base.TGPluginList;
 import org.herac.tuxguitar.io.base.TGInputStreamBase;
 import org.herac.tuxguitar.io.base.TGOutputStreamBase;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GTPPluginList extends TGPluginList {
 	

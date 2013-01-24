@@ -1,14 +1,14 @@
 package org.herac.tuxguitar.song.helpers;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import org.herac.tuxguitar.song.managers.TGSongManager;
 import org.herac.tuxguitar.song.managers.TGTrackManager;
 import org.herac.tuxguitar.song.models.TGMeasure;
 import org.herac.tuxguitar.song.models.TGMeasureHeader;
 import org.herac.tuxguitar.song.models.TGTrack;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class TGSongSegmentHelper {
 	

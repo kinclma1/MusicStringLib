@@ -10,9 +10,6 @@ import org.herac.tuxguitar.song.models.TGTrack;
 import java.io.File;
 import java.util.*;
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
 /**
  *
@@ -54,7 +51,6 @@ public class MusicStringSong {
         }
     }
 
-    private ExecutorService exec;
     private Map<String, MusicStringTrack> tracks;
 
     /**
@@ -67,7 +63,6 @@ public class MusicStringSong {
 
     /**
      * Creates MusicString from a string representation of music string
-     * NOT YET IMPLEMENTED
      * @param musicString a string representation of a music string
      */
     public MusicStringSong(String musicString) {
@@ -76,7 +71,7 @@ public class MusicStringSong {
         //http://stackoverflow.com/questions/2206378/how-to-split-a-string-but-also-keep-the-delimiters
         String[] strTracks = musicString.split("\\s(?=V[0-9])");
 
-        ArrayList<TrackCreator> tcs = new ArrayList<TrackCreator>(strTracks.length);
+        List<Callable<MusicStringTrack>> tcs = new ArrayList<Callable<MusicStringTrack>>(strTracks.length);
         for (String track : strTracks) {
             tcs.add(new TrackCreator(track));
         }
@@ -93,7 +88,7 @@ public class MusicStringSong {
 
         Iterator<TGTrack> tgTracks = song.getTracks();
 
-        ArrayList<TrackCreator> tcs = new ArrayList<TrackCreator>(song.countTracks());
+        List<Callable<MusicStringTrack>> tcs = new ArrayList<Callable<MusicStringTrack>>(song.countTracks());
         while (tgTracks.hasNext()) {
             tcs.add(new TrackCreator(tgTracks.next()));
         }
@@ -103,13 +98,7 @@ public class MusicStringSong {
 
     private MusicStringSong() {
         tracks = new HashMap<String, MusicStringTrack>();
-        exec = Parallellization.executorService();
     }
-
-//    private void initExec() {
-//        int cpus = Runtime.getRuntime().availableProcessors();
-//        exec = Executors.newFixedThreadPool(cpus > 0 ? cpus < 5 ? cpus : 4 : 1);
-//    }
 
     /**
      * Returns a music String containing all tracks of the song
@@ -128,25 +117,19 @@ public class MusicStringSong {
         TGFactory factory = new TGFactory();
         TGSong song = factory.newSong();
 
-        ArrayList<TrackExporter> tcs = new ArrayList<TrackExporter>(tracks.size());
+        Collection<Callable<TGTrack>> tcs = new ArrayList<Callable<TGTrack>>(tracks.size());
         for (String trackId : getTrackIds()) {
             tcs.add(new TrackExporter(getTrack(trackId), factory));
         }
 
-        Collection<Future<TGTrack>> results;
-        try {
-            exec = Parallellization.executorService();
-            results = exec.invokeAll(tcs);
-            int i = 0;
-            for (Future<TGTrack> result : results) {
-                TGTrack res = result.get();
-                res.setNumber(i++);
-                song.addTrack(res);
-            }
-            exec.shutdown();
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        List<TGTrack> tgTracks = Parallellization.executeSingleBatch(tcs);
+
+        int i = 0;
+        for (TGTrack tgTrack : tgTracks) {
+            tgTrack.setNumber(i++);
+            song.addTrack(tgTrack);
         }
+
         Iterator<TGMeasure> it = song.getTrack(0).getMeasures();
         while (it.hasNext()) {
             song.addMeasureHeader(it.next().getHeader());
@@ -180,19 +163,10 @@ public class MusicStringSong {
         return null;
     }
 
-
-
-    private void create(List<TrackCreator> tcs) {
-        Collection<Future<MusicStringTrack>> results;
-        try {
-            results = exec.invokeAll(tcs);
-            for (Future<MusicStringTrack> result : results) {
-                MusicStringTrack res = result.get();
-                tracks.put(res.getId(), res);
-            }
-            exec.shutdown();
-        } catch (Exception ex) {
-            ex.printStackTrace();
+    private void create(List<Callable<MusicStringTrack>> tcs) {
+        List<MusicStringTrack> msTracks = Parallellization.executeSingleBatch(tcs);
+        for (MusicStringTrack msTrack : msTracks) {
+            tracks.put(msTrack.getId(), msTrack);
         }
     }
 }

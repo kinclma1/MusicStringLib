@@ -1,10 +1,10 @@
 package org.herac.tuxguitar.song.managers;
 
+import org.herac.tuxguitar.song.models.*;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
-import org.herac.tuxguitar.song.models.*;
 
 public class TGTrackManager {
 	private TGSongManager songManager;

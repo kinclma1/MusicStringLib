@@ -3,7 +3,6 @@ package org.herac.tuxguitar.gui.system.plugins.base;
 import org.herac.tuxguitar.gui.system.plugins.TGPluginException;
 import org.herac.tuxguitar.io.base.TGFileFormatManager;
 import org.herac.tuxguitar.io.base.TGLocalFileImporter;
-import org.herac.tuxguitar.io.base.TGRawImporter;
 
 public abstract class TGImporterPlugin extends TGPluginAdapter{
 	

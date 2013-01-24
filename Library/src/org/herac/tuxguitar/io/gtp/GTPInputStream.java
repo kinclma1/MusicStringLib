@@ -1,10 +1,10 @@
 package org.herac.tuxguitar.io.gtp;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 import org.herac.tuxguitar.io.base.TGInputStreamBase;
 import org.herac.tuxguitar.song.factory.TGFactory;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 public abstract class GTPInputStream extends GTPFileFormat implements TGInputStreamBase {
 	
