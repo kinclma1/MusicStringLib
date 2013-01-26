@@ -158,6 +158,10 @@ public class MusicStringSong {
         return tracks.get(id);
     }
 
+    public void removeTrack(String id) {
+        tracks.remove(id);
+    }
+
     public MusicStringTrack getPossibleNotes() {
         System.out.println(new HarmonyDetector(this).detectHarmony());
         return null;
