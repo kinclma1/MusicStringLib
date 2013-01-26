@@ -2,6 +2,8 @@ package cz.cvut.fel.kinclma1;
 
 import org.herac.tuxguitar.song.models.TGDuration;
 
+import java.util.HashMap;
+
 /**
  * Created with IntelliJ IDEA.
  * User: void
@@ -13,38 +15,69 @@ class MusicStringDuration implements Comparable<MusicStringDuration> {
     private boolean dotted;
     private Duration duration;
 
-    private MusicStringDuration(char dur) {
-        duration =
-                dur == 'w' ? Duration.WHOLE :
-                dur == 'h' ? Duration.HALF :
-                dur == 'q' ? Duration.QUARTER :
-                dur == 'i' ? Duration.EIGHTH :
-                dur == 's' ? Duration.SIXTEENTH :
-                dur == 't' ? Duration.THIRTY_SECOND :
-                dur == 'x' ? Duration.SIXTY_FOURTH :
-                dur == 'o' ? Duration.ONE_TWENTY_EIGHTH : null;
+    private static HashMap<Character, Duration> charDurationMap;
+    private static HashMap<Integer, Duration> intDurationMap;
+    private static HashMap<Duration, Duration> shorterDurationMap;
+
+    static {
+        charDurationMap = new HashMap<Character, Duration>(8);
+        charDurationMap.put('w', Duration.WHOLE);
+        charDurationMap.put('h', Duration.HALF);
+        charDurationMap.put('q', Duration.QUARTER);
+        charDurationMap.put('i', Duration.EIGHTH);
+        charDurationMap.put('s', Duration.SIXTEENTH);
+        charDurationMap.put('t', Duration.THIRTY_SECOND);
+        charDurationMap.put('x', Duration.SIXTY_FOURTH);
+        charDurationMap.put('o', Duration.ONE_TWENTY_EIGHTH);
+
+        intDurationMap = new HashMap<Integer, Duration>(8);
+        intDurationMap.put(1, Duration.WHOLE);
+        intDurationMap.put(2, Duration.HALF);
+        intDurationMap.put(4, Duration.QUARTER);
+        intDurationMap.put(8, Duration.EIGHTH);
+        intDurationMap.put(16, Duration.SIXTEENTH);
+        intDurationMap.put(32, Duration.THIRTY_SECOND);
+        intDurationMap.put(64, Duration.SIXTY_FOURTH);
+        intDurationMap.put(128, Duration.ONE_TWENTY_EIGHTH);
+
+        shorterDurationMap = new HashMap<Duration, Duration>(7);
+        shorterDurationMap.put(Duration.WHOLE, Duration.HALF);
+        shorterDurationMap.put(Duration.HALF, Duration.QUARTER);
+        shorterDurationMap.put(Duration.QUARTER, Duration.EIGHTH);
+        shorterDurationMap.put(Duration.EIGHTH, Duration.SIXTEENTH);
+        shorterDurationMap.put(Duration.SIXTEENTH, Duration.THIRTY_SECOND);
+        shorterDurationMap.put(Duration.THIRTY_SECOND, Duration.SIXTY_FOURTH);
+        shorterDurationMap.put(Duration.SIXTY_FOURTH, Duration.ONE_TWENTY_EIGHTH);
     }
 
-    public MusicStringDuration(String dur) {
-        this(dur.charAt(0));
-        dotted = dur.contains(".");
+    public MusicStringDuration(String musicString, int minIndex) {
+        boolean found = false;
+        for (int i = minIndex; !found && i < musicString.length(); i ++) {
+            Duration d = charDurationMap.get(musicString.charAt(i));
+            if (d != null) {
+                duration = d;
+                found = true;
+            }
+        }
+
+        if (!found) {
+            duration = Duration.QUARTER;
+        }
+
+        dotted = musicString.contains(".");
     }
 
     private MusicStringDuration(int dur) {
-        duration =
-                dur == 1 ? Duration.WHOLE :
-                dur == 2 ? Duration.HALF :
-                dur == 4 ? Duration.QUARTER :
-                dur == 8 ? Duration.EIGHTH :
-                dur == 16 ? Duration.SIXTEENTH :
-                dur == 32 ? Duration.THIRTY_SECOND :
-                dur == 64 ? Duration.SIXTY_FOURTH :
-                dur == 128 ? Duration.ONE_TWENTY_EIGHTH : null;
+        duration = intDurationMap.get(dur);
     }
 
     public MusicStringDuration(TGDuration dur) {
         this(dur.getValue());
         dotted = dur.isDotted();
+    }
+
+    public MusicStringDuration(Duration duration) {
+        this.duration = duration;
     }
 
     @Override
@@ -66,16 +99,11 @@ class MusicStringDuration implements Comparable<MusicStringDuration> {
     }
 
     MusicStringDuration shortest() {
-        return dotted ? new MusicStringDuration(shorter().toString()) : this;
+        return dotted ? new MusicStringDuration(shorter()) : this;
     }
 
     private Duration shorter() {
-        return duration == Duration.WHOLE ? Duration.HALF :
-               duration == Duration.HALF ? Duration.QUARTER :
-               duration == Duration.QUARTER ? Duration.EIGHTH :
-               duration == Duration.EIGHTH ? Duration.SIXTEENTH :
-               duration == Duration.SIXTEENTH ? Duration.THIRTY_SECOND :
-               duration == Duration.THIRTY_SECOND ? Duration.SIXTY_FOURTH : Duration.ONE_TWENTY_EIGHTH;
+        return shorterDurationMap.get(duration);
     }
 
     @Override

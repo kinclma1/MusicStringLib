@@ -13,36 +13,38 @@ import java.util.*;
  * To change this template use File | Settings | File Templates.
  */
 class MusicStringBeat {
-    private List<MusicStringNote> notes;
-    private MusicStringRest rest;
+
+    private List<BeatElement> content;
+
+    private MusicStringDuration duration;
 
     public MusicStringBeat(TGBeat tgBeat, boolean drumTrack) {
         if(tgBeat.isRestBeat()) {
-            for(int i = 0; i < tgBeat.countVoices(); i ++) {
-                TGVoice voice = tgBeat.getVoice(i);
-                if (voice.isRestVoice()) {
-                    rest = new MusicStringRest(voice);
-                    break;
-                }
-            }
+            content = new ArrayList<BeatElement>(1);
+            TGVoice voice = getRestVoice(tgBeat);
+            duration = new MusicStringDuration(voice.getDuration());
+            content.add(new MusicStringRest(duration));
         } else {
             TGVoice voice = joinToOneVoice(tgBeat);
-            int numNotes = voice.countNotes();
-            notes = new ArrayList<MusicStringNote>(numNotes);
-            for (int i = 0; i < numNotes; i ++) {
-                notes.add(new MusicStringNote(voice.getNote(i),drumTrack));
+            duration = new MusicStringDuration(voice.getDuration());
+            int noteCount = voice.countNotes();
+            content = new ArrayList<BeatElement>(noteCount);
+            for (int i = 0; i < noteCount; i ++) {
+                content.add(new MusicStringNote(voice.getNote(i), drumTrack, duration));
             }
         }
     }
 
     public MusicStringBeat(String strBeat, boolean drumTrack) {
+        duration = new MusicStringDuration(strBeat, 1);
         if (strBeat.charAt(0) == 'R') {
-            rest = new MusicStringRest(strBeat);
+            content = new ArrayList<BeatElement>(1);
+            content.add(new MusicStringRest(duration));
         } else {
             String[] noteArr = strBeat.split("\\+");
-            notes = new ArrayList<MusicStringNote>(noteArr.length);
+            content = new ArrayList<BeatElement>(noteArr.length);
             for (String note : noteArr) {
-                notes.add(new MusicStringNote(note, drumTrack));
+                content.add(new MusicStringNote(note, drumTrack, duration));
             }
         }
     }
@@ -77,61 +79,76 @@ class MusicStringBeat {
         return mainVoice;
     }
 
+    private TGVoice getRestVoice(TGBeat tgBeat) {
+        for(int i = 0; i < tgBeat.countVoices(); i ++) {
+            TGVoice voice = tgBeat.getVoice(i);
+            if (voice.isRestVoice()) {
+                return voice;
+            }
+        }
+        return null;
+    }
+
+    private BeatElement firstElement() {
+        return content.get(0);
+    }
+
     @Override
     public String toString() {
-        if(notes != null) {
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < notes.size(); i ++) {
-                sb.append(notes.get(i).toString());
-                if (i < notes.size() - 1) {
-                    sb.append("+");
-                }
+        int elements = content.size();
+        StringBuilder sb = new StringBuilder(elements * 4);
+        for (int i = 0; i < elements; i ++) {
+            sb.append(content.get(i).toString());
+            if (i < elements - 1) {
+                sb.append("+");
             }
-            return sb.toString();
-        } else {
-            return rest.toString();
         }
+        return sb.toString();
     }
 
     public TGBeat toTGBeat(TGFactory factory, TGMeasure measure) {
         TGBeat beat = factory.newBeat();
-        if (rest != null) {
-            rest.handleTGVoice(beat.getVoice(0));
-        } else {
-            TGVoice voice = beat.getVoice(0);
-            notes.get(0).handleTGVoice(voice);
-
-            int i = 1;
-            List<TGString> strings = measure.getTrack().getStrings();
-            List<MusicStringNote> newNotes = new ArrayList<MusicStringNote>(notes);
-            Collections.sort(newNotes, Collections.reverseOrder());
-            for (MusicStringNote note : newNotes) {
-                while (i < strings.size() && note.value() < strings.get(i - 1).getValue()) {
-                    i ++;
-                }
-                TGNote tgNote = note.toTGNote(factory);
-                tgNote.setValue(tgNote.getValue() - strings.get(i - 1).getValue());
-                tgNote.setString(i++);
-                voice.addNote(tgNote);
-            }
-            beat.setMeasure(measure);
+        TGVoice voice = beat.getVoice(0);
+        handleTGVoice(voice);
+        if (firstElement().value() >= 0) {
+              setNotesToStrings(factory, measure, voice);
         }
+        beat.setMeasure(measure);
         return beat;
     }
 
+    private void handleTGVoice(TGVoice voice) {
+        voice.getDuration().setValue(duration.toInteger());
+        voice.getDuration().setDotted(duration.isDotted());
+        voice.setEmpty(false);
+    }
+
+    private void setNotesToStrings(TGFactory factory, TGMeasure measure, TGVoice voice) {
+        int i = 1;
+        List<TGString> strings = measure.getTrack().getStrings();
+        List<BeatElement> newNotes = new ArrayList<BeatElement>(content);
+        Collections.sort(newNotes, Collections.reverseOrder());
+        for (BeatElement note : newNotes) {
+            while (i < strings.size() && note.value() < strings.get(i - 1).getValue()) {
+                i ++;
+            }
+            TGNote tgNote = note.toTGNote(factory);
+            tgNote.setValue(tgNote.getValue() - strings.get(i - 1).getValue());
+            tgNote.setString(i++);
+            voice.addNote(tgNote);
+        }
+    }
+
     int getDurationDiv128() {
-        return rest != null ? rest.getDurationDiv128() : notes.get(0).getDurationDiv128();
+        return duration.toIntegerDiv128();
     }
 
     int getLowestTone() {
         int lowest = Integer.MAX_VALUE;
-        if (notes == null) {
-            return lowest;
-        }
         int current;
-        for (MusicStringNote note : notes) {
-            current = note.value();
-            if (current < lowest) {
+        for (BeatElement element : content) {
+            current = element.value();
+            if (current >= 0 && current < lowest) {
                 lowest = current;
             }
         }
@@ -139,22 +156,18 @@ class MusicStringBeat {
     }
 
     int countTones() {
-        return notes == null ? 0 : notes.size();
+        return content.size();
     }
 
     MusicStringDuration getShortestNote() {
-        return rest == null ? notes.get(0).shortestDuration() : rest.shortestDuration();
+        return duration.shortest();
     }
 
     HashSet<String> getToneSet() {
         HashSet<String> toneSet = new HashSet<String>();
-        if (rest == null) {
-            for (MusicStringNote note : notes) {
-                toneSet.add(note.getTone());
+            for (BeatElement element : content) {
+                toneSet.add(element.getTone());
             }
-        } else {
-            toneSet.add("R");
-        }
         return toneSet;
     }
 }

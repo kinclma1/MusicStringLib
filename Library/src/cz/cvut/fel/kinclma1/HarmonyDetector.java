@@ -111,7 +111,6 @@ class HarmonyDetector {
         exec.shutdown();
         FlatTrack newTrack = mergeTracks(newTracks);
 
-        //todo in musicstringtrack setdefaultoctave if none
         //todo instrument defined notes -- not necessary
 
         return newTrack;

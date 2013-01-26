@@ -13,32 +13,34 @@ import org.herac.tuxguitar.song.models.TGNote;
 class MusicStringNote extends BeatElement implements Comparable<MusicStringNote> {
     private NoteContent content;
 
-    public MusicStringNote(TGNote note, boolean drumTrack) {
-        super(note.getVoice());
+    public MusicStringNote(TGNote note, boolean drumTrack, MusicStringDuration duration) {
+        super(duration);
         int value = note.getVoice().getBeat().getMeasure().getTrack().getString(note.getString()).getValue()
                 + note.getValue();
         content = drumTrack ? new MusicStringDrum(value) : new MusicStringTone(value);
     }
 
-    public MusicStringNote(String note, boolean drumTrack) {
+    public MusicStringNote(String note, boolean drumTrack, MusicStringDuration duration) {
+        super(duration);
         String[] toneAndDuration = note.split("(?=[a-z])");
         String tone = toneAndDuration[0];
         content = drumTrack ? new MusicStringDrum(tone.substring(1, tone.length() - 1)) : new MusicStringTone(tone);
-        duration = new MusicStringDuration(toneAndDuration[1]);
     }
 
     @Override
     public String toString() {
-        return content.toString() + super.toString();
+        return content.toString() + duration.toString();
     }
 
+    @Override
     public TGNote toTGNote(TGFactory factory) {
         TGNote note = factory.newNote();
         note.setValue(value());
         return note;
     }
 
-    int value() {
+    @Override
+    protected int value() {
         return content.toInt();
     }
 
@@ -47,7 +49,8 @@ class MusicStringNote extends BeatElement implements Comparable<MusicStringNote>
         return value() - note.value();
     }
 
-    String getTone() {
+    @Override
+    protected String getTone() {
         return content.relativeTone();
     }
 }

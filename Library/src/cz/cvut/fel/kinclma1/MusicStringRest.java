@@ -11,20 +11,17 @@ import org.herac.tuxguitar.song.models.TGVoice;
  */
 class MusicStringRest extends BeatElement {
 
-    public MusicStringRest(TGVoice tgVoice) {
-        super(tgVoice);
-    }
-
-    public MusicStringRest(String strRest) {
-        super(strRest);
-    }
-
     public MusicStringRest(MusicStringDuration duration) {
         super(duration);
     }
 
     @Override
+    protected String getTone() {
+        return "R";
+    }
+
+    @Override
     public String toString() {
-        return "R" + super.toString();
+        return getTone() + duration.toString();
     }
 }

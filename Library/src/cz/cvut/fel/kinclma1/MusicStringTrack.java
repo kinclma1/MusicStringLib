@@ -79,6 +79,9 @@ public class MusicStringTrack {
         if (!measure.isEmpty()) {
             measures.add(new MusicStringMeasure(measure, tempoTracker, drumTrack));
         }
+        if (instrument == null) {
+            instrument = Instrument.PIANO;
+        }
         metaInfo = buildMeta();
         id = buildId();
     }
@@ -96,7 +99,7 @@ public class MusicStringTrack {
     }
 
     MusicStringDuration getShortestNote() {
-        MusicStringDuration shortest = new MusicStringDuration(Duration.WHOLE.toString());
+        MusicStringDuration shortest = new MusicStringDuration(Duration.WHOLE);
         for (MusicStringMeasure measure : measures) {
             MusicStringDuration measureShortest = measure.getShortestNote();
             if (measureShortest.toInteger() > shortest.toInteger()) {

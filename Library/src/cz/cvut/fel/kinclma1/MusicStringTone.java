@@ -74,7 +74,7 @@ public class MusicStringTone extends NoteContent {
 
     public MusicStringTone(String mStrTone) {
         int len;
-        if (mStrTone.charAt(1) == '#') {
+        if (mStrTone.length() > 1 && mStrTone.charAt(1) == '#') {
             len = 2;
             for (RelativeTone t : RelativeTone.values()) {
                 if (t.toString().equals(mStrTone.substring(0,2))) {
@@ -91,7 +91,12 @@ public class MusicStringTone extends NoteContent {
                 }
             }
         }
-        octave = Integer.parseInt(mStrTone.substring(len,mStrTone.length()));
+        try {
+            octave = Integer.parseInt(mStrTone.substring(len,mStrTone.length()));
+        } catch (NumberFormatException ex) {
+            octave = 5;
+        }
+
     }
 
     @Override
