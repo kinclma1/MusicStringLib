@@ -2,20 +2,10 @@
 package cz.cvut.fel.kinclma1;
 
 import cz.cvut.fel.kinclma1.io.FileExporter;
-import cz.cvut.fel.kinclma1.io.FileImporter;
-import org.herac.tuxguitar.io.base.TGFileFormatException;
-import org.herac.tuxguitar.io.musicxml.MusicXMLReader;
-import org.herac.tuxguitar.io.tg.TGInputStream;
-import org.herac.tuxguitar.song.factory.TGFactory;
-import org.herac.tuxguitar.song.models.*;
-import org.jfugue.MusicStringParser;
-import org.jfugue.MusicXmlRenderer;
-import org.jfugue.Pattern;
+import org.herac.tuxguitar.song.models.TGSong;
 import org.jfugue.Player;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.io.File;
 
 /**
  *
@@ -27,10 +17,19 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        MusicStringSong ms = new MusicStringSong(new File("/home/void/project/test.tg"));
+        MusicStringSong ms = new MusicStringSong(new File("/home/void/project/rem.gp3"));
         ms.getPossibleNotes();
+        Player player = new Player();
+        player.play(ms.toString());
+        try {
+            Thread.sleep(100000);
+            player.stop();
+            player.close();
+        } catch (InterruptedException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
         TGSong tgs = ms.toTGSong();
-        new FileExporter().exportSong(tgs, "/home/void/project/newtest.tg");
+        new FileExporter().exportSong(tgs, "/home/void/project/newrem.tg");
 
 //        try {
 //            new  MusicXMLReader(new TGFactory(), new BufferedInputStream(new FileInputStream("/home/void/project/newmayhem-short.xml"))).readSong();
