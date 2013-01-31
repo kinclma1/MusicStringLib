@@ -22,28 +22,7 @@
 
 package org.jfugue;
 
-import sun.misc.Regexp;
-import sun.org.mozilla.javascript.internal.ast.RegExpLiteral;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.EventListener;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.StringTokenizer;
-
-import javax.sound.midi.InvalidMidiDataException;
-import javax.sound.midi.MidiSystem;
-import javax.swing.event.EventListenerList;
 
 /**
  * This class represents a segment of music.  By representing segments of music
@@ -52,29 +31,26 @@ import javax.swing.event.EventListenerList;
  * or otherwise manipulated to expand the possibilities of creative music.
  *
  * @author David Koelle
- * @version 2.0
- * @version 4.0 - Added Pattern Properties
  * @version 4.0.3 - Now implements Serializable
  */
-public class Pattern implements Serializable
-{
+public class Pattern implements Serializable {
     private String musicString;
 
     /**
      * Instantiates a new pattern using the given music string
+     *
      * @param musicString the music string
      */
-    public Pattern(String musicString)
-    {
+    public Pattern(String musicString) {
         this.musicString = musicString;
     }
 
     /**
      * Returns an array of strings representing each token in the Pattern.
+     *
      * @return
      */
-    public String[] getTokens()
-    {
+    public String[] getTokens() {
         return musicString.split("\\s+");
     }
 }

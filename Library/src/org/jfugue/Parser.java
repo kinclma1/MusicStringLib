@@ -22,36 +22,36 @@
 
 package org.jfugue;
 
-import java.util.EventListener;
-
 import javax.swing.event.EventListenerList;
+import java.util.EventListener;
 
 /**
  * You may notice that there is no parse() method in the Parser class!
  * That's because the parse() method may take any type of parameter, as
- * well as any number of parameters, so it isn't something that can 
- * declared ahead of time. 
- * 
- * @author David Koelle
+ * well as any number of parameters, so it isn't something that can
+ * declared ahead of time.
  *
+ * @author David Koelle
  */
-public class Parser 
-{
-    public Parser() 
-    { 
+public class Parser {
+    public Parser() {
         progressListenerList = new EventListenerList();
-        listenerList = new EventListenerList ();
-        
+        listenerList = new EventListenerList();
+
         // The Parser could add itself as a ParserProgressListener.
     }
-    
+
     // Logging methods
     ///////////////////////////////////////////
 
-    /** Pass this value to setTracing( ) to turn tracing off.  Tracing is off by default. */
+    /**
+     * Pass this value to setTracing( ) to turn tracing off.  Tracing is off by default.
+     */
     public static final int TRACING_OFF = 0;
 
-    /** Pass this value to setTracing( ) to turn tracing on.  Tracing is off by default. */
+    /**
+     * Pass this value to setTracing( ) to turn tracing on.  Tracing is off by default.
+     */
     public static final int TRACING_ON = 1;
 
     private int tracing = TRACING_OFF;
@@ -60,36 +60,34 @@ public class Parser
      * Turns tracing on or off.  If you're having trouble with your music string,
      * or if you've added new tokens to the parser, turn tracing on to make sure
      * that your new tokens are parsed correctly.
+     *
      * @param tracing the state of tracing - on or off
      */
-    public void setTracing(int tracing)
-    {
+    public void setTracing(int tracing) {
         this.tracing = tracing;
     }
 
     /**
      * Returns the current state of tracing.
+     *
      * @return the state of tracing
      */
-    public int getTracing()
-    {
+    public int getTracing() {
         return this.tracing;
     }
 
     /**
      * Displays the passed String.
+     *
      * @param sentenceFragments the String to display
      */
-    protected void trace(Object... sentenceFragments)
-    {
-        if (TRACING_ON == getTracing())
-        {
+    protected void trace(Object... sentenceFragments) {
+        if (TRACING_ON == getTracing()) {
             StringBuilder buddy = new StringBuilder();
-            for (int i=0; i < sentenceFragments.length; i++)
-            {
+            for (int i = 0; i < sentenceFragments.length; i++) {
                 buddy.append(sentenceFragments[i]);
             }
-            
+
             System.out.println(buddy.toString());
         }
     }
@@ -98,7 +96,9 @@ public class Parser
     // ParserProgressListener methods
     /////////////////////////////////////////////////////////////////////////
 
-    /** List of ParserProgressListeners */
+    /**
+     * List of ParserProgressListeners
+     */
     protected EventListenerList progressListenerList;
 
     /**
@@ -107,9 +107,8 @@ public class Parser
      *
      * @param l the listener that is to be notified of parser events
      */
-    public void addParserProgressListener(ParserProgressListener l) 
-    {
-        progressListenerList.add (ParserProgressListener.class, l);
+    public void addParserProgressListener(ParserProgressListener l) {
+        progressListenerList.add(ParserProgressListener.class, l);
     }
 
     /**
@@ -117,27 +116,26 @@ public class Parser
      *
      * @param l the listener to remove
      */
-    public void removeParserProgressListener(ParserProgressListener l) 
-    {
-        progressListenerList.remove (ParserProgressListener.class, l);
+    public void removeParserProgressListener(ParserProgressListener l) {
+        progressListenerList.remove(ParserProgressListener.class, l);
     }
 
-    protected void clearParserProgressListeners() 
-    {
-        EventListener[] l = progressListenerList.getListeners (ParserProgressListener.class);
+    protected void clearParserProgressListeners() {
+        EventListener[] l = progressListenerList.getListeners(ParserProgressListener.class);
         int numListeners = l.length;
         for (int i = 0; i < numListeners; i++) {
-            progressListenerList.remove (ParserProgressListener.class, (ParserProgressListener)l[i]);
+            progressListenerList.remove(ParserProgressListener.class, (ParserProgressListener) l[i]);
         }
     }
 
-    /** Tells all ParserProgressListener interfaces that progress has occurred. */
-    protected void fireProgressReported(String description, long partComplete, long whole)
-    {
-        Object[] listeners = progressListenerList.getListenerList ();
+    /**
+     * Tells all ParserProgressListener interfaces that progress has occurred.
+     */
+    protected void fireProgressReported(String description, long partComplete, long whole) {
+        Object[] listeners = progressListenerList.getListenerList();
         for (int i = listeners.length - 2; i >= 0; i -= 2) {
             if (listeners[i] == ParserProgressListener.class) {
-                ((ParserProgressListener)listeners[i + 1]).progressReported(description, partComplete, whole);
+                ((ParserProgressListener) listeners[i + 1]).progressReported(description, partComplete, whole);
             }
         }
     }
@@ -146,7 +144,9 @@ public class Parser
     // ParserListener methods
     /////////////////////////////////////////////////////////////////////////
 
-    /** List of ParserListeners */
+    /**
+     * List of ParserListeners
+     */
     protected EventListenerList listenerList;
 
     /**
@@ -155,9 +155,8 @@ public class Parser
      *
      * @param l the listener that is to be notified of parser events
      */
-    public void addParserListener(ParserListener l) 
-    {
-        listenerList.add (ParserListener.class, l);
+    public void addParserListener(ParserListener l) {
+        listenerList.add(ParserListener.class, l);
     }
 
     /**
@@ -165,104 +164,110 @@ public class Parser
      *
      * @param l the listener to remove
      */
-    public void removeParserListener(ParserListener l) 
-    {
-        listenerList.remove (ParserListener.class, l);
+    public void removeParserListener(ParserListener l) {
+        listenerList.remove(ParserListener.class, l);
     }
 
-    protected void clearParserListeners() 
-    {
-        EventListener[] l = listenerList.getListeners (ParserListener.class);
+    protected void clearParserListeners() {
+        EventListener[] l = listenerList.getListeners(ParserListener.class);
         int numListeners = l.length;
         for (int i = 0; i < numListeners; i++) {
-            listenerList.remove (ParserListener.class, (ParserListener)l[i]);
+            listenerList.remove(ParserListener.class, (ParserListener) l[i]);
         }
     }
 
-    /** Tells all ParserListeners that a voice event has been parsed. */
-    protected void fireVoiceEvent(byte event)
-    {
-        Object[] listeners = listenerList.getListenerList ();
+    /**
+     * Tells all ParserListeners that a voice event has been parsed.
+     */
+    protected void fireVoiceEvent(byte event) {
+        Object[] listeners = listenerList.getListenerList();
         for (int i = listeners.length - 2; i >= 0; i -= 2) {
             if (listeners[i] == ParserListener.class) {
-                ((ParserListener)listeners[i + 1]).voiceEvent(event);
+                ((ParserListener) listeners[i + 1]).voiceEvent(event);
             }
         }
     }
 
-    /** Tells all ParserListeners that a tempo event has been parsed. */
-    protected void fireTempoEvent(int event)
-    {
-        Object[] listeners = listenerList.getListenerList ();
+    /**
+     * Tells all ParserListeners that a tempo event has been parsed.
+     */
+    protected void fireTempoEvent(int event) {
+        Object[] listeners = listenerList.getListenerList();
         for (int i = listeners.length - 2; i >= 0; i -= 2) {
             if (listeners[i] == ParserListener.class) {
-                ((ParserListener)listeners[i + 1]).tempoEvent(event);
+                ((ParserListener) listeners[i + 1]).tempoEvent(event);
             }
         }
     }
 
-    /** Tells all ParserListeners that an instrument event has been parsed. */
-    protected void fireInstrumentEvent(byte event)
-    {
-        Object[] listeners = listenerList.getListenerList ();
+    /**
+     * Tells all ParserListeners that an instrument event has been parsed.
+     */
+    protected void fireInstrumentEvent(byte event) {
+        Object[] listeners = listenerList.getListenerList();
         for (int i = listeners.length - 2; i >= 0; i -= 2) {
             if (listeners[i] == ParserListener.class) {
-                ((ParserListener)listeners[i + 1]).instrumentEvent(event);
-            }
-        }
-    }
-    
-    /** Tells all ParserListeners that a measure event has been parsed. */
-    protected void fireMeasureEvent()
-    {
-        Object[] listeners = listenerList.getListenerList ();
-        for (int i = listeners.length - 2; i >= 0; i -= 2) {
-            if (listeners[i] == ParserListener.class) {
-                ((ParserListener)listeners[i + 1]).measureEvent();
+                ((ParserListener) listeners[i + 1]).instrumentEvent(event);
             }
         }
     }
 
-    /** Tells all ParserListeners that a controller event has been parsed. */
-    protected void fireChannelPressureEvent(byte event)
-    {
-        Object[] listeners = listenerList.getListenerList ();
+    /**
+     * Tells all ParserListeners that a measure event has been parsed.
+     */
+    protected void fireMeasureEvent() {
+        Object[] listeners = listenerList.getListenerList();
         for (int i = listeners.length - 2; i >= 0; i -= 2) {
             if (listeners[i] == ParserListener.class) {
-                ((ParserListener)listeners[i + 1]).channelPressureEvent(event);
+                ((ParserListener) listeners[i + 1]).measureEvent();
             }
         }
     }
 
-    /** Tells all ParserListeners that a note event has been parsed. */
-    protected void fireNoteEvent(Note event)
-    {
-        Object[] listeners = listenerList.getListenerList ();
+    /**
+     * Tells all ParserListeners that a controller event has been parsed.
+     */
+    protected void fireChannelPressureEvent(byte event) {
+        Object[] listeners = listenerList.getListenerList();
         for (int i = listeners.length - 2; i >= 0; i -= 2) {
             if (listeners[i] == ParserListener.class) {
-                ((ParserListener)listeners[i + 1]).noteEvent(event);
+                ((ParserListener) listeners[i + 1]).channelPressureEvent(event);
             }
         }
     }
 
-    /** Tells all ParserListeners that a sequential note event has been parsed. */
-    protected void fireSequentialNoteEvent(Note event)
-    {
-        Object[] listeners = listenerList.getListenerList ();
+    /**
+     * Tells all ParserListeners that a note event has been parsed.
+     */
+    protected void fireNoteEvent(Note event) {
+        Object[] listeners = listenerList.getListenerList();
         for (int i = listeners.length - 2; i >= 0; i -= 2) {
             if (listeners[i] == ParserListener.class) {
-                ((ParserListener)listeners[i + 1]).sequentialNoteEvent(event);
+                ((ParserListener) listeners[i + 1]).noteEvent(event);
             }
         }
     }
 
-    /** Tells all ParserListeners that a parallel note event has been parsed. */
-    protected void fireParallelNoteEvent(Note event)
-    {
-        Object[] listeners = listenerList.getListenerList ();
+    /**
+     * Tells all ParserListeners that a sequential note event has been parsed.
+     */
+    protected void fireSequentialNoteEvent(Note event) {
+        Object[] listeners = listenerList.getListenerList();
         for (int i = listeners.length - 2; i >= 0; i -= 2) {
             if (listeners[i] == ParserListener.class) {
-                ((ParserListener)listeners[i + 1]).parallelNoteEvent(event);
+                ((ParserListener) listeners[i + 1]).sequentialNoteEvent(event);
+            }
+        }
+    }
+
+    /**
+     * Tells all ParserListeners that a parallel note event has been parsed.
+     */
+    protected void fireParallelNoteEvent(Note event) {
+        Object[] listeners = listenerList.getListenerList();
+        for (int i = listeners.length - 2; i >= 0; i -= 2) {
+            if (listeners[i] == ParserListener.class) {
+                ((ParserListener) listeners[i + 1]).parallelNoteEvent(event);
             }
         }
     }

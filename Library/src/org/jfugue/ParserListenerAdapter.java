@@ -29,58 +29,72 @@ package org.jfugue;
  * want to implement all of the ParserListener methods, extend
  * this class.
  *
- *@author David Koelle
- *@version 3.0
+ * @author David Koelle
+ * @version 3.0
  */
-public class ParserListenerAdapter implements ParserListener
-{
+public class ParserListenerAdapter implements ParserListener {
     /**
      * Called when the parser encounters a voice event.
+     *
      * @param voice the event that has been parsed
      */
-    public void voiceEvent(byte voice) { }
+    public void voiceEvent(byte voice) {
+    }
 
     /**
      * Called when the parser encounters a tempo event.
+     *
      * @param tempo the event that has been parsed
      */
-    public void tempoEvent(int tempo) { }
+    public void tempoEvent(int tempo) {
+    }
 
     /**
      * Called when the parser encounters an instrument event.
+     *
      * @param instrument the event that has been parsed
      */
-    public void instrumentEvent(byte instrument) { }
+    public void instrumentEvent(byte instrument) {
+    }
 
     /**
      * Called when the parser encounters a measure event.
      */
-    public void measureEvent() { }
-    
+    public void measureEvent() {
+    }
+
     /**
      * Called when the parser encounters a channel pressure event.
+     *
      * @param channelPressure the event that has been parsed
      */
-    public void channelPressureEvent(byte channelPressure) { }
+    public void channelPressureEvent(byte channelPressure) {
+    }
 
     /**
      * Called when the parser encounters an initial note event.
+     *
      * @param note the event that has been parsed
      * @see Note
      */
-    public void noteEvent(Note note) { }
+    public void noteEvent(Note note) {
+    }
 
     /**
      * Called when the parser encounters a sequential note event.
+     *
      * @param note the event that has been parsed
      * @see Note
      */
-    public void sequentialNoteEvent(Note note) { }
+    public void sequentialNoteEvent(Note note) {
+    }
 
     /**
      * Called when the parser encounters a parallel note event.
+     *
      * @param note the event that has been parsed
      * @see Note
      */
-    public void parallelNoteEvent(Note note) { }
+    public void parallelNoteEvent(Note note) {
+    }
 }

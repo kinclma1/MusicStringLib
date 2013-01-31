@@ -113,6 +113,10 @@ public class MusicStringSong {
         return sb.toString();
     }
 
+    /**
+     * Returns a TGSong object, a tuxGuitar internal representation of a song, created from this song
+     * @return tuxGuitar internal representation of a song, created from this song
+     */
     public TGSong toTGSong() {
         TGFactory factory = new TGFactory();
         TGSong song = factory.newSong();
@@ -158,10 +162,19 @@ public class MusicStringSong {
         return tracks.get(id);
     }
 
+    /**
+     * Removes the track with the given ID from the song
+     * @param id ID of the track to be removed, list of all IDs can be obtained with
+     *              getTrackIds method
+     */
     public void removeTrack(String id) {
         tracks.remove(id);
     }
 
+    /**
+     * Returns a track containing all notes that can surely be played in any additional track
+     * @return track containing all notes that can surely be played in any additional track
+     */
     public MusicStringTrack getPossibleNotes() {
         System.out.println(new HarmonyDetector(this).detectHarmony());
         return null;

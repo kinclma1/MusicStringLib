@@ -28,27 +28,29 @@ import java.util.EventListener;
  * Classes that implement ParserListener and add themselves as listeners
  * to a <code>Parser</code> object will receive events when
  * the <code>Parser</code> inteprets tokens from a Music String.
- * @see MusicStringParser
  *
- *@author David Koelle
- *@version 3.0
+ * @author David Koelle
+ * @version 3.0
+ * @see MusicStringParser
  */
-public interface ParserListener extends EventListener
-{
+public interface ParserListener extends EventListener {
     /**
      * Called when the parser encounters a voice event.
+     *
      * @param voice the event that has been parsed
      */
     public void voiceEvent(byte voice);
 
     /**
      * Called when the parser encounters a tempo event.
+     *
      * @param tempo the event that has been parsed
      */
     public void tempoEvent(int tempo);
 
     /**
      * Called when the parser encounters an instrument event.
+     *
      * @param instrument the event that has been parsed
      */
     public void instrumentEvent(byte instrument);
@@ -57,15 +59,17 @@ public interface ParserListener extends EventListener
      * Called when the parser encounters a measure event.
      */
     public void measureEvent();
-    
+
     /**
      * Called when the parser encounters a channel pressure event.
+     *
      * @param channelPressure the event that has been parsed
      */
     public void channelPressureEvent(byte channelPressure);
 
     /**
      * Called when the parser encounters an initial note event.
+     *
      * @param note the event that has been parsed
      * @see Note
      */
@@ -73,6 +77,7 @@ public interface ParserListener extends EventListener
 
     /**
      * Called when the parser encounters a sequential note event.
+     *
      * @param note the event that has been parsed
      * @see Note
      */
@@ -80,6 +85,7 @@ public interface ParserListener extends EventListener
 
     /**
      * Called when the parser encounters a parallel note event.
+     *
      * @param note the event that has been parsed
      * @see Note
      */

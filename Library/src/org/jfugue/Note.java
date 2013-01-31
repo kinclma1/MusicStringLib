@@ -27,15 +27,15 @@ import java.io.Serializable;
 /**
  * Contains all information necessary for a musical note, including
  * pitch, duration, attack velocity, and decay velocity.
- *
+ * <p/>
  * <p>
  * Most of these settings have defaults.  The default octave is 5.
  * The default duration is a quarter note.  The default attack and
  * decay velocities are 64.
  * </p>
  *
- *@author David Koelle
- *@version 2.0.1
+ * @author David Koelle
+ * @version 2.0.1
  */
 public final class Note implements Serializable {
     private byte value = 0;
@@ -52,8 +52,7 @@ public final class Note implements Serializable {
     /**
      * Instantiates a new Note object.
      */
-    public Note()
-    {
+    public Note() {
         this.value = 0;
         this.duration = 0;
         this.type = 0;
@@ -64,42 +63,42 @@ public final class Note implements Serializable {
      * This constructor should only be called in cases where the
      * duration of the note is not important (for example,
      * when specifying a root note for a IntervalNotation)
+     *
      * @param value the numeric value of the note.  C5 is 60.
      */
-    public Note(byte value)
-    {
-        this(value, (long)1);
+    public Note(byte value) {
+        this(value, (long) 1);
     }
 
     /**
      * Instantiates a new Note object with the given note value and duration.
-     * @param value the numeric value of the note.  C5 is 60.
+     *
+     * @param value    the numeric value of the note.  C5 is 60.
      * @param duration the duration of the note, as milliseconds.
      */
-    public Note(byte value, long duration)
-    {
+    public Note(byte value, long duration) {
         this.value = value;
         this.duration = duration;
     }
 
     /**
      * Instantiates a new Note object with the given note value and duration.
-     * @param value the numeric value of the note.  C5 is 60.
+     *
+     * @param value           the numeric value of the note.  C5 is 60.
      * @param decimalDuration the duration of the note, as a decimal fraction of a whole note.
      */
-    public Note(byte value, double decimalDuration)
-    {
+    public Note(byte value, double decimalDuration) {
         this.value = value;
         this.decimalDuration = decimalDuration;
     }
 
     /**
      * Instantiates a new Note object with the given note value, duration, and attack and decay velocities.
-     * @param value the numeric value of the note.  C5 is 60.
+     *
+     * @param value    the numeric value of the note.  C5 is 60.
      * @param duration the duration of the note.
      */
-    public Note(byte value, long duration, byte attackVelocity, byte decayVelocity)
-    {
+    public Note(byte value, long duration, byte attackVelocity, byte decayVelocity) {
         this.value = value;
         this.duration = duration;
         this.attackVelocity = attackVelocity;
@@ -108,11 +107,11 @@ public final class Note implements Serializable {
 
     /**
      * Instantiates a new Note object with the given note value, duration, and attack and decay velocities.
-     * @param value the numeric value of the note.  C5 is 60.
+     *
+     * @param value           the numeric value of the note.  C5 is 60.
      * @param decimalDuration the duration of the note.
      */
-    public Note(byte value, double decimalDuration, byte attackVelocity, byte decayVelocity)
-    {
+    public Note(byte value, double decimalDuration, byte attackVelocity, byte decayVelocity) {
         this.value = value;
         this.decimalDuration = decimalDuration;
         this.attackVelocity = attackVelocity;
@@ -121,202 +120,209 @@ public final class Note implements Serializable {
 
     /**
      * Indicates whether this Note object actually represents a rest.
+     *
      * @param rest indicates whether this note is rest
      */
-    public void setRest(boolean rest)
-    {
+    public void setRest(boolean rest) {
         this.rest = rest;
     }
 
     /**
      * Returns whether this Note object actually represents a rest.
+     *
      * @return whether this note is a rest
      */
-    public boolean isRest()
-    {
+    public boolean isRest() {
         return this.rest;
     }
 
     /**
      * Sets the numeric value of this note.  C5 is 60.
+     *
      * @param value the value of the note
      */
-    public void setValue(byte value)
-    {
+    public void setValue(byte value) {
         this.value = value;
     }
 
     /**
      * Returns the numeric value of this note.  C5 is 60.
+     *
      * @return the value of this note
      */
-    public byte getValue()
-    {
+    public byte getValue() {
         return this.value;
     }
 
     /**
      * Sets the duration of this note.
+     *
      * @param duration the duration of this note
      */
-    public void setDuration(long duration)
-    {
+    public void setDuration(long duration) {
         this.duration = duration;
     }
 
     /**
      * Returns the duration of this note.
+     *
      * @return the duration of this note
      */
-    public long getDuration()
-    {
+    public long getDuration() {
         return this.duration;
     }
 
     /**
      * Sets the decimal fraction value for the duration.
+     *
      * @param duration the decimal fraction for the duration
      */
-    public void setDecimalDuration(double duration)
-    {
+    public void setDecimalDuration(double duration) {
         this.decimalDuration = duration;
     }
 
     /**
      * Returns the decimal fraction value for the duration.
+     *
      * @return the decimal fraction value for the duration
      */
-    public double getDecimalDuration()
-    {
+    public double getDecimalDuration() {
         return this.decimalDuration;
     }
 
     /**
      * Indicates whether this note has a tie to some future note.
+     *
      * @param startOfTie true if the note is tied, false if not
      */
-    public void setStartOfTie(boolean startOfTie)
-    {
+    public void setStartOfTie(boolean startOfTie) {
         this.isStartOfTie = startOfTie;
     }
 
     /**
      * Returns whether this note has a tie to some future note.
+     *
      * @return true is the note is tied, false if not
      */
-    public boolean isStartOfTie()
-    {
+    public boolean isStartOfTie() {
         return this.isStartOfTie;
     }
 
 
     /**
      * Indicates whether this note is tied to some past note.
+     *
      * @param endOfTie true if the note is tied, false if not
      */
-    public void setEndOfTie(boolean endOfTie)
-    {
+    public void setEndOfTie(boolean endOfTie) {
         this.isEndOfTie = endOfTie;
     }
 
     /**
      * Returns whether this note is tied to some past note.
+     *
      * @return true is the note is tied, false if not
      */
-    public boolean isEndOfTie()
-    {
+    public boolean isEndOfTie() {
         return this.isEndOfTie;
     }
 
     /**
      * Sets the attack velocity for this note.
+     *
      * @param velocity the attack velocity
      */
-    public void setAttackVelocity(byte velocity)
-    {
+    public void setAttackVelocity(byte velocity) {
         this.attackVelocity = velocity;
     }
 
     /**
      * Returns the attack velocity for this note.
+     *
      * @return the attack velocity
      */
-    public byte getAttackVelocity()
-    {
+    public byte getAttackVelocity() {
         return this.attackVelocity;
     }
 
     /**
      * Sets the decay velocity for this note.
+     *
      * @param velocity the decay velocity
      */
-    public void setDecayVelocity(byte velocity)
-    {
+    public void setDecayVelocity(byte velocity) {
         this.decayVelocity = velocity;
     }
 
     /**
      * Returns the decay velocity for this note.
+     *
      * @return the decay velocity
      */
-    public byte getDecayVelocity()
-    {
+    public byte getDecayVelocity() {
         return this.decayVelocity;
     }
 
     /**
      * Sets whether this Note will have other Notes (sequential or parallel) associated with it.
+     *
      * @param accompanying
      */
-    public void setHasAccompanyingNotes(boolean accompanying)
-    {
+    public void setHasAccompanyingNotes(boolean accompanying) {
         this.accompanyingNotes = accompanying;
     }
 
     /**
      * Returns whether this Note will have other Notes (sequential or parallel) associated with it.
      */
-    public boolean hasAccompanyingNotes()
-    {
+    public boolean hasAccompanyingNotes() {
         return this.accompanyingNotes;
     }
 
     /**
      * Sets the note type - either First, Sequential, or Parallel.
+     *
      * @param type the note type
      */
-    public void setType(byte type)
-    {
+    public void setType(byte type) {
         this.type = type;
     }
 
     /**
      * Returns the note type - either First, Sequential, or Parallel.
+     *
      * @return the note type
      */
-    public byte getType()
-    {
+    public byte getType() {
         return this.type;
     }
 
-    /** Indicates that this note is the first note in the token. */
-    public static final byte FIRST      = 0;
-    /** Indicates that this note immediately follows a previous note in the same token. */
+    /**
+     * Indicates that this note is the first note in the token.
+     */
+    public static final byte FIRST = 0;
+    /**
+     * Indicates that this note immediately follows a previous note in the same token.
+     */
     public static final byte SEQUENTIAL = 1;
-    /** Indicates that this note is played at the same time as a previous note in the same token. */
-    public static final byte PARALLEL   = 2;
-    /** Default value for attack and decay velocity. */
+    /**
+     * Indicates that this note is played at the same time as a previous note in the same token.
+     */
+    public static final byte PARALLEL = 2;
+    /**
+     * Default value for attack and decay velocity.
+     */
     public static final byte DEFAULT_VELOCITY = 64;
 
     /**
      * Returns a MusicString representation of the given MIDI note value and duration --
      * which indicates a note and an octave.
-     * @param noteValue this MIDI note value, like 60
+     *
+     * @param noteValue       this MIDI note value, like 60
      * @param decimalDuration the duration of this note, like 0.5
      * @return a MusicString value, like C5h
      */
-    public static String getStringForNote(byte noteValue, double decimalDuration)
-    {
+    public static String getStringForNote(byte noteValue, double decimalDuration) {
         StringBuffer buffy = new StringBuffer();
         buffy.append(getStringForNote(noteValue));
         buffy.append(getStringForDuration(decimalDuration));
@@ -326,15 +332,14 @@ public final class Note implements Serializable {
     /**
      * Returns the frequency, in Hertz, for the given note value.
      * For example, the frequency for A5 (MIDI note 69) is 440.0
+     *
      * @param noteValue
      * @return
      */
-    public static double getFrequencyForNote(int noteValue)
-    {
+    public static double getFrequencyForNote(int noteValue) {
         double freq = 0.0;
         double freq0 = 8.1757989156;
-        for (double d=0; d <= noteValue; d++)
-        {
+        for (double d = 0; d <= noteValue; d++) {
             freq = freq0 * Math.pow(2.0, d / 12.0);
         }
 
@@ -347,11 +352,11 @@ public final class Note implements Serializable {
     /**
      * Returns a MusicString representation of the given MIDI note value --
      * which indicates a note and an octave.
+     *
      * @param noteValue this MIDI note value, like 60
      * @return a MusicString value, like C5
      */
-    public static String getStringForNote(byte noteValue)
-    {
+    public static String getStringForNote(byte noteValue) {
         int note = noteValue % 12;
         int octave = noteValue / 12;
         StringBuffer buffy = new StringBuffer();
@@ -373,8 +378,7 @@ public final class Note implements Serializable {
      * @param decimalDuration The decimal value of the duration to convert
      * @return a MusicString fragment representing the duration
      */
-    public static String getStringForDuration(double decimalDuration)
-    {
+    public static String getStringForDuration(double decimalDuration) {
         if (decimalDuration == 1.0) return "w";
         else if (decimalDuration == 0.75) return "h.";
         else if (decimalDuration == 0.5) return "h";
@@ -406,8 +410,7 @@ public final class Note implements Serializable {
      * @param stringDuration The MusicString duration character (or dotted character)
      * @return a decimal value representing the duration, expressed as a fraction of a whole note
      */
-    public static double getDecimalForDuration(String stringDuration)
-    {
+    public static double getDecimalForDuration(String stringDuration) {
         String stringDuration2 = stringDuration.toLowerCase();
         if (stringDuration2.equals("w")) return 1.0;
         else if (stringDuration2.equals("h.")) return 0.75;
@@ -427,7 +430,7 @@ public final class Note implements Serializable {
         else return 0.0;
     }
 
-    public static final String[] NOTES = new String[] { "C", "C#", "D", "Eb", "E", "F", "F#", "G", "G#", "A", "Bb", "B" };
+    public static final String[] NOTES = new String[]{"C", "C#", "D", "Eb", "E", "F", "F#", "G", "G#", "A", "Bb", "B"};
 
     public static final byte ACOUSTIC_BASS_DRUM = 35;
     public static final byte BASS_DRUM = 36;

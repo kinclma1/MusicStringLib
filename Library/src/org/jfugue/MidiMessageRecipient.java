@@ -26,12 +26,10 @@ import javax.sound.midi.MidiMessage;
 
 /**
  * Used in conjunction with TimeFactor.sortAndDeliverMidiMessages;
- * handles MIDI messages when they are delivered. 
- * 
- * @author David Koelle
+ * handles MIDI messages when they are delivered.
  *
+ * @author David Koelle
  */
-public interface MidiMessageRecipient
-{
+public interface MidiMessageRecipient {
     public void messageReady(MidiMessage message, long timestamp);
 }
