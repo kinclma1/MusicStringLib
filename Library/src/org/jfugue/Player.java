@@ -22,6 +22,8 @@
 
 package org.jfugue;
 
+import cz.cvut.fel.kinclma1.player.MusicStringPlayer;
+
 import javax.sound.midi.MetaEventListener;
 import javax.sound.midi.MetaMessage;
 import javax.sound.midi.MidiSystem;
@@ -83,13 +85,24 @@ public class Player {
 
     private void setSequencer(Sequencer sequencer) {
         this.sequencer = sequencer;
-//        setCloseWhenFinished();
+//        setStopWhenFinished();
     }
 
     private void initParser() {
         this.parser = new MusicStringParser();
         this.renderer = new MidiRenderer(sequenceTiming, resolution);
         this.parser.addParserListener(this.renderer);
+    }
+
+    private void setStopWhenFinished(MusicStringPlayer player) {
+        final MusicStringPlayer player1 = player;
+        sequencer.addMetaEventListener(new MetaEventListener() {
+            public void meta(MetaMessage event) {
+                if (event.getType() == 47) {
+                    player1.stop();
+                }
+            }
+        });
     }
 
     private void setCloseWhenFinished() {
@@ -101,6 +114,10 @@ public class Player {
                 }
             }
         });
+    }
+
+    public void setMusicStringPlayer(MusicStringPlayer player) {
+        setStopWhenFinished(player);
     }
 
 //    /**

@@ -20,10 +20,7 @@ public class MusicStringPlayer {
 
         @Override
         public void run() {
-            for (PlayerListener listener : listeners) {
-                listener.setPlaying(player.isPlaying());
-                listener.setPosition(player.getSequencePositionSeconds());
-            }
+            notifyPosition();
         }
     }
 
@@ -46,16 +43,30 @@ public class MusicStringPlayer {
 
     private void init(String musicString) {
         this.player = new Player(musicString == null ? "" : musicString);
+        player.setMusicStringPlayer(this);
         timer = new Timer();
         initListeners();
-        timer.schedule(new NotifyTask(), 500, 500);
+        timer.schedule(new NotifyTask(), 500L, 500L);
     }
 
     private void initListeners() {
         for (PlayerListener listener : listeners) {
+            listener.setPlayer(this);
             listener.setSongLength(player.getSequenceLengthSeconds());
             listener.setPlaying(false);
             listener.setPosition(0);
+        }
+    }
+
+    private void notifyPlaybackStatus() {
+        for (PlayerListener listener : listeners) {
+            listener.setPlaying(player.isPlaying());
+        }
+    }
+
+    private void notifyPosition() {
+        for (PlayerListener listener : listeners) {
+            listener.setPosition(player.getSequencePositionSeconds());
         }
     }
 
@@ -65,14 +76,18 @@ public class MusicStringPlayer {
         } else if (player.isPaused()) {
             player.resume();
         }
+        notifyPlaybackStatus();
     }
 
     public void pause() {
         player.pause();
+        notifyPlaybackStatus();
     }
 
     public void stop() {
         player.stop();
+        notifyPlaybackStatus();
+        notifyPosition();
     }
 
     public void close() {
@@ -83,5 +98,6 @@ public class MusicStringPlayer {
 
     public void setPosition(int seconds) {
         player.jumpTo(seconds);
+        notifyPosition();
     }
 }

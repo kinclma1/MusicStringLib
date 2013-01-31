@@ -1,5 +1,6 @@
 package cz.cvut.fel.kinclma1;
 
+import cz.cvut.fel.kinclma1.player.MusicStringPlayer;
 import cz.cvut.fel.kinclma1.player.PlayerListener;
 
 /**
@@ -10,6 +11,10 @@ import cz.cvut.fel.kinclma1.player.PlayerListener;
  * To change this template use File | Settings | File Templates.
  */
 public class TestListener implements PlayerListener {
+
+    public void setPlayer(MusicStringPlayer player) {
+
+    }
 
     @Override
     public void setSongLength(int seconds) {

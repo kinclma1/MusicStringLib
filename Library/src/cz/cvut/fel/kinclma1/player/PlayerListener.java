@@ -14,6 +14,12 @@ package cz.cvut.fel.kinclma1.player;
 public interface PlayerListener {
 
     /**
+     * Sets player to send commands to
+     * @param player controlled MusicStringPlayer instance
+     */
+    public void setPlayer(MusicStringPlayer player);
+
+    /**
      * Sets song length in the listener, only for initialization purposes
      * @param length length of the song in seconds
      */

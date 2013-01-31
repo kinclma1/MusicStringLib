@@ -44,8 +44,10 @@ public class Main {
             player1.play();
             Thread.sleep(5000);
             player.close();
-            player1.setPosition(240);
-            Thread.sleep(40000);
+            player1.setPosition(260);
+            Thread.sleep(20000);
+            player1.play();
+            Thread.sleep(10000);
             player1.close();
         } catch (InterruptedException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
