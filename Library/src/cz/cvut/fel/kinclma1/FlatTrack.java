@@ -34,6 +34,10 @@ class FlatTrack {
         return tones.iterator();
     }
 
+    MusicStringDuration getDuration() {
+        return duration;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

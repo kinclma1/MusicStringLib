@@ -11,7 +11,7 @@ import java.util.HashMap;
  * Time: 20:10
  * To change this template use File | Settings | File Templates.
  */
-class MusicStringDuration implements Comparable<MusicStringDuration> {
+public class MusicStringDuration implements Comparable<MusicStringDuration> {
     private boolean dotted;
     private Duration duration;
 
