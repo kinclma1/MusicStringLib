@@ -70,7 +70,7 @@ public class MusicStringDuration implements Comparable<MusicStringDuration> {
     }
 
     public MusicStringDuration(TGDuration dur) {
-        duration = intDurationMap.get(dur);
+        duration = intDurationMap.get(dur.getValue());
         dotted = dur.isDotted();
     }
 
