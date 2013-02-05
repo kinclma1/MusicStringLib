@@ -2,7 +2,9 @@ package cz.cvut.fel.kinclma1;
 
 import org.herac.tuxguitar.song.models.TGDuration;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -67,17 +69,47 @@ public class MusicStringDuration implements Comparable<MusicStringDuration> {
         dotted = musicString.contains(".");
     }
 
-    private MusicStringDuration(int dur) {
-        duration = intDurationMap.get(dur);
-    }
-
     public MusicStringDuration(TGDuration dur) {
-        this(dur.getValue());
+        duration = intDurationMap.get(dur);
         dotted = dur.isDotted();
     }
 
     public MusicStringDuration(Duration duration) {
         this.duration = duration;
+    }
+
+    public MusicStringDuration(int div128) throws ImpossibleDurationException {
+        int i = 128;
+        boolean set = false;
+        while (i >= 1 && !set) {
+            if (i <= div128) {
+                duration = intDurationMap.get(128 / i);
+                div128 -= i;
+                set = true;
+            }
+            i /= 2;
+            if (set && div128 == i) {
+                dotted = true;
+                div128 -= i;
+            }
+        }
+
+        if (div128 > 0) {
+            List<Duration> durations = new ArrayList<Duration>();
+            durations.add(duration);
+            if (dotted) {
+                durations.add(shorter());
+            }
+
+            while (i > 0 && div128 > 0) {
+                if (i <= div128) {
+                    durations.add(intDurationMap.get(128 / i));
+                    div128 -= i;
+                }
+                i /= 2;
+            }
+            throw new ImpossibleDurationException(durations);
+        }
     }
 
     @Override
