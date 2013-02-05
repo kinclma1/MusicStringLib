@@ -92,7 +92,8 @@ public class MusicStringTone extends NoteContent {
             }
         }
         try {
-            octave = Integer.parseInt(mStrTone.substring(len,mStrTone.length()));
+            String[] newMStrTone = mStrTone.split("([a-z])");
+            octave = Integer.parseInt(newMStrTone[0].substring(len,newMStrTone[0].length()));
         } catch (NumberFormatException ex) {
             octave = 5;
         }
