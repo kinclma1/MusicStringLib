@@ -18,24 +18,16 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-//        MusicStringSong ms = new MusicStringSong(new File("/home/void/project/rem1.gp4"));
+        MusicStringSong ms = new MusicStringSong(new File("/home/void/project/rem1.gp4"));
+        System.out.println(ms);
+        System.out.println(ms);
+        System.out.println(ms.getTrackIds());
+        System.out.println(ms.getTrack(ms.getTrackIds().get(0)));
 //        ms.getPossibleNotes();
 //        TestListener1 listener = new TestListener1();
 //        MusicStringPlayer player = new MusicStringPlayer(ms.toString(), listener);
 //        player.play();
 //        TGSong tgs = ms.toTGSong();
 //        new FileExporter().exportSong(tgs, "/home/void/project/newrem1.tg");
-
-//        for (int i = 128; i > 0; i -= 2) {
-//            try {
-//                System.out.println(new MusicStringDuration(i).toString());
-//            } catch (ImpossibleDurationException e) {
-//                System.out.println(e.getMessage());
-//            }
-//        }
-        MusicStringTone tone = new MusicStringTone("C3i");
-        System.out.println(tone.toString());
-        System.out.println(tone.toInt());
-        System.out.println(new MusicStringTone(tone.toInt()));
     }
 }

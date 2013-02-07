@@ -117,7 +117,12 @@ public class MusicStringTrack {
             sb.append("| ");
         }
         sb.delete(sb.length() - 2, sb.length());
+        resetTempo();
         return sb.toString();
+    }
+
+    private void resetTempo() {
+        tempoTracker.changed(0);
     }
 
     public TGTrack toTGTrack(TGFactory factory) {
