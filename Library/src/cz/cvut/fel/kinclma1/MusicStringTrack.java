@@ -210,7 +210,7 @@ public class MusicStringTrack {
 
     private String buildMeta() {
         if(!drumTrack) {
-            return getChannelMusicString() + getInstrument();
+            return getChannelMusicString() + instrument.toMusicString();
         }
         return getChannelMusicString();
     }
