@@ -86,6 +86,14 @@ public class MusicStringTrack {
         id = buildId();
     }
 
+    public String getChannel() {
+        return channelMusicString();
+    }
+
+    public String getInstrument() {
+        return !drumTrack ? instrument.toString() : "";
+    }
+
     public String getMetaInfo() {
         return metaInfo;
     }

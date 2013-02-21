@@ -19,11 +19,7 @@ public class Main {
      */
     public static void main(String[] args) {
         MusicStringSong ms = new MusicStringSong(new File("/home/void/project/rem1.gp4"));
-        System.out.println(ms);
-        System.out.println(ms);
-        System.out.println(ms.getTrackIds());
-        System.out.println(ms.getTrack(ms.getTrackIds().get(0)));
-//        ms.getPossibleNotes();
+        ms.getPossibleNotes();
 //        TestListener1 listener = new TestListener1();
 //        MusicStringPlayer player = new MusicStringPlayer(ms.toString(), listener);
 //        player.play();

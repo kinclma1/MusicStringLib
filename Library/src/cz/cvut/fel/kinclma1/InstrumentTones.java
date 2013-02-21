@@ -20,7 +20,6 @@ public class InstrumentTones {
         if (tones == null) {
             return orig;
         } else {
-            //todo consider flat track tones represented as numbers
             Iterator<HashSet<String>> iterator = orig.getIterator();
             newTrack = new FlatTrack(orig.getDuration());
             HashSet<String> oldBeat;
@@ -30,16 +29,34 @@ public class InstrumentTones {
                 newBeat = new HashSet<String>();
                 for (String s : oldBeat) {
                     Set<MusicStringTone> octaves = tones.get(s);
-                    if (octaves == null) {
-                        newBeat.addAll(oldBeat);//todo tohle smrdi
-                    }
                     for (MusicStringTone tone : octaves) {
                         newBeat.add(tone.toString());
                     }
+                }
+                if (newBeat.isEmpty()) {
+                    newBeat.addAll(oldBeat);
                 }
                 newTrack.addToneSet(newBeat);
             }
         }
         return newTrack;
+    }
+
+    protected final void setRange(MusicStringTone min, MusicStringTone max) {
+        int minInt = min.toInt();
+        int maxInt = max.toInt();
+        initToneMap();
+        MusicStringTone tone;
+        for (int i = minInt; i <= maxInt; i ++) {
+            tone = new MusicStringTone(i);
+            tones.get(tone.relativeTone()).add(tone);
+        }
+    }
+
+    private void initToneMap() {
+        MusicStringTone.RelativeTone[] relativeTones = MusicStringTone.RelativeTone.values();
+        for (int i = 0; i < relativeTones.length; i ++) {
+            tones.put(relativeTones[i].toString(), new HashSet<MusicStringTone>());
+        }
     }
 }
