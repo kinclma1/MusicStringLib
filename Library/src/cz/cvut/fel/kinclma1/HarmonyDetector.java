@@ -11,7 +11,7 @@ import java.util.concurrent.ExecutorService;
  * Time: 22:09
  * To change this template use File | Settings | File Templates.
  */
-class HarmonyDetector {
+public class HarmonyDetector {
 
     private class TrackShortestNoteFinder implements Callable<MusicStringDuration> {
 

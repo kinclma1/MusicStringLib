@@ -86,8 +86,12 @@ public class MusicStringTrack {
         id = buildId();
     }
 
-    public String getChannel() {
-        return channelMusicString();
+    public int getChannel() {
+        return channel;
+    }
+
+    public String getChannelMusicString() {
+        return String.format("V%d ", channel);
     }
 
     public String getInstrument() {
@@ -201,33 +205,13 @@ public class MusicStringTrack {
     }
 
     private String buildId() {
-        StringBuilder sb = new StringBuilder(2);
-        if(!drumTrack) {
-            sb.append(channelMusicString());
-            sb.append(instrument.toString());
-        } else {
-            sb.append(channelMusicString());
-            sb.append("DRUMS");
-        }
-
-        return sb.toString();
+        return getChannelMusicString() + (drumTrack ? "DRUMS" : instrument.toString());
     }
 
     private String buildMeta() {
         if(!drumTrack) {
-            StringBuilder sb = new StringBuilder(2);
-            sb.append(channelMusicString());
-            sb.append(instrument.toMusicString());
-            return sb.toString();
+            return getChannelMusicString() + getInstrument();
         }
-        return channelMusicString();
-    }
-
-    private String channelMusicString() {
-        StringBuilder sb = new StringBuilder(3);
-        sb.append("V");
-        sb.append(Integer.toString(channel));
-        sb.append(" ");
-        return sb.toString();
+        return getChannelMusicString();
     }
 }
