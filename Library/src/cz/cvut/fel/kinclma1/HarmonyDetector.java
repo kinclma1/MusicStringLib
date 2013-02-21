@@ -104,9 +104,9 @@ public class HarmonyDetector {
         return Collections.min(results);
     }
 
-    public static FlatTrack splitTrackToShortest(MusicStringTrack track) {
+    public static String splitTrackToShortest(MusicStringTrack track) {
         try {
-            return new TrackNoteSplitter(track, track.getShortestNote()).call();
+            return new TrackNoteSplitter(track, track.getShortestNote()).call().toString();
         } catch (Exception e) {
             return null;
         }
