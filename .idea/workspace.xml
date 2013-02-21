@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="47c31169-086a-402a-a19b-a8284e39ad73" name="Default" comment="finished musicstring to tgsong conversion">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/HarmonyDetector.java" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/HarmonyDetector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/Main.java" afterPath="$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringTrack.java" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringTrack.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MusicStringLib.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -19,7 +16,7 @@
     <file path="/Main.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1361478909094" ignored="false" />
     <file path="/fragment.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1358998491215" ignored="false" />
     <file path="/a.dummy" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1358989323824" ignored="false" />
-    <file path="/HarmonyDetector.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1361481780604" ignored="false" />
+    <file path="/HarmonyDetector.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1361482769158" ignored="false" />
     <file path="/MusicStringTrackNO.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1358735896500" ignored="false" />
     <file path="/Parallellization.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1358985069947" ignored="false" />
     <file path="/MusicStringRest.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1359167466227" ignored="false" />
@@ -143,9 +140,9 @@
       <file leaf-file-name="HarmonyDetector.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/HarmonyDetector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="111" column="20" selection-start="3765" selection-end="3765" vertical-scroll-proportion="0.60954064">
+            <state line="109" column="31" selection-start="3711" selection-end="3711" vertical-scroll-proportion="0.50353354">
               <folding>
-                <element signature="e#3067#3098#0" expanded="true" />
+                <element signature="e#3204#3235#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -883,9 +880,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/HarmonyDetector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="111" column="20" selection-start="3765" selection-end="3765" vertical-scroll-proportion="0.60954064">
+        <state line="109" column="31" selection-start="3711" selection-end="3711" vertical-scroll-proportion="0.50353354">
           <folding>
-            <element signature="e#3067#3098#0" expanded="true" />
+            <element signature="e#3204#3235#0" expanded="true" />
           </folding>
         </state>
       </provider>

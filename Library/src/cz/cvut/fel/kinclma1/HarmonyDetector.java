@@ -27,13 +27,15 @@ public class HarmonyDetector {
         }
     }
 
-    private class TrackNoteSplitter implements Callable<FlatTrack> {
+    private static class TrackNoteSplitter implements Callable<FlatTrack> {
 
         private MusicStringTrack track;
         private FlatTrack flatTrack;
+        private MusicStringDuration shortestNote;
 
-        public TrackNoteSplitter(MusicStringTrack track) {
+        public TrackNoteSplitter(MusicStringTrack track, MusicStringDuration shortestNote) {
             this.track = track;
+            this.shortestNote = shortestNote;
             this.flatTrack = new FlatTrack(shortestNote);
         }
 
@@ -102,22 +104,24 @@ public class HarmonyDetector {
         return Collections.min(results);
     }
 
-    public List<FlatTrack> getSplitTracks() {
+    public static FlatTrack splitTrackToShortest(MusicStringTrack track) {
+        try {
+            return new TrackNoteSplitter(track, track.getShortestNote()).call();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    List<FlatTrack> getSplitTracks() {
         ArrayList<Callable<FlatTrack>> splitters = new ArrayList<Callable<FlatTrack>>(trackCount);
         for (MusicStringTrack track : toneTracks) {
-            splitters.add(new TrackNoteSplitter(track));
+            splitters.add(new TrackNoteSplitter(track, shortestNote));
         }
-        List<FlatTrack> newTracks = Parallellization.runExecutor(exec, splitters);
-        exec.shutdown();
-        return null;
+        return Parallellization.runExecutor(exec, splitters);
     }
 
     FlatTrack detectHarmony() {
-        ArrayList<Callable<FlatTrack>> splitters = new ArrayList<Callable<FlatTrack>>(trackCount);
-        for (MusicStringTrack track : toneTracks) {
-            splitters.add(new TrackNoteSplitter(track));
-        }
-        List<FlatTrack> newTracks = Parallellization.runExecutor(exec, splitters);
+        List<FlatTrack> newTracks = getSplitTracks();
         exec.shutdown();
         FlatTrack newTrack = mergeTracks(newTracks);
 
