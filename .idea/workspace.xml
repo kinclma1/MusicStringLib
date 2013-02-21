@@ -16,7 +16,7 @@
     <file path="/Main.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1361478909094" ignored="false" />
     <file path="/fragment.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1358998491215" ignored="false" />
     <file path="/a.dummy" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1358989323824" ignored="false" />
-    <file path="/HarmonyDetector.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1361482949874" ignored="false" />
+    <file path="/HarmonyDetector.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1361483107468" ignored="false" />
     <file path="/MusicStringTrackNO.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1358735896500" ignored="false" />
     <file path="/Parallellization.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1358985069947" ignored="false" />
     <file path="/MusicStringRest.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1359167466227" ignored="false" />
@@ -140,9 +140,9 @@
       <file leaf-file-name="HarmonyDetector.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/HarmonyDetector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="108" column="90" selection-start="3686" selection-end="3686" vertical-scroll-proportion="0.4770318">
+            <state line="114" column="12" selection-start="3767" selection-end="3767" vertical-scroll-proportion="2.9681978">
               <folding>
-                <element signature="e#3204#3235#0" expanded="true" />
+                <element signature="e#3197#3228#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -880,9 +880,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/HarmonyDetector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="90" selection-start="3686" selection-end="3686" vertical-scroll-proportion="0.4770318">
+        <state line="114" column="12" selection-start="3767" selection-end="3767" vertical-scroll-proportion="2.9681978">
           <folding>
-            <element signature="e#3204#3235#0" expanded="true" />
+            <element signature="e#3197#3228#0" expanded="true" />
           </folding>
         </state>
       </provider>

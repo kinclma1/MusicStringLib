@@ -77,7 +77,7 @@ public class HarmonyDetector {
     private int trackCount;
     private ExecutorService exec;
 
-    public HarmonyDetector(MusicStringSong song) {
+    HarmonyDetector(MusicStringSong song) {
         exec = Parallellization.executorService();
         this.toneTracks = getToneTracks(song);
         this.shortestNote = getShortestNote();
@@ -112,7 +112,7 @@ public class HarmonyDetector {
         }
     }
 
-    List<FlatTrack> getSplitTracks() {
+    private List<FlatTrack> getSplitTracks() {
         ArrayList<Callable<FlatTrack>> splitters = new ArrayList<Callable<FlatTrack>>(trackCount);
         for (MusicStringTrack track : toneTracks) {
             splitters.add(new TrackNoteSplitter(track, shortestNote));
