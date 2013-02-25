@@ -3,10 +3,7 @@ package cz.cvut.fel.kinclma1;
 
 import cz.cvut.fel.kinclma1.io.FileExporter;
 import cz.cvut.fel.kinclma1.io.FileImporter;
-import org.herac.tuxguitar.io.base.TGFileFormat;
-import org.herac.tuxguitar.io.base.TGFileFormatException;
-import org.herac.tuxguitar.io.base.TGFileFormatManager;
-import org.herac.tuxguitar.io.base.TGLocalFileExporter;
+import org.herac.tuxguitar.io.base.*;
 import org.herac.tuxguitar.song.factory.TGFactory;
 import org.herac.tuxguitar.song.models.TGMeasure;
 import org.herac.tuxguitar.song.models.TGSong;
@@ -58,12 +55,20 @@ public class MusicStringSong {
 
     private Map<String, MusicStringTrack> tracks = new HashMap<String, MusicStringTrack>();
 
-    /**
-     * Creates a MusicString from a given file, if the file format is supported
-     * @param file Input file
-     */
-    public MusicStringSong(File file) {
-        this(new FileImporter().importFile(file));
+    public static MusicStringSong create(String filename) throws IOException, TGFileFormatException {
+        if (filename.substring(filename.lastIndexOf('.')).contains("musicstring")) {
+            BufferedReader in = new BufferedReader(new FileReader(filename));
+            StringBuilder sb = new StringBuilder();
+            String line = in.readLine();
+            while (line != null) {
+                sb.append(line);
+                line = in.readLine();
+            }
+            in.close();
+            return new MusicStringSong(sb.toString());
+        } else {
+            return new MusicStringSong(new FileImporter().importFile(filename));
+        }
     }
 
     /**
@@ -112,7 +117,22 @@ public class MusicStringSong {
         return sb.toString();
     }
 
-    public String[] getExportFormats() {
+    public static String[] getInputFormats() {
+        ArrayList<String> fmts = new ArrayList<String>();
+        TGFileFormatManager formatManager = TGFileFormatManager.instance();
+        List<TGFileFormat> is = formatManager.getInputFormats();
+        for (TGFileFormat fmt : is) {
+            fmts.add(fmt.getSupportedFormats());
+        }
+        Iterator<TGLocalFileImporter> imp = formatManager.getImporters();
+        while (imp.hasNext()) {
+            fmts.add(imp.next().getFileFormat().getSupportedFormats());
+        }
+        fmts.add("*.musicstring");
+        return fmts.toArray(new String[fmts.size()]);
+    }
+
+    public static String[] getExportFormats() {
         ArrayList<String> fmts = new ArrayList<String>();
         TGFileFormatManager formatManager = TGFileFormatManager.instance();
         List<TGFileFormat> os = formatManager.getOutputFormats();

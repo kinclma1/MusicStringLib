@@ -20,14 +20,13 @@ import java.util.Iterator;
  */
 public class FileImporter {
 
-    public TGSong importFile(String fileName) {
+    public TGSong importFile(String fileName) throws IOException, TGFileFormatException {
         return importFile(new File(fileName));
     }
 
-    public TGSong importFile(File file) {
+    public TGSong importFile(File file) throws IOException, TGFileFormatException {
         TGSongManager manager = new TGSongManager();
         TGSong song;
-        try {
             try {
                 song = TGFileFormatManager.instance().getLoader().load(manager.getFactory(), new FileInputStream(file));
             } catch (TGFileFormatException e) {
@@ -38,21 +37,13 @@ public class FileImporter {
                 manager.setSong(song);
                 manager.orderBeats();
             }
-        } catch (FileNotFoundException ex) {
-            System.out.println(ex.toString());
-        } catch (OutOfMemoryError e) {
-            System.out.println(e.toString());
-        } catch (Throwable throwable) {
-            System.out.println(throwable.toString());
-        }
 
         return manager.getSong();
     }
 
-    private TGSong importSong(TGFactory factory, String filename) {
+    private TGSong importSong(TGFactory factory, String filename) throws FileNotFoundException, TGFileFormatException {
         Iterator importers = TGFileFormatManager.instance().getImporters();
         while (importers.hasNext()) {
-            try {
                 TGLocalFileImporter currentImporter = (TGLocalFileImporter) importers.next();
                 currentImporter.configure(true);
                 if (isSupportedExtension(filename, currentImporter)) {
@@ -60,9 +51,6 @@ public class FileImporter {
                     currentImporter.init(factory, input);
                     return currentImporter.importSong();
                 }
-            } catch (Throwable throwable) {
-                throwable.printStackTrace();
-            }
         }
         return null;
     }

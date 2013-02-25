@@ -23,12 +23,8 @@ import java.util.Iterator;
 public class FileExporter {
 
     public void exportSong(TGSong song, String filename) throws TGFileFormatException, IOException {
-        BufferedOutputStream out;
-        String[] tmp = filename.split("\\.");
-        String extension = tmp[tmp.length - 1];
-
-
-        out = new BufferedOutputStream(new FileOutputStream(filename));
+        BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(filename));
+        String extension = filename.substring(filename.lastIndexOf('.'));
 
         TGFileFormatManager formatManager = TGFileFormatManager.instance();
         Iterator<TGOutputStreamBase> outputStreams = formatManager.getOutputStreams();
