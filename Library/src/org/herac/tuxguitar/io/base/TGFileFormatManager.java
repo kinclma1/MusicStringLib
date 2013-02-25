@@ -130,7 +130,7 @@ public class TGFileFormatManager {
         return formats;
     }
 
-    public List getOutputFormats() {
+    public List<TGFileFormat> getOutputFormats() {
         List<TGFileFormat> formats = new ArrayList<TGFileFormat>();
         Iterator<TGOutputStreamBase> it = getOutputStreams();
         while (it.hasNext()) {

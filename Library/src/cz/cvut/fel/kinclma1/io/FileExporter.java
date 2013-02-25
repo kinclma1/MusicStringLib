@@ -22,28 +22,21 @@ import java.util.Iterator;
  */
 public class FileExporter {
 
-    public void exportSong(TGSong song, String filename) {
+    public void exportSong(TGSong song, String filename) throws TGFileFormatException, IOException {
         BufferedOutputStream out;
         String[] tmp = filename.split("\\.");
         String extension = tmp[tmp.length - 1];
 
-        try {
-            out = new BufferedOutputStream(new FileOutputStream(filename));
-        } catch (FileNotFoundException e) {
-            System.err.println("File export failed, cannot write to file");
-            return;
-        }
+
+        out = new BufferedOutputStream(new FileOutputStream(filename));
+
         TGFileFormatManager formatManager = TGFileFormatManager.instance();
         Iterator<TGOutputStreamBase> outputStreams = formatManager.getOutputStreams();
         while (outputStreams.hasNext()) {
             TGOutputStreamBase outputStreamBase = outputStreams.next();
             if (outputStreamBase.getFileFormat().getSupportedFormats().contains(extension)) {
                 outputStreamBase.init(new TGFactory(), out);
-                try {
-                    outputStreamBase.writeSong(song);
-                } catch (IOException e) {
-                    System.err.println("File export failed: " + e.getMessage());
-                }
+                outputStreamBase.writeSong(song);
                 return;
             }
         }
@@ -52,13 +45,10 @@ public class FileExporter {
             TGLocalFileExporter exporter = exporters.next();
             if (exporter.getFileFormat().getSupportedFormats().contains(extension)) {
                 exporter.init(new TGFactory(), out);
-                try {
-                    exporter.exportSong(song);
-                } catch (TGFileFormatException e) {
-                    System.err.println("File export failed, file format does not work correctly");
-                }
+                exporter.exportSong(song);
                 return;
             }
         }
+        throw new TGFileFormatException("Unsupported file extension");
     }
 }

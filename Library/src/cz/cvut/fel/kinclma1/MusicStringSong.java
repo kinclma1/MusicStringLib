@@ -1,13 +1,18 @@
 
 package cz.cvut.fel.kinclma1;
 
+import cz.cvut.fel.kinclma1.io.FileExporter;
 import cz.cvut.fel.kinclma1.io.FileImporter;
+import org.herac.tuxguitar.io.base.TGFileFormat;
+import org.herac.tuxguitar.io.base.TGFileFormatException;
+import org.herac.tuxguitar.io.base.TGFileFormatManager;
+import org.herac.tuxguitar.io.base.TGLocalFileExporter;
 import org.herac.tuxguitar.song.factory.TGFactory;
 import org.herac.tuxguitar.song.models.TGMeasure;
 import org.herac.tuxguitar.song.models.TGSong;
 import org.herac.tuxguitar.song.models.TGTrack;
 
-import java.io.File;
+import java.io.*;
 import java.util.*;
 import java.util.concurrent.Callable;
 
@@ -51,7 +56,7 @@ public class MusicStringSong {
         }
     }
 
-    private Map<String, MusicStringTrack> tracks;
+    private Map<String, MusicStringTrack> tracks = new HashMap<String, MusicStringTrack>();
 
     /**
      * Creates a MusicString from a given file, if the file format is supported
@@ -66,7 +71,6 @@ public class MusicStringSong {
      * @param musicString a string representation of a music string
      */
     public MusicStringSong(String musicString) {
-        this();
 
         //http://stackoverflow.com/questions/2206378/how-to-split-a-string-but-also-keep-the-delimiters
         String[] strTracks = musicString.split("\\s(?=V[0-9])");
@@ -84,8 +88,7 @@ public class MusicStringSong {
      * @param song Input TGSong object
      */
     public MusicStringSong(TGSong song) {
-        this();
-
+        //todo handle triplets in input
         Iterator<TGTrack> tgTracks = song.getTracks();
 
         List<Callable<MusicStringTrack>> tcs = new ArrayList<Callable<MusicStringTrack>>(song.countTracks());
@@ -94,10 +97,6 @@ public class MusicStringSong {
         }
 
         create(tcs);
-    }
-
-    private MusicStringSong() {
-        tracks = new HashMap<String, MusicStringTrack>();
     }
 
     /**
@@ -111,6 +110,32 @@ public class MusicStringSong {
             sb.append(tracks.get(key));
         }
         return sb.toString();
+    }
+
+    public String[] getExportFormats() {
+        ArrayList<String> fmts = new ArrayList<String>();
+        TGFileFormatManager formatManager = TGFileFormatManager.instance();
+        List<TGFileFormat> os = formatManager.getOutputFormats();
+        for (TGFileFormat fmt : os) {
+            fmts.add(fmt.getSupportedFormats());
+        }
+        Iterator<TGLocalFileExporter> exp = formatManager.getExporters();
+        while (exp.hasNext()) {
+            fmts.add(exp.next().getFileFormat().getSupportedFormats());
+        }
+        fmts.add("*.musicstring");
+        return fmts.toArray(new String[fmts.size()]);
+    }
+
+    public void export(String filename) throws IOException, TGFileFormatException {
+        if (filename.substring(filename.lastIndexOf('.')).contains("musicstring")) {
+            BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(filename));
+            out.write(toString().getBytes());
+            out.flush();
+            out.close();
+        } else {
+            new FileExporter().exportSong(toTGSong(), filename);
+        }
     }
 
     /**
@@ -175,9 +200,10 @@ public class MusicStringSong {
      * Returns a track containing all notes that can surely be played in any additional track
      * @return track containing all notes that can surely be played in any additional track
      */
-    public MusicStringTrack getPossibleNotes() {
-        System.out.println(new HarmonyDetector(this).detectHarmony());
-        return null;
+    public MusicStringTrack getPossibleNotes(InstrumentTones.Instruments toneFilter, Instrument instrument) {
+        InstrumentTones filter = InstrumentTones.create(toneFilter);
+        FlatTrack ft = filter.filterTones(new HarmonyDetector(this).detectHarmony());
+        return new MusicStringTrack(instrument.toMusicString() + ft.toString());
     }
 
     private void create(List<Callable<MusicStringTrack>> tcs) {

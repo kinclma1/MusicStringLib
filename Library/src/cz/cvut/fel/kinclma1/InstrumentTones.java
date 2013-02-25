@@ -1,9 +1,8 @@
 package cz.cvut.fel.kinclma1;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import cz.cvut.fel.kinclma1.tonefilters.*;
+
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,7 +12,33 @@ import java.util.Set;
  * To change this template use File | Settings | File Templates.
  */
 public class InstrumentTones {
-    public Map<String,Set<MusicStringTone>> tones = null;
+    public static enum Instruments {
+        GUITAR, GUITAR_7, BASS, BASS_5, HARMONICA_C, HARMONICA_A;
+    }
+
+    protected Map<String,Set<MusicStringTone>> tones = null;
+
+    protected InstrumentTones() {
+        initToneMap();
+    }
+
+    public static InstrumentTones create(Instruments filter) {
+        switch (filter) {
+            case GUITAR:
+                return new GuitarTones();
+            case GUITAR_7:
+                return new Guitar7Tones();
+            case BASS:
+                return new BassTones();
+            case BASS_5:
+                return new Bass5Tones();
+            case HARMONICA_C:
+                return new HarmonicaCTones();
+            case HARMONICA_A:
+                return new HarmonicaATones();
+        }
+        return null;
+    }
 
     public FlatTrack filterTones(FlatTrack orig) {
         FlatTrack newTrack;
@@ -29,8 +54,10 @@ public class InstrumentTones {
                 newBeat = new HashSet<String>();
                 for (String s : oldBeat) {
                     Set<MusicStringTone> octaves = tones.get(s);
-                    for (MusicStringTone tone : octaves) {
-                        newBeat.add(tone.toString());
+                    if (octaves != null) {
+                        for (MusicStringTone tone : octaves) {
+                            newBeat.add(tone.toString());
+                        }
                     }
                 }
                 if (newBeat.isEmpty()) {
@@ -42,10 +69,15 @@ public class InstrumentTones {
         return newTrack;
     }
 
+    protected final void setToneList(List<MusicStringTone> toneList) {
+        for (MusicStringTone tone : toneList) {
+            tones.get(tone.relativeTone()).add(tone);
+        }
+    }
+
     protected final void setRange(MusicStringTone min, MusicStringTone max) {
         int minInt = min.toInt();
         int maxInt = max.toInt();
-        initToneMap();
         MusicStringTone tone;
         for (int i = minInt; i <= maxInt; i ++) {
             tone = new MusicStringTone(i);
@@ -55,6 +87,7 @@ public class InstrumentTones {
 
     private void initToneMap() {
         MusicStringTone.RelativeTone[] relativeTones = MusicStringTone.RelativeTone.values();
+        tones = new HashMap<String, Set<MusicStringTone>>(12);
         for (int i = 0; i < relativeTones.length; i ++) {
             tones.put(relativeTones[i].toString(), new HashSet<MusicStringTone>());
         }
