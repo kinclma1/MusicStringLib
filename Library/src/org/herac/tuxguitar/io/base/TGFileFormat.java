@@ -19,4 +19,9 @@ public class TGFileFormat {
 	public String getSupportedFormats() {
 		return supportedFormats;
 	}
+
+    @Override
+    public String toString() {
+        return name + " (" + supportedFormats + ")";
+    }
 }

@@ -117,34 +117,30 @@ public class MusicStringSong {
         return sb.toString();
     }
 
-    public static String[] getInputFormats() {
-        ArrayList<String> fmts = new ArrayList<String>();
+    public static TGFileFormat[] getInputFormats() {
+        ArrayList<TGFileFormat> fmts = new ArrayList<TGFileFormat>();
         TGFileFormatManager formatManager = TGFileFormatManager.instance();
         List<TGFileFormat> is = formatManager.getInputFormats();
-        for (TGFileFormat fmt : is) {
-            fmts.add(fmt.getSupportedFormats());
-        }
+        fmts.addAll(is);
         Iterator<TGLocalFileImporter> imp = formatManager.getImporters();
         while (imp.hasNext()) {
-            fmts.add(imp.next().getFileFormat().getSupportedFormats());
+            fmts.add(imp.next().getFileFormat());
         }
-        fmts.add("*.musicstring");
-        return fmts.toArray(new String[fmts.size()]);
+        fmts.add(new TGFileFormat("JFugue 4 MusicString", "*.musicstring"));
+        return fmts.toArray(new TGFileFormat[fmts.size()]);
     }
 
-    public static String[] getExportFormats() {
-        ArrayList<String> fmts = new ArrayList<String>();
+    public static TGFileFormat[] getExportFormats() {
+        ArrayList<TGFileFormat> fmts = new ArrayList<TGFileFormat>();
         TGFileFormatManager formatManager = TGFileFormatManager.instance();
         List<TGFileFormat> os = formatManager.getOutputFormats();
-        for (TGFileFormat fmt : os) {
-            fmts.add(fmt.getSupportedFormats());
-        }
+        fmts.addAll(os);
         Iterator<TGLocalFileExporter> exp = formatManager.getExporters();
         while (exp.hasNext()) {
-            fmts.add(exp.next().getFileFormat().getSupportedFormats());
+            fmts.add(exp.next().getFileFormat());
         }
-        fmts.add("*.musicstring");
-        return fmts.toArray(new String[fmts.size()]);
+        fmts.add(new TGFileFormat("JFugue 4 MusicString", "*.musicstring"));
+        return fmts.toArray(new TGFileFormat[fmts.size()]);
     }
 
     public void export(String filename) throws IOException, TGFileFormatException {
