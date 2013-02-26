@@ -148,13 +148,26 @@ public class MusicStringSong {
     }
 
     public void export(String filename) throws IOException, TGFileFormatException {
-        if (filename.substring(filename.lastIndexOf('.')).contains("musicstring")) {
-            BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(filename));
-            out.write(toString().getBytes());
-            out.flush();
-            out.close();
-        } else {
-            new FileExporter().exportSong(toTGSong(), filename);
+        BufferedOutputStream out = null;
+        try {
+            if (filename.substring(filename.lastIndexOf('.')).contains("musicstring")) {
+                out = new BufferedOutputStream(new FileOutputStream(filename));
+                out.write(toString().getBytes());
+                out.flush();
+            } else {
+                new FileExporter().exportSong(toTGSong(), filename);
+            }
+        } catch (FileNotFoundException e) {
+            new File(filename).delete();
+            throw e;
+        } catch (TGFileFormatException e) {
+            new File(filename).delete();
+            throw e;
+        } catch (IOException e) {
+            new File(filename).delete();
+            throw e;
+        } finally {
+            if (out != null) out.close();
         }
     }
 
@@ -221,6 +234,7 @@ public class MusicStringSong {
      * @return track containing all notes that can surely be played in any additional track
      */
     public MusicStringTrack getPossibleNotes(InstrumentTones.Instruments toneFilter, Instrument instrument) {
+        //todo not musicstringtrack - rather flattrack or string
         InstrumentTones filter = InstrumentTones.create(toneFilter);
         FlatTrack ft = filter.filterTones(new HarmonyDetector(this).detectHarmony());
         return new MusicStringTrack(instrument.toMusicString() + ft.toString());

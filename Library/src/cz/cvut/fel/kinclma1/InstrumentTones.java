@@ -13,7 +13,7 @@ import java.util.*;
  */
 public class InstrumentTones {
     public static enum Instruments {
-        GUITAR, GUITAR_7, BASS, BASS_5, HARMONICA_C, HARMONICA_A;
+        GUITAR, GUITAR_7, BASS, BASS_5, HARMONICA_C, HARMONICA_A, TEST;
     }
 
     protected Map<String,Set<MusicStringTone>> tones = null;
@@ -36,6 +36,8 @@ public class InstrumentTones {
                 return new HarmonicaCTones();
             case HARMONICA_A:
                 return new HarmonicaATones();
+            case TEST:
+                return new TestTones();
         }
         return null;
     }

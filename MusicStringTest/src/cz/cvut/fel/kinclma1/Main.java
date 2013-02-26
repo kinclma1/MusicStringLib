@@ -22,30 +22,34 @@ public class Main {
     public static void main(String[] args) {
         MusicStringSong ms = null;
         try {
-            ms = MusicStringSong.create("/home/void/project/rem.gp3");
+            ms = MusicStringSong.create("/home/void/project/rem1.gp4");
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (TGFileFormatException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
-        System.out.println(ms.getPossibleNotes(InstrumentTones.Instruments.BASS, Instrument.ELECTRIC_BASS_FINGER));
-        String[] bu = MusicStringSong.getExportFormats();
-        for (int i = 0; i < bu.length; i ++) {
-            System.out.println(bu[i]);
-        }
-        bu = MusicStringSong.getInputFormats();
-        for (int i = 0; i < bu.length; i ++) {
-            System.out.println(bu[i]);
-        }
-        try {
-            ms.export("/home/void/project/rem.musicstring");
-            MusicStringSong ms1 = MusicStringSong.create("/home/void/project/rem.musicstring");
-            ms1.export("/home/void/project/newrem.tg");
-        } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (TGFileFormatException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
+        System.out.println(ms.getPossibleNotes(InstrumentTones.Instruments.TEST, Instrument.ELECTRIC_BASS_FINGER));
+        MusicStringPlayer player = new MusicStringPlayer(
+                        ms.getPossibleNotes(InstrumentTones.Instruments.TEST, Instrument.DISTORTION_GUITAR).toString(),
+                new TestListener1());
+        player.play();
+//        String[] bu = MusicStringSong.getExportFormats();
+//        for (int i = 0; i < bu.length; i ++) {
+//            System.out.println(bu[i]);
+//        }
+//        bu = MusicStringSong.getInputFormats();
+//        for (int i = 0; i < bu.length; i ++) {
+//            System.out.println(bu[i]);
+//        }
+//        try {
+//            ms.export("/home/void/project/rem.musicstring");
+//            MusicStringSong ms1 = MusicStringSong.create("/home/void/project/rem.musicstring");
+//            ms1.export("/home/void/project/newrem.tg");
+//        } catch (IOException e) {
+//            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+//        } catch (TGFileFormatException e) {
+//            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+//        }
 //        TestListener1 listener = new TestListener1();
 //        MusicStringPlayer player = new MusicStringPlayer(ms.toString(), listener);
 //        player.play();

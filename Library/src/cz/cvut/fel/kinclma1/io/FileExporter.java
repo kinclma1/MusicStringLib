@@ -22,28 +22,41 @@ import java.util.Iterator;
  */
 public class FileExporter {
 
-    public void exportSong(TGSong song, String filename) throws TGFileFormatException, IOException {
-        BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(filename));
+    public void exportSong(TGSong song, String filename) throws IOException, TGFileFormatException {
+        BufferedOutputStream out = null;
         String extension = filename.substring(filename.lastIndexOf('.'));
 
-        TGFileFormatManager formatManager = TGFileFormatManager.instance();
-        Iterator<TGOutputStreamBase> outputStreams = formatManager.getOutputStreams();
-        while (outputStreams.hasNext()) {
-            TGOutputStreamBase outputStreamBase = outputStreams.next();
-            if (outputStreamBase.getFileFormat().getSupportedFormats().contains(extension)) {
-                outputStreamBase.init(new TGFactory(), out);
-                outputStreamBase.writeSong(song);
-                return;
+        try {
+            out = new BufferedOutputStream(new FileOutputStream(filename));
+            TGFileFormatManager formatManager = TGFileFormatManager.instance();
+            Iterator<TGOutputStreamBase> outputStreams = formatManager.getOutputStreams();
+            while (outputStreams.hasNext()) {
+                TGOutputStreamBase outputStreamBase = outputStreams.next();
+                if (outputStreamBase.getFileFormat().getSupportedFormats().contains(extension)) {
+                    outputStreamBase.init(new TGFactory(), out);
+                    outputStreamBase.writeSong(song);
+                    out.flush();
+                    return;
+                }
             }
-        }
-        Iterator<TGLocalFileExporter> exporters = formatManager.getExporters();
-        while (exporters.hasNext()) {
-            TGLocalFileExporter exporter = exporters.next();
-            if (exporter.getFileFormat().getSupportedFormats().contains(extension)) {
-                exporter.init(new TGFactory(), out);
-                exporter.exportSong(song);
-                return;
+            Iterator<TGLocalFileExporter> exporters = formatManager.getExporters();
+            while (exporters.hasNext()) {
+                TGLocalFileExporter exporter = exporters.next();
+                if (exporter.getFileFormat().getSupportedFormats().contains(extension)) {
+                    exporter.init(new TGFactory(), out);
+                    exporter.exportSong(song);
+                    out.flush();
+                    return;
+                }
             }
+        } catch (FileNotFoundException e) {
+            throw e;
+        } catch (TGFileFormatException e) {
+            throw e;
+        } catch (IOException e) {
+            throw e;
+        } finally {
+            if (out != null) out.close();
         }
         throw new TGFileFormatException("Unsupported file extension");
     }
