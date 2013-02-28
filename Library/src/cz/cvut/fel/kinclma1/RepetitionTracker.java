@@ -171,15 +171,20 @@ class RepetitionTracker {
             } else {
                 return MEASURE_REPEAT_OPEN;
             }
-        } else if (measure.getHeader().getRepeatAlternative() > 0) {
+        }
+
+        if (measure.getHeader().getRepeatAlternative() > 0) {
             if (measure.getRepeatClose() > 0) {
                 return MEASURE_REP_ALT_CLOSE;
             } else {
                 return MEASURE_REPEAT_ALT;
             }
-        } else if (measure.getRepeatClose() > 0) {
+        }
+
+        if (measure.getRepeatClose() > 0) {
             return MEASURE_REPEAT_CLOSE;
         }
+
         return MEASURE_ORDINARY;
     }
 

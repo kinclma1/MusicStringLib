@@ -45,7 +45,7 @@ public final class MidiEventManager {
 
     public MidiEventManager(float sequenceTiming, int resolution) {
         try {
-            this.sequence = new Sequence(sequenceTiming, resolution);
+            sequence = new Sequence(sequenceTiming, resolution);
         } catch (Exception e) {
             e.printStackTrace();
         }

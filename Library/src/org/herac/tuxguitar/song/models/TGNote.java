@@ -76,11 +76,11 @@ public abstract class TGNote {
 	
 	public TGNote clone(TGFactory factory){
 		TGNote note = factory.newNote();
-		note.setValue(value);
-		note.setVelocity(velocity);
-		note.setString(string);
-		note.setTiedNote(tiedNote);
-		note.setEffect(effect.clone(factory));
+        note.value = value;
+        note.velocity = velocity;
+        note.string = string;
+        note.tiedNote = tiedNote;
+        note.effect = effect.clone(factory);
 		return note;
 	}
 }

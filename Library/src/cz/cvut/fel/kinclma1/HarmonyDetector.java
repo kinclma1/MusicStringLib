@@ -36,7 +36,7 @@ public class HarmonyDetector {
         public TrackNoteSplitter(MusicStringTrack track, MusicStringDuration shortestNote) {
             this.track = track;
             this.shortestNote = shortestNote;
-            this.flatTrack = new FlatTrack(shortestNote);
+            flatTrack = new FlatTrack(shortestNote);
         }
 
         @Override
@@ -79,9 +79,9 @@ public class HarmonyDetector {
 
     HarmonyDetector(MusicStringSong song) {
         exec = Parallellization.executorService();
-        this.toneTracks = getToneTracks(song);
-        this.shortestNote = getShortestNote();
-        this.trackCount = toneTracks.size();
+        toneTracks = getToneTracks(song);
+        shortestNote = getShortestNote();
+        trackCount = toneTracks.size();
     }
 
     private ArrayList<MusicStringTrack> getToneTracks(MusicStringSong song) {
@@ -124,7 +124,7 @@ public class HarmonyDetector {
         List<FlatTrack> newTracks = getSplitTracks();
         exec.shutdown();
         FlatTrack newTrack = mergeTracks(newTracks);
-
+        //todo scales from chords
         //todo instrument defined notes -- not necessary
 
         return newTrack;

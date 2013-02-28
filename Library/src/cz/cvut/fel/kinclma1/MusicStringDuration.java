@@ -114,7 +114,7 @@ public class MusicStringDuration implements Comparable<MusicStringDuration> {
 
     @Override
     public String toString() {
-        return dotted ? duration.toString() + "." : duration.toString();
+        return dotted ? duration.toString() + '.' : duration.toString();
     }
 
     public int toInteger() {
@@ -140,6 +140,6 @@ public class MusicStringDuration implements Comparable<MusicStringDuration> {
 
     @Override
     public int compareTo(MusicStringDuration d) {
-        return this.toIntegerDiv128() - d.toIntegerDiv128();
+        return toIntegerDiv128() - d.toIntegerDiv128();
     }
 }

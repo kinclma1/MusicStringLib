@@ -95,7 +95,7 @@ public class MusicStringTrack {
     }
 
     public String getInstrument() {
-        return !drumTrack ? instrument.toString() : "";
+        return drumTrack ? "" : instrument.toString();
     }
 
     public String getMetaInfo() {

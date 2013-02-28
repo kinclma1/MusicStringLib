@@ -9,6 +9,7 @@ import org.herac.tuxguitar.song.factory.TGFactory;
 import org.herac.tuxguitar.song.models.TGSong;
 
 import java.io.BufferedInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
 
@@ -26,23 +27,24 @@ public class TGSongLoader {
 	 * @return TGSong
 	 * @throws TGFileFormatException
 	 */
-	public TGSong load(TGFactory factory,InputStream is) throws TGFileFormatException{
-		try{
-			BufferedInputStream stream = new BufferedInputStream(is);
+	public TGSong load(TGFactory factory,InputStream is) throws TGFileFormatException, IOException {
+        BufferedInputStream stream = new BufferedInputStream(is);
+        try{
 			stream.mark(1);
-			Iterator it = TGFileFormatManager.instance().getInputStreams();
+			Iterator<TGInputStreamBase> it = TGFileFormatManager.instance().getInputStreams();
 			while(it.hasNext()){
-				TGInputStreamBase reader = (TGInputStreamBase)it.next();
+				TGInputStreamBase reader = it.next();
 				reader.init(factory,stream);
 				if(reader.isSupportedVersion()){
 					return reader.readSong();
 				}
 				stream.reset();
 			}
-			stream.close();
 		}catch(Throwable t){
 			throw new TGFileFormatException(t);
-		}
+		} finally {
+            stream.close();
+        }
 		throw new TGFileFormatException("Unsupported file format");
 	}
 }

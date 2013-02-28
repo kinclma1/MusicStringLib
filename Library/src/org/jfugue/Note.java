@@ -53,9 +53,9 @@ public final class Note implements Serializable {
      * Instantiates a new Note object.
      */
     public Note() {
-        this.value = 0;
-        this.duration = 0;
-        this.type = 0;
+        value = 0;
+        duration = 0;
+        type = 0;
     }
 
     /**
@@ -133,7 +133,7 @@ public final class Note implements Serializable {
      * @return whether this note is a rest
      */
     public boolean isRest() {
-        return this.rest;
+        return rest;
     }
 
     /**
@@ -151,7 +151,7 @@ public final class Note implements Serializable {
      * @return the value of this note
      */
     public byte getValue() {
-        return this.value;
+        return value;
     }
 
     /**
@@ -169,7 +169,7 @@ public final class Note implements Serializable {
      * @return the duration of this note
      */
     public long getDuration() {
-        return this.duration;
+        return duration;
     }
 
     /**
@@ -178,7 +178,7 @@ public final class Note implements Serializable {
      * @param duration the decimal fraction for the duration
      */
     public void setDecimalDuration(double duration) {
-        this.decimalDuration = duration;
+        decimalDuration = duration;
     }
 
     /**
@@ -187,7 +187,7 @@ public final class Note implements Serializable {
      * @return the decimal fraction value for the duration
      */
     public double getDecimalDuration() {
-        return this.decimalDuration;
+        return decimalDuration;
     }
 
     /**
@@ -196,7 +196,7 @@ public final class Note implements Serializable {
      * @param startOfTie true if the note is tied, false if not
      */
     public void setStartOfTie(boolean startOfTie) {
-        this.isStartOfTie = startOfTie;
+        isStartOfTie = startOfTie;
     }
 
     /**
@@ -205,7 +205,7 @@ public final class Note implements Serializable {
      * @return true is the note is tied, false if not
      */
     public boolean isStartOfTie() {
-        return this.isStartOfTie;
+        return isStartOfTie;
     }
 
 
@@ -215,7 +215,7 @@ public final class Note implements Serializable {
      * @param endOfTie true if the note is tied, false if not
      */
     public void setEndOfTie(boolean endOfTie) {
-        this.isEndOfTie = endOfTie;
+        isEndOfTie = endOfTie;
     }
 
     /**
@@ -224,7 +224,7 @@ public final class Note implements Serializable {
      * @return true is the note is tied, false if not
      */
     public boolean isEndOfTie() {
-        return this.isEndOfTie;
+        return isEndOfTie;
     }
 
     /**
@@ -233,7 +233,7 @@ public final class Note implements Serializable {
      * @param velocity the attack velocity
      */
     public void setAttackVelocity(byte velocity) {
-        this.attackVelocity = velocity;
+        attackVelocity = velocity;
     }
 
     /**
@@ -242,7 +242,7 @@ public final class Note implements Serializable {
      * @return the attack velocity
      */
     public byte getAttackVelocity() {
-        return this.attackVelocity;
+        return attackVelocity;
     }
 
     /**
@@ -251,7 +251,7 @@ public final class Note implements Serializable {
      * @param velocity the decay velocity
      */
     public void setDecayVelocity(byte velocity) {
-        this.decayVelocity = velocity;
+        decayVelocity = velocity;
     }
 
     /**
@@ -260,7 +260,7 @@ public final class Note implements Serializable {
      * @return the decay velocity
      */
     public byte getDecayVelocity() {
-        return this.decayVelocity;
+        return decayVelocity;
     }
 
     /**
@@ -269,14 +269,14 @@ public final class Note implements Serializable {
      * @param accompanying
      */
     public void setHasAccompanyingNotes(boolean accompanying) {
-        this.accompanyingNotes = accompanying;
+        accompanyingNotes = accompanying;
     }
 
     /**
      * Returns whether this Note will have other Notes (sequential or parallel) associated with it.
      */
     public boolean hasAccompanyingNotes() {
-        return this.accompanyingNotes;
+        return accompanyingNotes;
     }
 
     /**
@@ -294,7 +294,7 @@ public final class Note implements Serializable {
      * @return the note type
      */
     public byte getType() {
-        return this.type;
+        return type;
     }
 
     /**

@@ -12,6 +12,7 @@ import org.herac.tuxguitar.song.models.TGTrack;
 import java.io.*;
 import java.util.*;
 import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 
 /**
  *
@@ -57,14 +58,17 @@ public class MusicStringSong {
 
     public static MusicStringSong create(String filename) throws IOException, TGFileFormatException {
         if (filename.substring(filename.lastIndexOf('.')).contains("musicstring")) {
-            BufferedReader in = new BufferedReader(new FileReader(filename));
             StringBuilder sb = new StringBuilder();
-            String line = in.readLine();
-            while (line != null) {
-                sb.append(line);
-                line = in.readLine();
+            BufferedReader in = new BufferedReader(new FileReader(filename));
+            try {
+                String line = in.readLine();
+                while (line != null) {
+                    sb.append(line);
+                    line = in.readLine();
+                }
+            } finally {
+                in.close();
             }
-            in.close();
             return new MusicStringSong(sb.toString());
         } else {
             return new MusicStringSong(new FileImporter().importFile(filename));
@@ -93,7 +97,6 @@ public class MusicStringSong {
      * @param song Input TGSong object
      */
     public MusicStringSong(TGSong song) {
-        //todo handle triplets in input
         Iterator<TGTrack> tgTracks = song.getTracks();
 
         List<Callable<MusicStringTrack>> tcs = new ArrayList<Callable<MusicStringTrack>>(song.countTracks());
@@ -101,7 +104,11 @@ public class MusicStringSong {
             tcs.add(new TrackCreator(tgTracks.next()));
         }
 
-        create(tcs);
+        try {
+            create(tcs);
+        } catch (UnsupportedOperationException e) {
+            throw new UnsupportedOperationException(e.getMessage());
+        }
     }
 
     /**
@@ -144,12 +151,15 @@ public class MusicStringSong {
     }
 
     public void export(String filename) throws IOException, TGFileFormatException {
-        BufferedOutputStream out = null;
         try {
             if (filename.substring(filename.lastIndexOf('.')).contains("musicstring")) {
-                out = new BufferedOutputStream(new FileOutputStream(filename));
-                out.write(toString().getBytes());
-                out.flush();
+                BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(filename));
+                try {
+                    out.write(toString().getBytes());
+                } finally {
+                    out.flush();
+                    out.close();
+                }
             } else {
                 new FileExporter().exportSong(toTGSong(), filename);
             }
@@ -162,8 +172,6 @@ public class MusicStringSong {
         } catch (IOException e) {
             new File(filename).delete();
             throw e;
-        } finally {
-            if (out != null) out.close();
         }
     }
 
@@ -231,13 +239,15 @@ public class MusicStringSong {
      */
     public MusicStringTrack getPossibleNotes(InstrumentTones.Instruments toneFilter, Instrument instrument) {
         //todo not musicstringtrack - rather flattrack or string
+        //todo move filter to harmonyDetector
         InstrumentTones filter = InstrumentTones.create(toneFilter);
         FlatTrack ft = filter.filterTones(new HarmonyDetector(this).detectHarmony());
         return new MusicStringTrack(instrument.toMusicString() + ft.toString());
     }
 
     private void create(List<Callable<MusicStringTrack>> tcs) {
-        List<MusicStringTrack> msTracks = Parallellization.executeSingleBatch(tcs);
+        List<MusicStringTrack> msTracks;
+        msTracks = Parallellization.executeSingleBatch(tcs);
         for (MusicStringTrack msTrack : msTracks) {
             tracks.put(msTrack.getId(), msTrack);
         }

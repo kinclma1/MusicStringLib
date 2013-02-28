@@ -42,8 +42,8 @@ public abstract class TGMarker {
 	
 	public TGMarker clone(TGFactory factory){
 		TGMarker marker = factory.newMarker();
-		marker.setMeasure(measure);
-		marker.setTitle(title);
+        marker.measure = measure;
+        marker.title = title;
         color.copy(marker.color);
 		return marker;
 	}

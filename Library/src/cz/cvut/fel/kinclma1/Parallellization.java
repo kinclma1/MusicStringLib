@@ -30,7 +30,11 @@ public class Parallellization {
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
-            e.printStackTrace();
+            if (e.getMessage().contains("Input file contains triplets.")) {
+                throw new UnsupportedOperationException("Input file contains triplets.");
+            } else {
+                e.printStackTrace();
+            }
         }
         return results;
     }

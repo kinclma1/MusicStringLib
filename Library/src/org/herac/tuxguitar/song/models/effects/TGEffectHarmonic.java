@@ -85,8 +85,8 @@ public abstract class TGEffectHarmonic {
 	
 	public TGEffectHarmonic clone(TGFactory factory){
 		TGEffectHarmonic effect = factory.newEffectHarmonic();
-		effect.setType(type);
-		effect.setData(data);
+        effect.type = type;
+        effect.data = data;
 		return effect;
 	}
 	

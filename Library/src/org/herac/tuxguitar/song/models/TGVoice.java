@@ -81,7 +81,7 @@ public abstract class TGVoice {
 	public void addNote(TGNote note){
 		note.setVoice(this);
         notes.add(note);
-        setEmpty(false);
+        empty = false;
 	}
 	
 	public void moveNote(int index,TGNote note){
@@ -110,8 +110,8 @@ public abstract class TGVoice {
 	
 	public TGVoice clone(TGFactory factory){
 		TGVoice voice = factory.newVoice(index);
-		voice.setEmpty(empty);
-		voice.setDirection(direction);
+        voice.empty = empty;
+        voice.direction = direction;
         duration.copy(voice.duration);
 		for(int i = 0;i < countNotes();i++){
 			TGNote note = notes.get(i);

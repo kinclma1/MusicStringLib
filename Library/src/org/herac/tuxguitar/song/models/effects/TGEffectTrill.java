@@ -31,7 +31,7 @@ public abstract class TGEffectTrill {
 	
 	public TGEffectTrill clone(TGFactory factory){
 		TGEffectTrill effect = factory.newEffectTrill();
-		effect.setFret(fret);
+        effect.fret = fret;
         effect.duration.setValue(duration.getValue());
         effect.duration.setDotted(duration.isDotted());
         effect.duration.setDoubleDotted(duration.isDoubleDotted());

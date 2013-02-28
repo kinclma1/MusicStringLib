@@ -20,7 +20,8 @@ import java.io.InputStream;
  */
 public class TGInputStream extends TGStream implements TGInputStreamBase {
 	
-	private DataInputStream dataInputStream;
+	private InputStream is;
+    private DataInputStream dataInputStream;
 	private String version;
 	private TGFactory factory;
 	
@@ -30,7 +31,7 @@ public class TGInputStream extends TGStream implements TGInputStreamBase {
 	@Override
     public void init(TGFactory factory,InputStream stream) {
 		this.factory = factory;
-        dataInputStream = new DataInputStream(stream);
+        is = stream;
         version = null;
 	}
 	
@@ -55,16 +56,23 @@ public class TGInputStream extends TGStream implements TGInputStreamBase {
 	
 	@Override
     public TGSong readSong() throws TGFileFormatException {
-		try {
+        dataInputStream = new DataInputStream(is);
+        try {
 			if(isSupportedVersion()){
 				TGSong song = read();
-                dataInputStream.close();
 				return song;
 			}
 			throw new TGFileFormatException("Unsopported Version");
 		} catch (Throwable throwable) {
 			throw new TGFileFormatException(throwable);
-		}
+		} finally {
+            try {
+                dataInputStream.close();
+            } catch (IOException e) {
+                throw new TGFileFormatException(e);
+            }
+
+        }
 	}
 	
 	private void readVersion(){

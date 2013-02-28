@@ -85,12 +85,12 @@ public abstract class TGEffectGrace {
 	
 	public TGEffectGrace clone(TGFactory factory){
 		TGEffectGrace effect = factory.newEffectGrace();
-		effect.setFret(fret);
-		effect.setDuration(duration);
-		effect.setDynamic(dynamic);
-		effect.setTransition(transition);
-		effect.setOnBeat(onBeat);
-		effect.setDead(dead);
+        effect.fret = fret;
+        effect.duration = duration;
+        effect.dynamic = dynamic;
+        effect.transition = transition;
+        effect.onBeat = onBeat;
+        effect.dead = dead;
 		return effect;
 	}
 	

@@ -25,28 +25,31 @@ class LilypondOutputStream {
 	// anything over high C should be printed 8vb
 	private static final int MAX_PITCH = 72;
 
+    private OutputStream stream;
     private PrintWriter writer;
 	
 	public LilypondOutputStream(OutputStream stream){
-		writer = new PrintWriter(stream);
+		this.stream = stream;
 	}
 	
 	public void writeSong(TGSong song){
         TGSongManager manager = new TGSongManager();
 		manager.setSong(song);
-
-		addVersion();
-		addPaper();
-		addLayout();
-		addSongDefinitions(song);
-		addSong(song);
-		
-		writer.flush();
-		writer.close();
+        writer = new PrintWriter(stream);
+        try {
+            addVersion();
+            addPaper();
+            addLayout();
+            addSongDefinitions(song);
+            addSong(song);
+        } finally {
+            writer.flush();
+            writer.close();
+        }
 	}
 	
 	private void addVersion(){
-		writer.println("\\version \"" + LILYPOND_VERSION + "\"");
+		writer.println("\\version \"" + LILYPOND_VERSION + '"');
 	}
 
 	private void addPaper(){
@@ -61,17 +64,17 @@ class LilypondOutputStream {
 	private void addHeader(String instrument, boolean drums){
 		writer.println(indent(1) + "\\header {");
         writer.println(indent(2) + "instrument = \"" + (drums ? "DRUMS" : instrument) + "\" ");
-		writer.println(indent(1) + "}");
+		writer.println(indent(1) + '}');
 	}
 	
 	private void addLayout(){
 		writer.println("\\layout {");
 		writer.println(indent(1) + "\\context { \\Score");
 		writer.println(indent(2) + "\\override MetronomeMark #'padding = #'5");
-		writer.println(indent(1) + "}");
+		writer.println(indent(1) + '}');
 		writer.println(indent(1) + "\\context { \\Staff");
 		writer.println(indent(2) + "\\override TimeSignature #'style = #'numbered");
-		writer.println(indent(1) + "}");
+		writer.println(indent(1) + '}');
 		writer.println("}");
 	}
 	
@@ -91,7 +94,7 @@ class LilypondOutputStream {
 			TGTrack track = song.getTrack(i);
             boolean drums = track.getChannel().getChannel() == 9;
             writer.println("\\score {");
-            writer.println(indent(1) + "\\" + trackID(i, "Staff"));
+            writer.println(indent(1) + '\\' + trackID(i, "Staff"));
             addHeader(track.getName(), drums);
             writer.println("}");
 		}
@@ -115,14 +118,14 @@ class LilypondOutputStream {
         writer.println(indent(indent) + "\\bar \"|.\"");
         writer.println(indent(indent) + "\\pageBreak");
         if (drums) {
-            writer.println(indent(-- indent) + "}");
+            writer.println(indent(-- indent) + '}');
         }
         writer.println("}");
 	}
 	
 	private void addScoreStaff(TGTrack track,String id){
         writer.println(id + "Staff = \\new " + (track.getChannel().getChannel() == 9 ? "DrumStaff" : "Staff") + " {" );
-        writer.println(indent(1) + "\\" + id + "Music");
+        writer.println(indent(1) + '\\' + id + "Music");
 		writer.println("}");
 	}
 	
@@ -158,7 +161,7 @@ class LilypondOutputStream {
 	}
 	
 	private void addTimeSignature(TGTimeSignature ts,int indent){
-		writer.println(indent(indent) + "\\time " + ts.getNumerator() + "/" + ts.getDenominator().getValue());
+		writer.println(indent(indent) + "\\time " + ts.getNumerator() + '/' + ts.getDenominator().getValue());
 	}
 	
 	private void addKeySignature(int keySignature,int indent){
@@ -284,10 +287,10 @@ class LilypondOutputStream {
 		String[] lilypondNotes = (keySignature <= 7 ? LILYPOND_SHARP_NOTES : LILYPOND_FLAT_NOTES );
 		StringBuilder key = new StringBuilder(lilypondNotes[ value % 12 ]);
 		for(int i = 4; i < (value / 12); i ++){
-			key.append("'");
+			key.append('\'');
 		}
 		for(int i = (value / 12); i < 4; i ++){
-			key.append(",");
+			key.append(',');
 		}
 		return key.toString();
 	}

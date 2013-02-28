@@ -52,10 +52,10 @@ class FlatTrack {
                     sb.append(duration.toString());
                 }
                 if (iterator.hasNext()) {
-                    sb.append("+");
+                    sb.append('+');
                 }
             }
-            sb.append(" ");
+            sb.append(' ');
         }
 
         return sb.toString();

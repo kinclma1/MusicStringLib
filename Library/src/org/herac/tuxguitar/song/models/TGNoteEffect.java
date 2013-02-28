@@ -368,11 +368,11 @@ public abstract class TGNoteEffect {
 		effect.setTapping(tapping);
 		effect.setSlapping(slapping);
 		effect.setPopping(popping);
-		effect.setFadeIn(fadeIn);
+        effect.fadeIn = fadeIn;
 		effect.setBend(isBend()? bend.clone(factory) :null);
 		effect.setTremoloBar(isTremoloBar()? tremoloBar.clone(factory) :null);
-		effect.setHarmonic(isHarmonic()? harmonic.clone(factory) :null);
-		effect.setGrace(isGrace()? grace.clone(factory) :null);
+        effect.harmonic = isHarmonic() ? harmonic.clone(factory) : null;
+        effect.grace = isGrace() ? grace.clone(factory) : null;
 		effect.setTrill(isTrill()? trill.clone(factory) :null);
 		effect.setTremoloPicking(isTremoloPicking()? tremoloPicking.clone(factory) :null);
 		return effect;

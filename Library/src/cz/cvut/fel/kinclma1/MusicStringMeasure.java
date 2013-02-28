@@ -57,7 +57,7 @@ class MusicStringMeasure {
         StringBuilder sb = new StringBuilder(tempoIndicator());
         for (MusicStringBeat beat : beats) {
             sb.append(beat.toString());
-            sb.append(" ");
+            sb.append(' ');
         }
         return sb.toString();
     }
@@ -117,14 +117,7 @@ class MusicStringMeasure {
     }
 
     private String tempoIndicator() {
-        if(!tempoTracker.changed(tempo)) {
-            return "";
-        }
-        StringBuilder sb = new StringBuilder(3);
-        sb.append("T");
-        sb.append(Integer.toString(tempo));
-        sb.append(" ");
-        return sb.toString();
+        return tempoTracker.changed(tempo) ? String.format("T%d ", tempo) : "";
     }
 
     private void supplyRests(TGTimeSignature ts, boolean drumTrack) {
@@ -137,7 +130,7 @@ class MusicStringMeasure {
         if (remaining > 0) {
             for (Duration d : Duration.values()) {
                 while (128 / d.toInteger() <= remaining) {
-                    beats.add(new MusicStringBeat("R" + d.toString(), drumTrack));
+                    beats.add(new MusicStringBeat('R' + d.toString(), drumTrack));
                     remaining -= 128 / d.toInteger();
                 }
             }

@@ -57,7 +57,7 @@ public abstract class TGStroke {
 	}
 	
 	public void copy(TGStroke stroke){
-		stroke.setValue(value);
-		stroke.setDirection(direction);
+        stroke.value = value;
+        stroke.direction = direction;
 	}
 }

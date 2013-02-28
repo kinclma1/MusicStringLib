@@ -80,8 +80,8 @@ public abstract class TGChord {
 	
 	public TGChord clone(TGFactory factory){
 		TGChord chord = factory.newChord(strings.length);
-		chord.setName(name);
-		chord.setFirstFret(firstFret);
+        chord.name = name;
+        chord.firstFret = firstFret;
         System.arraycopy(strings, 0, chord.strings, 0, chord.strings.length);
 		return chord;
 	}

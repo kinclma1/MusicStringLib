@@ -36,7 +36,7 @@ public abstract class TGEffectTremoloBar {
 		TGEffectTremoloBar effect = factory.newEffectTremoloBar();
 		Iterator<TremoloBarPoint> it = points.iterator();
 		while(it.hasNext()){
-			TremoloBarPoint point = (TremoloBarPoint)it.next();
+			TremoloBarPoint point = it.next();
 			effect.addPoint(point.getPosition(),point.getValue());
 		}
 		

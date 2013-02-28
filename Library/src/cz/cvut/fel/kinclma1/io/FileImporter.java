@@ -27,10 +27,13 @@ public class FileImporter {
     public TGSong importFile(File file) throws IOException, TGFileFormatException {
         TGSongManager manager = new TGSongManager();
         TGSong song;
+        FileInputStream fis = new FileInputStream(file);
             try {
-                song = TGFileFormatManager.instance().getLoader().load(manager.getFactory(), new FileInputStream(file));
+                song = TGFileFormatManager.instance().getLoader().load(manager.getFactory(), fis);
             } catch (TGFileFormatException e) {
-                song = importSong(manager.getFactory(), file.getCanonicalPath());
+                song = importSong(manager.getFactory(), file.getCanonicalPath(), fis);
+            } finally {
+                fis.close();
             }
 
             if (song != null) {
@@ -41,15 +44,19 @@ public class FileImporter {
         return manager.getSong();
     }
 
-    private TGSong importSong(TGFactory factory, String filename) throws FileNotFoundException, TGFileFormatException {
+    private TGSong importSong(TGFactory factory, String filename, FileInputStream fis) throws IOException, TGFileFormatException {
         Iterator importers = TGFileFormatManager.instance().getImporters();
         while (importers.hasNext()) {
                 TGLocalFileImporter currentImporter = (TGLocalFileImporter) importers.next();
                 currentImporter.configure(true);
                 if (isSupportedExtension(filename, currentImporter)) {
-                    InputStream input = new BufferedInputStream(new FileInputStream(filename));
-                    currentImporter.init(factory, input);
-                    return currentImporter.importSong();
+                    InputStream input = new BufferedInputStream(fis);
+                    try {
+                        currentImporter.init(factory, input);
+                        return currentImporter.importSong();
+                    } finally {
+                        input.close();
+                    }
                 }
         }
         return null;
@@ -57,8 +64,8 @@ public class FileImporter {
 
     private boolean isSupportedExtension(String filename, TGLocalFileImporter currentImporter) {
         try {
-            String extension = filename.substring(filename.lastIndexOf("."), filename.length());
-            extension = "*" + extension.toLowerCase();
+            String extension = filename.substring(filename.lastIndexOf('.'), filename.length());
+            extension = '*' + extension.toLowerCase();
             String[] formats = currentImporter.getFileFormat().getSupportedFormats().split(";");
             for (String format : formats) {
                 if (format.toLowerCase().equals(extension)) {

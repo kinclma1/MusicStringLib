@@ -58,14 +58,14 @@ public abstract class TGDivisionType {
 	}
 	
 	public void copy(TGDivisionType divisionType){
-		divisionType.setEnters(enters);
-		divisionType.setTimes(times);
+        divisionType.enters = enters;
+        divisionType.times = times;
 	}
 	
 	private static TGDivisionType newDivisionType(int enters,int times){
 		TGDivisionType divisionType = new TGFactory().newDivisionType();
-		divisionType.setEnters(enters);
-		divisionType.setTimes(times);
+        divisionType.enters = enters;
+        divisionType.times = times;
 		return divisionType;
 	}
 	

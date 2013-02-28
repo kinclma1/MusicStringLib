@@ -13,10 +13,10 @@ import java.util.*;
  */
 public class InstrumentTones {
     public static enum Instruments {
-        GUITAR, GUITAR_7, BASS, BASS_5, HARMONICA_C, HARMONICA_A, TEST;
+        GUITAR, GUITAR_7, BASS, BASS_5, HARMONICA_C, HARMONICA_A, TEST
     }
 
-    protected Map<String,Set<MusicStringTone>> tones = null;
+    protected Map<String, Set<MusicStringTone>> tones = null;
 
     protected InstrumentTones() {
         initToneMap();
@@ -39,35 +39,35 @@ public class InstrumentTones {
             case TEST:
                 return new TestTones();
         }
-        return null;
+        return new InstrumentTones();
     }
 
     public FlatTrack filterTones(FlatTrack orig) {
         FlatTrack newTrack;
         if (tones == null) {
             return orig;
-        } else {
-            Iterator<HashSet<String>> iterator = orig.getIterator();
-            newTrack = new FlatTrack(orig.getDuration());
-            HashSet<String> oldBeat;
-            HashSet<String> newBeat;
-            while (iterator.hasNext()) {
-                oldBeat = iterator.next();
-                newBeat = new HashSet<String>();
-                for (String s : oldBeat) {
-                    Set<MusicStringTone> octaves = tones.get(s);
-                    if (octaves != null) {
-                        for (MusicStringTone tone : octaves) {
-                            newBeat.add(tone.toString());
-                        }
+        }
+        Iterator<HashSet<String>> iterator = orig.getIterator();
+        newTrack = new FlatTrack(orig.getDuration());
+        HashSet<String> oldBeat;
+        HashSet<String> newBeat;
+        while (iterator.hasNext()) {
+            oldBeat = iterator.next();
+            newBeat = new HashSet<String>();
+            for (String s : oldBeat) {
+                Set<MusicStringTone> octaves = tones.get(s);
+                if (octaves != null) {
+                    for (MusicStringTone tone : octaves) {
+                        newBeat.add(tone.toString());
                     }
                 }
-                if (newBeat.isEmpty()) {
-                    newBeat.addAll(oldBeat);
-                }
-                newTrack.addToneSet(newBeat);
             }
+            if (newBeat.isEmpty()) {
+                newBeat.addAll(oldBeat);
+            }
+            newTrack.addToneSet(newBeat);
         }
+
         return newTrack;
     }
 
@@ -81,7 +81,7 @@ public class InstrumentTones {
         int minInt = min.toInt();
         int maxInt = max.toInt();
         MusicStringTone tone;
-        for (int i = minInt; i <= maxInt; i ++) {
+        for (int i = minInt; i <= maxInt; i++) {
             tone = new MusicStringTone(i);
             tones.get(tone.relativeTone()).add(tone);
         }
@@ -90,7 +90,7 @@ public class InstrumentTones {
     private void initToneMap() {
         MusicStringTone.RelativeTone[] relativeTones = MusicStringTone.RelativeTone.values();
         tones = new HashMap<String, Set<MusicStringTone>>(12);
-        for (int i = 0; i < relativeTones.length; i ++) {
+        for (int i = 0; i < relativeTones.length; i++) {
             tones.put(relativeTones[i].toString(), new HashSet<MusicStringTone>());
         }
     }

@@ -39,8 +39,8 @@ public abstract class TGLyric {
 	}
 	
 	public void copy(TGLyric lyric){
-		lyric.setFrom(from);
-		lyric.setLyrics(lyrics);
+        lyric.from = from;
+        lyric.lyrics = lyrics;
 	}
 	
 }

@@ -114,7 +114,7 @@ public abstract class TGBeat {
 	
 	public TGBeat clone(TGFactory factory){
 		TGBeat beat = factory.newBeat();
-		beat.setStart(start);
+        beat.start = start;
         stroke.copy(beat.stroke);
 		for( int i = 0 ; i < voices.length ; i ++ ){
 			beat.setVoice(i, voices[i].clone(factory));

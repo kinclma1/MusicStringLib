@@ -31,7 +31,7 @@ public class TGText{
 	}
 	
 	public void copy(TGText text) {
-		text.setValue(value);
+        text.value = value;
 	}
 	
 	public TGText clone(TGFactory factory) {

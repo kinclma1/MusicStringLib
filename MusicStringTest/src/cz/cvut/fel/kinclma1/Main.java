@@ -23,16 +23,19 @@ public class Main {
         MusicStringSong ms = null;
         try {
             ms = MusicStringSong.create("/home/void/project/rem1.gp4");
+            System.out.println(ms);
+//        } catch (UnsupportedOperationException e) {
+//            System.out.println(e.getMessage());  //To change body of catch statement use File | Settings | File Templates.
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (TGFileFormatException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
-        System.out.println(ms.getPossibleNotes(InstrumentTones.Instruments.TEST, Instrument.ELECTRIC_BASS_FINGER));
-        MusicStringPlayer player = new MusicStringPlayer(
-                        ms.getPossibleNotes(InstrumentTones.Instruments.TEST, Instrument.DISTORTION_GUITAR).toString(),
-                new TestListener1());
-        player.play();
+//        System.out.println(ms.getPossibleNotes(InstrumentTones.Instruments.TEST, Instrument.ELECTRIC_BASS_FINGER));
+//        MusicStringPlayer player = new MusicStringPlayer(
+//                        ms.getPossibleNotes(InstrumentTones.Instruments.TEST, Instrument.DISTORTION_GUITAR).toString(),
+//                new TestListener1());
+//        player.play();
 //        String[] bu = MusicStringSong.getExportFormats();
 //        for (int i = 0; i < bu.length; i ++) {
 //            System.out.println(bu[i]);

@@ -21,7 +21,8 @@ import java.util.Iterator;
  */
 public class TGOutputStream extends TGStream implements TGOutputStreamBase{
 	
-	private DataOutputStream dataOutputStream;
+	private OutputStream stream;
+    private DataOutputStream dataOutputStream;
 	
 	@Override
     public boolean isSupportedExtension(String extension) {
@@ -30,7 +31,7 @@ public class TGOutputStream extends TGStream implements TGOutputStreamBase{
 	
 	@Override
     public void init(TGFactory factory,OutputStream stream) {
-        dataOutputStream = new DataOutputStream(stream);
+        this.stream = stream;
 	}
 	
 	@Override
@@ -40,10 +41,14 @@ public class TGOutputStream extends TGStream implements TGOutputStreamBase{
 	
 	@Override
     public void writeSong(TGSong song) throws IOException{
-        writeVersion();
-        write(song);
-        dataOutputStream.flush();
-        dataOutputStream.close();
+        dataOutputStream = new DataOutputStream(stream);
+        try {
+            writeVersion();
+            write(song);
+        } finally {
+            dataOutputStream.flush();
+            dataOutputStream.close();
+        }
 	}
 	
 	private void writeVersion(){
@@ -458,7 +463,7 @@ public class TGOutputStream extends TGStream implements TGOutputStreamBase{
 		int header = 0;
 		header = (duration.isDotted())?header |= DURATION_DOTTED:header;
 		header = (duration.isDoubleDotted())?header |= DURATION_DOUBLE_DOTTED:header;
-		header = (!duration.getDivision().isEqual(TGDivisionType.NORMAL))?header |= DURATION_NO_TUPLET:header;
+		header = duration.getDivision().isEqual(TGDivisionType.NORMAL) ? header : (header |= DURATION_NO_TUPLET);
 		writeHeader(header);
 		
 		//escribo el valor

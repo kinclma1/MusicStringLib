@@ -196,15 +196,15 @@ public abstract class TGSong {
 	
 	public void copy(TGFactory factory,TGSong song){
 		song.clear();
-		song.setName(name);
-		song.setArtist(artist);
-		song.setAlbum(album);
-		song.setAuthor(author);
-		song.setDate(date);
-		song.setCopyright(copyright);
-		song.setWriter(writer);
-		song.setTranscriber(transcriber);
-		song.setComments(comments);
+        song.name = name;
+        song.artist = artist;
+        song.album = album;
+        song.author = author;
+        song.date = date;
+        song.copyright = copyright;
+        song.writer = writer;
+        song.transcriber = transcriber;
+        song.comments = comments;
 		Iterator<TGMeasureHeader> headers = getMeasureHeaders();
 		while(headers.hasNext()){
 			TGMeasureHeader header = headers.next();

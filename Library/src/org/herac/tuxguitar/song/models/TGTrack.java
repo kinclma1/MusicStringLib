@@ -176,9 +176,9 @@ public abstract class TGTrack {
 	
 	public void copy(TGFactory factory,TGSong song,TGTrack track){
 		track.clear();
-		track.setNumber(number);
-		track.setName(name);
-		track.setOffset(offset);
+        track.number = number;
+        track.name = name;
+        track.offset = offset;
         channel.copy(track.channel);
         color.copy(track.color);
         lyrics.copy(track.lyrics);

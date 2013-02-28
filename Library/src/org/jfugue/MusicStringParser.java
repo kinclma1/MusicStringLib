@@ -101,7 +101,7 @@ public final class MusicStringParser extends Parser {
      */
     private void parseToken(String s) throws JFugueException {
         // If there are any spaces, get out
-        if (s.indexOf(" ") != -1) {
+        if (s.indexOf(' ') != -1) {
             throw new JFugueException(JFugueException.PARSER_SPACES_EXC, s, s);
         }
 
@@ -962,7 +962,7 @@ public final class MusicStringParser extends Parser {
         boolean durationExists = true;
         boolean isDotted = false;
 
-        while (durationExists == true) {
+        while (durationExists) {
             int durationNumber = 0;
             // See if the note has a duration
             // Duration is optional; default is Q (4)
@@ -1110,7 +1110,7 @@ public final class MusicStringParser extends Parser {
                     numerator = Double.parseDouble(s.substring(indexOfUnitsToMatch, indexOfNumNotes - 1));
                     denominator = Double.parseDouble(s.substring(indexOfNumNotes, index));
                 }
-                trace("Tuplet ratio is " + numerator + ":" + denominator);
+                trace("Tuplet ratio is " + numerator + ':' + denominator);
                 double tupletRatio = numerator / denominator;
                 context.decimalDuration = context.decimalDuration * tupletRatio;
                 trace("Decimal duration after tuplet is ", context.decimalDuration);
@@ -1268,8 +1268,8 @@ public final class MusicStringParser extends Parser {
      * @returns the definition of the string
      */
     private String dictionaryLookup(String bracketedString) throws JFugueException {
-        int indexOfOpeningBracket = bracketedString.indexOf("[");
-        int indexOfClosingBracket = bracketedString.indexOf("]");
+        int indexOfOpeningBracket = bracketedString.indexOf('[');
+        int indexOfClosingBracket = bracketedString.indexOf(']');
 
         String word = null;
         if ((indexOfOpeningBracket != -1) && (indexOfClosingBracket != -1)) {

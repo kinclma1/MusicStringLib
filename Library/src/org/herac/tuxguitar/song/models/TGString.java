@@ -46,8 +46,8 @@ public abstract class TGString {
 	}
 	
 	public void copy(TGString string){
-		string.setNumber(number);
-		string.setValue(value);
+        string.number = number;
+        string.value = value;
 	}
 	
 }

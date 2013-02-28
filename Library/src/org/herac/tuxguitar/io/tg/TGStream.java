@@ -164,9 +164,9 @@ public class TGStream {
 		
 		private void init(TGMeasure measure){
             flags = 0;
-            setStart(measure.getStart());
-            setVelocity(TGVelocities.DEFAULT);
-            setDuration(new TGFactory().newDuration());
+            start = measure.getStart();
+            velocity = TGVelocities.DEFAULT;
+            duration = new TGFactory().newDuration();
 		}
 		
 		public TGDuration getDuration() {

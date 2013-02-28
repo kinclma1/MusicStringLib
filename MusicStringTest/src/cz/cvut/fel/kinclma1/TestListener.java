@@ -12,6 +12,7 @@ import cz.cvut.fel.kinclma1.player.PlayerListener;
  */
 public class TestListener implements PlayerListener {
 
+    @Override
     public void setPlayer(MusicStringPlayer player) {
 
     }

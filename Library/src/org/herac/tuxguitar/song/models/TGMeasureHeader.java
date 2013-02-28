@@ -152,14 +152,14 @@ public abstract class TGMeasureHeader {
 	public TGMeasureHeader clone(TGFactory factory){
 		TGMeasureHeader header = factory.newHeader();
 		header.setNumber(number);
-		header.setStart(start);
-		header.setRepeatOpen(repeatOpen);
-		header.setRepeatAlternative(repeatAlternative);
-		header.setRepeatClose(repeatClose);
-		header.setTripletFeel(tripletFeel);
+        header.start = start;
+        header.repeatOpen = repeatOpen;
+        header.repeatAlternative = repeatAlternative;
+        header.repeatClose = repeatClose;
+        header.tripletFeel = tripletFeel;
         timeSignature.copy(header.timeSignature);
         tempo.copy(header.tempo);
-		header.setMarker(hasMarker()? marker.clone(factory) :null);
+        header.marker = hasMarker() ? marker.clone(factory) : null;
 		return header;
 	}
 }

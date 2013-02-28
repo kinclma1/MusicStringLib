@@ -54,16 +54,16 @@ public abstract class TGColor {
 	}
 	
 	public void copy(TGColor color){
-		color.setR(r);
-		color.setG(g);
-		color.setB(b);
+        color.r = r;
+        color.g = g;
+        color.b = b;
 	}
 	
 	public static TGColor newColor(int r,int g,int b){
 		TGColor color = new TGFactory().newColor();
-		color.setR(r);
-		color.setG(g);
-		color.setB(b);
+        color.r = r;
+        color.g = g;
+        color.b = b;
 		return color;
 	}
 	

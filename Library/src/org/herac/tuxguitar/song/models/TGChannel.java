@@ -116,8 +116,8 @@ public abstract class TGChannel {
 	}
 	
 	public static void setPercussionChannel(TGChannel channel){
-		channel.setChannel(DEFAULT_PERCUSSION_CHANNEL);
-		channel.setEffectChannel(DEFAULT_PERCUSSION_CHANNEL);
+        channel.channel = DEFAULT_PERCUSSION_CHANNEL;
+        channel.effectChannel = DEFAULT_PERCUSSION_CHANNEL;
 	}
 	
 	public static TGChannel newPercussionChannel(TGFactory factory){
@@ -133,14 +133,14 @@ public abstract class TGChannel {
 	}
 	
 	public void copy(TGChannel channel){
-		channel.setChannel(this.channel);
-		channel.setEffectChannel(effectChannel);
-		channel.setInstrument(getInstrument());
-		channel.setVolume(volume);
-		channel.setBalance(balance);
-		channel.setChorus(chorus);
-		channel.setReverb(reverb);
-		channel.setPhaser(phaser);
-		channel.setTremolo(tremolo);
+        channel.channel = this.channel;
+        channel.effectChannel = effectChannel;
+        channel.instrument = getInstrument();
+        channel.volume = volume;
+        channel.balance = balance;
+        channel.chorus = chorus;
+        channel.reverb = reverb;
+        channel.phaser = phaser;
+        channel.tremolo = tremolo;
 	}
 }

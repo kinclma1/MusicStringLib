@@ -19,19 +19,23 @@ class MusicStringBeat {
     private MusicStringDuration duration;
 
     public MusicStringBeat(TGBeat tgBeat, boolean drumTrack) {
+        TGVoice voice;
         if(tgBeat.isRestBeat()) {
+            voice = getRestVoice(tgBeat);
             content = new ArrayList<BeatElement>(1);
-            TGVoice voice = getRestVoice(tgBeat);
             duration = new MusicStringDuration(voice.getDuration());
             content.add(new MusicStringRest(duration));
         } else {
-            TGVoice voice = joinToOneVoice(tgBeat);
+            voice = joinToOneVoice(tgBeat);
             duration = new MusicStringDuration(voice.getDuration());
             int noteCount = voice.countNotes();
             content = new ArrayList<BeatElement>(noteCount);
             for (int i = 0; i < noteCount; i ++) {
                 content.add(new MusicStringNote(voice.getNote(i), drumTrack, duration));
             }
+        }
+        if (!voice.getDuration().getDivision().isEqual(TGDivisionType.NORMAL)) {
+            throw new UnsupportedOperationException("Input file contains triplets.");
         }
     }
 
@@ -100,7 +104,7 @@ class MusicStringBeat {
         for (int i = 0; i < elements; i ++) {
             sb.append(content.get(i).toString());
             if (i < elements - 1) {
-                sb.append("+");
+                sb.append('+');
             }
         }
         return sb.toString();

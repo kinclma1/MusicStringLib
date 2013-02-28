@@ -147,9 +147,7 @@ public class MusicXMLWriter {
                 writeClef(measureAttributes, drums ? 9 : measure.getClef());
             }
 
-            if (timeSignatureChanges) {
-                writeTimeSignature(measureAttributes, measure.getTimeSignature());
-            }
+            writeTimeSignature(measureAttributes, measure.getTimeSignature());
         }
     }
 

@@ -42,7 +42,7 @@ public abstract class TGTimeSignature {
 	}
 	
 	public void copy(TGTimeSignature timeSignature){
-		timeSignature.setNumerator(numerator);
+        timeSignature.numerator = numerator;
         denominator.copy(timeSignature.denominator);
 	}
 	

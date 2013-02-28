@@ -39,7 +39,7 @@ public class MusicXMLReader {
     public MusicXMLReader(TGFactory factory, InputStream stream) {
         this.factory = factory;
         this.stream = stream;
-        this.manager = new TGSongManager();
+        manager = new TGSongManager();
         durations.put("whole", 1);
         durations.put("half", 2);
         durations.put("quarter", 4);
@@ -236,7 +236,7 @@ public class MusicXMLReader {
         setTempo(tmp.getLength() > 0 ? (Element) tmp.item(0) : direction, measure);
 
         String measureNumber = srcMeasure.getAttribute("number");
-        if (measureNumber.length() > 0) {
+        if (!measureNumber.isEmpty()) {
             measure.getHeader().setNumber(Integer.parseInt(measureNumber));
         }
 
@@ -325,9 +325,11 @@ public class MusicXMLReader {
                 }
                 beat = new LinkedList<Element>();
             }
-            beat.add(note);
+            if (beat != null) {
+                beat.add(note);
+            }
         }
-        if (!beat.isEmpty()) addBeat(beat, measure);
+        if (!(beat != null && beat.isEmpty())) addBeat(beat, measure);
     }
 
     private void addBeat(List<Element> beat, TGMeasure measure) {

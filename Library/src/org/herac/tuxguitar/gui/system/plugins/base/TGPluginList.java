@@ -17,7 +17,7 @@ public abstract class TGPluginList extends TGPluginAdapter{
     public void init() throws TGPluginException {
 		Iterator<TGPlugin> it = getIterator();
 		while(it.hasNext()){
-			TGPlugin plugin = (TGPlugin)it.next();
+			TGPlugin plugin = it.next();
 			plugin.init();
 		}
 	}
@@ -26,7 +26,7 @@ public abstract class TGPluginList extends TGPluginAdapter{
     public void close() throws TGPluginException {
 		Iterator<TGPlugin> it = getIterator();
 		while(it.hasNext()){
-			TGPlugin plugin = (TGPlugin)it.next();
+			TGPlugin plugin = it.next();
 			plugin.close();
 		}
 	}
@@ -35,7 +35,7 @@ public abstract class TGPluginList extends TGPluginAdapter{
     public void setEnabled(boolean enabled) throws TGPluginException {
 		Iterator<TGPlugin> it = getIterator();
 		while(it.hasNext()){
-			TGPlugin plugin = (TGPlugin)it.next();
+			TGPlugin plugin = it.next();
 			plugin.setEnabled( enabled);
 		}
 	}

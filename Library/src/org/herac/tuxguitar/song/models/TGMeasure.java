@@ -150,8 +150,8 @@ public abstract class TGMeasure {
 	
 	public TGMeasure clone(TGFactory factory,TGMeasureHeader header){
 		TGMeasure measure = factory.newMeasure(header);
-		measure.setClef(clef);
-		measure.setKeySignature(keySignature);
+        measure.clef = clef;
+        measure.keySignature = keySignature;
 		for(int i = 0; i < countBeats(); i ++){
 			TGBeat beat = beats.get(i);
 			measure.addBeat(beat.clone(factory));

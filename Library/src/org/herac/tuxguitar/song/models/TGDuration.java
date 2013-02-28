@@ -113,9 +113,9 @@ public abstract class TGDuration {
 	
 	public static TGDuration fromTime(TGFactory factory,long time){
 		TGDuration duration = factory.newDuration();
-		duration.setValue(TGDuration.SIXTY_FOURTH);
-		duration.setDotted(false);
-		duration.setDoubleDotted(false);
+        duration.value = TGDuration.SIXTY_FOURTH;
+        duration.dotted = false;
+        duration.doubleDotted = false;
         duration.divisionType.setEnters(3);
         duration.divisionType.setTimes(2);
 		return fromTime(factory,time,duration);
@@ -128,8 +128,8 @@ public abstract class TGDuration {
 	public static TGDuration fromTime(TGFactory factory,long time,TGDuration minimum, int diff){
 		TGDuration duration = minimum.clone(factory);
 		TGDuration tmpDuration = factory.newDuration();
-		tmpDuration.setValue(TGDuration.WHOLE);
-		tmpDuration.setDotted(true);
+        tmpDuration.value = TGDuration.WHOLE;
+        tmpDuration.dotted = true;
 		boolean finish = false;
 		while(!finish){
 			long tmpTime = tmpDuration.getTime();
@@ -140,13 +140,13 @@ public abstract class TGDuration {
 				}
 			}
 			if(tmpDuration.dotted){
-				tmpDuration.setDotted(false);
+                tmpDuration.dotted = false;
 			}else if(tmpDuration.divisionType.isEqual(TGDivisionType.NORMAL)){
                 tmpDuration.divisionType.setEnters(3);
                 tmpDuration.divisionType.setTimes(2);
 			}else{
-				tmpDuration.setValue(tmpDuration.value * 2);
-				tmpDuration.setDotted(true);
+                tmpDuration.value = tmpDuration.value * 2;
+                tmpDuration.dotted = true;
                 tmpDuration.divisionType.setEnters(1);
                 tmpDuration.divisionType.setTimes(1);
 			}
@@ -181,9 +181,9 @@ public abstract class TGDuration {
 	}
 	
 	public void copy(TGDuration duration){
-		duration.setValue(value);
-		duration.setDotted(dotted);
-		duration.setDoubleDotted(doubleDotted);
+        duration.value = value;
+        duration.dotted = dotted;
+        duration.doubleDotted = doubleDotted;
         divisionType.copy(duration.divisionType);
 	}
 	

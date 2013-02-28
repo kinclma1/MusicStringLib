@@ -19,16 +19,15 @@ import java.awt.event.*;
 public class TestListener1 extends JFrame implements PlayerListener {
 
     private MusicStringPlayer player;
-    private int length;
 
     private JSlider slider;
     private JLabel label;
     private JButton play;
 
     public TestListener1() {
-        this.setSize(300, 300);
-        this.setLayout(new FlowLayout());
-        this.addWindowListener(new WindowAdapter() {
+        setSize(300, 300);
+        setLayout(new FlowLayout());
+        addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
                 player.close();
@@ -44,9 +43,8 @@ public class TestListener1 extends JFrame implements PlayerListener {
 
     @Override
     public void setSongLength(int length) {
-        this.length = length;
         slider = new JSlider(0, length, 0);
-        this.add(slider);
+        add(slider);
         slider.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
@@ -54,9 +52,9 @@ public class TestListener1 extends JFrame implements PlayerListener {
             }
         });
         label = new JLabel();
-        this.add(label);
+        add(label);
         play = new JButton(">");
-        this.add(play);
+        add(play);
         play.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -77,7 +75,7 @@ public class TestListener1 extends JFrame implements PlayerListener {
                 }
             }
         });
-        this.setVisible(true);
+        setVisible(true);
     }
 
     @Override
@@ -88,6 +86,6 @@ public class TestListener1 extends JFrame implements PlayerListener {
     @Override
     public void setPosition(int position) {
         slider.setValue(position);
-        label.setText("" + position);
+        label.setText(String.valueOf(position));
     }
 }

@@ -84,7 +84,7 @@ public class MidiSequenceParser {
 		this.flags = flags;
 		this.transpose = transpose;
 		this.tempoPercent = tempoPercent;
-        firstTickMove = (int)(((flags & ADD_FIRST_TICK_MOVE) != 0)?(-TGDuration.QUARTER_TIME):0);
+        firstTickMove = (int)(((flags & ADD_FIRST_TICK_MOVE) == 0) ? 0 : (-TGDuration.QUARTER_TIME));
         sHeader = -1;
         eHeader = -1;
 	}

@@ -40,7 +40,7 @@ public abstract class TGTempo {
 	public static TGTempo fromUSQ(TGFactory factory,int usq){
 		double value = ((60.00 * SECOND_IN_MILLIS) / (usq / 1000.00));
 		TGTempo tempo = factory.newTempo();
-		tempo.setValue((int)value);
+        tempo.value = (int) value;
 		return tempo;
 	}
 	
@@ -51,7 +51,7 @@ public abstract class TGTempo {
 	}
 	
 	public void copy(TGTempo tempo){
-		tempo.setValue(value);
+        tempo.value = value;
 	}
 	
 }

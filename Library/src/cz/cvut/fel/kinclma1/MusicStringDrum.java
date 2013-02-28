@@ -11,13 +11,14 @@ public class MusicStringDrum extends NoteContent {
     private Drum drum;
 
     public MusicStringDrum(String drumString) {
-        this.drum = Drum.fromString(drumString);
+        drum = Drum.fromString(drumString);
     }
 
     public MusicStringDrum(int drumInt) {
-        this.drum = Drum.fromInt(drumInt);
+        drum = Drum.fromInt(drumInt);
     }
 
+    @Override
     public int toInt() {
         return drum.toInteger();
     }

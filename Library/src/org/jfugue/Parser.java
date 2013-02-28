@@ -73,7 +73,7 @@ public class Parser {
      * @return the state of tracing
      */
     public int getTracing() {
-        return this.tracing;
+        return tracing;
     }
 
     /**
@@ -82,7 +82,7 @@ public class Parser {
      * @param sentenceFragments the String to display
      */
     protected void trace(Object... sentenceFragments) {
-        if (TRACING_ON == getTracing()) {
+        if (TRACING_ON == tracing) {
             StringBuilder buddy = new StringBuilder();
             for (int i = 0; i < sentenceFragments.length; i++) {
                 buddy.append(sentenceFragments[i]);

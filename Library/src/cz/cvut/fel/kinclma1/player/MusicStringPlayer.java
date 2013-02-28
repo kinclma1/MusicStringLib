@@ -34,7 +34,7 @@ public class MusicStringPlayer {
     }
 
     public MusicStringPlayer(String musicString, PlayerListener listener) {
-        this.listeners = new ArrayList<PlayerListener>(1);
+        listeners = new ArrayList<PlayerListener>(1);
         if (listener != null) {
             listeners.add(listener);
         }
@@ -42,7 +42,7 @@ public class MusicStringPlayer {
     }
 
     private void init(String musicString) {
-        this.player = new Player(musicString == null ? "" : musicString);
+        player = new Player(musicString == null ? "" : musicString);
         player.setMusicStringPlayer(this);
         timer = new Timer();
         initListeners();

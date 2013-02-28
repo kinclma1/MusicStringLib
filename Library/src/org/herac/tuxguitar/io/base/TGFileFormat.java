@@ -22,6 +22,6 @@ public class TGFileFormat {
 
     @Override
     public String toString() {
-        return name + " (" + supportedFormats + ")";
+        return name + " (" + supportedFormats + ')';
     }
 }

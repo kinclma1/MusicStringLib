@@ -50,7 +50,7 @@ public class Player {
     private boolean started = false;
     private boolean finished = false;
     private long sequenceLength;
-    private static final int MILLION = 1000000;
+    private static final long MILLION = 1000000;
     private Sequence sequence;
 
     /**
@@ -59,7 +59,7 @@ public class Player {
     private Player() {
         try {
             // Get default sequencer.
-            setSequencer(MidiSystem.getSequencer(true));
+            sequencer = MidiSystem.getSequencer(true);
         } catch (MidiUnavailableException e) {
             throw new JFugueException(JFugueException.SEQUENCER_DEVICE_NOT_SUPPORTED_WITH_EXCEPTION + e.getMessage());
         }
@@ -89,9 +89,9 @@ public class Player {
     }
 
     private void initParser() {
-        this.parser = new MusicStringParser();
-        this.renderer = new MidiRenderer(sequenceTiming, resolution);
-        this.parser.addParserListener(this.renderer);
+        parser = new MusicStringParser();
+        renderer = new MidiRenderer(sequenceTiming, resolution);
+        parser.addParserListener(renderer);
     }
 
     private void setStopWhenFinished(MusicStringPlayer player) {
@@ -141,7 +141,7 @@ public class Player {
             throw new JFugueException(JFugueException.PLAYS_STRING_NOT_FILE_EXC);
         }
 
-        this.sequence = getSequence(new Pattern(musicString));
+        sequence = getSequence(new Pattern(musicString));
         sequenceLength = getSequenceLength(sequence);
     }
 
@@ -189,11 +189,11 @@ public class Player {
     }
 
     public boolean isStarted() {
-        return this.started;
+        return started;
     }
 
     public boolean isFinished() {
-        return this.finished;
+        return finished;
     }
 
     public boolean isPlaying() {
@@ -227,7 +227,7 @@ public class Player {
     }
 
     public void jumpTo(int seconds) {
-        jumpTo((long)MILLION * (long)seconds);
+        jumpTo(MILLION * seconds);
     }
 
     private long getSequenceLength(Sequence sequence) {
@@ -252,9 +252,9 @@ public class Player {
      * @return the Sequence from the given pattern
      */
     private Sequence getSequence(Pattern pattern) {
-        this.renderer.reset();
-        this.parser.parse(pattern);
-        Sequence sequence = this.renderer.getSequence();
+        renderer.reset();
+        parser.parse(pattern);
+        Sequence sequence = renderer.getSequence();
         return sequence;
     }
 }

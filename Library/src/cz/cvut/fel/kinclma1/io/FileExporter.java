@@ -23,11 +23,9 @@ import java.util.Iterator;
 public class FileExporter {
 
     public void exportSong(TGSong song, String filename) throws IOException, TGFileFormatException {
-        BufferedOutputStream out = null;
         String extension = filename.substring(filename.lastIndexOf('.'));
-
+        BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(filename));
         try {
-            out = new BufferedOutputStream(new FileOutputStream(filename));
             TGFileFormatManager formatManager = TGFileFormatManager.instance();
             Iterator<TGOutputStreamBase> outputStreams = formatManager.getOutputStreams();
             while (outputStreams.hasNext()) {
@@ -49,14 +47,8 @@ public class FileExporter {
                     return;
                 }
             }
-        } catch (FileNotFoundException e) {
-            throw e;
-        } catch (TGFileFormatException e) {
-            throw e;
-        } catch (IOException e) {
-            throw e;
         } finally {
-            if (out != null) out.close();
+            out.close();
         }
         throw new TGFileFormatException("Unsupported file extension");
     }
