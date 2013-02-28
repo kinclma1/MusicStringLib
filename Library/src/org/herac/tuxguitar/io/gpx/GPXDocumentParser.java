@@ -225,7 +225,6 @@ public class GPXDocumentParser {
 			if (gpNote.isHarmonic())
 			{
 				tgNote.getEffect().setHarmonic( makeHarmonic ( gpNote ) );
-				// TODO: if this is a tapped harmonic, update setTapping()?
 			}
 			if (gpNote.getBendEnabled())
 			{

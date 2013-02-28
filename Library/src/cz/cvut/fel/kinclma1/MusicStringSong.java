@@ -237,12 +237,9 @@ public class MusicStringSong {
      * Returns a track containing all notes that can surely be played in any additional track
      * @return track containing all notes that can surely be played in any additional track
      */
-    public MusicStringTrack getPossibleNotes(InstrumentTones.Instruments toneFilter, Instrument instrument) {
+    public FlatTrack getPossibleNotes(InstrumentTones.Instruments toneFilter) {
         //todo not musicstringtrack - rather flattrack or string
-        //todo move filter to harmonyDetector
-        InstrumentTones filter = InstrumentTones.create(toneFilter);
-        FlatTrack ft = filter.filterTones(new HarmonyDetector(this).detectHarmony());
-        return new MusicStringTrack(instrument.toMusicString() + ft.toString());
+        return new HarmonyDetector(this).detectHarmony(toneFilter);
     }
 
     private void create(List<Callable<MusicStringTrack>> tcs) {

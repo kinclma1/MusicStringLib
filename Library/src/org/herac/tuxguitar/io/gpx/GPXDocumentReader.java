@@ -194,8 +194,6 @@ public class GPXDocumentReader {
 					beat.setDynamic(getChildNodeContent(beatNode, "Dynamic"));
 					beat.setRhythmId(getAttributeIntegerValue(getChildNode(beatNode, "Rhythm"), "ref"));
 					beat.setNoteIds( getChildNodeIntegerContentArray(beatNode, "Notes"));
-					// TODO: <Legato destination="false" origin="true"/>
-					// TODO: <Hairpin>Crescendo</Hairpin>
                     gpxDocument.getBeats().add( beat );
 				}
 			}
@@ -215,8 +213,7 @@ public class GPXDocumentReader {
 					note.setTieDestination(tieNode != null && getAttributeValue(tieNode, "destination").equals("true"));
 					
 					note.setVibrato( getChildNode(noteNode, "Vibrato") != null );
-					
-					// TODO:
+
 					// note.setAccent( getChildNodeIntegerContent(propertyNode, "Accent") ); // 0 if it doesn't exist
 					// not parsed: <Accidental>Sharp</Accidental>
 
@@ -284,7 +281,6 @@ public class GPXDocumentReader {
 								note.setHarmonicType( getChildNodeContent (propertyNode, "HType"));
 							}
 							/*
-TODO:
 WhammyBar
 WhammyBarDestinationValue
 WhammyBarExtend

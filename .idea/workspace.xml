@@ -2,83 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47c31169-086a-402a-a19b-a8284e39ad73" name="Default" comment="finished musicstring to tgsong conversion">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/io/FileExporter.java" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/io/FileExporter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/io/FileImporter.java" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/io/FileImporter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/FlatTrack.java" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/FlatTrack.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/gtp/GP5OutputStream.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/gtp/GP5OutputStream.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/gpx/GPXDocumentParser.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/gpx/GPXDocumentParser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/gpx/GPXDocumentReader.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/gpx/GPXDocumentReader.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/HarmonyDetector.java" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/HarmonyDetector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/InstrumentTones.java" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/InstrumentTones.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/lilypond/LilypondOutputStream.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/lilypond/LilypondOutputStream.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/Main.java" afterPath="$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/jfugue/MidiEventManager.java" afterPath="$PROJECT_DIR$/Library/src/org/jfugue/MidiEventManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/jfugue/MidiRenderer.java" afterPath="$PROJECT_DIR$/Library/src/org/jfugue/MidiRenderer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/player/base/MidiSequenceParser.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/player/base/MidiSequenceParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringBeat.java" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringBeat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringDrum.java" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringDrum.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringDuration.java" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringDuration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringMeasure.java" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringMeasure.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/jfugue/MusicStringParser.java" afterPath="$PROJECT_DIR$/Library/src/org/jfugue/MusicStringParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/player/MusicStringPlayer.java" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/player/MusicStringPlayer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringSong.java" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringSong.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringTrack.java" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringTrack.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/musicxml/MusicXMLReader.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/musicxml/MusicXMLReader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/musicxml/MusicXMLWriter.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/musicxml/MusicXMLWriter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/jfugue/Note.java" afterPath="$PROJECT_DIR$/Library/src/org/jfugue/Note.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/Parallellization.java" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/Parallellization.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/jfugue/Parser.java" afterPath="$PROJECT_DIR$/Library/src/org/jfugue/Parser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/jfugue/Player.java" afterPath="$PROJECT_DIR$/Library/src/org/jfugue/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/RepetitionTracker.java" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/RepetitionTracker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGBeat.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGBeat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGChannel.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGChannel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGChord.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGChord.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGColor.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGColor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGDivisionType.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGDivisionType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGDuration.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGDuration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/effects/TGEffectBend.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/effects/TGEffectBend.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/effects/TGEffectGrace.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/effects/TGEffectGrace.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/effects/TGEffectHarmonic.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/effects/TGEffectHarmonic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/effects/TGEffectTremoloBar.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/effects/TGEffectTremoloBar.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/effects/TGEffectTrill.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/effects/TGEffectTrill.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/base/TGFileFormat.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/base/TGFileFormat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/base/TGFileFormatManager.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/base/TGFileFormatManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/tg/TGInputStream.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/tg/TGInputStream.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGLyric.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGLyric.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGMarker.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGMarker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGMeasure.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGMeasure.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGMeasureHeader.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGMeasureHeader.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/managers/TGMeasureManager.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/managers/TGMeasureManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGNote.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGNote.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGNoteEffect.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGNoteEffect.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/tg/TGOutputStream.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/tg/TGOutputStream.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/gui/system/plugins/base/TGPluginList.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/gui/system/plugins/base/TGPluginList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGScale.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGScale.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGSong.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGSong.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/base/TGSongLoader.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/base/TGSongLoader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/managers/TGSongManager.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/managers/TGSongManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/helpers/TGSongSegment.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/helpers/TGSongSegment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/helpers/TGSongSegmentHelper.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/helpers/TGSongSegmentHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/base/TGSongWriter.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/base/TGSongWriter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/tg/TGStream.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/tg/TGStream.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGString.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGString.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGStroke.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGStroke.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGTempo.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGTempo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGText.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGText.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGTimeSignature.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGTimeSignature.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGTrack.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGTrack.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/managers/TGTrackManager.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/managers/TGTrackManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/helpers/TGTrackSegment.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/helpers/TGTrackSegment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGVoice.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/models/TGVoice.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/TestListener.java" afterPath="$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/TestListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/TestListener1.java" afterPath="$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/TestListener1.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/jfugue/TimeEventManager.java" afterPath="$PROJECT_DIR$/Library/src/org/jfugue/TimeEventManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/jfugue/TimeFactor.java" afterPath="$PROJECT_DIR$/Library/src/org/jfugue/TimeFactor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MusicStringLib.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362002512295" ignored="false" />
     <file path="/MusicStringTrack.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362007673817" ignored="false" />
-    <file path="/MusicStringSong.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362012667850" ignored="false" />
+    <file path="/MusicStringSong.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362018424310" ignored="false" />
     <file path="/MusicStringMeasure.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362009917626" ignored="false" />
     <file path="/MusicStringBeat.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362004097014" ignored="false" />
     <file path="/MusicStringDuration.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1360105074310" ignored="false" />
@@ -86,12 +22,12 @@
     <file path="/Main.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362009868231" ignored="false" />
     <file path="/fragment.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1361745950038" ignored="false" />
     <file path="/a.dummy" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1358989323824" ignored="false" />
-    <file path="/HarmonyDetector.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362012472690" ignored="false" />
+    <file path="/HarmonyDetector.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362017917688" ignored="false" />
     <file path="/MusicStringTrackNO.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1358735896500" ignored="false" />
     <file path="/Parallellization.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362008821613" ignored="false" />
     <file path="/MusicStringRest.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1359167466227" ignored="false" />
     <file path="/MusicStringTone.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1360107169356" ignored="false" />
-    <file path="/FlatTrack.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1359664375771" ignored="false" />
+    <file path="/FlatTrack.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362018588276" ignored="false" />
     <file path="/FileImporter.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1361921655080" ignored="false" />
     <file path="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/callables/TrackShortestNoteFinder.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1358989305319" ignored="false" />
     <file path="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/callables/TrackNoteSplitter.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1358989376289" ignored="false" />
@@ -208,7 +144,7 @@
       <file leaf-file-name="HarmonyDetector.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/HarmonyDetector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="126" column="33" selection-start="4280" selection-end="4280" vertical-scroll-proportion="0.0">
+            <state line="129" column="44" selection-start="4433" selection-end="4433" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -223,10 +159,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MusicStringSong.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MusicStringSong.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringSong.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="241" column="45" selection-start="8225" selection-end="8225" vertical-scroll-proportion="0.51282054">
+            <state line="240" column="64" selection-start="8149" selection-end="8149" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FlatTrack.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/FlatTrack.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="11" selection-start="749" selection-end="749" vertical-scroll-proportion="0.051282052">
               <folding />
             </state>
           </provider>
@@ -251,11 +196,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/lilypond/LilypondOutputStream.java" />
-        <option value="$PROJECT_DIR$/Library/src/org/jfugue/Player.java" />
-        <option value="$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/TestListener1.java" />
-        <option value="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/player/base/MidiSequenceParser.java" />
-        <option value="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/tg/TGOutputStream.java" />
         <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/InstrumentTones.java" />
         <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/RepetitionTracker.java" />
         <option value="$PROJECT_DIR$/Library/src/org/jfugue/MusicStringParser.java" />
@@ -265,8 +205,13 @@
         <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringBeat.java" />
         <option value="$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/Main.java" />
         <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringMeasure.java" />
+        <option value="$PROJECT_DIR$/Library/src/org/jfugue/MidiRenderer.java" />
+        <option value="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/managers/TGMeasureManager.java" />
+        <option value="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/gpx/GPXDocumentParser.java" />
+        <option value="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/gpx/GPXDocumentReader.java" />
         <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/HarmonyDetector.java" />
         <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringSong.java" />
+        <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/FlatTrack.java" />
       </list>
     </option>
   </component>
@@ -929,7 +874,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.6738056" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19772728" sideWeight="0.60229135" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19772728" sideWeight="0.68085104" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39770868" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29459903" sideWeight="0.49684542" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="105" y="18" width="1170" height="552" />
@@ -1011,34 +956,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringNote.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="6" selection-start="286" selection-end="286" vertical-scroll-proportion="0.2820513">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringMeasure.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="118" column="37" selection-start="3846" selection-end="3846" vertical-scroll-proportion="0.30769232">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringDuration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="13" selection-start="325" selection-end="325" vertical-scroll-proportion="-2.4871795">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringDrum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="194" selection-end="194" vertical-scroll-proportion="0.23076923">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringBeat.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="80" selection-start="565" selection-end="565" vertical-scroll-proportion="-3.102564">
@@ -1074,20 +991,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/HarmonyDetector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="126" column="33" selection-start="4280" selection-end="4280" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/FlatTrack.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="6" selection-start="269" selection-end="269" vertical-scroll-proportion="-0.41025642">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/Duration.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="12" selection-start="193" selection-end="193" vertical-scroll-proportion="-0.61538464">
@@ -1116,9 +1019,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/gpx/GPXDocumentParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="226" column="74" selection-start="8418" selection-end="8418" vertical-scroll-proportion="0.33144477">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/gpx/GPXDocumentReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="282" column="30" selection-start="11528" selection-end="11528" vertical-scroll-proportion="0.33144477">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/src/org/herac/tuxguitar/song/managers/TGMeasureManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2015" column="0" selection-start="59825" selection-end="59825" vertical-scroll-proportion="0.3315508">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/src/org/jfugue/MidiRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="126" column="76" selection-start="4308" selection-end="4308" vertical-scroll-proportion="0.3315508">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/HarmonyDetector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="129" column="44" selection-start="4433" selection-end="4433" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringSong.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="241" column="45" selection-start="8225" selection-end="8225" vertical-scroll-proportion="0.51282054">
+        <state line="240" column="64" selection-start="8149" selection-end="8149" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/FlatTrack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="11" selection-start="749" selection-end="749" vertical-scroll-proportion="0.051282052">
           <folding />
         </state>
       </provider>

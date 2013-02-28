@@ -125,7 +125,6 @@ public final class MidiRenderer extends ParserListenerAdapter {
         long duration = note.getDuration();
 
         // If there is no duration, don't add this note to the event manager
-        // TODO: This is a special case as of v4.0.3 that should be re-thought if a new noteEvent callback is created in v5.0
         if (duration == 0) {
             return;
         }

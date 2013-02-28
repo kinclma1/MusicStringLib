@@ -716,7 +716,7 @@ public class TGMeasureManager {
 			}
 		}
 		
-		// Si el movimiento no es satisfactorio, regreso todo como estaba
+		// Si el movimiento no es satisfactorio, regreso
 		if(! success ){
 			moveBeats(beatsToMove,-theMove);
 		}
@@ -1025,7 +1025,7 @@ public class TGMeasureManager {
 			}
 		}
 		
-		// Busca si hay espacio disponible de silencios entre el componente y el final.. si encuentra mueve todo
+		// Busca si hay espacio disponible de silencios entre el componente y el final.. si encuentra mueve
 		if(moveNextBeats){
 			nextComponent = getNextBeat(beats,beat);
 			if(nextComponent != null){
@@ -1884,8 +1884,6 @@ public class TGMeasureManager {
 			}
 		}
 		
-		// Busca si hay espacio disponible de silencios entre el componente y el final.. si encuentra mueve todo
-		
 		if(moveNextBeats){
 			nextVoice = getNextVoice(beats,beat, voice);
 			if(nextVoice != null){
@@ -2015,8 +2013,7 @@ public class TGMeasureManager {
 				}
 			}
 		}
-		
-		// Si el movimiento no es satisfactorio, regreso todo como estaba
+
 		if(! success ){
 			moveVoices(voicesToMove,-theMove);
 		}

@@ -11,7 +11,7 @@ import java.util.LinkedList;
  * Time: 0:43
  * To change this template use File | Settings | File Templates.
  */
-class FlatTrack {
+public class FlatTrack {
     private MusicStringDuration duration;
     private LinkedList<HashSet<String>> tones;
 
@@ -30,11 +30,11 @@ class FlatTrack {
         tones.add(set);
     }
 
-    Iterator<HashSet<String>> getIterator() {
+    public Iterator<HashSet<String>> getIterator() {
         return tones.iterator();
     }
 
-    MusicStringDuration getDuration() {
+    public MusicStringDuration getDuration() {
         return duration;
     }
 
