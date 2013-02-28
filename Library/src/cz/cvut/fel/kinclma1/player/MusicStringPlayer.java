@@ -41,6 +41,14 @@ public class MusicStringPlayer {
         init(musicString);
     }
 
+    public void addListener(PlayerListener listener) {
+        listeners.add(listener);
+    }
+
+    public void removeListener(PlayerListener listener) {
+        listeners.remove(listener);
+    }
+
     private void init(String musicString) {
         player = new Player(musicString == null ? "" : musicString);
         player.setMusicStringPlayer(this);
@@ -70,6 +78,13 @@ public class MusicStringPlayer {
         }
     }
 
+    private void closeListeners() {
+        for (PlayerListener listener : listeners) {
+            listener.close();
+            listeners.remove(listener);
+        }
+    }
+
     public void play() {
         if (!player.isStarted()) {
             player.play();
@@ -93,6 +108,7 @@ public class MusicStringPlayer {
     public void close() {
         player.stop();
         timer.cancel();
+        closeListeners();
         player.close();
     }
 

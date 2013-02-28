@@ -36,4 +36,9 @@ public interface PlayerListener {
      * @param position current playback position in seconds
      */
     public void setPosition(int position);
+
+    /**
+     * Closes the listener, when its associated player gets closed
+     */
+    public void close();
 }
