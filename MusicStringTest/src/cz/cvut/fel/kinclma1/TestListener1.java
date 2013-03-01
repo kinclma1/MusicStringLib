@@ -31,7 +31,6 @@ public class TestListener1 extends JFrame implements PlayerListener {
             @Override
             public void windowClosing(WindowEvent e) {
                 player.close();
-                System.exit(0);
             }
         });
     }

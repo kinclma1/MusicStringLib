@@ -42,6 +42,10 @@ public class MusicStringPlayer {
     }
 
     public void addListener(PlayerListener listener) {
+        listener.setPlayer(this);
+        listener.setSongLength(player.getSequenceLengthSeconds());
+        notifyPlaybackStatus();
+        notifyPosition();
         listeners.add(listener);
     }
 
@@ -81,8 +85,8 @@ public class MusicStringPlayer {
     private void closeListeners() {
         for (PlayerListener listener : listeners) {
             listener.close();
-            listeners.remove(listener);
         }
+        listeners.clear();
     }
 
     public void play() {

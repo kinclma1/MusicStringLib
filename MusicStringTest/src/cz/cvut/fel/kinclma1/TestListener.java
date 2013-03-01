@@ -31,4 +31,8 @@ public class TestListener implements PlayerListener {
     public void setPosition(int seconds) {
         System.out.println("Current position: " + seconds);
     }
+
+    public void close() {
+        System.out.println("Closing player.");
+    }
 }
