@@ -12,34 +12,13 @@ import java.util.*;
  * To change this template use File | Settings | File Templates.
  */
 public class InstrumentTones {
-    public static enum Instruments {
-        GUITAR, GUITAR_7, BASS, BASS_5, HARMONICA_C, HARMONICA_A, TEST
-    }
+
+    //todo initToneMap in initializer or constructor, delete enum -> standard inheritance
 
     protected Map<String, Set<MusicStringTone>> tones = null;
 
     protected InstrumentTones() {
         initToneMap();
-    }
-
-    public static InstrumentTones create(Instruments filter) {
-        switch (filter) {
-            case GUITAR:
-                return new GuitarTones();
-            case GUITAR_7:
-                return new Guitar7Tones();
-            case BASS:
-                return new BassTones();
-            case BASS_5:
-                return new Bass5Tones();
-            case HARMONICA_C:
-                return new HarmonicaCTones();
-            case HARMONICA_A:
-                return new HarmonicaATones();
-            case TEST:
-                return new TestTones();
-        }
-        return new InstrumentTones();
     }
 
     public FlatTrack filterTones(FlatTrack orig) {

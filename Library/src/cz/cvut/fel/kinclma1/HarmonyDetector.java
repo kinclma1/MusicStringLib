@@ -120,14 +120,13 @@ public class HarmonyDetector {
         return Parallellization.runExecutor(exec, splitters);
     }
 
-    FlatTrack detectHarmony(InstrumentTones.Instruments toneFilter) {
+    FlatTrack detectHarmony(InstrumentTones toneFilter) {
         List<FlatTrack> newTracks = getSplitTracks();
         exec.shutdown();
         FlatTrack newTrack = mergeTracks(newTracks);
         //todo scales from chords
 
-        InstrumentTones filter = InstrumentTones.create(toneFilter);
-        return filter.filterTones(newTrack);
+        return toneFilter.filterTones(newTrack);
     }
 
     private FlatTrack mergeTracks(List<FlatTrack> newTracks) {

@@ -237,8 +237,8 @@ public class MusicStringSong {
      * Returns a track containing all notes that can surely be played in any additional track
      * @return track containing all notes that can surely be played in any additional track
      */
-    public FlatTrack getPossibleNotes(InstrumentTones.Instruments toneFilter) {
-        //todo not musicstringtrack - rather flattrack or string
+    public FlatTrack getPossibleNotes(InstrumentTones toneFilter) {
+        //todo addTrack - takes flatTrack/String param channel, instrument, adjusts measures length, tempo, track length
         return new HarmonyDetector(this).detectHarmony(toneFilter);
     }
 

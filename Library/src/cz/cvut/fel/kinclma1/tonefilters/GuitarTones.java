@@ -13,6 +13,6 @@ import cz.cvut.fel.kinclma1.MusicStringTone;
 public class GuitarTones extends InstrumentTones {
 
     public GuitarTones() {
-        super.setRange(new MusicStringTone("E3"), new MusicStringTone("C7"));
+        setRange(new MusicStringTone("E3"), new MusicStringTone("C7"));
     }
 }

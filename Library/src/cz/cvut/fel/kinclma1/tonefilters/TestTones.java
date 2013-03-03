@@ -12,6 +12,6 @@ import cz.cvut.fel.kinclma1.MusicStringTone;
  */
 public class TestTones extends InstrumentTones {
     public TestTones() {
-        super.setRange(new MusicStringTone("E4"), new MusicStringTone("D#5"));
+        setRange(new MusicStringTone("E4"), new MusicStringTone("D#5"));
     }
 }

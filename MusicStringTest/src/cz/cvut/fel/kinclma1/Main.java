@@ -4,6 +4,7 @@ package cz.cvut.fel.kinclma1;
 import cz.cvut.fel.kinclma1.io.FileExporter;
 import cz.cvut.fel.kinclma1.player.MusicStringPlayer;
 import cz.cvut.fel.kinclma1.player.PlayerListener;
+import cz.cvut.fel.kinclma1.tonefilters.TestTones;
 import org.herac.tuxguitar.io.base.TGFileFormatException;
 import org.herac.tuxguitar.song.models.TGSong;
 import org.jfugue.Player;
@@ -33,7 +34,7 @@ public class Main {
         }
 //        System.out.println(ms.getPossibleNotes(InstrumentTones.Instruments.TEST, Instrument.ELECTRIC_BASS_FINGER));
         MusicStringPlayer player = new MusicStringPlayer(Instrument.DISTORTION_GUITAR.toMusicString() +
-                        ms.getPossibleNotes(InstrumentTones.Instruments.TEST).toString(),
+                        ms.getPossibleNotes(new TestTones()).toString(),
                 new TestListener1());
 //        String[] bu = MusicStringSong.getExportFormats();
 //        for (int i = 0; i < bu.length; i ++) {

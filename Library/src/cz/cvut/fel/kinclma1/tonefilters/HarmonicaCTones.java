@@ -22,6 +22,6 @@ public class HarmonicaCTones extends InstrumentTones {
         for (int i = 0; i < toneArray.length; i ++) {
             toneList.add(new MusicStringTone(toneArray[i]));
         }
-        super.setToneList(toneList);
+        setToneList(toneList);
     }
 }
