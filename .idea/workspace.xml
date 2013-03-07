@@ -2,32 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47c31169-086a-402a-a19b-a8284e39ad73" name="Default" comment="finished musicstring to tgsong conversion">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/Bass5Tones.java" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/Bass5Tones.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/BassTones.java" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/BassTones.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/Guitar7Tones.java" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/Guitar7Tones.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/GuitarTones.java" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/GuitarTones.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/HarmonicaATones.java" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/HarmonicaATones.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/HarmonicaCTones.java" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/HarmonicaCTones.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/scales/AeolianScale.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/scales/DorianScale.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/scales/IonianScale.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/scales/LocrianScale.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/scales/LydianScale.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/scales/MixolydianScale.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/scales/PhrygianScale.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/scales/Scale.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/HarmonyDetector.java" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/HarmonyDetector.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/InstrumentTones.java" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/InstrumentTones.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/Main.java" afterPath="$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringSong.java" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringSong.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/TestTones.java" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/TestTones.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MusicStringLib.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362351598919" ignored="false" />
+    <file path="/Dummy.txt" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362606592663" ignored="false" />
     <file path="/MusicStringTrack.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362007673817" ignored="false" />
     <file path="/MusicStringSong.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362103627776" ignored="false" />
     <file path="/MusicStringMeasure.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362009917626" ignored="false" />
     <file path="/MusicStringBeat.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362004097014" ignored="false" />
     <file path="/MusicStringDuration.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1360105074310" ignored="false" />
     <file path="/MusicStringNote.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1359167483581" ignored="false" />
-    <file path="/Main.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362351897989" ignored="false" />
+    <file path="/Main.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362352388943" ignored="false" />
     <file path="/fragment.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1361745950038" ignored="false" />
     <file path="/a.dummy" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1358989323824" ignored="false" />
-    <file path="/HarmonyDetector.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362351969662" ignored="false" />
+    <file path="/HarmonyDetector.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362614296971" ignored="false" />
     <file path="/MusicStringTrackNO.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1358735896500" ignored="false" />
     <file path="/Parallellization.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362008821613" ignored="false" />
     <file path="/MusicStringRest.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1359167466227" ignored="false" />
@@ -61,7 +61,7 @@
     <file path="/PlayerListener.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362082541905" ignored="false" />
     <file path="/TestListener.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362092078971" ignored="false" />
     <file path="/TestListener1.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362082658283" ignored="false" />
-    <file path="/InstrumentTones.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362176738728" ignored="false" />
+    <file path="/InstrumentTones.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362352329415" ignored="false" />
     <file path="/ImpossibleDurationException.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1360100375076" ignored="false" />
     <file path="/GuitarTones.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1361746130243" ignored="false" />
     <file path="/BassTones.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1361746663156" ignored="false" />
@@ -79,6 +79,14 @@
     <file path="/TGInputStream.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1361922164520" ignored="false" />
     <file path="/TGOutputStream.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1361922228797" ignored="false" />
     <file path="/TGSongWriter.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1361922465152" ignored="false" />
+    <file path="/AbstractScale.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362611137007" ignored="false" />
+    <file path="/MixolydianScale.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362611425401" ignored="false" />
+    <file path="/LydianScale.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362611818496" ignored="false" />
+    <file path="/IonianScale.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362611972468" ignored="false" />
+    <file path="/DorianScale.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362612169641" ignored="false" />
+    <file path="/PhrygianScale.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362612426917" ignored="false" />
+    <file path="/AeolianScale.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362612682678" ignored="false" />
+    <file path="/LocrianScale.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362612851031" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,20 +145,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="InstrumentTones.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="InstrumentTones.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/InstrumentTones.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="5" selection-start="494" selection-end="494" vertical-scroll-proportion="0.30123457">
+            <state line="15" column="53" selection-start="331" selection-end="331" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HarmonyDetector.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="HarmonyDetector.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/HarmonyDetector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="128" column="25" selection-start="4333" selection-end="4333" vertical-scroll-proportion="0.0">
+            <state line="135" column="8" selection-start="4532" selection-end="4532" vertical-scroll-proportion="0.4814815">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Scale.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/scales/Scale.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="35" column="38" selection-start="1010" selection-end="1010" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1203#1211#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -158,7 +178,7 @@
       <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="125" selection-start="1603" selection-end="1603" vertical-scroll-proportion="0.0">
+            <state line="37" column="39" selection-start="1135" selection-end="1345" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -201,21 +221,21 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/FlatTrack.java" />
-        <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/player/PlayerListener.java" />
-        <option value="$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/TestListener.java" />
-        <option value="$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/TestListener1.java" />
-        <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/player/MusicStringPlayer.java" />
-        <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/InstrumentTones.java" />
-        <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/TestTones.java" />
-        <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/HarmonicaCTones.java" />
-        <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/HarmonicaATones.java" />
         <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/GuitarTones.java" />
         <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/Guitar7Tones.java" />
         <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/BassTones.java" />
         <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/Bass5Tones.java" />
-        <option value="$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/Main.java" />
         <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringSong.java" />
+        <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/InstrumentTones.java" />
+        <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/scales/AbstractScale.java" />
+        <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/scales/MixolydianScale.java" />
+        <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/scales/LydianScale.java" />
+        <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/scales/IonianScale.java" />
+        <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/scales/DorianScale.java" />
+        <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/scales/PhrygianScale.java" />
+        <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/scales/AeolianScale.java" />
+        <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/scales/LocrianScale.java" />
+        <option value="$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/Main.java" />
         <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/HarmonyDetector.java" />
       </list>
     </option>
@@ -350,16 +370,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -449,104 +459,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="org" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jfugue" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MusicStringLib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MusicStringLib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="org" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tuxguitar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="song" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MusicStringLib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MusicStringLib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="org" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tuxguitar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="song" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="managers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MusicStringLib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MusicStringLib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="org" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tuxguitar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -618,6 +530,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="scales" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MusicStringLib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MusicStringLib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Library" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kinclma1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="player" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -646,6 +584,16 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="io" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -869,6 +817,7 @@
     <frame x="-2" y="16" width="1370" height="754" extended-state="7" />
     <editor active="true" />
     <layout>
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="105" y="18" width="1170" height="552" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32676518" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -884,7 +833,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19772728" sideWeight="0.705401" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29459903" sideWeight="0.49684542" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="105" y="18" width="1170" height="552" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31914893" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -965,27 +913,87 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Library/src/org/jfugue/Player.java">
+    <entry file="file://$PROJECT_DIR$/Library/src/org/jfugue/MidiEventManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="13" selection-start="1408" selection-end="1408" vertical-scroll-proportion="0.0">
+        <state line="36" column="19" selection-start="1133" selection-end="1133" vertical-scroll-proportion="-6.7746477">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/player/MusicStringPlayer.java">
+    <entry file="file://$PROJECT_DIR$/Library/src/org/jfugue/MidiMessageRecipient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="26" selection-start="1035" selection-end="1035" vertical-scroll-proportion="1.0392671">
+        <state line="32" column="17" selection-start="1079" selection-end="1079" vertical-scroll-proportion="0.48913044">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/TestListener1.java">
+    <entry file="file://$PROJECT_DIR$/Library/src/org/jfugue/MidiRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="41" selection-start="1938" selection-end="1938" vertical-scroll-proportion="0.074074075">
-          <folding>
-            <element signature="e#1478#1768#0" expanded="true" />
-            <element signature="e#1757#1758#0" expanded="true" />
-          </folding>
+        <state line="45" column="19" selection-start="1557" selection-end="1557" vertical-scroll-proportion="-4.3239436">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/src/org/jfugue/Note.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="19" selection-start="1278" selection-end="1278" vertical-scroll-proportion="-18.935732">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/src/org/jfugue/Parser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="13" selection-start="1235" selection-end="1235" vertical-scroll-proportion="-1.403599">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/scales/LocrianScale.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="47" selection-start="346" selection-end="346" vertical-scroll-proportion="0.5298913">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/scales/AeolianScale.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="47" selection-start="346" selection-end="346" vertical-scroll-proportion="0.5298913">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/scales/PhrygianScale.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="47" selection-start="350" selection-end="350" vertical-scroll-proportion="0.5298913">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/scales/DorianScale.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="47" selection-start="346" selection-end="346" vertical-scroll-proportion="0.5298913">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/scales/IonianScale.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="47" selection-start="344" selection-end="344" vertical-scroll-proportion="0.5298913">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/scales/LydianScale.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="47" selection-start="346" selection-end="346" vertical-scroll-proportion="0.5298913">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/scales/MixolydianScale.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="45" selection-start="353" selection-end="353" vertical-scroll-proportion="0.5012854">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -996,86 +1004,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringTone.java">
+    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/scales/Scale.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="194" selection-end="194" vertical-scroll-proportion="-1.6831346">
-          <folding />
+        <state line="35" column="38" selection-start="1010" selection-end="1010" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1203#1211#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringSong.java">
+    <entry file="file://$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="241" column="49" selection-start="8243" selection-end="8243" vertical-scroll-proportion="0.0">
+        <state line="37" column="39" selection-start="1135" selection-end="1345" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/HarmonyDetector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="128" column="25" selection-start="4333" selection-end="4333" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="125" selection-start="1603" selection-end="1603" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/HarmonicaCTones.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="8" selection-start="793" selection-end="793" vertical-scroll-proportion="0.78125">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/Bass5Tones.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="8" selection-start="369" selection-end="369" vertical-scroll-proportion="0.546875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/BassTones.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="8" selection-start="367" selection-end="367" vertical-scroll-proportion="0.546875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/Guitar7Tones.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="8" selection-start="373" selection-end="373" vertical-scroll-proportion="0.546875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/GuitarTones.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="8" selection-start="371" selection-end="371" vertical-scroll-proportion="0.546875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/HarmonicaATones.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="8" selection-start="799" selection-end="799" vertical-scroll-proportion="0.7421875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/TestTones.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="8" selection-start="365" selection-end="365" vertical-scroll-proportion="0.4814815">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/InstrumentTones.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="5" selection-start="494" selection-end="494" vertical-scroll-proportion="0.30123457">
+        <state line="135" column="8" selection-start="4532" selection-end="4532" vertical-scroll-proportion="0.4814815">
           <folding />
         </state>
       </provider>

@@ -1,5 +1,7 @@
 package cz.cvut.fel.kinclma1;
 
+import cz.cvut.fel.kinclma1.scales.*;
+
 import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
@@ -66,7 +68,7 @@ public class HarmonyDetector {
                 HashSet<String> toneSet = beat.getToneSet();
                 while (durationCoef > 0) {
                     flatTrack.addToneSet(new HashSet<String>(toneSet));
-                    durationCoef --;
+                    durationCoef--;
                 }
             }
         }
@@ -76,6 +78,14 @@ public class HarmonyDetector {
     private MusicStringDuration shortestNote;
     private int trackCount;
     private ExecutorService exec;
+    private final Scale[] scales = new Scale[]{
+            new MixolydianScale(),
+            new LydianScale(),
+            new IonianScale(),
+            new DorianScale(),
+            new PhrygianScale(),
+            new AeolianScale(),
+            new LocrianScale()};
 
     HarmonyDetector(MusicStringSong song) {
         exec = Parallellization.executorService();
@@ -123,10 +133,8 @@ public class HarmonyDetector {
     FlatTrack detectHarmony(InstrumentTones toneFilter) {
         List<FlatTrack> newTracks = getSplitTracks();
         exec.shutdown();
-        FlatTrack newTrack = mergeTracks(newTracks);
-        //todo scales from chords
 
-        return toneFilter.filterTones(newTrack);
+        return toneFilter.filterTones(guessScales(mergeTracks(newTracks)));
     }
 
     private FlatTrack mergeTracks(List<FlatTrack> newTracks) {
@@ -148,5 +156,25 @@ public class HarmonyDetector {
         }
 
         return track;
+    }
+
+    private FlatTrack guessScales(FlatTrack track) {
+        Iterator<HashSet<String>> iterator = track.getIterator();
+        while (iterator.hasNext()) {
+            guessScale(iterator.next());
+        }
+        return track;
+    }
+
+    private void guessScale(HashSet<String> beat) {
+        if (beat.size() > 2) {
+            Set<String> scale = null;
+            for (int i = 0; i < scales.length && scale == null; i ++) {
+                scale = scales[i].getMatch(beat);
+            }
+            if (scale != null) {
+                beat.addAll(scale);
+            }
+        }
     }
 }

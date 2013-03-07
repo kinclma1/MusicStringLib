@@ -32,10 +32,10 @@ public class Main {
         } catch (TGFileFormatException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
-//        System.out.println(ms.getPossibleNotes(InstrumentTones.Instruments.TEST, Instrument.ELECTRIC_BASS_FINGER));
-        MusicStringPlayer player = new MusicStringPlayer(Instrument.DISTORTION_GUITAR.toMusicString() +
-                        ms.getPossibleNotes(new TestTones()).toString(),
-                new TestListener1());
+        System.out.println(ms.getPossibleNotes(new TestTones()));
+//        MusicStringPlayer player = new MusicStringPlayer(Instrument.DISTORTION_GUITAR.toMusicString() +
+//                        ms.getPossibleNotes(new TestTones()).toString(),
+//                new TestListener1());
 //        String[] bu = MusicStringSong.getExportFormats();
 //        for (int i = 0; i < bu.length; i ++) {
 //            System.out.println(bu[i]);

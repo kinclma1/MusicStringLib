@@ -13,9 +13,8 @@ import java.util.*;
  */
 public class InstrumentTones {
 
-    //todo initToneMap in initializer or constructor, delete enum -> standard inheritance
-
-    protected Map<String, Set<MusicStringTone>> tones = null;
+    protected Map<String, Set<MusicStringTone>> tones;
+    protected boolean tonesEmpty;
 
     protected InstrumentTones() {
         initToneMap();
@@ -23,7 +22,7 @@ public class InstrumentTones {
 
     public FlatTrack filterTones(FlatTrack orig) {
         FlatTrack newTrack;
-        if (tones == null) {
+        if (tonesEmpty) {
             return orig;
         }
         Iterator<HashSet<String>> iterator = orig.getIterator();
@@ -54,6 +53,7 @@ public class InstrumentTones {
         for (MusicStringTone tone : toneList) {
             tones.get(tone.relativeTone()).add(tone);
         }
+        tonesEmpty = false;
     }
 
     protected final void setRange(MusicStringTone min, MusicStringTone max) {
@@ -64,6 +64,7 @@ public class InstrumentTones {
             tone = new MusicStringTone(i);
             tones.get(tone.relativeTone()).add(tone);
         }
+        tonesEmpty = false;
     }
 
     private void initToneMap() {
@@ -72,5 +73,6 @@ public class InstrumentTones {
         for (int i = 0; i < relativeTones.length; i++) {
             tones.put(relativeTones[i].toString(), new HashSet<MusicStringTone>());
         }
+        tonesEmpty = true;
     }
 }
