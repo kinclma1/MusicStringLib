@@ -232,6 +232,33 @@ public class MusicStringSong {
     public void removeTrack(String id) {
         tracks.remove(id);
     }
+    //todo maybe not
+    public void addTrack(FlatTrack newTrack) {
+
+    }
+
+    public void addTrack(String newTrack, Instrument instrument)
+            throws NoFreeChannelException, IncompatibleTrackException {
+        int channel = getFreeChannel();
+        if (channel < 0) {
+            throw new NoFreeChannelException("No free channel available." +
+                    " In order to add a new track, you have to remove one or more existing tracks");
+        }
+        MusicStringTrack track = new MusicStringTrack(channel,instrument,newTrack,getTrack(getTrackIds().get(0)));
+        tracks.put(track.getId(),track);
+    }
+
+    private int getFreeChannel() {
+        BitSet channels = new BitSet(16);
+
+        channels.set(9);
+
+        for (MusicStringTrack track : tracks.values()) {
+            channels.set(track.getChannel());
+        }
+        int index = channels.nextClearBit(0);
+        return index < 16 ? index : -1;
+    }
 
     /**
      * Returns a track containing all notes that can surely be played in any additional track

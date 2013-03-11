@@ -86,6 +86,72 @@ public class MusicStringTrack {
         id = buildId();
     }
 
+    MusicStringTrack(int channel, Instrument instrument, String music, MusicStringTrack refTrack) {
+        this.channel = channel;
+        this.instrument = instrument;
+        this.tempoTracker = new TempoTracker();
+        this.drumTrack = false;
+        this.measures = new ArrayList<MusicStringMeasure>(refTrack.measures.size());
+        metaInfo = buildMeta();
+        id = buildId();
+
+        StringTokenizer tokenizer = new StringTokenizer(music);
+        String token;
+        Iterator<MusicStringMeasure> iterator = refTrack.measures.iterator();
+        MusicStringMeasure refMeasure = null;
+        measures = new ArrayList<MusicStringMeasure>(refTrack.measures.size());
+        ArrayList<String> measure = new ArrayList<String>();
+        while(iterator.hasNext()) {
+            refMeasure = iterator.next();
+            if (tokenizer.hasMoreElements()) {
+                token = tokenizer.nextToken();
+                while (token != null && token.charAt(0) != '|') {
+                    if(!token.contains("V") && !token.contains("I")) {
+                        if (token.charAt(0) != '|') {
+                            measure.add(token);
+                            if (tokenizer.hasMoreElements()) {
+                                token = tokenizer.nextToken();
+                            } else {
+                                token = null;
+                            }
+                        }
+                    }
+                }
+                if (token != null && token.charAt(0) == '|') {
+                    MusicStringMeasure musicStringMeasure =
+                            new MusicStringMeasure(measure, tempoTracker, refMeasure);
+                        measures.add(musicStringMeasure);
+                        measure = new ArrayList<String>();
+                }
+
+            } else {
+                measures.add(new MusicStringMeasure(measure, tempoTracker, refMeasure));
+                measure = createRestMeasure(refMeasure);
+            }
+        }
+        if (!measure.isEmpty()) {
+            measures.add(new MusicStringMeasure(measure, tempoTracker, refMeasure));
+        }
+    }
+
+    private ArrayList<String> createRestMeasure(MusicStringMeasure refMeasure) {
+        ArrayList<String> measure = new ArrayList<String>();
+        int dur = refMeasure.getDuration();
+        while (dur > 128) {
+            measure.add(new MusicStringRest(new MusicStringDuration(Duration.WHOLE)).toString());
+            dur -= 128;
+        }
+        try {
+            measure.add(new MusicStringRest(new MusicStringDuration(dur)).toString());
+        } catch (ImpossibleDurationException e) {
+            List<Duration> durations = e.getDurations();
+            for (Duration d : durations) {
+                measure.add(new MusicStringRest(new MusicStringDuration(d)).toString());
+            }
+        }
+        return measure;
+    }
+
     public int getChannel() {
         return channel;
     }

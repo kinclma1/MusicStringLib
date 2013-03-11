@@ -10,7 +10,15 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class ImpossibleDurationException extends Exception {
+
+    private List<Duration> durations;
+
     public ImpossibleDurationException(List<Duration> durations) {
         super("Cannot create a single duration from the following durations: " + durations);
+        this.durations = durations;
+    }
+
+    public List<Duration> getDurations() {
+        return durations;
     }
 }

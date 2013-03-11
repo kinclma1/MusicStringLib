@@ -48,6 +48,28 @@ class MusicStringMeasure {
         }
     }
 
+    MusicStringMeasure(List<String> measure, TempoTracker tempoTracker, MusicStringMeasure refMeasure)
+            throws IncompatibleTrackException{
+        this.tempoTracker = tempoTracker;
+        tempo = refMeasure.tempo;
+        beats = new ArrayList<MusicStringBeat>(measure.size());
+        for (String beat : measure) {
+            beats.add(new MusicStringBeat(beat, false));
+        }
+        if (getDuration() != refMeasure.getDuration()) {
+            throw new IncompatibleTrackException(
+                    "New track measure lengths do not match original tracks' measure lengths");
+        }
+    }
+
+    int getDuration() {
+        int measureLength = 0;
+        for (MusicStringBeat beat : beats) {
+            measureLength += beat.getDurationDiv128();
+        }
+        return measureLength;
+    }
+
     List<MusicStringBeat> getBeats() {
         return beats;
     }
