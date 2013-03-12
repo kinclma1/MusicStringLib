@@ -1,4 +1,6 @@
-package cz.cvut.fel.kinclma1;
+package cz.cvut.fel.kinclma1.exceptions;
+
+import cz.cvut.fel.kinclma1.Duration;
 
 import java.util.List;
 

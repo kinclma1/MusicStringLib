@@ -58,7 +58,7 @@ class RepetitionTracker {
                 track.addMeasure(measure);
                 clear();
                 addBeginning(measure);
-            } else if (state == MEASURE_REP_OPEN_CLOSE) {
+            } else if (measureType == MEASURE_REP_OPEN_CLOSE) {
                 state = REPETITION_CLOSED;
                 track.addMeasure(measure);
                 clear();

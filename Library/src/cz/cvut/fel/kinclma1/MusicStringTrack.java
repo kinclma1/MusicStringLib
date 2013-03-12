@@ -1,15 +1,13 @@
 package cz.cvut.fel.kinclma1;
 
+import cz.cvut.fel.kinclma1.exceptions.ImpossibleDurationException;
 import org.herac.tuxguitar.song.factory.TGFactory;
 import org.herac.tuxguitar.song.models.TGChannel;
 import org.herac.tuxguitar.song.models.TGMeasure;
 import org.herac.tuxguitar.song.models.TGString;
 import org.herac.tuxguitar.song.models.TGTrack;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -95,43 +93,55 @@ public class MusicStringTrack {
         metaInfo = buildMeta();
         id = buildId();
 
+        checkAndAddMeasures(music, refTrack);
+    }
+
+    private void checkAndAddMeasures(String music, MusicStringTrack refTrack) {
         StringTokenizer tokenizer = new StringTokenizer(music);
-        String token;
         Iterator<MusicStringMeasure> iterator = refTrack.measures.iterator();
-        MusicStringMeasure refMeasure = null;
+
         measures = new ArrayList<MusicStringMeasure>(refTrack.measures.size());
         ArrayList<String> measure = new ArrayList<String>();
+
+        MusicStringMeasure refMeasure = null;
         while(iterator.hasNext()) {
             refMeasure = iterator.next();
-            if (tokenizer.hasMoreElements()) {
-                token = tokenizer.nextToken();
-                while (token != null && token.charAt(0) != '|') {
-                    if(!token.contains("V") && !token.contains("I")) {
-                        if (token.charAt(0) != '|') {
-                            measure.add(token);
-                            if (tokenizer.hasMoreElements()) {
-                                token = tokenizer.nextToken();
-                            } else {
-                                token = null;
-                            }
-                        }
-                    }
-                }
-                if (token != null && token.charAt(0) == '|') {
-                    MusicStringMeasure musicStringMeasure =
-                            new MusicStringMeasure(measure, tempoTracker, refMeasure);
-                        measures.add(musicStringMeasure);
-                        measure = new ArrayList<String>();
-                }
+            measure = checkAndAddMeasure(tokenizer, refMeasure, measure);
+        }
+        if (!measure.isEmpty() && refMeasure != null) {
+            addMeasureWithRef(measure, refMeasure);
+        }
+    }
 
-            } else {
-                measures.add(new MusicStringMeasure(measure, tempoTracker, refMeasure));
-                measure = createRestMeasure(refMeasure);
+    private ArrayList<String> checkAndAddMeasure(StringTokenizer tokenizer,
+                                                 MusicStringMeasure refMeasure, ArrayList<String> measure) {
+        if (tokenizer.hasMoreElements()) {
+            measure = checkAndAddMeasureFromSource(tokenizer, refMeasure, measure);
+        } else {
+            addMeasureWithRef(measure, refMeasure);
+            measure = createRestMeasure(refMeasure);
+        }
+        return measure;
+    }
+
+    private ArrayList<String> checkAndAddMeasureFromSource(StringTokenizer tokenizer,
+                                                           MusicStringMeasure refMeasure, ArrayList<String> measure) {
+        String token = tokenizer.nextToken();
+        while (token != null && token.charAt(0) != '|') {
+            if (!Arrays.asList('V', 'I').contains(token.charAt(0))) {
+                measure.add(token);
             }
+            token = tokenizer.hasMoreTokens() ? tokenizer.nextToken() : null;
         }
-        if (!measure.isEmpty()) {
-            measures.add(new MusicStringMeasure(measure, tempoTracker, refMeasure));
+        if (token != null && token.charAt(0) == '|') {
+            addMeasureWithRef(measure, refMeasure);
+            measure = new ArrayList<String>();
         }
+        return measure;
+    }
+
+    private void addMeasureWithRef(ArrayList<String> measure, MusicStringMeasure refMeasure) {
+        measures.add(new MusicStringMeasure(measure, tempoTracker, refMeasure));
     }
 
     private ArrayList<String> createRestMeasure(MusicStringMeasure refMeasure) {

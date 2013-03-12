@@ -1,5 +1,6 @@
 package cz.cvut.fel.kinclma1;
 
+import cz.cvut.fel.kinclma1.exceptions.IncompatibleTrackException;
 import org.herac.tuxguitar.song.factory.TGFactory;
 import org.herac.tuxguitar.song.models.TGBeat;
 import org.herac.tuxguitar.song.models.TGMeasure;
@@ -49,7 +50,7 @@ class MusicStringMeasure {
     }
 
     MusicStringMeasure(List<String> measure, TempoTracker tempoTracker, MusicStringMeasure refMeasure)
-            throws IncompatibleTrackException{
+            throws IncompatibleTrackException {
         this.tempoTracker = tempoTracker;
         tempo = refMeasure.tempo;
         beats = new ArrayList<MusicStringBeat>(measure.size());

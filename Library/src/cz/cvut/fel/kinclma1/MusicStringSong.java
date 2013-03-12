@@ -1,6 +1,8 @@
 
 package cz.cvut.fel.kinclma1;
 
+import cz.cvut.fel.kinclma1.exceptions.IncompatibleTrackException;
+import cz.cvut.fel.kinclma1.exceptions.NoFreeChannelException;
 import cz.cvut.fel.kinclma1.io.FileExporter;
 import cz.cvut.fel.kinclma1.io.FileImporter;
 import org.herac.tuxguitar.io.base.*;
@@ -12,7 +14,6 @@ import org.herac.tuxguitar.song.models.TGTrack;
 import java.io.*;
 import java.util.*;
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
 
 /**
  *

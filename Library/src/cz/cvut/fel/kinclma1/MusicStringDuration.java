@@ -1,5 +1,6 @@
 package cz.cvut.fel.kinclma1;
 
+import cz.cvut.fel.kinclma1.exceptions.ImpossibleDurationException;
 import org.herac.tuxguitar.song.models.TGDuration;
 
 import java.util.ArrayList;

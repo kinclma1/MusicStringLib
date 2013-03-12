@@ -1,4 +1,4 @@
-package cz.cvut.fel.kinclma1;
+package cz.cvut.fel.kinclma1.exceptions;
 
 /**
  * Created with IntelliJ IDEA.
