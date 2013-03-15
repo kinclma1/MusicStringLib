@@ -33,6 +33,7 @@ public class TGInputStream extends TGStream implements TGInputStreamBase {
 		this.factory = factory;
         is = stream;
         version = null;
+        dataInputStream = new DataInputStream(is);
 	}
 	
 	@Override
@@ -56,7 +57,6 @@ public class TGInputStream extends TGStream implements TGInputStreamBase {
 	
 	@Override
     public TGSong readSong() throws TGFileFormatException {
-        dataInputStream = new DataInputStream(is);
         try {
 			if(isSupportedVersion()){
 				TGSong song = read();

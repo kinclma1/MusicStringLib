@@ -1,5 +1,7 @@
 package cz.cvut.fel.kinclma1;
 
+import java.util.regex.Pattern;
+
 /**
  * Created with IntelliJ IDEA.
  * User: void
@@ -73,6 +75,10 @@ public class MusicStringTone extends NoteContent {
     }
 
     public MusicStringTone(String mStrTone) {
+        Pattern pattern = Pattern.compile("(^[A-G]#?1?[0-9][a-z]?\\.?)");
+        if (!pattern.matcher(mStrTone).matches()) {
+            throw new UnsupportedOperationException("Cannot create a MusicStringTone from string " + mStrTone);
+        }
         int len;
         if (mStrTone.length() > 1 && mStrTone.charAt(1) == '#') {
             len = 2;

@@ -1,6 +1,6 @@
 package cz.cvut.fel.kinclma1.tonefilters;
 
-import cz.cvut.fel.kinclma1.InstrumentTones;
+import cz.cvut.fel.kinclma1.AbstractTones;
 import cz.cvut.fel.kinclma1.MusicStringTone;
 
 /**
@@ -10,8 +10,8 @@ import cz.cvut.fel.kinclma1.MusicStringTone;
  * Time: 3:52
  * To change this template use File | Settings | File Templates.
  */
-public class SoloTones extends InstrumentTones {
+public class SoloTones extends AbstractTones {
     public SoloTones() {
-        setRange(new MusicStringTone("C6"), new MusicStringTone("C7"));
+        super(new MusicStringTone("C6"), new MusicStringTone("C7"));
     }
 }
