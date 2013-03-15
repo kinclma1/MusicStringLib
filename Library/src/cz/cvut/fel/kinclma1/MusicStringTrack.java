@@ -257,14 +257,16 @@ public class MusicStringTrack {
         int[] ltms = getLowestToneAndMaxTones();
         if (ltms[0] >= new MusicStringTone("E3").toInt() && ltms[1] <= 6) {
             return createStrings(factory, new String[]{"E5", "B4", "G4", "D4", "A3", "E3"});
-        } else if (ltms[0] >= new MusicStringTone("E2").toInt() && ltms[1] < 4) {
+        } else if (ltms[0] >= new MusicStringTone("E2").toInt() && ltms[1] <= 4) {
             return createStrings(factory, new String[]{"G3", "D3", "A2", "E2"});
         } else if (ltms[0] >= new MusicStringTone("B2").toInt() && ltms[1] <= 7) {
             return createStrings(factory, new String[]{"E5", "B4", "G4", "D4", "A3", "E3", "B2"});
-        } else if (ltms[0] >= new MusicStringTone("B1").toInt() && ltms[1] < 4) {
+        } else if (ltms[0] >= new MusicStringTone("B1").toInt() && ltms[1] <= 5) {
             return createStrings(factory, new String[]{"G3", "D3", "A2", "E2", "B1"});
-        } else {
+        } else if (ltms[1] <= 7){
             return createStrings(factory, new String[]{"C0", "C0", "C0", "C0", "C0", "C0", "C0"});
+        } else {
+            throw new UnsupportedOperationException("Cannot export track with more than 7 tones played simultaneously.");
         }
     }
 
