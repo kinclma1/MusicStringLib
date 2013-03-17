@@ -217,6 +217,7 @@ public class MusicStringTrack {
         TGTrack track = factory.newTrack();
         TGChannel tgChannel = track.getChannel();
         tgChannel.setChannel((short) channel);
+        tgChannel.setEffectChannel((short) channel);
         if (channel != 9) {
             tgChannel.setInstrument((short) instrument.toInteger());
             track.setStrings(initStrings(factory));
