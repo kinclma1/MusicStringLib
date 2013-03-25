@@ -89,7 +89,7 @@ public class MusicStringDuration implements Comparable<MusicStringDuration> {
                 set = true;
             }
             i /= 2;
-            if (set && div128 == i) {
+            if (set && div128 == i && div128 > 0) {
                 dotted = true;
                 div128 -= i;
             }

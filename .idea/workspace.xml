@@ -2,21 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47c31169-086a-402a-a19b-a8284e39ad73" name="Default" comment="finished musicstring to tgsong conversion">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/TestBassTones.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/Main.java" afterPath="$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringTrack.java" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringTrack.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringDuration.java" afterPath="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringDuration.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MusicStringLib.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1363471540864" ignored="false" />
+    <file path="/Dummy.txt" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1364250459625" ignored="false" />
     <file path="/MusicStringTrack.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1363475852691" ignored="false" />
     <file path="/MusicStringSong.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1363313936195" ignored="false" />
     <file path="/MusicStringMeasure.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1363472684018" ignored="false" />
     <file path="/MusicStringBeat.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1362004097014" ignored="false" />
-    <file path="/MusicStringDuration.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1360105074310" ignored="false" />
+    <file path="/MusicStringDuration.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1364251039459" ignored="false" />
     <file path="/MusicStringNote.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1359167483581" ignored="false" />
-    <file path="/Main.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1363478122927" ignored="false" />
+    <file path="/Main.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1364250910451" ignored="false" />
     <file path="/fragment.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1363313869846" ignored="false" />
     <file path="/a.dummy" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1358989323824" ignored="false" />
     <file path="/HarmonyDetector.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1363313924736" ignored="false" />
@@ -99,6 +98,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -133,7 +133,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -146,7 +145,16 @@
       <file leaf-file-name="Main.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="60" selection-start="1192" selection-end="1192" vertical-scroll-proportion="0.4054054">
+            <state line="32" column="38" selection-start="890" selection-end="890" vertical-scroll-proportion="0.2567237">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MusicStringDuration.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringDuration.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="91" column="46" selection-start="3377" selection-end="3377" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -165,11 +173,7 @@
         <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringTrack.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="219" column="50" selection-start="7832" selection-end="7832" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#5650#5658#0" expanded="true" />
-                <element signature="e#8059#8069#0" expanded="true" />
-                <element signature="e#10339#10349#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -202,7 +206,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/Bass5Tones.java" />
         <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/BassTones.java" />
         <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/Guitar7Tones.java" />
         <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/GuitarTones.java" />
@@ -217,6 +220,7 @@
         <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/SoloTones.java" />
         <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/TestBassTones.java" />
         <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringTrack.java" />
+        <option value="$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringDuration.java" />
         <option value="$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/Main.java" />
       </list>
     </option>
@@ -238,88 +242,10 @@
             <id />
           </State>
           <State>
-            <id>Abstraction issues</id>
+            <id>Android</id>
           </State>
           <State>
             <id>Android Lint</id>
-          </State>
-          <State>
-            <id>Class structure</id>
-          </State>
-          <State>
-            <id>Code style issues</id>
-          </State>
-          <State>
-            <id>Control flow issues</id>
-          </State>
-          <State>
-            <id>Groovy</id>
-          </State>
-          <State>
-            <id>Internationalization issues</id>
-          </State>
-          <State>
-            <id>J2ME issues</id>
-          </State>
-          <State>
-            <id>JUnit issues</id>
-          </State>
-          <State>
-            <id>Java language level migration aids</id>
-          </State>
-          <State>
-            <id>Language Injection</id>
-          </State>
-          <State>
-            <id>Logging issues</id>
-          </State>
-          <State>
-            <id>Memory issues</id>
-          </State>
-          <State>
-            <id>Naming conventions</id>
-          </State>
-          <State>
-            <id>Numeric issues</id>
-          </State>
-          <State>
-            <id>Pattern Validation</id>
-          </State>
-          <State>
-            <id>Performance issues</id>
-          </State>
-          <State>
-            <id>Portability issues</id>
-          </State>
-          <State>
-            <id>Probable bugs</id>
-          </State>
-          <State>
-            <id>Properties Files</id>
-          </State>
-          <State>
-            <id>Security issues</id>
-          </State>
-          <State>
-            <id>TestNG</id>
-          </State>
-          <State>
-            <id>Threading issues</id>
-          </State>
-          <State>
-            <id>Threading issuesGroovy</id>
-          </State>
-          <State>
-            <id>Verbose or redundant code constructs</id>
-          </State>
-          <State>
-            <id>Visibility issues</id>
-          </State>
-          <State>
-            <id>XPath</id>
-          </State>
-          <State>
-            <id>toString() issues</id>
           </State>
         </expanded-state>
       </profile-state>
@@ -351,16 +277,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MusicStringLib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -371,16 +287,22 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MusicStringLib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="MusicStringLib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -624,7 +546,7 @@
     <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="options.lastSelected" value="appearance" />
+    <property name="options.lastSelected" value="editor.preferences.completion" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="/usr/share/javadoc/java-1.7.0-openjdk" />
@@ -821,7 +743,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-2" y="16" width="1370" height="754" extended-state="7" />
+    <frame x="-2" y="16" width="1370" height="754" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32676518" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -832,13 +754,13 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3258427" sideWeight="0.49763408" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19772728" sideWeight="0.20458265" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905295" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31423897" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3132137" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31220284" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.6738056" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19772728" sideWeight="0.7086743" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2913257" sideWeight="0.49684542" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19772728" sideWeight="0.70962477" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2903752" sideWeight="0.49684542" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="105" y="18" width="1170" height="552" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -920,13 +842,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/Bass5Tones.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="14" selection-start="375" selection-end="375" vertical-scroll-proportion="0.5691057">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/tonefilters/Guitar7Tones.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="14" selection-start="379" selection-end="379" vertical-scroll-proportion="0.5691057">
@@ -985,13 +900,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringSong.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="263" column="53" selection-start="9004" selection-end="9004" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringMeasure.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="59" column="56" selection-start="2227" selection-end="2227" vertical-scroll-proportion="0.0">
@@ -1018,11 +926,7 @@
     <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringTrack.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="219" column="50" selection-start="7832" selection-end="7832" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#5650#5658#0" expanded="true" />
-            <element signature="e#8059#8069#0" expanded="true" />
-            <element signature="e#10339#10349#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1035,9 +939,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringSong.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="263" column="53" selection-start="9004" selection-end="9004" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringDuration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="91" column="46" selection-start="3377" selection-end="3377" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="60" selection-start="1192" selection-end="1192" vertical-scroll-proportion="0.4054054">
+        <state line="32" column="38" selection-start="890" selection-end="890" vertical-scroll-proportion="0.2567237">
           <folding />
         </state>
       </provider>

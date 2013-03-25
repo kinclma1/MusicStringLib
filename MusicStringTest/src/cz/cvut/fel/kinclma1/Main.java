@@ -1,6 +1,7 @@
 
 package cz.cvut.fel.kinclma1;
 
+import cz.cvut.fel.kinclma1.exceptions.ImpossibleDurationException;
 import cz.cvut.fel.kinclma1.io.FileExporter;
 import cz.cvut.fel.kinclma1.player.MusicStringPlayer;
 import cz.cvut.fel.kinclma1.player.PlayerListener;
@@ -28,7 +29,7 @@ public class Main {
         //todo Javadoc
         MusicStringSong ms = null;
         try {
-            ms = MusicStringSong.create("/home/void/project/remnobass.tg");
+            ms = MusicStringSong.create("/home/void/project/napad.tg");
             System.out.println(ms);
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
@@ -36,11 +37,11 @@ public class Main {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
 
-        ms.addTrack(randomTones(ms, new TestBassTones(), 0.3), Instrument.ELECTRIC_BASS_FINGER);
+        ms.addTrack(randomTones(ms, new TestBassTones(), 0.0), Instrument.ELECTRIC_BASS_FINGER);
         MusicStringPlayer player = new MusicStringPlayer(ms.toString(),
                 new TestListener1());
         try {
-            ms.export("/home/void/project/remnewbass.tg");
+            ms.export("/home/void/project/napadbass.tg");
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (TGFileFormatException e) {
