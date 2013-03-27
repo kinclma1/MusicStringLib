@@ -122,6 +122,10 @@ public class HarmonyDetector {
         }
     }
 
+    public static String splitStringTracksToShortest(String concatenatedTracks) {
+        return splitTrackToShortest(new MusicStringTrack(concatenatedTracks));
+    }
+
     private List<FlatTrack> getSplitTracks() {
         ArrayList<Callable<FlatTrack>> splitters = new ArrayList<Callable<FlatTrack>>(trackCount);
         for (MusicStringTrack track : toneTracks) {
