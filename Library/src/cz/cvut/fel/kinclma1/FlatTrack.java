@@ -1,5 +1,7 @@
 package cz.cvut.fel.kinclma1;
 
+import cz.cvut.fel.kinclma1.exceptions.ImpossibleDurationException;
+
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -18,6 +20,22 @@ public class FlatTrack {
     FlatTrack(MusicStringDuration duration) {
         this.duration = duration;
         tones = new LinkedList<HashSet<String>>();
+    }
+
+    @Override
+    public FlatTrack clone() {
+        FlatTrack track = null;
+        try {
+            track = new FlatTrack(new MusicStringDuration(duration.toIntegerDiv128()));
+        } catch (ImpossibleDurationException e) {
+            //cannot happen
+        }
+        for (HashSet<String> beat : tones) {
+            HashSet<String> newBeat = new HashSet<String>(beat.size());
+            newBeat.addAll(beat);
+            track.addToneSet(newBeat);
+        }
+        return track;
     }
 
     void addToneSet(HashSet<String> toneSet) {

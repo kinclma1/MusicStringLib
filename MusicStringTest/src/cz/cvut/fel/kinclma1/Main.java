@@ -65,6 +65,8 @@ public class Main {
 
     private static String randomTones(MusicStringSong ms, InstrumentTones toneFilter, double restProbability) {
         FlatTrack ft = ms.getPossibleNotes(toneFilter);
+        System.out.println("Possible: " + ms.getPossibleNotes(toneFilter));
+        System.out.println("Played: " + ms.getPlayedTones(toneFilter));
         Iterator<HashSet<String>> it = ft.getIterator();
         while (it.hasNext()) {
             HashSet<String> beat = it.next();

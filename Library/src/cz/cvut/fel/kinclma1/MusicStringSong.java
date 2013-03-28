@@ -56,6 +56,7 @@ public class MusicStringSong {
     }
 
     private Map<String, MusicStringTrack> tracks = new HashMap<String, MusicStringTrack>();
+    private HarmonyDetector harmonyDetector = null;
 
     public static MusicStringSong create(String filename) throws IOException, TGFileFormatException {
         if (filename.substring(filename.lastIndexOf('.')).contains("musicstring")) {
@@ -262,7 +263,16 @@ public class MusicStringSong {
      * @return track containing all notes that can surely be played in any additional track
      */
     public FlatTrack getPossibleNotes(InstrumentTones toneFilter) {
-        return new HarmonyDetector(this).detectHarmony(toneFilter);
+        harmonyDetector = new HarmonyDetector(this);
+        return harmonyDetector.detectHarmony(toneFilter);
+    }
+
+    public FlatTrack getPlayedTones(InstrumentTones toneFilter) {
+        if (harmonyDetector == null) {
+            harmonyDetector = new HarmonyDetector(this);
+            harmonyDetector.detectHarmony(toneFilter);
+        }
+        return harmonyDetector.originalTones(toneFilter);
     }
 
     private void create(List<Callable<MusicStringTrack>> tcs) {

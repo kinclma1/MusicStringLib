@@ -78,6 +78,7 @@ public class HarmonyDetector {
     private MusicStringDuration shortestNote;
     private int trackCount;
     private ExecutorService exec;
+    private FlatTrack mergedTracks;
     private final Scale[] scales = new Scale[]{
             new MixolydianScale(),
             new LydianScale(),
@@ -92,6 +93,7 @@ public class HarmonyDetector {
         toneTracks = getToneTracks(song);
         shortestNote = getShortestNote();
         trackCount = toneTracks.size();
+        mergedTracks = null;
     }
 
     private ArrayList<MusicStringTrack> getToneTracks(MusicStringSong song) {
@@ -113,7 +115,7 @@ public class HarmonyDetector {
 
         return Collections.min(results);
     }
-
+    //todo ask Karel if he uses them, if not, delete these static methods
     public static String splitTrackToShortest(MusicStringTrack track) {
         try {
             return new TrackNoteSplitter(track, track.getShortestNote()).call().toString();
@@ -135,10 +137,14 @@ public class HarmonyDetector {
     }
 
     FlatTrack detectHarmony(InstrumentTones toneFilter) {
-        List<FlatTrack> newTracks = getSplitTracks();
+        FlatTrack merged = mergeTracks(getSplitTracks());
         exec.shutdown();
+        mergedTracks = merged.clone();
+        return toneFilter.filterTones(guessScales(merged));
+    }
 
-        return toneFilter.filterTones(guessScales(mergeTracks(newTracks)));
+    FlatTrack originalTones(InstrumentTones toneFilter) {
+        return toneFilter.filterTones(mergedTracks);
     }
 
     private FlatTrack mergeTracks(List<FlatTrack> newTracks) {
