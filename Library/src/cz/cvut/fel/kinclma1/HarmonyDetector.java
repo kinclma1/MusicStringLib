@@ -115,18 +115,6 @@ public class HarmonyDetector {
 
         return Collections.min(results);
     }
-    //todo ask Karel if he uses them, if not, delete these static methods
-    public static String splitTrackToShortest(MusicStringTrack track) {
-        try {
-            return new TrackNoteSplitter(track, track.getShortestNote()).call().toString();
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    public static String splitStringTracksToShortest(String concatenatedTracks) {
-        return splitTrackToShortest(new MusicStringTrack(concatenatedTracks));
-    }
 
     private List<FlatTrack> getSplitTracks() {
         ArrayList<Callable<FlatTrack>> splitters = new ArrayList<Callable<FlatTrack>>(trackCount);

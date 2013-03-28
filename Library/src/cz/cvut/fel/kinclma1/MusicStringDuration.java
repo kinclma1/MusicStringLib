@@ -114,6 +114,13 @@ public class MusicStringDuration implements Comparable<MusicStringDuration> {
     }
 
     @Override
+    public MusicStringDuration clone() {
+        MusicStringDuration newDuration = new MusicStringDuration(duration);
+        newDuration.dotted = dotted;
+        return newDuration;
+    }
+
+    @Override
     public String toString() {
         return dotted ? duration.toString() + '.' : duration.toString();
     }

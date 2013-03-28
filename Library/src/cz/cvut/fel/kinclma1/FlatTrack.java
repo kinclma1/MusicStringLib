@@ -24,12 +24,7 @@ public class FlatTrack {
 
     @Override
     public FlatTrack clone() {
-        FlatTrack track = null;
-        try {
-            track = new FlatTrack(new MusicStringDuration(duration.toIntegerDiv128()));
-        } catch (ImpossibleDurationException e) {
-            //cannot happen
-        }
+        FlatTrack track = new FlatTrack(duration.clone());
         for (HashSet<String> beat : tones) {
             HashSet<String> newBeat = new HashSet<String>(beat.size());
             newBeat.addAll(beat);
