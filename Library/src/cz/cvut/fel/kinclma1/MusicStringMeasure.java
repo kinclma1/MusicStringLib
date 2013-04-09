@@ -18,6 +18,12 @@ class MusicStringMeasure {
     private TempoTracker tempoTracker;
     private List<MusicStringBeat> beats;
 
+    /**
+     * Creates a MusicStringMeasure from a TGMeasure
+     * @param tgMeasure source measure
+     * @param tempoTracker the track's TempoTracker
+     * @param drumTrack flag signalizing whether a drum track is processed
+     */
     public MusicStringMeasure(TGMeasure tgMeasure, TempoTracker tempoTracker, boolean drumTrack) {
         tempo = tgMeasure.getTempo().getValue();
         this.tempoTracker = tempoTracker;
@@ -29,6 +35,12 @@ class MusicStringMeasure {
         supplyRests(tgMeasure.getTimeSignature(), drumTrack);
     }
 
+    /**
+     * Create a MusicStringMeasure from a list of strings - music string split along spaces
+     * @param measure Music string measure representation split on spaces
+     * @param tempoTracker the track's TempoTracker
+     * @param drumTrack flag signalizing whether a drum track is processed
+     */
     public MusicStringMeasure(List<String> measure, TempoTracker tempoTracker, boolean drumTrack) {
         this.tempoTracker = tempoTracker;
         int i = 0;
@@ -45,6 +57,13 @@ class MusicStringMeasure {
         }
     }
 
+    /**
+     * Constructor used only when adding a new track to the song
+     * @param measure source measure
+     * @param tempoTracker the track's tempo tracker
+     * @param refMeasure a reference measure from another track to check new measure's length
+     * @throws IncompatibleTrackException when measures are not of the same length
+     */
     MusicStringMeasure(List<String> measure, TempoTracker tempoTracker, MusicStringMeasure refMeasure)
             throws IncompatibleTrackException {
         this.tempoTracker = tempoTracker;
@@ -59,6 +78,10 @@ class MusicStringMeasure {
         }
     }
 
+    /**
+     * Returns the sum of proportional durations of the beats
+     * @return sum of proportional durations of the beats
+     */
     int getDuration() {
         int measureLength = 0;
         for (MusicStringBeat beat : beats) {
@@ -67,6 +90,10 @@ class MusicStringMeasure {
         return measureLength;
     }
 
+    /**
+     * Returns a list of beats - package-private for a good reason
+     * @return list of beats
+     */
     List<MusicStringBeat> getBeats() {
         return beats;
     }
@@ -81,6 +108,12 @@ class MusicStringMeasure {
         return sb.toString();
     }
 
+    /**
+     * Returns a TGMeasure equivalent of this measure
+     * @param factory universal TuxGuitar factory
+     * @param track track to which the measure should be added
+     * @return TGMeasure equivalent of this measure
+     */
     public TGMeasure toTGMeasure(TGFactory factory, TGTrack track) {
         TGMeasure measure = factory.newMeasure(factory.newHeader());
         measure.getHeader().getTempo().setValue(tempo);
@@ -108,6 +141,12 @@ class MusicStringMeasure {
         return ts;
     }
 
+    /**
+     * Returns the updated source array of the lowest tone and maximum simultaneously played tones
+     * used to create strings for the TGTrack
+     * @param ltms source array of the lowest tone and maximum simultaneously played tones
+     * @return updated source array of the lowest tone and maximum simultaneously played tones
+     */
     int[] getLowestToneAndMaxTones(int[] ltms) {
         int tone;
         int max;
@@ -124,6 +163,10 @@ class MusicStringMeasure {
         return ltms;
     }
 
+    /**
+     * Returns the shortest possible note in this measure - resolution
+     * @return shortest possible note in this measure - resolution
+     */
     MusicStringDuration getShortestNote() {
         MusicStringDuration shortest = new MusicStringDuration(Duration.WHOLE);
         for (MusicStringBeat beat : beats) {

@@ -10,11 +10,7 @@ import org.herac.tuxguitar.song.models.TGTrack;
 import java.util.*;
 
 /**
- * Created with IntelliJ IDEA.
- * User: void
- * Date: 13.9.12
- * Time: 21:10
- * To change this template use File | Settings | File Templates.
+ * A track - a part of the song played by a single instrument
  */
 public class MusicStringTrack {
 
@@ -27,6 +23,10 @@ public class MusicStringTrack {
     private TempoTracker tempoTracker;
     private List<MusicStringMeasure> measures;
 
+    /**
+     * Creates a track from the given TGTrack
+     * @param tgTrack The source track
+     */
     public MusicStringTrack(TGTrack tgTrack) {
         tempoTracker = new TempoTracker();
         RepetitionTracker repetitionTracker = new RepetitionTracker(this);
@@ -44,16 +44,28 @@ public class MusicStringTrack {
         }
     }
 
+    /**
+     * Add a measure to the end of the track
+     * @param measure measure to be added
+     */
     void addMeasure(TGMeasure measure) {
         measures.add(new MusicStringMeasure(measure,tempoTracker,drumTrack));
     }
 
+    /**
+     * Add all measures from a list to the song
+     * @param measureList the list of measures to be added
+     */
     void addMeasures(List<TGMeasure> measureList) {
         for (TGMeasure measure : measureList) {
             addMeasure(measure);
         }
     }
 
+    /**
+     * Parses a MusicStringTrack from the given music string
+     * @param msTrack Source music string for a track
+     */
     public MusicStringTrack(String msTrack) {
         tempoTracker = new TempoTracker();
         StringTokenizer tokenizer = new StringTokenizer(msTrack);
@@ -84,6 +96,13 @@ public class MusicStringTrack {
         id = buildId();
     }
 
+    /**
+     * Creates a track with the given parameters - used only when adding a new track to the song
+     * @param channel generated free channel number
+     * @param instrument instrument to be set to the track
+     * @param music the content of the track
+     * @param refTrack a reference track for measure lengths
+     */
     MusicStringTrack(int channel, Instrument instrument, String music, MusicStringTrack refTrack) {
         this.channel = channel;
         this.instrument = instrument;
@@ -162,30 +181,58 @@ public class MusicStringTrack {
         return measure;
     }
 
+    /**
+     * Returns the track channel number
+     * @return track channel number
+     */
     public int getChannel() {
         return channel;
     }
 
+    /**
+     * Returns the music string for the channel number
+     * @return music string for the channel number
+     */
     public String getChannelMusicString() {
         return String.format("V%d ", channel);
     }
 
+    /**
+     * Returns the instrument name if not a drum track
+     * @return instrument name / empty string for drum track
+     */
     public String getInstrument() {
         return drumTrack ? "" : instrument.toString();
     }
 
+    /**
+     * Returns the meta info which is in the beginning of the music string track - channel and instrument
+     * @return meta info which is in the beginning of the music string track - channel and instrument
+     */
     public String getMetaInfo() {
         return metaInfo;
     }
 
+    /**
+     * Returns the track id - Channel and instrument (DRUMS) for a drum track
+     * @return track id - Channel and instrument (DRUMS) for a drum track
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * Returns the list of measures
+     * @return list of measures
+     */
     List<MusicStringMeasure> getMeasures() {
         return new ArrayList<MusicStringMeasure>(measures);
     }
 
+    /**
+     * Returns the shortest resolution duration
+     * @return shortest resolution duration
+     */
     MusicStringDuration getShortestNote() {
         MusicStringDuration shortest = new MusicStringDuration(Duration.WHOLE);
         for (MusicStringMeasure measure : measures) {
@@ -213,6 +260,11 @@ public class MusicStringTrack {
         tempoTracker.changed(0);
     }
 
+    /**
+     * Returns a TGTrack created from this track
+     * @param factory Universal TuxGuitar factory
+     * @return TGTrack created from this track
+     */
     public TGTrack toTGTrack(TGFactory factory) {
         TGTrack track = factory.newTrack();
         TGChannel tgChannel = track.getChannel();

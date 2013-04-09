@@ -16,8 +16,7 @@ import java.util.*;
 import java.util.concurrent.Callable;
 
 /**
- *
- * @author void
+ * A music string song - the main class and API of the library
  */
 public class MusicStringSong {
 
@@ -58,6 +57,13 @@ public class MusicStringSong {
     private Map<String, MusicStringTrack> tracks = new HashMap<String, MusicStringTrack>();
     private HarmonyDetector harmonyDetector;
 
+    /**
+     * Factory method to create a MusicStringSong from a file on the given path
+     * @param filename Path to the source file
+     * @return A MusicStringSong instance created from the source file
+     * @throws IOException
+     * @throws TGFileFormatException
+     */
     public static MusicStringSong create(String filename) throws IOException, TGFileFormatException {
         if (filename.substring(filename.lastIndexOf('.')).contains("musicstring")) {
             StringBuilder sb = new StringBuilder();
@@ -126,6 +132,10 @@ public class MusicStringSong {
         return sb.toString();
     }
 
+    /**
+     * Returns an array of supported input formats
+     * @return Array of supported input formats
+     */
     public static TGFileFormat[] getInputFormats() {
         ArrayList<TGFileFormat> fmts = new ArrayList<TGFileFormat>();
         TGFileFormatManager formatManager = TGFileFormatManager.instance();
@@ -139,6 +149,10 @@ public class MusicStringSong {
         return fmts.toArray(new TGFileFormat[fmts.size()]);
     }
 
+    /**
+     * Returns an array of supported output formats
+     * @return Array of supported output formats
+     */
     public static TGFileFormat[] getExportFormats() {
         ArrayList<TGFileFormat> fmts = new ArrayList<TGFileFormat>();
         TGFileFormatManager formatManager = TGFileFormatManager.instance();
@@ -152,6 +166,12 @@ public class MusicStringSong {
         return fmts.toArray(new TGFileFormat[fmts.size()]);
     }
 
+    /**
+     * Exports this song to a file with a given path
+     * @param filename Target file path and name
+     * @throws IOException
+     * @throws TGFileFormatException
+     */
     public void export(String filename) throws IOException, TGFileFormatException {
         try {
             if (filename.substring(filename.lastIndexOf('.')).contains("musicstring")) {
@@ -235,6 +255,13 @@ public class MusicStringSong {
         tracks.remove(id);
     }
 
+    /**
+     * Adds a new track to the song
+     * @param newTrack Track to be added
+     * @param instrument Instrument to be set to the track
+     * @throws NoFreeChannelException when all 16 MIDI channels are occupied by tracks
+     * @throws IncompatibleTrackException when measure lengths of the new track do not match the song's ones
+     */
     public void addTrack(String newTrack, Instrument instrument)
             throws NoFreeChannelException, IncompatibleTrackException {
         int channel = getFreeChannel();
@@ -259,14 +286,22 @@ public class MusicStringSong {
     }
 
     /**
-     * Returns a track containing all notes that can surely be played in any additional track
-     * @return track containing all notes that can surely be played in any additional track
+     * Returns a track containing all notes that can surely be played in any additional track processed by a given tone
+     * filter
+     * @param toneFilter A filter defining tones playable on an instruments
+     * @return track containing all notes that can surely be played in any additional track processed by a given tone
+     * filter
      */
     public FlatTrack getPossibleNotes(InstrumentTones toneFilter) {
         harmonyDetector = new HarmonyDetector(this);
         return harmonyDetector.detectHarmony(toneFilter);
     }
 
+    /**
+     * Returns a track containing all notes played in the song processed by a given tone filter
+     * @param toneFilter A filter defining tones playable on an instruments
+     * @return track containing all notes played in the song processed by a given tone filter
+     */
     public FlatTrack getPlayedTones(InstrumentTones toneFilter) {
         if (harmonyDetector == null) {
             harmonyDetector = new HarmonyDetector(this);

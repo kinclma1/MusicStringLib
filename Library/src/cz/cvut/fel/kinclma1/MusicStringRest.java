@@ -3,18 +3,22 @@ package cz.cvut.fel.kinclma1;
 import org.herac.tuxguitar.song.models.TGVoice;
 
 /**
- * Created with IntelliJ IDEA.
- * User: void
- * Date: 15.9.12
- * Time: 3:07
- * To change this template use File | Settings | File Templates.
+ * A rest - a beat element of silence
  */
 class MusicStringRest extends BeatElement {
 
+    /**
+     * Creates a rest of a given duration
+     * @param duration duration of the rest - should be shared among all beat
+     */
     public MusicStringRest(MusicStringDuration duration) {
         super(duration);
     }
 
+    /**
+     * Returns the music string "tone" for a rest - a "R"
+     * @return music string "tone" for a rest - a "R"
+     */
     @Override
     protected String getTone() {
         return "R";

@@ -3,14 +3,13 @@ package cz.cvut.fel.kinclma1;
 import java.util.regex.Pattern;
 
 /**
- * Created with IntelliJ IDEA.
- * User: void
- * Date: 24.9.12
- * Time: 19:50
- * To change this template use File | Settings | File Templates.
+ * A tone with its octave number
  */
 public class MusicStringTone extends NoteContent {
 
+    /**
+     * Tones of the chromatic scale
+     */
     enum RelativeTone {
         C,
         C_SHARP,
@@ -57,10 +56,19 @@ public class MusicStringTone extends NoteContent {
             }
         }
 
+        /**
+         * Creates a tone from the given MIDI value
+         * @param tone MIDI value of the tone
+         * @return tone created from the given MIDI value
+         */
         public static RelativeTone fromInt(int tone) {
             return RelativeTone.values()[tone];
         }
 
+        /**
+         * Returns the MIDI value of this tone
+         * @return MIDI value of this tone
+         */
         public int toInt() {
             return ordinal();
         }
@@ -69,11 +77,19 @@ public class MusicStringTone extends NoteContent {
     private RelativeTone tone;
     private int octave;
 
+    /**
+     * Creates a MusicStringTone from the MIDI value
+     * @param value MIDI tone number
+     */
     public MusicStringTone(int value) {
         tone = RelativeTone.fromInt(value % 12);
         octave = value / 12;
     }
 
+    /**
+     * Parses a MusicStringTone from a music string
+     * @param mStrTone a music string representation of the tone
+     */
     public MusicStringTone(String mStrTone) {
         Pattern pattern = Pattern.compile("(^[A-G]#?1?[0-9][a-z]?\\.?)");
         if (!pattern.matcher(mStrTone).matches()) {
@@ -111,11 +127,19 @@ public class MusicStringTone extends NoteContent {
         return tone.toString() + octave;
     }
 
+    /**
+     * Returns the MIDI value of the tone
+     * @return MIDI value of the tone
+     */
     @Override
     public int toInt() {
         return octave * 12 + tone.toInt();
     }
 
+    /**
+     * Returns the tone name without octave
+     * @return tone name without octave
+     */
     @Override
     protected String relativeTone() {
         return tone.toString();

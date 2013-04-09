@@ -7,12 +7,8 @@ import java.util.HashSet;
 import java.util.LinkedList;
 
 /**
-* Created with IntelliJ IDEA.
-* User: void
-* Date: 24.1.13
-* Time: 0:45
-* To change this template use File | Settings | File Templates.
-*/
+ * A state machine used to unroll repetitions as music string does not support them
+ */
 class RepetitionTracker {
 
     private MusicStringTrack track;
@@ -38,6 +34,10 @@ class RepetitionTracker {
     private final int MEASURE_REP_ALT_CLOSE = 4;
     private final int MEASURE_REP_OPEN_CLOSE = 5;
 
+    /**
+     * Creates a repetition tracker for the given track
+     * @param track to unroll repetitions to
+     */
     RepetitionTracker(MusicStringTrack track) {
         this.track = track;
         repeatBeginning = new LinkedList<TGMeasure>();
@@ -50,6 +50,10 @@ class RepetitionTracker {
         firstAlt = 0;
     }
 
+    /**
+     * Handles the given measure
+     * @param measure to be handled
+     */
     void processMeasure(TGMeasure measure) {
         int measureType = getMeasureType(measure);
         boolean lastMeasure = measure.getTrack().getMeasure(measure.getTrack().countMeasures() - 1) == measure;
