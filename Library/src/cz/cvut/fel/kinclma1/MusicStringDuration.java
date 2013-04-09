@@ -91,36 +91,36 @@ public class MusicStringDuration implements Comparable<MusicStringDuration> {
 
     /**
      * Tries to create a duration from the given proportional integer
-     * @param div128 proportional duration value
+     * @param proportional proportional duration value
      * @throws ImpossibleDurationException when not possible to create a single duration from the given integer
      */
-    public MusicStringDuration(int div128) throws ImpossibleDurationException {
+    public MusicStringDuration(int proportional) throws ImpossibleDurationException {
         int i = 128;
         boolean set = false;
         while (i >= 1 && !set) {
-            if (i <= div128) {
+            if (i <= proportional) {
                 duration = intDurationMap.get(128 / i);
-                div128 -= i;
+                proportional -= i;
                 set = true;
             }
             i /= 2;
-            if (set && div128 == i && div128 > 0) {
+            if (set && proportional == i && proportional > 0) {
                 dotted = true;
-                div128 -= i;
+                proportional -= i;
             }
         }
 
-        if (div128 > 0) {
+        if (proportional > 0) {
             List<Duration> durations = new ArrayList<Duration>();
             durations.add(duration);
             if (dotted) {
                 durations.add(shorter());
             }
 
-            while (i > 0 && div128 > 0) {
-                if (i <= div128) {
+            while (i > 0 && proportional > 0) {
+                if (i <= proportional) {
                     durations.add(intDurationMap.get(128 / i));
-                    div128 -= i;
+                    proportional -= i;
                 }
                 i /= 2;
             }
@@ -156,7 +156,7 @@ public class MusicStringDuration implements Comparable<MusicStringDuration> {
      * Returns proportional int value
      * @return proportional int value
      */
-    public int toIntegerDiv128() {
+    public int toProportionalInt() {
         int tmp = 128 / toInteger();
         return dotted ? tmp + tmp / 2 : tmp;
     }
@@ -175,6 +175,6 @@ public class MusicStringDuration implements Comparable<MusicStringDuration> {
 
     @Override
     public int compareTo(MusicStringDuration d) {
-        return toIntegerDiv128() - d.toIntegerDiv128();
+        return toProportionalInt() - d.toProportionalInt();
     }
 }

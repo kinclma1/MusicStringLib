@@ -85,7 +85,7 @@ class MusicStringMeasure {
     int getDuration() {
         int measureLength = 0;
         for (MusicStringBeat beat : beats) {
-            measureLength += beat.getDurationDiv128();
+            measureLength += beat.getProportionalDuration();
         }
         return measureLength;
     }
@@ -121,7 +121,7 @@ class MusicStringMeasure {
         int measureLength = 0;
         for (MusicStringBeat beat : beats) {
             measure.addBeat(beat.toTGBeat(factory, measure));
-            measureLength += beat.getDurationDiv128();
+            measureLength += beat.getProportionalDuration();
         }
 
         measure.getHeader().setTimeSignature(getTimeSignature(factory, measureLength));
@@ -185,7 +185,7 @@ class MusicStringMeasure {
     private void supplyRests(TGTimeSignature ts, boolean drumTrack) {
         int beatsDuration = 0;
         for (MusicStringBeat beat : beats) {
-            beatsDuration += beat.getDurationDiv128();
+            beatsDuration += beat.getProportionalDuration();
         }
         int measureDuration = (128 / ts.getDenominator().getValue()) * ts.getNumerator();
         int remaining = measureDuration - beatsDuration;

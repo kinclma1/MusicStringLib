@@ -160,8 +160,8 @@ class MusicStringBeat {
      * Returns proportional duration number
      * @return Proportional duration number
      */
-    int getDurationDiv128() {
-        return duration.toIntegerDiv128();
+    int getProportionalDuration() {
+        return duration.toProportionalInt();
     }
 
     /**

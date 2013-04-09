@@ -60,7 +60,7 @@ class HarmonyDetector {
             //while some remaining short notes to write
             while (beats.hasNext()) {
                 MusicStringBeat beat = beats.next();
-                durationCoef = beat.getDurationDiv128() / shortestNote.toIntegerDiv128();
+                durationCoef = beat.getProportionalDuration() / shortestNote.toProportionalInt();
                 HashSet<String> toneSet = beat.getToneSet();
                 while (durationCoef > 0) {
                     flatTrack.addToneSet(new HashSet<String>(toneSet));
