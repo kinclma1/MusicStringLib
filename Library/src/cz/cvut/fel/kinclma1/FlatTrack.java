@@ -7,11 +7,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
- * Created with IntelliJ IDEA.
- * User: void
- * Date: 21.1.13
- * Time: 0:43
- * To change this template use File | Settings | File Templates.
+ * Simple representation of a track with fixed note duration
  */
 public class FlatTrack {
     private MusicStringDuration duration;
@@ -43,10 +39,18 @@ public class FlatTrack {
         tones.add(set);
     }
 
+    /**
+     * Returns an Iterator for the track beats
+     * @return Iterator for the track beats
+     */
     public Iterator<HashSet<String>> getIterator() {
         return tones.iterator();
     }
 
+    /**
+     * Returns the duration of the track notes
+     * @return Duration of the track notes
+     */
     public MusicStringDuration getDuration() {
         return duration;
     }

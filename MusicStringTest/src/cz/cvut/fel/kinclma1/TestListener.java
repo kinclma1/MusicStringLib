@@ -32,6 +32,7 @@ public class TestListener implements PlayerListener {
         System.out.println("Current position: " + seconds);
     }
 
+    @Override
     public void close() {
         System.out.println("Closing player.");
     }

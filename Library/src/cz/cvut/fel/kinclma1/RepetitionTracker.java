@@ -2,6 +2,7 @@ package cz.cvut.fel.kinclma1;
 
 import org.herac.tuxguitar.song.models.TGMeasure;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 
@@ -17,7 +18,7 @@ class RepetitionTracker {
     private MusicStringTrack track;
 
     private LinkedList<TGMeasure> repeatBeginning;
-    private LinkedList<TGMeasure>[] repeatAlternatives;
+    private ArrayList<LinkedList<TGMeasure>> repeatAlternatives;
     private HashSet<Integer> alternativeIndexes;
     private int state;
     private int repetitionAlt;
@@ -40,9 +41,9 @@ class RepetitionTracker {
     RepetitionTracker(MusicStringTrack track) {
         this.track = track;
         repeatBeginning = new LinkedList<TGMeasure>();
-        repeatAlternatives = new LinkedList[8];
-        for (int i = 0; i < repeatAlternatives.length; i ++) {
-            repeatAlternatives[i] = new LinkedList<TGMeasure>();
+        repeatAlternatives = new ArrayList<LinkedList<TGMeasure>>(8);
+        for (int i = 0; i < 8; i ++) {
+            repeatAlternatives.add(new LinkedList<TGMeasure>());
         }
         alternativeIndexes = new HashSet<Integer>();
         state = REPETITION_OPEN;
@@ -190,8 +191,8 @@ class RepetitionTracker {
 
     private void clear() {
         repeatBeginning.clear();
-        for (int i = 0; i < repeatAlternatives.length; i ++) {
-            repeatAlternatives[i].clear();
+        for (int i = 0; i < repeatAlternatives.size(); i ++) {
+            repeatAlternatives.get(i).clear();
         }
         alternativeIndexes.clear();
         firstAlt = 0;
@@ -209,7 +210,7 @@ class RepetitionTracker {
         }
         for (int i = 0; i < 8; i ++) {
             if ((repetitionAlt & 1 << i) > 0) {
-                repeatAlternatives[i].add(measure);
+                repeatAlternatives.get(i).add(measure);
                 alternativeIndexes.add(i);
             }
         }
@@ -222,15 +223,15 @@ class RepetitionTracker {
     }
 
     private void addAlternativeAndBeginning() {
-        for (; firstAlt < 8 && !repeatAlternatives[firstAlt].isEmpty(); firstAlt ++) {
-            track.addMeasures(repeatAlternatives[firstAlt]);
+        for (; firstAlt < 8 && !repeatAlternatives.get(firstAlt).isEmpty(); firstAlt ++) {
+            track.addMeasures(repeatAlternatives.get(firstAlt));
             track.addMeasures(repeatBeginning);
         }
     }
 
     private void addAlternative() {
-        for (; firstAlt < 8 && !repeatAlternatives[firstAlt].isEmpty(); firstAlt ++) {
-            track.addMeasures(repeatAlternatives[firstAlt]);
+        for (; firstAlt < 8 && !repeatAlternatives.get(firstAlt).isEmpty(); firstAlt ++) {
+            track.addMeasures(repeatAlternatives.get(firstAlt));
         }
     }
 }

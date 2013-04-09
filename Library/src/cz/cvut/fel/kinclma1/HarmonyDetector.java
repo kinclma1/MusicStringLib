@@ -7,13 +7,9 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 
 /**
- * Created with IntelliJ IDEA.
- * User: void
- * Date: 19.1.13
- * Time: 22:09
- * To change this template use File | Settings | File Templates.
+ * Helper class guessing the scales used in a song
  */
-public class HarmonyDetector {
+class HarmonyDetector {
 
     private class TrackShortestNoteFinder implements Callable<MusicStringDuration> {
 
@@ -29,7 +25,7 @@ public class HarmonyDetector {
         }
     }
 
-    private static class TrackNoteSplitter implements Callable<FlatTrack> {
+    private class TrackNoteSplitter implements Callable<FlatTrack> {
 
         private MusicStringTrack track;
         private FlatTrack flatTrack;
@@ -57,7 +53,7 @@ public class HarmonyDetector {
 
         private void processMeasure(MusicStringMeasure measure) {
             Iterator<MusicStringBeat> beats;
-            int durationCoef = 0;
+            int durationCoef;
 
             beats = measure.getBeats().iterator();
 
@@ -124,6 +120,11 @@ public class HarmonyDetector {
         return Parallellization.runExecutor(exec, splitters);
     }
 
+    /**
+     * Returns a flat track with all playable notes to accompany the song processed by the tone filter
+     * @param toneFilter Filter to determine which tones can be played using the instrument
+     * @return Flat track with all playable notes to accompany the song processed by the tone filter
+     */
     FlatTrack detectHarmony(InstrumentTones toneFilter) {
         FlatTrack merged = mergeTracks(getSplitTracks());
         exec.shutdown();
@@ -131,6 +132,11 @@ public class HarmonyDetector {
         return toneFilter.filterTones(guessScales(merged));
     }
 
+    /**
+     * Returns a flat track with all tones played in the song processed by the tone filter
+     * @param toneFilter Filter to determine which tones can be played using the instrument
+     * @return Flat track with all tones played in the song processed by the tone filter
+     */
     FlatTrack originalTones(InstrumentTones toneFilter) {
         return toneFilter.filterTones(mergedTracks);
     }

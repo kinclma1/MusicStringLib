@@ -8,11 +8,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Created with IntelliJ IDEA.
- * User: void
- * Date: 30.1.13
- * Time: 22:28
- * To change this template use File | Settings | File Templates.
+ * Wrapper class for the customised JFugue Player class, which is a controller between the player and the
+ * PlayerListeners
  */
 public class MusicStringPlayer {
 
@@ -28,11 +25,21 @@ public class MusicStringPlayer {
     private Player player;
     private Timer timer;
 
+    /**
+     * Creates a new player for the given music string and registers and informs the given PlayerListeners
+     * @param musicString The music string to be played
+     * @param listeners List of the PlayerListeners to be interacting with the player
+     */
     public MusicStringPlayer(String musicString, List<PlayerListener> listeners) {
         this.listeners = listeners == null ? new ArrayList<PlayerListener>() : listeners;
         init(musicString);
     }
 
+    /**
+     * Creates a new player for the given music string and registers and informs the given PlayerListener
+     * @param musicString The music string to be played
+     * @param listener PlayerListener to be interacting with the player
+     */
     public MusicStringPlayer(String musicString, PlayerListener listener) {
         listeners = new ArrayList<PlayerListener>(1);
         if (listener != null) {
@@ -41,6 +48,10 @@ public class MusicStringPlayer {
         init(musicString);
     }
 
+    /**
+     * Registers an additional PlayerListener
+     * @param listener PlayerListener to be added to the list of listeners
+     */
     public void addListener(PlayerListener listener) {
         listener.setPlayer(this);
         listener.setSongLength(player.getSequenceLengthSeconds());
@@ -49,6 +60,10 @@ public class MusicStringPlayer {
         listeners.add(listener);
     }
 
+    /**
+     * Removes the given PlayerListeners from the list of listeners
+     * @param listener PlayerListener to be removed from the listener list
+     */
     public void removeListener(PlayerListener listener) {
         listeners.remove(listener);
     }
@@ -89,6 +104,9 @@ public class MusicStringPlayer {
         listeners.clear();
     }
 
+    /**
+     * Starts/resumes the playback
+     */
     public void play() {
         if (!player.isStarted()) {
             player.play();
@@ -98,17 +116,26 @@ public class MusicStringPlayer {
         notifyPlaybackStatus();
     }
 
+    /**
+     * Pauses the playback
+     */
     public void pause() {
         player.pause();
         notifyPlaybackStatus();
     }
 
+    /**
+     * Stops the playback
+     */
     public void stop() {
         player.stop();
         notifyPlaybackStatus();
         notifyPosition();
     }
 
+    /**
+     * Cancels everything concerning the player and notifies listeners to close
+     */
     public void close() {
         player.stop();
         timer.cancel();
@@ -116,6 +143,10 @@ public class MusicStringPlayer {
         player.close();
     }
 
+    /**
+     * Sets the position of the playback in seconds from the start of the sequence
+     * @param seconds Playback position to be set
+     */
     public void setPosition(int seconds) {
         player.jumpTo(seconds);
         notifyPosition();

@@ -341,20 +341,17 @@ public class TGSongManager {
 		
 		long nextStart = header.getStart() + header.getLength();
 		List<TGMeasureHeader> measures = getMeasureHeadersBeforeEnd(header.getStart() + 1);
-		Iterator<TGMeasureHeader> it = measures.iterator();
-		while(it.hasNext()){
-			TGMeasureHeader nextHeader = it.next();
-			
-			long theMove = nextStart - nextHeader.getStart();
-			
-			//moveMeasureComponents(nextHeader,theMove);
-			moveMeasureHeader(nextHeader,theMove,0);
-			
-			if(toEnd){
-				timeSignature.copy(nextHeader.getTimeSignature());
-			}
-			nextStart = nextHeader.getStart() + nextHeader.getLength();
-		}
+        for (TGMeasureHeader nextHeader : measures) {
+            long theMove = nextStart - nextHeader.getStart();
+
+            //moveMeasureComponents(nextHeader,theMove);
+            moveMeasureHeader(nextHeader, theMove, 0);
+
+            if (toEnd) {
+                timeSignature.copy(nextHeader.getTimeSignature());
+            }
+            nextStart = nextHeader.getStart() + nextHeader.getLength();
+        }
 		moveOutOfBoundsBeatsToNewMeasure(header.getStart());
 	}
 	
@@ -399,11 +396,9 @@ public class TGSongManager {
 		
 		if(toEnd){
 			List<TGMeasureHeader> measures = getMeasureHeadersBeforeEnd(header.getStart() + 1);
-			Iterator<TGMeasureHeader> it = measures.iterator();
-			while(it.hasNext()){
-				TGMeasureHeader nextHeader = it.next();
-				nextHeader.setTripletFeel(tripletFeel); 
-			}
+            for (TGMeasureHeader nextHeader : measures) {
+                nextHeader.setTripletFeel(tripletFeel);
+            }
 		}
 	}
 	
@@ -413,15 +408,13 @@ public class TGSongManager {
 	
 	public void changeTempos(TGMeasureHeader header,TGTempo tempo,boolean toEnd){
 		int oldValue = header.getTempo().getValue();
-		Iterator<TGMeasureHeader> it = getMeasureHeadersAfter(header.getNumber() - 1).iterator();
-		while(it.hasNext()){
-			TGMeasureHeader nextHeader = it.next();
-			if(toEnd || nextHeader.getTempo().getValue() == oldValue){
-				changeTempo(nextHeader,tempo);
-			}else{
-				break;
-			}
-		}
+        for (TGMeasureHeader nextHeader : getMeasureHeadersAfter(header.getNumber() - 1)) {
+            if (toEnd || nextHeader.getTempo().getValue() == oldValue) {
+                changeTempo(nextHeader, tempo);
+            } else {
+                break;
+            }
+        }
 	}
 	
 	public void changeTempo(TGMeasureHeader header,TGTempo tempo){
@@ -815,17 +808,13 @@ public class TGSongManager {
 	
 	public void moveMeasureHeaders(List<TGMeasureHeader> headers,long theMove,int numberMove,boolean moveComponents) {
 		if(moveComponents){
-			Iterator<TGMeasureHeader> it = headers.iterator();
-			while(it.hasNext()){
-				TGMeasureHeader header = it.next();
-				moveMeasureComponents(header,theMove);
-			}
+            for (TGMeasureHeader header : headers) {
+                moveMeasureComponents(header, theMove);
+            }
 		}
-		Iterator<TGMeasureHeader> it = headers.iterator();
-		while (it.hasNext()) {
-			TGMeasureHeader header = it.next();
-			moveMeasureHeader(header,theMove,numberMove);
-		}
+        for (TGMeasureHeader header : headers) {
+            moveMeasureHeader(header, theMove, numberMove);
+        }
 	}
 	
 	/**
@@ -990,7 +979,7 @@ public class TGSongManager {
 	}
 	
 	public List<TGString> createDefaultInstrumentStrings(){
-		List<TGString> strings = new ArrayList(6);
+		List<TGString> strings = new ArrayList<TGString>(6);
 		strings.add(newString(factory,1, 64));
 		strings.add(newString(factory,2, 59));
 		strings.add(newString(factory,3, 55));

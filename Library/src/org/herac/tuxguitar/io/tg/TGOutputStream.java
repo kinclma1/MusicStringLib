@@ -138,11 +138,9 @@ public class TGOutputStream extends TGStream implements TGOutputStreamBase{
 		writeByte(track.getStrings().size());
 
 		//escribo las cuerdas
-		Iterator stringIt  = track.getStrings().iterator();
-		while(stringIt.hasNext()){
-			TGString string = (TGString)stringIt.next();
-			writeInstrumentString(string);
-		}
+        for (TGString string : track.getStrings()) {
+            writeInstrumentString(string);
+        }
 		
 		//escribo el offset
 		writeByte(track.getOffset() - TGTrack.MIN_OFFSET);
@@ -542,33 +540,27 @@ public class TGOutputStream extends TGStream implements TGOutputStreamBase{
 	private void writeBendEffect(TGEffectBend effect){
 		//escribo la cantidad de puntos
 		writeByte(effect.getPoints().size());
-		
-		Iterator it = effect.getPoints().iterator();
-		while(it.hasNext()){
-			TGEffectBend.BendPoint point = (TGEffectBend.BendPoint)it.next();
-			
-			//escribo la posicion
-			writeByte(point.getPosition());
-			
-			//escribo el valor
-			writeByte(point.getValue());
-		}
+
+        for (TGEffectBend.BendPoint point : effect.getPoints()) {
+            //escribo la posicion
+            writeByte(point.getPosition());
+
+            //escribo el valor
+            writeByte(point.getValue());
+        }
 	}
 	
 	private void writeTremoloBarEffect(TGEffectTremoloBar effect){
 		//escribo la cantidad de puntos
 		writeByte(effect.getPoints().size());
-		
-		Iterator it = effect.getPoints().iterator();
-		while(it.hasNext()){
-			TGEffectTremoloBar.TremoloBarPoint point = (TGEffectTremoloBar.TremoloBarPoint)it.next();
-			
-			//escribo la posicion
-			writeByte(point.getPosition());
-			
-			//escribo el valor
-			writeByte( (point.getValue() + TGEffectTremoloBar.MAX_VALUE_LENGTH) );
-		}
+
+        for (TGEffectTremoloBar.TremoloBarPoint point : effect.getPoints()) {
+            //escribo la posicion
+            writeByte(point.getPosition());
+
+            //escribo el valor
+            writeByte((point.getValue() + TGEffectTremoloBar.MAX_VALUE_LENGTH));
+        }
 	}
 	
 	private void writeHarmonicEffect(TGEffectHarmonic effect){

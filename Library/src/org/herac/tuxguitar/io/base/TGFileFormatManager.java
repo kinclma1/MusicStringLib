@@ -117,7 +117,7 @@ public class TGFileFormatManager {
         return exporters.iterator();
     }
 
-    public List getInputFormats() {
+    public List<TGFileFormat> getInputFormats() {
         List<TGFileFormat> formats = new ArrayList<TGFileFormat>();
         Iterator<TGInputStreamBase> it = getInputStreams();
         while (it.hasNext()) {
@@ -143,10 +143,8 @@ public class TGFileFormatManager {
         return formats;
     }
 
-    private boolean existsFormat(TGFileFormat format, List formats) {
-        Iterator<TGFileFormat> it = formats.iterator();
-        while (it.hasNext()) {
-            TGFileFormat comparator = it.next();
+    private boolean existsFormat(TGFileFormat format, List<TGFileFormat> formats) {
+        for (TGFileFormat comparator : formats) {
             if (comparator.getName().equals(format.getName()) || comparator.getSupportedFormats().equals(format.getSupportedFormats())) {
                 return true;
             }

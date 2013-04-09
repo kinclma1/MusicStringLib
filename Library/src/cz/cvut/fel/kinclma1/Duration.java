@@ -1,11 +1,7 @@
 package cz.cvut.fel.kinclma1;
 
 /**
- * Created with IntelliJ IDEA.
- * User: void
- * Date: 24.9.12
- * Time: 19:26
- * To change this template use File | Settings | File Templates.
+ * Enum of base durations allowed in music string
  */
 public enum Duration {
     WHOLE,
@@ -17,6 +13,10 @@ public enum Duration {
     SIXTY_FOURTH,
     ONE_TWENTY_EIGHTH;
 
+    /**
+     * Returns a single character string representation of the duration
+     * @return Single character string representation of the duration
+     */
     @Override
     public String toString() {
         switch (this) {
@@ -41,6 +41,10 @@ public enum Duration {
         }
     }
 
+    /**
+     * Returns an int value of the duration
+     * @return Int value of the duration
+     */
     public int toInteger() {
         switch (this) {
             case WHOLE:

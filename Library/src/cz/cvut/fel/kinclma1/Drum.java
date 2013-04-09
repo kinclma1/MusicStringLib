@@ -1,11 +1,7 @@
 package cz.cvut.fel.kinclma1;
 
 /**
- * Created with IntelliJ IDEA.
- * User: void
- * Date: 24.9.12
- * Time: 20:20
- * To change this template use File | Settings | File Templates.
+ * Enumeration of MIDI percussion instruments
  */
 public enum Drum {
     ACOUSTIC_BASS_DRUM, BASS_DRUM, SIDE_STICK, ACOUSTIC_SNARE,
@@ -19,6 +15,11 @@ public enum Drum {
     SHORT_GUIRO, LONG_GUIRO, CLAVES, HI_WOOD_BLOCK, LOW_WOOD_BLOCK,
     MUTE_CUICA, OPEN_CUICA, MUTE_TRIANGLE, OPEN_TRIANGLE;
 
+    /**
+     * Returns an enum item with the given name
+     * @param drum Name of the percussion instrument
+     * @return Enum item with the given name
+     */
     public static Drum fromString(String drum) {
         for (Drum d : Drum.values()) {
             if (d.toString().equals(drum)) {
@@ -28,14 +29,27 @@ public enum Drum {
         return null;
     }
 
+    /**
+     * Returns a music string representation of the instrument
+     * @return Music string representation of the instrument
+     */
     public String toMusicString() {
         return String.format("[%1$s]", toString());
     }
 
+    /**
+     * Returns an enum item with the given MIDI number
+     * @param value MIDI number of the instrument
+     * @return Enum item with the given MIDI number
+     */
     public static Drum fromInt(int value) {
         return Drum.values()[value - 35];
     }
 
+    /**
+     * Returns the MIDI number of the instrument
+     * @return MIDI number of the instrument
+     */
     public int toInteger() {
         return ordinal() + 35;
     }

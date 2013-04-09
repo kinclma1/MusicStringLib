@@ -182,11 +182,9 @@ public class TGTrackManager {
 	}
 	
 	public void moveOutOfBoundsBeatsToNewMeasure(TGTrack track, long start){
-		Iterator<TGMeasure> it = getMeasuresBeforeEnd(track,start).iterator();
-		while( it.hasNext() ){
-			TGMeasure measure = it.next();
+        for (TGMeasure measure : getMeasuresBeforeEnd(track, start)) {
             songManager.getMeasureManager().moveOutOfBoundsBeatsToNewMeasure(measure);
-		}
+        }
 	}
 	
 	public void moveTrackBeats(TGTrack track, long measureStart, long moveStart, long theMove ){
@@ -217,11 +215,9 @@ public class TGTrackManager {
 		
 		if(toEnd){
 			List<TGMeasure> measures = getMeasuresBeforeEnd(track,measure.getStart() + 1);
-			Iterator<TGMeasure> it = measures.iterator();
-			while(it.hasNext()){
-				TGMeasure nextMeasure = it.next();
-				nextMeasure.setKeySignature(keySignature);
-			}
+            for (TGMeasure nextMeasure : measures) {
+                nextMeasure.setKeySignature(keySignature);
+            }
 		}
 	}
 	
@@ -238,11 +234,9 @@ public class TGTrackManager {
 		
 		if(toEnd){
 			List<TGMeasure> measures = getMeasuresBeforeEnd(track,measure.getStart() + 1);
-			Iterator<TGMeasure> it = measures.iterator();
-			while(it.hasNext()){
-				TGMeasure nextMeasure = it.next();
-				nextMeasure.setClef(clef);
-			}
+            for (TGMeasure nextMeasure : measures) {
+                nextMeasure.setClef(clef);
+            }
 		}
 	}
 	

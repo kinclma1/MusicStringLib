@@ -48,7 +48,7 @@ public class Pattern implements Serializable {
     /**
      * Returns an array of strings representing each token in the Pattern.
      *
-     * @return
+     * @return array of strings representing each token in the Pattern
      */
     public String[] getTokens() {
         return musicString.split("\\s+");

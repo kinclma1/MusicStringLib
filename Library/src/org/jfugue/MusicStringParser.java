@@ -70,7 +70,7 @@ public final class MusicStringParser extends Parser {
      * </p>
      *
      * @param pattern the <code>Pattern</code> to parse
-     * @throws Exception if there is an error parsing the pattern
+     * @throws JFugueException if there is an error parsing the pattern
      */
     public void parse(Pattern pattern) throws JFugueException {
         String[] tokens = pattern.getTokens();
@@ -1381,6 +1381,7 @@ public final class MusicStringParser extends Parser {
 
         MusicStringParser parser = new MusicStringParser();
         ParserListener renderer = new ParserListenerAdapter() {
+            @Override
             public void noteEvent(Note note) {
                 rootNote.setValue(note.getValue());
                 rootNote.setDuration(note.getDuration());

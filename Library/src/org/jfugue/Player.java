@@ -97,6 +97,7 @@ public class Player {
     private void setStopWhenFinished(MusicStringPlayer player) {
         final MusicStringPlayer player1 = player;
         sequencer.addMetaEventListener(new MetaEventListener() {
+            @Override
             public void meta(MetaMessage event) {
                 if (event.getType() == 47) {
                     player1.stop();
@@ -108,6 +109,7 @@ public class Player {
     private void setCloseWhenFinished() {
         // Close the sequencer and synthesizer
         sequencer.addMetaEventListener(new MetaEventListener() {
+            @Override
             public void meta(MetaMessage event) {
                 if (event.getType() == 47) {
                     close();

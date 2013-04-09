@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TGTrackSegment {
-	private int track;
-	private List<TGMeasure> measures;
+	private final int track;
+	private final List<TGMeasure> measures;
 	
 	public TGTrackSegment(int track,List<TGMeasure> measures){
 		this.track = track;
@@ -25,7 +25,7 @@ public class TGTrackSegment {
 	}
 	
 	public TGTrackSegment clone(TGFactory factory,List<TGMeasureHeader> headers){
-		List<TGMeasure> measures = new ArrayList();
+		List<TGMeasure> measures = new ArrayList<TGMeasure>(this.measures.size());
 		for(int i = 0;i < this.measures.size();i++){
 			TGMeasure measure = this.measures.get(i);
 			measures.add(measure.clone(factory, headers.get(i)));

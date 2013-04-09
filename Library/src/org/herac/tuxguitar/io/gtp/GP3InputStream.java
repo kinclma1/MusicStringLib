@@ -49,7 +49,7 @@ public class GP3InputStream extends GTPInputStream {
 		
 		readInt(); //key
 		
-		List channels = readChannels();
+		List<TGChannel> channels = readChannels();
 		
 		int measures = readInt();
 		int tracks = readInt();
@@ -63,8 +63,8 @@ public class GP3InputStream extends GTPInputStream {
 		return song;
 	}
 	
-	private List readChannels() throws IOException{
-		List channels = new ArrayList();
+	private List<TGChannel> readChannels() throws IOException{
+		List<TGChannel> channels = new ArrayList<TGChannel>();
 		for (int i = 0; i < 64; i++) {
 			TGChannel channel = getFactory().newChannel();
 			channel.setChannel((short)i);
@@ -104,7 +104,7 @@ public class GP3InputStream extends GTPInputStream {
 		}
 	}
 	
-	private void readTracks(TGSong song, int count, List channels) throws IOException{
+	private void readTracks(TGSong song, int count, List<TGChannel> channels) throws IOException{
 		for (int number = 1; number <= count; number++) {
 			song.addTrack(readTrack(number, channels));
 		}
@@ -323,7 +323,7 @@ public class GP3InputStream extends GTPInputStream {
 		return note;
 	}
 	
-	private TGTrack readTrack(int number, List channels) throws IOException {
+	private TGTrack readTrack(int number, List<TGChannel> channels) throws IOException {
 		TGTrack track = getFactory().newTrack();
 		track.setNumber(number);
 		readUnsignedByte();
@@ -346,11 +346,11 @@ public class GP3InputStream extends GTPInputStream {
 		return track;
 	}
 	
-	private void readChannel(TGChannel channel,List channels) throws IOException {
+	private void readChannel(TGChannel channel,List<TGChannel> channels) throws IOException {
 		int index = (readInt() - 1);
 		int effectChannel = (readInt() - 1);
 		if(index >= 0 && index < channels.size()){
-			((TGChannel) channels.get(index)).copy(channel);
+			(channels.get(index)).copy(channel);
 			if (channel.getInstrument() < 0) {
 				channel.setInstrument((short)0);
 			}
@@ -576,13 +576,11 @@ public class GP3InputStream extends GTPInputStream {
 	
 	private int getClef( TGTrack track ){
 		if( !track.isPercussionTrack() ){
-			Iterator it = track.getStrings().iterator();
-			while( it.hasNext() ){
-				TGString string = (TGString) it.next();
-				if( string.getValue() <= 34 ){
-					return TGMeasure.CLEF_BASS;
-				}
-			}
+            for (TGString string : track.getStrings()) {
+                if (string.getValue() <= 34) {
+                    return TGMeasure.CLEF_BASS;
+                }
+            }
 		}
 		return TGMeasure.CLEF_TREBLE;
 	}

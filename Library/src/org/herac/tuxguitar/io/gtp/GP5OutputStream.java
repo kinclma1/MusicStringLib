@@ -84,7 +84,7 @@ public class GP5OutputStream extends GTPOutputStream {
 	}
 	
 	private void writeInfo(TGSong song) throws IOException{
-		List comments = toCommentLines(song.getComments());
+		List<String> comments = toCommentLines(song.getComments());
 		writeStringByteSizeOfInteger(song.getName());
 		writeStringByteSizeOfInteger("");
 		writeStringByteSizeOfInteger(song.getArtist());
@@ -95,16 +95,16 @@ public class GP5OutputStream extends GTPOutputStream {
 		writeStringByteSizeOfInteger(song.getWriter());
 		writeStringByteSizeOfInteger("");
 		writeInt( comments.size() );
-		for (int i = 0; i < comments.size(); i++) {
-			writeStringByteSizeOfInteger( (String)comments.get(i) );
-		}
+        for (String comment : comments) {
+            writeStringByteSizeOfInteger(comment);
+        }
 	}
 	
 	private void writeLyrics(TGSong song) throws IOException{
 		TGTrack lyricTrack = null;
-		Iterator it = song.getTracks();
+		Iterator<TGTrack> it = song.getTracks();
 		while(it.hasNext()){
-			TGTrack track = (TGTrack)it.next();
+			TGTrack track = it.next();
 			if(!track.getLyrics().isEmpty()){
 				lyricTrack = track;
 				break;
@@ -130,25 +130,25 @@ public class GP5OutputStream extends GTPOutputStream {
 		
 		writeByte( ( byte )0xff ); // View flags
 		writeByte( ( byte )0x01 ); // View flags
-		
-		for (int i = 0; i < PAGE_SETUP_LINES.length; i++) {
-			writeInt( (PAGE_SETUP_LINES[i].length() + 1) );
-			writeStringByte(PAGE_SETUP_LINES[i],0);
-		}
+
+        for (String PAGE_SETUP_LINE : PAGE_SETUP_LINES) {
+            writeInt((PAGE_SETUP_LINE.length() + 1));
+            writeStringByte(PAGE_SETUP_LINE, 0);
+        }
 	}
 	
 	private void writeChannels(TGSong song) throws IOException{
 		TGChannel[] channels = makeChannels(song);
-		for (int i = 0; i < channels.length; i++) {
-			writeInt(channels[i].getInstrument());
-			writeByte(toChannelByte(channels[i].getVolume()));
-			writeByte(toChannelByte(channels[i].getBalance()));
-			writeByte(toChannelByte(channels[i].getChorus()));
-			writeByte(toChannelByte(channels[i].getReverb()));
-			writeByte(toChannelByte(channels[i].getPhaser()));
-			writeByte(toChannelByte(channels[i].getTremolo()));
-			writeBytes(new byte[]{0,0});
-		}
+        for (TGChannel channel : channels) {
+            writeInt(channel.getInstrument());
+            writeByte(toChannelByte(channel.getVolume()));
+            writeByte(toChannelByte(channel.getBalance()));
+            writeByte(toChannelByte(channel.getChorus()));
+            writeByte(toChannelByte(channel.getReverb()));
+            writeByte(toChannelByte(channel.getPhaser()));
+            writeByte(toChannelByte(channel.getTremolo()));
+            writeBytes(new byte[]{0, 0});
+        }
 	}
 	
 	private void writeMeasureHeaders(TGSong song) throws IOException {
@@ -273,7 +273,7 @@ public class GP5OutputStream extends GTPOutputStream {
 	
 	private void writeMeasure(TGMeasure measure, boolean changeTempo) throws IOException {
 		for(int v = 0; v < 2 ; v ++){
-			List voices = new ArrayList();
+			List<TGVoice> voices = new ArrayList<TGVoice>();
 			for (int m = 0; m < measure.countBeats(); m ++) {
 				TGBeat beat = measure.getBeat( m );
 				if( v < beat.countVoices() ){
@@ -286,7 +286,7 @@ public class GP5OutputStream extends GTPOutputStream {
 			if(!voices.isEmpty()){
 				writeInt( voices.size() );
 				for( int i = 0; i < voices.size() ; i ++ ){
-					TGVoice voice = (TGVoice) voices.get( i );
+					TGVoice voice = voices.get( i );
 					writeBeat(voice, voice.getBeat(), measure, ( changeTempo && i == 0 ) );					
 				}
 			}else{
@@ -707,9 +707,9 @@ public class GP5OutputStream extends GTPOutputStream {
 			channels[i].setTremolo((short)0);
 		}
 		
-		Iterator it = song.getTracks();
+		Iterator<TGTrack> it = song.getTracks();
 		while (it.hasNext()) {
-			TGTrack track = (TGTrack) it.next();
+			TGTrack track = it.next();
 			channels[track.getChannel().getChannel()].setInstrument(track.getChannel().getInstrument());
 			channels[track.getChannel().getChannel()].setVolume(track.getChannel().getVolume());
 			channels[track.getChannel().getChannel()].setBalance(track.getChannel().getBalance());
@@ -761,8 +761,8 @@ public class GP5OutputStream extends GTPOutputStream {
 		return  (byte) ((s + 1) / 8);
 	}
 	
-	private List toCommentLines( String comments ){
-		List lines = new ArrayList();
+	private List<String> toCommentLines( String comments ){
+		List<String> lines = new ArrayList<String>();
 		
 		String line = comments;
 		while( line.length() > Byte.MAX_VALUE ) {

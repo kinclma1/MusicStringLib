@@ -88,7 +88,8 @@ public class TestListener1 extends JFrame implements PlayerListener {
         label.setText(String.valueOf(position));
     }
 
+    @Override
     public void close() {
-        this.dispose();
+        dispose();
     }
 }

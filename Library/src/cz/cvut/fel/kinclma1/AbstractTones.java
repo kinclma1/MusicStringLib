@@ -5,26 +5,35 @@ import cz.cvut.fel.kinclma1.tonefilters.*;
 import java.util.*;
 
 /**
- * Created with IntelliJ IDEA.
- * User: void
- * Date: 31.1.13
- * Time: 21:10
- * To change this template use File | Settings | File Templates.
+ * Abstract class implementing all methods needed by any InstrumentTones filter class
  */
 public abstract class AbstractTones implements InstrumentTones {
 
-    protected Map<String, Set<MusicStringTone>> tones;
+    private Map<String, Set<MusicStringTone>> tones;
 
+    /**
+     * Creates tone filter from an array of MusicStringTone string representations
+     * @param toneStrings array of MusicStringTone string representations
+     */
     protected AbstractTones(String[] toneStrings) {
         initToneMap();
         setTones(toneStrings);
     }
 
+    /**
+     * Creates tone filter from a list of MusicStringTones
+     * @param toneList list of tones to be used by the filter
+     */
     protected AbstractTones(List<MusicStringTone> toneList) {
         initToneMap();
         setToneList(toneList);
     }
 
+    /**
+     * Creates a tone filter using a range of MusicStringTones from min to max
+     * @param min Lowest filter tone
+     * @param max Highest filter tone
+     */
     protected AbstractTones(MusicStringTone min, MusicStringTone max) {
         initToneMap();
         setRange(min,max);
@@ -61,6 +70,12 @@ public abstract class AbstractTones implements InstrumentTones {
         }
     }
 
+    /**
+     * Returns a FlatTrack containing the intersection of original tones and filter tones in all octaves of the filter
+     * @param orig Original flat track containing tones without octave numbers
+     * @return New flat track containing the intersection of original tones and filter tones in all octaves of the filter
+     */
+    @Override
     public FlatTrack filterTones(FlatTrack orig) {
 
         Iterator<HashSet<String>> iterator = orig.getIterator();

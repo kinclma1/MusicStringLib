@@ -3,11 +3,7 @@ package cz.cvut.fel.kinclma1.tonefilters;
 import cz.cvut.fel.kinclma1.AbstractTones;
 
 /**
- * Created with IntelliJ IDEA.
- * User: void
- * Date: 25.2.13
- * Time: 1:07
- * To change this template use File | Settings | File Templates.
+ * Tones playable on a richter-tuned A scale harmonica
  */
 public class HarmonicaATones extends AbstractTones {
     public HarmonicaATones() {

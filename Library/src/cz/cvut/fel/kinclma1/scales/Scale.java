@@ -6,21 +6,25 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created with IntelliJ IDEA.
- * User: void
- * Date: 6.3.13
- * Time: 22:52
- * To change this template use File | Settings | File Templates.
+ * Abstract music scale class containig variables and methods common to all scales
  */
 public abstract class Scale {
     protected final String[] tones;
     protected int[] definingTones;
     protected int[] scaleTones;
 
+    /**
+     * Initialises chromatic tones
+     */
     protected Scale() {
         tones = new String[]{"C","C#","D","D#","E","F","F#","G","G#","A","A#","B"};
     }
 
+    /**
+     * Returns all scale tones if the given tones match this scale, or null if not
+     * @param played Set of notes played in the beat
+     * @return Whole matching scale or null
+     */
     public Set<String> getMatch(Set<String> played) {
         Set<String> scale = null;
         for (int i = 0; i < tones.length && scale == null; i ++) {

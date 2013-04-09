@@ -4,11 +4,7 @@ import cz.cvut.fel.kinclma1.AbstractTones;
 import cz.cvut.fel.kinclma1.MusicStringTone;
 
 /**
- * Created with IntelliJ IDEA.
- * User: void
- * Date: 24.2.13
- * Time: 23:54
- * To change this template use File | Settings | File Templates.
+ * Tones playable on a 7 string guitar
  */
 public class Guitar7Tones extends AbstractTones {
 

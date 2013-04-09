@@ -1,11 +1,7 @@
 package cz.cvut.fel.kinclma1;
 
 /**
- * Created with IntelliJ IDEA.
- * User: void
- * Date: 24.9.12
- * Time: 20:35
- * To change this template use File | Settings | File Templates.
+ * Enum of the MIDI instruments
  */
 public enum Instrument {
     PIANO, BRIGHT_ACOUSTIC, ELECTRIC_GRAND, HONKEY_TONK,
@@ -40,14 +36,27 @@ public enum Instrument {
         return ordinal() == 103 ? "SCI-FI" : super.toString();
     }
 
+    /**
+     * Returns a music string to set a track's instrument
+     * @return Music string to set a track's instrument
+     */
     public String toMusicString() {
         return String.format("I[%1$s] ", toString());
     }
 
+    /**
+     * Returns an instrument with the given MIDI number
+     * @param instrument MIDI number of the instrument
+     * @return Instrument with the given MIDI number
+     */
     public static Instrument fromInt(int instrument) {
         return Instrument.values()[instrument];
     }
 
+    /**
+     * Returns the MIDI number of the instrument
+     * @return MIDI number of the instrument
+     */
     public int toInteger() {
         return ordinal();
     }

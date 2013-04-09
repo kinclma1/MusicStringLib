@@ -87,9 +87,9 @@ public class MusicStringTrack {
     MusicStringTrack(int channel, Instrument instrument, String music, MusicStringTrack refTrack) {
         this.channel = channel;
         this.instrument = instrument;
-        this.tempoTracker = new TempoTracker();
-        this.drumTrack = false;
-        this.measures = new ArrayList<MusicStringMeasure>(refTrack.measures.size());
+        tempoTracker = new TempoTracker();
+        drumTrack = false;
+        measures = new ArrayList<MusicStringMeasure>(refTrack.measures.size());
         metaInfo = buildMeta();
         id = buildId();
 

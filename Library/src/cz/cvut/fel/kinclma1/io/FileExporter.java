@@ -14,14 +14,17 @@ import java.io.IOException;
 import java.util.Iterator;
 
 /**
- * Created with IntelliJ IDEA.
- * User: void
- * Date: 11.11.12
- * Time: 22:34
- * To change this template use File | Settings | File Templates.
+ * Helper class for exporting TGSong objects to files
  */
 public class FileExporter {
 
+    /**
+     * Exports TGSong object to a file with a given path, name and extension (standard path format)
+     * @param song TGSong to be exported
+     * @param filename Path to which it should be saved
+     * @throws IOException
+     * @throws TGFileFormatException
+     */
     public void exportSong(TGSong song, String filename) throws IOException, TGFileFormatException {
         String extension = filename.substring(filename.lastIndexOf('.'));
         BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(filename));

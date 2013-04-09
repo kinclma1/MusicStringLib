@@ -97,27 +97,33 @@ public final class MidiRenderer extends ParserListenerAdapter {
     // ParserListener methods
     ////////////////////////////
 
+    @Override
     public void voiceEvent(byte voice) {
         eventManager.setCurrentTrack(voice);
     }
 
+    @Override
     public void tempoEvent(int tempo) {
         byte[] threeTempoBytes = TimeFactor.convertToThreeTempoBytes(tempo);
         eventManager.addMetaMessage(0x51, threeTempoBytes);
     }
 
+    @Override
     public void instrumentEvent(byte instrument) {
         eventManager.addEvent(ShortMessage.PROGRAM_CHANGE, instrument, 0);
     }
 
+    @Override
     public void measureEvent() {
         // No MIDI is generated when a measure indicator is identified.
     }
 
+    @Override
     public void channelPressureEvent(byte channelPressure) {
         eventManager.addEvent(ShortMessage.CHANNEL_PRESSURE, channelPressure);
     }
 
+    @Override
     public void noteEvent(Note note) {
         // Remember the current track time, so we can flip back to it
         // if there are other notes to play in parallel
@@ -140,6 +146,7 @@ public final class MidiRenderer extends ParserListenerAdapter {
         }
     }
 
+    @Override
     public void sequentialNoteEvent(Note note) {
         long duration = note.getDuration();
         if (note.isRest()) {
@@ -151,6 +158,7 @@ public final class MidiRenderer extends ParserListenerAdapter {
         }
     }
 
+    @Override
     public void parallelNoteEvent(Note note) {
         long duration = note.getDuration();
         eventManager.setTrackTimer(initialNoteTime);

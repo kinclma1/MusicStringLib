@@ -4,11 +4,7 @@ import cz.cvut.fel.kinclma1.AbstractTones;
 import cz.cvut.fel.kinclma1.MusicStringTone;
 
 /**
- * Created with IntelliJ IDEA.
- * User: void
- * Date: 26.2.13
- * Time: 0:32
- * To change this template use File | Settings | File Templates.
+ * One octave medium tones for test purposes
  */
 public class TestTones extends AbstractTones {
     public TestTones() {

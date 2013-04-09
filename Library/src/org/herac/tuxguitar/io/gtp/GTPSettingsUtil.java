@@ -113,13 +113,9 @@ public class GTPSettingsUtil {
 //		DialogUtils.openDialog(dialog,DialogUtils.OPEN_STYLE_CENTER | DialogUtils.OPEN_STYLE_PACK | DialogUtils.OPEN_STYLE_WAIT);
 //	}
 	
-	private List getAvailableCharsets(){
-		List charsets = new ArrayList();
-		Iterator it = Charset.availableCharsets().entrySet().iterator();
-		while( it.hasNext() ){
-			Map.Entry entry = (Map.Entry) it.next();
-			charsets.add(entry.getKey());
-		}
+	private List<String> getAvailableCharsets(){
+		List<String> charsets = new ArrayList<String>();
+        charsets.addAll(Charset.availableCharsets().keySet());
 		return charsets;
 	}
 }

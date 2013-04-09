@@ -11,11 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
- * User: void
- * Date: 14.9.12
- * Time: 23:20
- * To change this template use File | Settings | File Templates.
+ * Measure of a MusicStringTrack
  */
 class MusicStringMeasure {
     private int tempo;

@@ -1,12 +1,13 @@
 package cz.cvut.fel.kinclma1;
 
 /**
- * Created with IntelliJ IDEA.
- * User: void
- * Date: 15.3.13
- * Time: 3:16
- * To change this template use File | Settings | File Templates.
+ * Public interface of tone filters
  */
 public interface InstrumentTones {
+    /**
+     * Returns a FlatTrack containing the intersection of original tones and filter tones in all octaves of the filter
+     * @param original Original flat track containing tones without octave numbers
+     * @return New flat track containing the intersection of original tones and filter tones in all octaves of the filter
+     */
     public FlatTrack filterTones(FlatTrack original);
 }

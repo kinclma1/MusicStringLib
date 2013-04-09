@@ -1,11 +1,7 @@
 package cz.cvut.fel.kinclma1.scales;
 
 /**
- * Created with IntelliJ IDEA.
- * User: void
- * Date: 7.3.13
- * Time: 0:30
- * To change this template use File | Settings | File Templates.
+ * Definition of the Aeolian music scale
  */
 public class AeolianScale extends Scale {
 

@@ -266,7 +266,7 @@ public final class Note implements Serializable {
     /**
      * Sets whether this Note will have other Notes (sequential or parallel) associated with it.
      *
-     * @param accompanying
+     * @param accompanying flag setting whether this Note will have other Notes (sequential or parallel) associated with it
      */
     public void setHasAccompanyingNotes(boolean accompanying) {
         accompanyingNotes = accompanying;
@@ -333,8 +333,8 @@ public final class Note implements Serializable {
      * Returns the frequency, in Hertz, for the given note value.
      * For example, the frequency for A5 (MIDI note 69) is 440.0
      *
-     * @param noteValue
-     * @return
+     * @param noteValue the note MIDI number
+     * @return the frequency
      */
     public static double getFrequencyForNote(int noteValue) {
         double freq = 0.0;

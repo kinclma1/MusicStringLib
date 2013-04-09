@@ -38,6 +38,7 @@ public class ParserListenerAdapter implements ParserListener {
      *
      * @param voice the event that has been parsed
      */
+    @Override
     public void voiceEvent(byte voice) {
     }
 
@@ -46,6 +47,7 @@ public class ParserListenerAdapter implements ParserListener {
      *
      * @param tempo the event that has been parsed
      */
+    @Override
     public void tempoEvent(int tempo) {
     }
 
@@ -54,12 +56,14 @@ public class ParserListenerAdapter implements ParserListener {
      *
      * @param instrument the event that has been parsed
      */
+    @Override
     public void instrumentEvent(byte instrument) {
     }
 
     /**
      * Called when the parser encounters a measure event.
      */
+    @Override
     public void measureEvent() {
     }
 
@@ -68,6 +72,7 @@ public class ParserListenerAdapter implements ParserListener {
      *
      * @param channelPressure the event that has been parsed
      */
+    @Override
     public void channelPressureEvent(byte channelPressure) {
     }
 
@@ -77,6 +82,7 @@ public class ParserListenerAdapter implements ParserListener {
      * @param note the event that has been parsed
      * @see Note
      */
+    @Override
     public void noteEvent(Note note) {
     }
 
@@ -86,6 +92,7 @@ public class ParserListenerAdapter implements ParserListener {
      * @param note the event that has been parsed
      * @see Note
      */
+    @Override
     public void sequentialNoteEvent(Note note) {
     }
 
@@ -95,6 +102,7 @@ public class ParserListenerAdapter implements ParserListener {
      * @param note the event that has been parsed
      * @see Note
      */
+    @Override
     public void parallelNoteEvent(Note note) {
     }
 }

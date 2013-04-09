@@ -6,11 +6,7 @@ import org.herac.tuxguitar.song.models.*;
 import java.util.*;
 
 /**
- * Created with IntelliJ IDEA.
- * User: void
- * Date: 14.9.12
- * Time: 23:20
- * To change this template use File | Settings | File Templates.
+ * Single beat of a MusicStringTrack
  */
 class MusicStringBeat {
 
@@ -18,6 +14,12 @@ class MusicStringBeat {
 
     private MusicStringDuration duration;
 
+    /**
+     * Creates a MusicStringBeat from the given TGBeat
+     * @param tgBeat Beat of the TGSong
+     * @param drumTrack Flag to determine whether to create a beat of a drum track or an ordinary one
+     * @throws UnsupportedOperationException when the input contains triplets
+     */
     public MusicStringBeat(TGBeat tgBeat, boolean drumTrack) {
         TGVoice voice;
         if(tgBeat.isRestBeat()) {
@@ -39,6 +41,11 @@ class MusicStringBeat {
         }
     }
 
+    /**
+     * Parses a music string beat
+     * @param strBeat music string beat
+     * @param drumTrack Flag to determine whether to parse a beat of a drum track or an ordinary one
+     */
     public MusicStringBeat(String strBeat, boolean drumTrack) {
         duration = new MusicStringDuration(strBeat, 1);
         if (strBeat.charAt(0) == 'R') {
@@ -110,6 +117,12 @@ class MusicStringBeat {
         return sb.toString();
     }
 
+    /**
+     * Returns a TGBeat equivalent of this
+     * @param factory Universal TuxGuitar factory
+     * @param measure TGMeasure in which to add the beat
+     * @return TGBeat equivalent of this
+     */
     public TGBeat toTGBeat(TGFactory factory, TGMeasure measure) {
         TGBeat beat = factory.newBeat();
         TGVoice voice = beat.getVoice(0);
@@ -143,10 +156,18 @@ class MusicStringBeat {
         }
     }
 
+    /**
+     * Returns proportional duration number
+     * @return Proportional duration number
+     */
     int getDurationDiv128() {
         return duration.toIntegerDiv128();
     }
 
+    /**
+     * Returns lowest tone in the beat int value
+     * @return lowest tone in the beat int value
+     */
     int getLowestTone() {
         int lowest = Integer.MAX_VALUE;
         int current;
@@ -159,16 +180,28 @@ class MusicStringBeat {
         return lowest;
     }
 
+    /**
+     * Returns number of notes in the beat
+     * @return number of notes in the beat
+     */
     int countTones() {
         return content.size();
     }
 
+    /**
+     * Returns shortest duration - duration resolution
+     * @return shortest duration - duration resolution
+     */
     MusicStringDuration getShortestNote() {
         return duration.shortest();
     }
 
+    /**
+     * Returns a set of string representations of the beat elements
+     * @return set of string representations of the beat elements
+     */
     HashSet<String> getToneSet() {
-        HashSet<String> toneSet = new HashSet<String>();
+        HashSet<String> toneSet = new HashSet<String>(content.size());
             for (BeatElement element : content) {
                 toneSet.add(element.getTone());
             }

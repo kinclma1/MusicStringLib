@@ -1,11 +1,7 @@
 package cz.cvut.fel.kinclma1.exceptions;
 
 /**
- * Created with IntelliJ IDEA.
- * User: void
- * Date: 10.3.13
- * Time: 22:46
- * To change this template use File | Settings | File Templates.
+ * Exception thrown when trying to add a track to a song and the length of measures does not match
  */
 public class IncompatibleTrackException extends RuntimeException {
     public IncompatibleTrackException(String message) {

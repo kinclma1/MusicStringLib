@@ -16,7 +16,7 @@ public class GTPPluginList extends TGPluginList {
     protected List<TGPlugin> getPlugins() {
 //		GTPSettingsUtil.instance().load();
 		
-		List<TGPlugin> plugins = new ArrayList();
+		List<TGPlugin> plugins = new ArrayList<TGPlugin>();
 		plugins.add(new TGInputStreamPlugin() {
 			@Override
             protected TGInputStreamBase getInputStream() {

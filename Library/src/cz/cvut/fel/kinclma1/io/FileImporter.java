@@ -15,15 +15,28 @@ import java.io.*;
 import java.util.Iterator;
 
 /**
- *
- * @author void
+ * Helper class to import files to a TGSong object
  */
 public class FileImporter {
 
+    /**
+     * Imports file from the given path
+     * @param fileName path to the file to be imported
+     * @return TGSong object created from the input file
+     * @throws IOException
+     * @throws TGFileFormatException
+     */
     public TGSong importFile(String fileName) throws IOException, TGFileFormatException {
         return importFile(new File(fileName));
     }
 
+    /**
+     * Imports file determined by the given File object
+     * @param file File object determining the input file
+     * @return TGSong object created from the input file
+     * @throws IOException
+     * @throws TGFileFormatException
+     */
     public TGSong importFile(File file) throws IOException, TGFileFormatException {
         TGSongManager manager = new TGSongManager();
         TGSong song;

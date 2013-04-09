@@ -41,9 +41,9 @@ public class GPXDocumentParser {
 	}
 	
 	private void parseTracks(TGSong tgSong){
-		List tracks = document.getTracks();
+		List<GPXTrack> tracks = document.getTracks();
 		for( int i = 0 ; i < tracks.size(); i ++ ){
-			GPXTrack gpTrack = (GPXTrack) document.getTracks().get(i);
+			GPXTrack gpTrack = document.getTracks().get(i);
 			
 			TGTrack tgTrack = factory.newTrack();
 			tgTrack.setNumber( i + 1 );
@@ -342,17 +342,15 @@ public class GPXDocumentParser {
 			TGString string = (TGString)strings.get(i);
 			if(value >= string.getValue()){
 				boolean emptyString = true;
-				
+
 				for(int v = 0; v < tgBeat.countVoices(); v ++){
 					TGVoice voice = tgBeat.getVoice( v );
-					Iterator it = voice.getNotes().iterator();
-					while (it.hasNext()) {
-						TGNote note = (TGNote) it.next();
-						if (note.getString() == string.getNumber()) {
-							emptyString = false;
-							break;
-						}
-					}
+                    for (TGNote note : voice.getNotes()) {
+                        if (note.getString() == string.getNumber()) {
+                            emptyString = false;
+                            break;
+                        }
+                    }
 				}
 				if(emptyString){
 					return string;

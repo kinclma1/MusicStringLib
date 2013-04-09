@@ -56,7 +56,7 @@ public class MusicStringSong {
     }
 
     private Map<String, MusicStringTrack> tracks = new HashMap<String, MusicStringTrack>();
-    private HarmonyDetector harmonyDetector = null;
+    private HarmonyDetector harmonyDetector;
 
     public static MusicStringSong create(String filename) throws IOException, TGFileFormatException {
         if (filename.substring(filename.lastIndexOf('.')).contains("musicstring")) {

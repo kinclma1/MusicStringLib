@@ -8,11 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
- * User: void
- * Date: 19.11.12
- * Time: 20:10
- * To change this template use File | Settings | File Templates.
+ * Wrapper class for the Duration enum providing additional features
  */
 public class MusicStringDuration implements Comparable<MusicStringDuration> {
     private boolean dotted;
@@ -53,6 +49,12 @@ public class MusicStringDuration implements Comparable<MusicStringDuration> {
         shorterDurationMap.put(Duration.SIXTY_FOURTH, Duration.ONE_TWENTY_EIGHTH);
     }
 
+    /**
+     * Parses the duration from a music string starting with the given index,
+     * if no duration found, sets quarter
+     * @param musicString Music string containing a duration
+     * @param minIndex Index where to begin the search
+     */
     public MusicStringDuration(String musicString, int minIndex) {
         boolean found = false;
         for (int i = minIndex; !found && i < musicString.length(); i ++) {
@@ -70,15 +72,28 @@ public class MusicStringDuration implements Comparable<MusicStringDuration> {
         dotted = musicString.contains(".");
     }
 
+    /**
+     * Creates a duration from a TuxGuitar duration
+     * @param dur TGDuration from which this should be created
+     */
     public MusicStringDuration(TGDuration dur) {
         duration = intDurationMap.get(dur.getValue());
         dotted = dur.isDotted();
     }
 
+    /**
+     * Create a duration from a Duration enum value
+     * @param duration Value to set
+     */
     public MusicStringDuration(Duration duration) {
         this.duration = duration;
     }
 
+    /**
+     * Tries to create a duration from the given proportional integer
+     * @param div128 proportional duration value
+     * @throws ImpossibleDurationException when not possible to create a single duration from the given integer
+     */
     public MusicStringDuration(int div128) throws ImpossibleDurationException {
         int i = 128;
         boolean set = false;
@@ -125,6 +140,10 @@ public class MusicStringDuration implements Comparable<MusicStringDuration> {
         return dotted ? duration.toString() + '.' : duration.toString();
     }
 
+    /**
+     * Returns non-proportional int value
+     * @return non-proportional int value
+     */
     public int toInteger() {
         return duration.toInteger();
     }
@@ -133,11 +152,19 @@ public class MusicStringDuration implements Comparable<MusicStringDuration> {
         return dotted;
     }
 
+    /**
+     * Returns proportional int value
+     * @return proportional int value
+     */
     public int toIntegerDiv128() {
         int tmp = 128 / toInteger();
         return dotted ? tmp + tmp / 2 : tmp;
     }
 
+    /**
+     * Returns the duration resolution - value of this if not dotted, else half of this
+     * @return duration resolution - value of this if not dotted, else half of this
+     */
     MusicStringDuration shortest() {
         return dotted ? new MusicStringDuration(shorter()) : this;
     }
