@@ -257,7 +257,7 @@ public class MusicStringSong {
 
     /**
      * Adds a new track to the song
-     * @param newTrack Track to be added
+     * @param newTrack Track to be added without channel and instrument
      * @param instrument Instrument to be set to the track
      * @throws NoFreeChannelException when all 16 MIDI channels are occupied by tracks
      * @throws IncompatibleTrackException when measure lengths of the new track do not match the song's ones

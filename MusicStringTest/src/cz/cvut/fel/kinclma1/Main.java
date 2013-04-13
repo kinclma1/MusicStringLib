@@ -40,7 +40,12 @@ public class Main {
         MusicStringPlayer player = new MusicStringPlayer(ms.toString(),
                 new TestListener1());
         try {
-            ms.export("/home/void/project/napadbass.tg");
+            ms.export("/home/void/project/napadbass.musicstring");
+            String track = ms.getTrack(ms.getTrackIds().get(0)).toString();
+            MusicStringSong ms1 = new MusicStringSong(track);
+            System.out.println(track);
+            System.out.println(ms1);
+            ms1.export("/home/void/project/bang.musicstring");
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (TGFileFormatException e) {

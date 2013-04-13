@@ -246,13 +246,13 @@ public class MusicStringTrack {
 
     @Override
     public String toString() {
+        resetTempo();
         StringBuilder sb = new StringBuilder(metaInfo);
         for(MusicStringMeasure measure : measures) {
             sb.append(measure.toString());
             sb.append("| ");
         }
         sb.delete(sb.length() - 2, sb.length());
-        resetTempo();
         return sb.toString();
     }
 
