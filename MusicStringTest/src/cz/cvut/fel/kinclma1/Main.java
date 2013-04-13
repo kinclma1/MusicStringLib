@@ -26,7 +26,6 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //todo Javadoc
         MusicStringSong ms = null;
         try {
             ms = MusicStringSong.create("/home/void/project/napad.tg");

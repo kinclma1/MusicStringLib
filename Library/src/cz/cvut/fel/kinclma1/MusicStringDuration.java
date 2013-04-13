@@ -95,6 +95,11 @@ public class MusicStringDuration implements Comparable<MusicStringDuration> {
      * @throws ImpossibleDurationException when not possible to create a single duration from the given integer
      */
     public MusicStringDuration(int proportional) throws ImpossibleDurationException {
+        if (proportional == 0) {
+            List<Duration> durations = new ArrayList<Duration>(1);
+            durations.add(null);
+            throw new ImpossibleDurationException(durations);
+        }
         int i = 128;
         boolean set = false;
         while (i >= 1 && !set) {
