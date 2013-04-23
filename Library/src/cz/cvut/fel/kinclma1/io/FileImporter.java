@@ -21,6 +21,7 @@ public class FileImporter {
 
     /**
      * Imports file from the given path
+     *
      * @param fileName path to the file to be imported
      * @return TGSong object created from the input file
      * @throws IOException
@@ -32,6 +33,7 @@ public class FileImporter {
 
     /**
      * Imports file determined by the given File object
+     *
      * @param file File object determining the input file
      * @return TGSong object created from the input file
      * @throws IOException
@@ -41,18 +43,20 @@ public class FileImporter {
         TGSongManager manager = new TGSongManager();
         TGSong song;
         FileInputStream fis = new FileInputStream(file);
-            try {
-                song = TGFileFormatManager.instance().getLoader().load(manager.getFactory(), fis);
-            } catch (TGFileFormatException e) {
-                song = importSong(manager.getFactory(), file.getCanonicalPath(), fis);
-            } finally {
-                fis.close();
-            }
+        try {
+            song = TGFileFormatManager.instance().getLoader().load(manager.getFactory(), fis);
+            fis.close();
+        } catch (TGFileFormatException e) {
+            fis = new FileInputStream(file);
+            song = importSong(manager.getFactory(), file.getCanonicalPath(), fis);
+        } finally {
+            fis.close();
+        }
 
-            if (song != null) {
-                manager.setSong(song);
-                manager.orderBeats();
-            }
+        if (song != null) {
+            manager.setSong(song);
+            manager.orderBeats();
+        }
 
         return manager.getSong();
     }
@@ -60,17 +64,17 @@ public class FileImporter {
     private TGSong importSong(TGFactory factory, String filename, FileInputStream fis) throws IOException, TGFileFormatException {
         Iterator importers = TGFileFormatManager.instance().getImporters();
         while (importers.hasNext()) {
-                TGLocalFileImporter currentImporter = (TGLocalFileImporter) importers.next();
-                currentImporter.configure(true);
-                if (isSupportedExtension(filename, currentImporter)) {
-                    InputStream input = new BufferedInputStream(fis);
-                    try {
-                        currentImporter.init(factory, input);
-                        return currentImporter.importSong();
-                    } finally {
-                        input.close();
-                    }
+            TGLocalFileImporter currentImporter = (TGLocalFileImporter) importers.next();
+            currentImporter.configure(true);
+            if (isSupportedExtension(filename, currentImporter)) {
+                InputStream input = new BufferedInputStream(fis);
+                try {
+                    currentImporter.init(factory, input);
+                    return currentImporter.importSong();
+                } finally {
+                    input.close();
                 }
+            }
         }
         return null;
     }

@@ -13,6 +13,7 @@ import org.jfugue.Player;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -28,43 +29,24 @@ public class Main {
     public static void main(String[] args) {
         MusicStringSong ms = null;
         try {
-            ms = MusicStringSong.create("/home/void/project/napad.tg");
-            System.out.println(ms);
+            ms = MusicStringSong.create("/home/void/project/rem.gp3");
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (TGFileFormatException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
 
-        ms.addTrack(randomTones(ms, new TestBassTones(), 0.0), Instrument.ELECTRIC_BASS_FINGER);
-        MusicStringPlayer player = new MusicStringPlayer(ms.toString(),
-                new TestListener1());
+//        ms.addTrack(randomTones(ms, new TestBassTones(), 0.5), Instrument.ELECTRIC_BASS_FINGER);
+//        MusicStringPlayer player = new MusicStringPlayer(ms.toString(), new TestListener1());
+//
         try {
-            ms.export("/home/void/project/napadbass.musicstring");
-            String track = ms.getTrack(ms.getTrackIds().get(0)).toString();
-            MusicStringSong ms1 = new MusicStringSong(track);
-            System.out.println(track);
-            System.out.println(ms1);
-            ms1.export("/home/void/project/bang.musicstring");
+//            ms.export("/home/void/project/testbass.tg");
+            ms.export("/home/void/project/rem.ly");
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (TGFileFormatException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
-//        try {
-//            ms.export("/home/void/project/rem.musicstring");
-//            MusicStringSong ms1 = MusicStringSong.create("/home/void/project/rem.musicstring");
-//            ms1.export("/home/void/project/newrem.tg");
-//        } catch (IOException e) {
-//            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-//        } catch (TGFileFormatException e) {
-//            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-//        }
-//        TestListener1 listener = new TestListener1();
-//        MusicStringPlayer player = new MusicStringPlayer(ms.toString(), listener);
-//        player.play();
-//        TGSong tgs = ms.toTGSong();
-//        new FileExporter().exportSong(tgs, "/home/void/project/newrem1.tg");
     }
 
     private static String randomTones(MusicStringSong ms, InstrumentTones toneFilter, double restProbability) {
