@@ -29,19 +29,18 @@ public class Main {
     public static void main(String[] args) {
         MusicStringSong ms = null;
         try {
-            ms = MusicStringSong.create("/home/void/project/rem.gp3");
+            ms = MusicStringSong.create("/home/void/project/newtest.tg");
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (TGFileFormatException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
 
-//        ms.addTrack(randomTones(ms, new TestBassTones(), 0.5), Instrument.ELECTRIC_BASS_FINGER);
+//        ms.addTrack(randomTones(ms, new TestBassTones(), 0.2), Instrument.ELECTRIC_BASS_FINGER);
 //        MusicStringPlayer player = new MusicStringPlayer(ms.toString(), new TestListener1());
-//
+
         try {
-//            ms.export("/home/void/project/testbass.tg");
-            ms.export("/home/void/project/rem.ly");
+            ms.export("/home/void/project/newtest1.ly");
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (TGFileFormatException e) {

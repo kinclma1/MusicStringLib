@@ -173,7 +173,7 @@ class LilypondOutputStream {
 	private void addClef(int clef,int indent){
 		String clefName = clef == TGMeasure.CLEF_TREBLE ? "treble" : clef == TGMeasure.CLEF_BASS ? "bass" : null;
 		if(clefName != null){
-			writer.println(indent(indent) + "\\clef \"" + clefName + "_8\"");
+			writer.println(indent(indent) + "\\clef \"" + clefName + "\"");
 		}
 	}
 	
@@ -286,10 +286,10 @@ class LilypondOutputStream {
 	private String getLilypondKey(int keySignature , int value){
 		String[] lilypondNotes = (keySignature <= 7 ? LILYPOND_SHARP_NOTES : LILYPOND_FLAT_NOTES );
 		StringBuilder key = new StringBuilder(lilypondNotes[ value % 12 ]);
-		for(int i = 4; i < (value / 12); i ++){
+		for(int i = 3; i < (value / 12); i ++){
 			key.append('\'');
 		}
-		for(int i = (value / 12); i < 4; i ++){
+		for(int i = (value / 12); i < 3; i ++){
 			key.append(',');
 		}
 		return key.toString();
