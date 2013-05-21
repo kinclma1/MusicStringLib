@@ -2,273 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47c31169-086a-402a-a19b-a8284e39ad73" name="Default" comment="finished musicstring to tgsong conversion">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/AbstractTones.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/AbstractTones.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/scales/AeolianScale.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/scales/AeolianScale.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/tonefilters/Bass5Tones.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/tonefilters/Bass5Tones.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/tonefilters/BassTones.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/tonefilters/BassTones.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/BeatElement.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/BeatElement.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/scales/DorianScale.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/scales/DorianScale.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/Drum.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/Drum.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/Duration.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/Duration.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/io/FileExporter.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/io/FileExporter.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/io/FileImporter.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/io/FileImporter.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/FlatTrack.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/FlatTrack.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/GP3InputStream.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/GP3InputStream.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/GP4InputStream.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/GP4InputStream.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/GP5InputStream.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/GP5InputStream.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/GP5OutputStream.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/GP5OutputStream.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/score/GPXAutomation.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/score/GPXAutomation.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/score/GPXBar.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/score/GPXBar.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/score/GPXBeat.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/score/GPXBeat.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/GPXByteBuffer.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/GPXByteBuffer.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/score/GPXDocument.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/score/GPXDocument.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/GPXDocumentParser.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/GPXDocumentParser.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/GPXDocumentReader.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/GPXDocumentReader.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/score/GPXDrumkit.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/score/GPXDrumkit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/GPXFileSystem.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/GPXFileSystem.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/GPXInputStream.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/GPXInputStream.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/GPXInputStreamPlugin.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/GPXInputStreamPlugin.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/score/GPXMasterBar.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/score/GPXMasterBar.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/score/GPXNote.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/score/GPXNote.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/score/GPXRhythm.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/score/GPXRhythm.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/score/GPXScore.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/score/GPXScore.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/score/GPXTrack.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/score/GPXTrack.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/score/GPXVoice.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/score/GPXVoice.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/GTPFileFormat.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/GTPFileFormat.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/GTPFormatException.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/GTPFormatException.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/GTPInputStream.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/GTPInputStream.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/GTPOutputStream.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/GTPOutputStream.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/GTPPluginList.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/GTPPluginList.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/GTPSettings.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/GTPSettings.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/GTPSettingsUtil.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/GTPSettingsUtil.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/GTPVoiceJoiner.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/GTPVoiceJoiner.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/tonefilters/Guitar7Tones.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/tonefilters/Guitar7Tones.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/tonefilters/GuitarTones.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/tonefilters/GuitarTones.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/tonefilters/HarmonicaATones.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/tonefilters/HarmonicaATones.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/tonefilters/HarmonicaCTones.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/tonefilters/HarmonicaCTones.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/exceptions/ImpossibleDurationException.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/exceptions/ImpossibleDurationException.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/exceptions/IncompatibleTrackException.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/exceptions/IncompatibleTrackException.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/Instrument.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/Instrument.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/InstrumentTones.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/InstrumentTones.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/scales/IonianScale.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/scales/IonianScale.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/jfugue/JFugueDefinitions.html" afterPath="$PROJECT_DIR$/doc/org/jfugue/JFugueDefinitions.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/jfugue/JFugueException.html" afterPath="$PROJECT_DIR$/doc/org/jfugue/JFugueException.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/lilypond/LilypondOutputStream.java" afterPath="$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/lilypond/LilypondOutputStream.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/lilypond/LilypondSongExporter.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/lilypond/LilypondSongExporter.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/scales/LocrianScale.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/scales/LocrianScale.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/scales/LydianScale.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/scales/LydianScale.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/Main.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/Main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/Main.java" afterPath="$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/player/base/MidiControllers.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/player/base/MidiControllers.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/jfugue/MidiEventManager.html" afterPath="$PROJECT_DIR$/doc/org/jfugue/MidiEventManager.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/player/base/MidiInstrument.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/player/base/MidiInstrument.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/jfugue/MidiMessageRecipient.html" afterPath="$PROJECT_DIR$/doc/org/jfugue/MidiMessageRecipient.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/jfugue/MidiRenderer.html" afterPath="$PROJECT_DIR$/doc/org/jfugue/MidiRenderer.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/player/base/MidiRepeatController.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/player/base/MidiRepeatController.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/player/base/MidiSequenceHandler.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/player/base/MidiSequenceHandler.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/player/base/MidiSequenceParser.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/player/base/MidiSequenceParser.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/scales/MixolydianScale.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/scales/MixolydianScale.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/MusicStringDrum.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/MusicStringDrum.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/MusicStringDuration.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/MusicStringDuration.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/musicstring/MusicStringExporter.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/musicstring/MusicStringExporter.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/jfugue/MusicStringParser.html" afterPath="$PROJECT_DIR$/doc/org/jfugue/MusicStringParser.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/player/MusicStringPlayer.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/player/MusicStringPlayer.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/MusicStringSong.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/MusicStringSong.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/MusicStringTone.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/MusicStringTone.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/MusicStringTrack.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/MusicStringTrack.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/musicxml/MusicXMLReader.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/musicxml/MusicXMLReader.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/musicxml/MusicXMLSongExporter.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/musicxml/MusicXMLSongExporter.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/musicxml/MusicXMLSongImporter.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/musicxml/MusicXMLSongImporter.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/musicxml/MusicXMLWriter.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/musicxml/MusicXMLWriter.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/exceptions/NoFreeChannelException.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/exceptions/NoFreeChannelException.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/jfugue/Note.html" afterPath="$PROJECT_DIR$/doc/org/jfugue/Note.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/NoteContent.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/NoteContent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/Parallellization.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/Parallellization.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/jfugue/Parser.html" afterPath="$PROJECT_DIR$/doc/org/jfugue/Parser.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/jfugue/ParserListener.html" afterPath="$PROJECT_DIR$/doc/org/jfugue/ParserListener.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/jfugue/ParserListenerAdapter.html" afterPath="$PROJECT_DIR$/doc/org/jfugue/ParserListenerAdapter.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/jfugue/ParserProgressListener.html" afterPath="$PROJECT_DIR$/doc/org/jfugue/ParserProgressListener.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/jfugue/Pattern.html" afterPath="$PROJECT_DIR$/doc/org/jfugue/Pattern.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/scales/PhrygianScale.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/scales/PhrygianScale.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/jfugue/Player.html" afterPath="$PROJECT_DIR$/doc/org/jfugue/Player.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/player/PlayerListener.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/player/PlayerListener.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/scales/Scale.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/scales/Scale.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/tonefilters/SoloTones.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/tonefilters/SoloTones.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGBeat.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGBeat.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGChannel.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGChannel.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGChord.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGChord.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGColor.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGColor.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGDivisionType.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGDivisionType.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGDuration.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGDuration.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/effects/TGEffectBend.BendPoint.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/effects/TGEffectBend.BendPoint.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/effects/TGEffectBend.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/effects/TGEffectBend.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/effects/TGEffectGrace.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/effects/TGEffectGrace.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/effects/TGEffectHarmonic.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/effects/TGEffectHarmonic.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/effects/TGEffectTremoloBar.TremoloBarPoint.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/effects/TGEffectTremoloBar.TremoloBarPoint.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/effects/TGEffectTremoloBar.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/effects/TGEffectTremoloBar.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/effects/TGEffectTremoloPicking.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/effects/TGEffectTremoloPicking.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/effects/TGEffectTrill.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/effects/TGEffectTrill.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/gui/system/plugins/base/TGExporterPlugin.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/gui/system/plugins/base/TGExporterPlugin.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/factory/TGFactory.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/factory/TGFactory.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/base/TGFileFormat.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/base/TGFileFormat.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/base/TGFileFormatException.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/base/TGFileFormatException.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/base/TGFileFormatManager.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/base/TGFileFormatManager.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/gui/system/plugins/base/TGImporterPlugin.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/gui/system/plugins/base/TGImporterPlugin.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/tg/TGInputStream.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/tg/TGInputStream.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/base/TGInputStreamBase.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/base/TGInputStreamBase.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/gui/system/plugins/base/TGInputStreamPlugin.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/gui/system/plugins/base/TGInputStreamPlugin.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/base/TGLocalFileExporter.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/base/TGLocalFileExporter.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/base/TGLocalFileImporter.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/base/TGLocalFileImporter.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGLyric.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGLyric.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGMarker.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGMarker.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGMeasure.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGMeasure.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGMeasureHeader.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGMeasureHeader.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/managers/TGMeasureManager.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/managers/TGMeasureManager.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGNote.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGNote.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGNoteEffect.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGNoteEffect.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/tg/TGOutputStream.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/tg/TGOutputStream.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/base/TGOutputStreamBase.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/base/TGOutputStreamBase.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/gui/system/plugins/base/TGOutputStreamPlugin.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/gui/system/plugins/base/TGOutputStreamPlugin.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/gui/system/plugins/TGPlugin.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/gui/system/plugins/TGPlugin.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/gui/system/plugins/base/TGPluginAdapter.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/gui/system/plugins/base/TGPluginAdapter.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/gui/system/plugins/TGPluginException.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/gui/system/plugins/TGPluginException.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/gui/system/plugins/base/TGPluginList.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/gui/system/plugins/base/TGPluginList.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/base/TGRawExporter.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/base/TGRawExporter.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/base/TGRawImporter.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/base/TGRawImporter.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGScale.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGScale.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGSong.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGSong.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/base/TGSongLoader.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/base/TGSongLoader.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/managers/TGSongManager.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/managers/TGSongManager.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/helpers/TGSongSegment.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/helpers/TGSongSegment.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/helpers/TGSongSegmentHelper.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/helpers/TGSongSegmentHelper.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/base/TGSongWriter.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/base/TGSongWriter.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/tg/TGStream.TGBeatData.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/tg/TGStream.TGBeatData.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/tg/TGStream.TGVoiceData.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/tg/TGStream.TGVoiceData.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/tg/TGStream.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/tg/TGStream.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGString.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGString.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGStroke.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGStroke.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGTempo.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGTempo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGText.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGText.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGTimeSignature.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGTimeSignature.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGTrack.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGTrack.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/managers/TGTrackManager.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/managers/TGTrackManager.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/helpers/TGTrackSegment.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/helpers/TGTrackSegment.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGVelocities.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGVelocities.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGVoice.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/TGVoice.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/tonefilters/TestBassTones.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/tonefilters/TestBassTones.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/TestListener.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/TestListener.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/TestListener1.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/TestListener1.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/tonefilters/TestTones.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/tonefilters/TestTones.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/jfugue/TimeEventManager.html" afterPath="$PROJECT_DIR$/doc/org/jfugue/TimeEventManager.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/jfugue/TimeFactor.html" afterPath="$PROJECT_DIR$/doc/org/jfugue/TimeFactor.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/allclasses-frame.html" afterPath="$PROJECT_DIR$/doc/allclasses-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/allclasses-noframe.html" afterPath="$PROJECT_DIR$/doc/allclasses-noframe.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/constant-values.html" afterPath="$PROJECT_DIR$/doc/constant-values.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/deprecated-list.html" afterPath="$PROJECT_DIR$/doc/deprecated-list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/help-doc.html" afterPath="$PROJECT_DIR$/doc/help-doc.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-1.html" afterPath="$PROJECT_DIR$/doc/index-files/index-1.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-10.html" afterPath="$PROJECT_DIR$/doc/index-files/index-10.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-11.html" afterPath="$PROJECT_DIR$/doc/index-files/index-11.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-12.html" afterPath="$PROJECT_DIR$/doc/index-files/index-12.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-13.html" afterPath="$PROJECT_DIR$/doc/index-files/index-13.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-14.html" afterPath="$PROJECT_DIR$/doc/index-files/index-14.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-15.html" afterPath="$PROJECT_DIR$/doc/index-files/index-15.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-16.html" afterPath="$PROJECT_DIR$/doc/index-files/index-16.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-17.html" afterPath="$PROJECT_DIR$/doc/index-files/index-17.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-18.html" afterPath="$PROJECT_DIR$/doc/index-files/index-18.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-19.html" afterPath="$PROJECT_DIR$/doc/index-files/index-19.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-2.html" afterPath="$PROJECT_DIR$/doc/index-files/index-2.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-20.html" afterPath="$PROJECT_DIR$/doc/index-files/index-20.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-21.html" afterPath="$PROJECT_DIR$/doc/index-files/index-21.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-22.html" afterPath="$PROJECT_DIR$/doc/index-files/index-22.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-23.html" afterPath="$PROJECT_DIR$/doc/index-files/index-23.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-3.html" afterPath="$PROJECT_DIR$/doc/index-files/index-3.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-4.html" afterPath="$PROJECT_DIR$/doc/index-files/index-4.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-5.html" afterPath="$PROJECT_DIR$/doc/index-files/index-5.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-6.html" afterPath="$PROJECT_DIR$/doc/index-files/index-6.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-7.html" afterPath="$PROJECT_DIR$/doc/index-files/index-7.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-8.html" afterPath="$PROJECT_DIR$/doc/index-files/index-8.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-9.html" afterPath="$PROJECT_DIR$/doc/index-files/index-9.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index.html" afterPath="$PROJECT_DIR$/doc/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/overview-frame.html" afterPath="$PROJECT_DIR$/doc/overview-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/overview-summary.html" afterPath="$PROJECT_DIR$/doc/overview-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/overview-tree.html" afterPath="$PROJECT_DIR$/doc/overview-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/package-frame.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/exceptions/package-frame.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/exceptions/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/io/package-frame.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/io/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/player/package-frame.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/player/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/scales/package-frame.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/scales/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/tonefilters/package-frame.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/tonefilters/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/gui/system/plugins/package-frame.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/gui/system/plugins/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/gui/system/plugins/base/package-frame.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/gui/system/plugins/base/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/base/package-frame.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/base/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/package-frame.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/score/package-frame.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/score/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/package-frame.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/lilypond/package-frame.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/lilypond/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/musicstring/package-frame.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/musicstring/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/musicxml/package-frame.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/musicxml/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/tg/package-frame.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/tg/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/player/base/package-frame.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/player/base/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/factory/package-frame.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/factory/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/helpers/package-frame.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/helpers/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/managers/package-frame.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/managers/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/package-frame.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/effects/package-frame.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/effects/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/jfugue/package-frame.html" afterPath="$PROJECT_DIR$/doc/org/jfugue/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/package-summary.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/exceptions/package-summary.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/exceptions/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/io/package-summary.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/io/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/player/package-summary.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/player/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/scales/package-summary.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/scales/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/tonefilters/package-summary.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/tonefilters/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/gui/system/plugins/package-summary.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/gui/system/plugins/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/gui/system/plugins/base/package-summary.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/gui/system/plugins/base/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/base/package-summary.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/base/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/package-summary.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/score/package-summary.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/score/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/package-summary.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/lilypond/package-summary.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/lilypond/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/musicstring/package-summary.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/musicstring/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/musicxml/package-summary.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/musicxml/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/tg/package-summary.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/tg/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/player/base/package-summary.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/player/base/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/factory/package-summary.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/factory/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/helpers/package-summary.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/helpers/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/managers/package-summary.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/managers/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/package-summary.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/effects/package-summary.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/effects/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/jfugue/package-summary.html" afterPath="$PROJECT_DIR$/doc/org/jfugue/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/package-tree.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/exceptions/package-tree.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/exceptions/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/io/package-tree.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/io/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/player/package-tree.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/player/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/scales/package-tree.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/scales/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/tonefilters/package-tree.html" afterPath="$PROJECT_DIR$/doc/cz/cvut/fel/kinclma1/tonefilters/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/gui/system/plugins/package-tree.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/gui/system/plugins/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/gui/system/plugins/base/package-tree.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/gui/system/plugins/base/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/base/package-tree.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/base/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/package-tree.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/score/package-tree.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gpx/score/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/package-tree.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/gtp/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/lilypond/package-tree.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/lilypond/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/musicstring/package-tree.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/musicstring/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/musicxml/package-tree.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/musicxml/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/tg/package-tree.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/io/tg/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/player/base/package-tree.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/player/base/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/factory/package-tree.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/factory/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/helpers/package-tree.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/helpers/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/managers/package-tree.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/managers/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/package-tree.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/effects/package-tree.html" afterPath="$PROJECT_DIR$/doc/org/herac/tuxguitar/song/models/effects/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/jfugue/package-tree.html" afterPath="$PROJECT_DIR$/doc/org/jfugue/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/serialized-form.html" afterPath="$PROJECT_DIR$/doc/serialized-form.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MusicStringLib.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1369098030713" ignored="false" />
+    <file path="/Dummy.txt" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1369098499935" ignored="false" />
     <file path="/MusicStringTrack.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1365476937340" ignored="false" />
     <file path="/MusicStringSong.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1365894211620" ignored="false" />
     <file path="/MusicStringMeasure.java" changelist="47c31169-086a-402a-a19b-a8284e39ad73" time="1365895733635" ignored="false" />
@@ -425,19 +164,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="50" selection-start="1421" selection-end="1421" vertical-scroll-proportion="0.0">
+            <state line="42" column="50" selection-start="1421" selection-end="1421" vertical-scroll-proportion="1.0769231">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LilypondOutputStream.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="LilypondOutputStream.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/lilypond/LilypondOutputStream.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="58" selection-start="283" selection-end="283" vertical-scroll-proportion="0.19946809">
+            <state line="77" column="54" selection-start="2977" selection-end="2977" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -577,6 +316,16 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -911,16 +660,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -949,9 +688,9 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -1002,6 +741,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -1027,19 +779,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -1136,13 +875,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-2" y="16" width="1370" height="754" extended-state="6" />
-    <editor active="false" />
+    <frame x="-2" y="16" width="1370" height="754" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32676518" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31753555" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3258427" sideWeight="0.49763408" order="0" side_tool="true" content_ui="tabs" />
@@ -1153,11 +891,12 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.6738056" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19772728" sideWeight="0.71125615" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28780487" sideWeight="0.49684542" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19772728" sideWeight="0.71288747" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28711256" sideWeight="0.49684542" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="105" y="18" width="1170" height="552" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31753555" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3961965" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1287,13 +1026,6 @@
         <state line="9" column="13" selection-start="289" selection-end="289" vertical-scroll-proportion="0.1056338" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="50" selection-start="1421" selection-end="1421" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Library/src/cz/cvut/fel/kinclma1/MusicStringSong.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="259" column="71" selection-start="8781" selection-end="8781" vertical-scroll-proportion="0.0">
@@ -1331,7 +1063,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Library/src/org/herac/tuxguitar/io/lilypond/LilypondOutputStream.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="58" selection-start="283" selection-end="283" vertical-scroll-proportion="0.19946809">
+        <state line="77" column="54" selection-start="2977" selection-end="2977" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MusicStringTest/src/cz/cvut/fel/kinclma1/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="50" selection-start="1421" selection-end="1421" vertical-scroll-proportion="1.0769231">
           <folding />
         </state>
       </provider>

@@ -75,6 +75,9 @@ class LilypondOutputStream {
 		writer.println(indent(1) + "\\context { \\Staff");
 		writer.println(indent(2) + "\\override TimeSignature #'style = #'numbered");
 		writer.println(indent(1) + '}');
+        writer.println(indent(1) + "\\context { \\DrumStaff");
+        writer.println(indent(2) + "\\override TimeSignature #'style = #'numbered");
+        writer.println(indent(1) + '}');
 		writer.println("}");
 	}
 	
