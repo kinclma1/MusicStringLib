@@ -29,7 +29,7 @@ public class Main {
     public static void main(String[] args) {
         MusicStringSong ms = null;
         try {
-            ms = MusicStringSong.create("/home/void/project/newtest.tg");
+            ms = MusicStringSong.create("/home/void/project/noty.tg");
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (TGFileFormatException e) {
@@ -40,7 +40,7 @@ public class Main {
 //        MusicStringPlayer player = new MusicStringPlayer(ms.toString(), new TestListener1());
 
         try {
-            ms.export("/home/void/project/newtest1.ly");
+            ms.export("/home/void/project/noty1.ly");
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (TGFileFormatException e) {
