@@ -4,14 +4,11 @@ cz.cvut.fel.kinclma1.io
 cz.cvut.fel.kinclma1.player
 cz.cvut.fel.kinclma1.scales
 cz.cvut.fel.kinclma1.tonefilters
-org.herac.tuxguitar.gui.system.plugins
-org.herac.tuxguitar.gui.system.plugins.base
 org.herac.tuxguitar.io.base
 org.herac.tuxguitar.io.gpx
 org.herac.tuxguitar.io.gpx.score
 org.herac.tuxguitar.io.gtp
 org.herac.tuxguitar.io.lilypond
-org.herac.tuxguitar.io.musicstring
 org.herac.tuxguitar.io.musicxml
 org.herac.tuxguitar.io.tg
 org.herac.tuxguitar.player.base
